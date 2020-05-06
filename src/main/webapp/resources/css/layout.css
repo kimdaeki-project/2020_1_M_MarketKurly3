@@ -70,6 +70,7 @@
 				margin:0 auto;
 				position:relative;
 				margin-top:10px;
+				
 			}
 			
 			.gnb ul {
@@ -78,6 +79,7 @@
 				display:inline-block;
 				width:1050px;
 				height:55px;
+				
 			}
 			.gnb ul .menu1 {
 				width:188px;
@@ -181,8 +183,11 @@
 			
 			.product_list	{
 				width:1050px;
+				height:100%;
 				margin:0 auto;
+				
 			}
+			
 			
 			.product_list .tit_goods	{
 				padding:79px 0 35px;
@@ -197,7 +202,7 @@
 			}
 			
 			.product_list .list_goods {
-				
+				height: 100%;
 			}
 			
 			
@@ -205,6 +210,8 @@
 				width:249px;
 				float:left;
 				margin-right:18px;
+				margin-top:15px;
+				margin-bottom:15px;
 				list-style-type: none;
 			}
 			.list_goods ul li:last-child{
