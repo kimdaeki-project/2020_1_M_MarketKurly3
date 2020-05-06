@@ -11,7 +11,7 @@
 </head>
 <body>
 <c:import url="./template/header.jsp"></c:import>
-
+<div>ff</div>
 <c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>
