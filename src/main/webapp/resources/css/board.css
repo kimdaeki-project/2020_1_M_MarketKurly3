@@ -1,0 +1,241 @@
+@charset "UTF-8";
+
+
+		ul	{
+			list-style-type:none;
+		}
+	 
+	 
+	 	.board	{  /*height가 안 잡힘ㅜㅜ*/
+	 		
+	 		height:100%;
+	 		padding:50px 0 170px 0;
+	 	}
+	 	
+		.page_article	{
+		height:100%;
+			width:1050px;
+			margin:0 auto;
+			
+			
+		}
+
+		.snb	{
+			width:200px;
+			float:left;
+		}
+		
+
+
+		.snb h2	{
+			font-size:28px;
+			padding:0 0 30px 2px;
+			color:#4A4A4A;
+			font-weight:700;
+		}
+
+
+		.snb .list_menu li	{
+			border:1px solid #dcdbde;
+			border-bottom:0;
+		}
+		
+		.snb .list_menu li:last-child 	{
+			border-bottom:1px solid #dcdbde;
+		}
+		
+		
+		.snb .list_menu a	{
+			display:block;
+			padding:16px 0 16px 19px;
+			text-decoration:none;
+			color:#666;
+			font-size:12px;
+			border-bottom:0;
+		}
+		
+		.snb .list_menu .on a	{
+			background-color:#F7F7F7;
+			color:#5F0080;
+		}
+		
+
+		.snb > a	{
+			display:block;
+			width:180px;
+			height:50px;
+			background-color:#f7f7f7;
+			border:1px solid #f7f5f7;
+			border-radius:0 100px 100px 0;
+			font-size:12px;
+			color:#666;
+			text-decoration:none;
+			line-height:20px;
+			margin-top:16px;
+			padding:9px 0 0 19px;
+			
+		}
+
+		.snb > a span	{
+			display:block;
+			padding-bottom:1px;
+			font-weight:700;
+			font-size:14px;
+		}
+
+		.page_section	{
+			width:820px;
+			float:right;
+		}
+		
+		
+		
+		
+		.page_section .head_article	{
+			padding:5px 0 24px;
+		}
+		
+		
+		.page_section .head_article h2	{
+			height:42px;
+			font-weight:700;
+			font-size:24px;
+			line-height:36px;
+			color:#333;
+		}
+		
+		.page_section .head_article span	{
+			padding-left:8px;
+			font-size:12px;
+		}
+		
+		
+		.page_section table	{
+		 
+		 	width:820px;
+		 	font-size:12px;
+		}
+		
+		.page_section table:first-child	{
+			border-top:2px solid #5f0080;
+		}
+		
+		.page_section table tr	{
+			
+			border:1px solid #000;  /*안먹음ㅜㅜ*/
+		}
+		
+		.page_section table th	{
+			padding: 15px 0;
+			font-weight:normal;
+		}
+		
+		.page_section table td	{
+			padding: 15px 0;
+			text-align:center;
+		}
+		
+		.page_section table td a	{
+			text-decoration:none;
+			color:#000;
+		}
+		
+		.layout-pagination		{
+			margin-top:60px;
+			text-align:center;
+			
+		}
+		
+		.layout-pagination .pagediv	{
+	
+			width:820px;
+			height:34px;
+			margin:0 auto;
+			text-align:center;
+		}
+		
+		.layout-pagination .pagination-button 	{
+			display:block;
+			width:34px;
+			height:34px;
+			float:left;
+			text-decoration:none;
+			border:1px solid #d4d4d4;
+			border-right:0;
+			line-height:34px;
+			font-weight:700;
+			color:#333;
+			font-size:12px;
+		}
+		
+		.layout-pagination .pagination-button:hover	{
+			background-color:#f7f7f7;
+		}
+		.layout-pagination .first-page	{
+			background-image:url("../images/icon-first.png");
+			background-repeat:no-repeat;
+			background-position: 50% 50%;
+			text-indent:-10000px;
+		}
+		
+		
+		.layout-pagination .prev-page	{
+			background-image:url("../images/icon-prev.png");
+			background-repeat:no-repeat;
+			background-position: 50% 50%;
+			text-indent:-10000px;
+		}
+		
+		
+		.layout-pagination .next-page	{
+			background-image:url("../images/icon-next.png");
+			background-repeat:no-repeat;
+			background-position: 50% 50%;
+			text-indent:-10000px;
+		}
+		
+		
+		.layout-pagination .last-page	{
+			background-image:url("../images/icon-last.png");
+			background-repeat:no-repeat;
+			background-position: 50% 50%;
+			text-indent:-10000px;
+			border-right:1px solid #d4d4d4;
+		}
+		
+		.board_search	{
+			margin-top:40px;
+			border-top:1px solid #000;
+		}
+		
+		.board_search .input_txt img	{
+			position:relative;
+			top:-3px;
+			left:-5px;
+		}
+		
+		
+		.board_search tr td	{
+			padding:20px 0;
+		}
+		
+		.board_search .stxt {
+			font-size:14px;
+			padding-right:15px;
+		}
+		
+		.board_search .stxt input	{
+			margin-right:3px;
+		}
+		
+		.board_search .search_bt input	{
+			width:212px;
+			height:24px;
+			padding:4px;
+			border:1px solid #bfbfbf;
+			float:right;
+		}
+		
+		.board_search .search_bt img	{
+			float:right;
+		}

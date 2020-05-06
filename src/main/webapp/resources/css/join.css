@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+		.content		{
+			background-color:#f9f9f9;
+			margin:0 0 30px;
+			padding:0 0 70px;
+		}
+		
+		.page_location {
+			width:1050px;
+			margin:0 auto;
+			text-align:right;
+			padding:26px 0 0;
+		}
+		
+		.page_location a	{
+			text-decoration:none;
+			color:black;
+			font-size:12px;
+			color:#4c4c4c;
+		}
+		
+		.page_location strong	{
+			font-size:12px;
+			color:#4c4c4c;
+		}
+		
+		
+		.tit_join	{
+			text-align:center;
+			font-size:20px;
+			font-weight:800;
+			color:#333;
+			padding:17px 0 0;
+		}
+		
+		
+		.member_join 	{
+			width:640px;
+			margin:0 auto;
+		}
+		
+		.member_join h3	{
+			display:block;
+			text-align:right;
+			font-size:12px;
+			color:#333;
+			padding:12px 0 10px;
+		}
+		
+		
+		.member_join form	{
+			background-color:#fff;
+			border:1px solid #f3f2f4;
+		}
+		
+		.border_write	{
+			padding:9px 0 19px;	
+		}
+		
+		.border_write .tbl_comm tr	{
+			margin:10px 0;
+		}
+		
+		.border_write .memberCols1	{
+			padding:30px 0 0 30px;
+			width:150px;
+		}
+		
+		.border_write .mobile .memberCols1	{
+			vertical-align:top;
+		}
+
+
+		.border_write .mobile .memberCols2 input	{
+			margin-bottom:10px;
+		}
+		
+		.border_write .add .memberCols1	{
+			vertical-align:top;
+		}
+		
+		.border_write .memberCols2	{
+			padding:25px 0 0;
+		
+		}
+
+		.border_write .memberCols2 input	{
+			width:280px;
+			height:40px;
+			border:1px solid #ccc;
+			border-radius:3px;
+			padding:0 9px;
+			color:#d4d4d4;
+			font-size:14px;
+			outline:none;
+		}
+		
+
+		.add .memberCols2 .text_guide	{
+			font-size:12px;
+			color:#666;
+			padding:7px 0 0;
+		}
+
+		.select_sex .memberCols2 input	{
+			width:12.8px;
+			height:12.8px;
+		}
+		
+
+		.birth .memberCols2 .birthday	{
+			width:300px;
+			padding-left:8px;
+			border:1px solid #eee;
+		}
+
+		.birth .memberCols2 input	{
+			width:80px;
+			height:37px;
+			border:0;
+			padding:0;
+			text-align:center;
+		}
+
+		.route .memberCols2 input	{
+			width:12.8px;
+			height:12.8px;
+		}
+		
+		
+		
+		.avoidDbl		{
+			width:340px;
+			margin:0 auto;	
+		}
+
+
+
+		.btn_sm	{
+			display:block;
+			width:340px;
+			height:54px;
+			border:0;
+			border-radius:3px;
+			background-color:#5f0080;
+			color:#fff;
+			line-height:45px;
+			margin:45px auto 0;
+			font-size:16px;
+		}
+
+
+
+
+
+
+
+		
+		.bns_button	{
+			display:inline-block;
+			width:130px;
+			height:38px;
+			margin-lefe:10px;
+			font-size:14px;
+			border:1px solid #5f0080;
+			background-color: #5f0080;
+			color:white;
+			text-align:center;
+			line-height:34px;
+			border-radius:4px;
+			padding-top:2px;
+		
+		}
+
+
+
+
+
+
+
+
+
+

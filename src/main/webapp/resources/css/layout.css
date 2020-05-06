@@ -1,0 +1,521 @@
+@charset "UTF-8";
+			*	{
+				padding:0;
+				margin:0;
+			}
+			
+			html, body	{
+				height:100%;
+			}
+			
+			ul	{
+				padding:0;
+			}
+			
+			header {
+				height:156px;
+			}
+			
+			.userMenu {
+				width:1050px;
+				height:37px;
+				margin:0 auto;
+			}
+			
+			.userMenu .listMenu {
+				list-style-type: none;
+				float:right;
+				display:inline-block;
+				line-height:37px;
+			}
+			
+			.userMenu .listMenu li {
+				float:left;			
+			}
+			
+			.userMenu .listMenu li>a {
+				color:#333333;
+				font-size:12px;
+				text-decoration: none;
+				padding:0 10px;
+				font-family: "Noto sans";
+				
+			
+			}
+			
+			.headerLogo	{
+				width:1050px;
+				height:63px;
+				margin:0 auto;
+				
+			}
+			
+			.headerLogo > a {
+				display:block;
+				height:79px;
+				width:103px;
+				margin: 0 auto;
+				
+			}
+			
+			.headerLogo > a > img {
+				width:103px;
+				height:79px;
+				
+			}
+			
+			.gnb	{
+				width:1050px;
+				height:55px;
+				margin:0 auto;
+				position:relative;
+				margin-top:10px;
+			}
+			
+			.gnb ul {
+				float: left;
+				list-style-type: none;
+				display:inline-block;
+				width:1050px;
+				height:55px;
+			}
+			.gnb ul .menu1 {
+				width:188px;
+			}
+			
+			.gnb ul .menu1 a {
+				display:block;
+				height:100%;
+				width:119px;
+				padding:16px 50px 0 19px;
+			}
+			
+			.gnb ul li {
+				float:left;
+				
+			}
+			
+			.gnb ul li a {
+				display:block;
+				height:100%;
+				text-decoration: none;
+				padding:16px 48px 0 48px;
+				font-size: 16px;
+				color:#333333;
+				font-weight: bold;
+				font-family: "Noto sans";
+			}
+			
+			
+			.gnb ul a:hover {
+				color:#5f0080;
+				text-decoration: underline;
+				/* line-height:  밑줄 여백 만들고 싶은데 모르겠음 */
+			}
+			
+			
+			.side_search	{
+				position:absolute;
+				right:45px;
+				top:10px;
+				width:238px;
+			}
+			
+			.side_search .sc	{
+				width:156px;
+				height:36px;
+				padding:0 50px 0 30px;
+				border:1px solid #f7f7f6;
+				border-radius:18px;
+				background-color: #f7f7f7;
+				color:#666666;
+				font-size:12px;
+				line-height:16px;
+				outline:none;
+				
+			}
+			
+			.side_search .sicon	{
+				position: absolute;
+				top:3px;
+				right:10px;
+				width:30px;
+				height:30px;
+				outline:none;
+			}
+			
+			
+			.cart_count	{
+				position:absolute;
+				right:-6px;
+				top:10px;
+				width:36px;
+				height:36px;
+			}
+			
+			.cart_count a {
+				display:block;
+
+			}
+			
+			.cart_count a img {
+				width:100%;
+			}
+			
+			
+			.contents {
+				
+			
+			}
+			
+			.mainImage .listGoods a {
+				background-image: url("../images/pc_img.png"); 
+				background-repeat: no-repeat;	
+				width:100%;
+				height:370px;
+				display: inline-block;
+				background-position: 50% 50%;
+  			  background-size: auto auto;
+			}
+				
+			
+			.product_list	{
+				width:1050px;
+				margin:0 auto;
+			}
+			
+			.product_list .tit_goods	{
+				padding:79px 0 35px;
+				
+			}
+			
+			.product_list .tit_goods h3 {
+				font-weight:700;
+				font-size:28px;
+				line-height:32px;
+				text-align:center;
+			}
+			
+			.product_list .list_goods {
+				height:506px;
+			}
+			
+			
+			.list_goods ul li	{
+				width:249px;
+				float:left;
+				margin-right:18px;
+				list-style-type: none;
+			}
+			.list_goods ul li:last-child{
+				margin-right:0;
+			}
+			
+			.list_goods ul li img	{
+			
+				width:100%;
+			}
+			
+			
+			.info_goods span	{
+				display:block;
+				font-family: 'Noto Sans';
+			}
+			
+			.list_goods .name a	{
+				font-family: 'Noto Sans';
+				font-size: 16px;
+				line-height:32px;
+				font-weight:400;
+				text-decoration:none;
+				color:black;
+			}
+			
+			.list_goods .price	{
+				font-family: 'Noto Sans';
+				font-size: 16px;
+				font-weight:600;
+				color:#444;
+			}
+			
+			.list_goods .cost {
+				font-family: 'Noto Sans';
+				font-size:14px;
+			}
+			
+			
+			
+			
+			/* event */
+			
+			.event_news	{
+				background-color:#f7f7f7;
+	
+			}
+			
+			.event_news .inner_event {
+				width:1050px;
+				margin:0 auto;
+			}
+			
+			
+			.tit_event	{
+				padding:79px 0 35px;
+				
+			}
+			
+			.tit_event h3 {
+				font-weight:700;
+				font-size:28px;
+				line-height:32px;
+				text-align:center;
+			}
+			
+			
+			.list_event		{
+				height:583px;
+			}
+			
+			
+			.list_event ul	{
+				list-style-type:none;
+			}
+			
+			.list_event ul li	{
+				float:left;
+				width:338px;
+				height:338px;
+				margin-right:18px;
+			}
+			
+			.list_event ul li:last-child	{
+				margin-right:0;
+			}
+			
+			.list_event ul li a 	{
+				display:block;
+				text-decoration:none;
+				text-align:center;
+				color:black;
+				padding:5px 0;
+				
+			}
+			
+			
+			
+			.list_event ul li a img	{
+				width:100%;
+			}
+			
+			
+			.list_event ul li .name	{
+				color:#333;
+				font-size:18px;
+				font-weight:bold;
+				margin-top:5px;
+			}
+			
+			.list_event ul li .con	{
+				color:#999;
+				font-size:16px;
+			}	
+			
+			
+			.bnr_main	{
+			
+			}
+			
+			
+			.bnr_main .banner	{
+				width:1050px;
+				margin:0 auto;
+			}
+			
+			
+			.bnr_main .banner a	{
+				display:block;
+			}
+			
+			.bnr_main .banner a img	{
+				width:100%;
+			}
+			
+			/*footer*/
+			footer {
+				
+				padding-bottom:60px;
+				border-top:1px solid #eee;
+			}
+			
+			.inner_footer	{
+				width:1050px;
+				margin:0 auto;
+				height:302px;
+				overflow:hidden;
+				padding-bottom:20px;
+				border-bottom:1px solid #eee;
+				
+			}
+			
+			
+			.inner_footer .footer_cc	{
+				float:left;
+				width:534px;
+
+				
+			}
+			
+			.inner_footer .company	{
+				width:516px;
+				float:left;
+				
+			}
+			
+			
+			
+			
+			/* .footer_cc */
+			
+			.footer_cc h2	{
+				padding:29px 0 2px;
+				font-weight:600;
+				font-size:20px;
+				color:#333;
+			}
+			
+			.footer_cc .cc_view 	{
+				padding-top:16px;
+			}
+			
+			.footer_cc .cc_view h3	{
+				float:left;
+			}
+			
+			
+			.footer_cc .cc_view h3 span	{
+				margin-right:13px;
+			}
+			
+			
+			.footer_cc .cc_view h3 a	{
+				display:inline-block;
+				width:140px;
+				height:40px;
+				border:1px solid #999;
+				border-radius:3px;
+				text-align:center;
+				text-decoration:none;
+				color:#444;
+				font-size:14px;
+				line-height:40px;
+				margin-right:13px;
+			}
+			
+			.footer_cc .cc_view dl	{
+				font-size:14px;
+			}
+			
+			.footer_cc .cc_view dt:last-child	{
+				font-size:14px;
+				color:#666;
+			}
+			
+			
+			.footer_cc .cc_call		{
+				
+			}
+			
+			.footer_cc .cc_call span	{
+				font-weight: 700;
+				font-size: 28px;
+				color:#333;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/* .company */
+			.company	{
+				padding-top:29px;
+				font-size:12px; 
+				color:#666;
+				font-weight:600px;
+				line-height:20px;
+			}
+			
+			.company .link	{
+				text-decoration:none;
+				color:#5f0080;
+			}
+			
+			.company .list	{
+				list-style-type:none;
+				margin-bottom:50px;
+			}
+			
+			.company .list li	{
+				float:left;
+				padding-right: 16px;
+			}
+			
+			.company .list li a	{
+				text-decoration:none;
+				color:#333;
+				font-weight:500;
+				font-size:14px;
+				line-height:18px;
+				font-family:'noto-sans';
+			}
+			
+			.company .list li:nth-child(5) a {
+				font-weight:900;
+				
+			}
+			
+			
+			.company em	{
+				display:block;
+				font-size:10px;
+				color:#949296;
+				line-height:22px;
+				padding-top:16px;
+				font-style: normal;
+			}
+			
+			
+			
+			.company .list_sns	{
+				list-style-type:none;
+				padding-top:15px;
+			}
+			
+			
+			.company .list_sns li	{
+				float:left;
+				width:30px;
+				height:30px;
+				margin-right:10px;
+			}
+			
+			.company .list_sns li a	{
+				display:block;
+			}
+			
+			
+			.company .list_sns li a img	{
+				width:100%;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
