@@ -12,14 +12,14 @@
 <header>
 			<div class="userMenu">
 				<ul class="listMenu">
-					<li><a href="./join.html">회원가입ㅎㅎㅎㅎㅎㅎ</a></li>
-					<li><a href="./login.html">로그인ㅎㅎㅎㅎㅎ</a></li>
-					<li><a href="./board.html">고객센터</a></li>
+					<li><a href="./join.jsp">회원가입</a></li>
+					<li><a href="./login.jsp">로그인</a></li>
+					<li><a href="./board.jsp">고객센터</a></li>
 					<li><a href="#">배송지역 검색</a></li>
 				</ul>
 			</div>
 			<div class="headerLogo">
-				<a href="./index.html"><img alt="" src="./images/logo.png"></a>
+				<a href="./index.jsp"><img alt="" src="./resources/images/logo.png"></a>
 			</div>
 			<div class="gnb">
 				<ul>
@@ -32,11 +32,11 @@
 				<div class="side_search">
 					<form class="">
 						<input type="text" id="search" class="sc" value="데일리장보기">
-						<input type="image" id="searchIcon" class="sicon" src="./images/ico_search.png">
+						<input type="image" id="searchIcon" class="sicon" src="./resources/images/ico_search.png">
 					</form>
 				</div>
 				<div class="cart_count">
-					<a href="#"><img alt="" src="./images/ico_cart.png"></a>
+					<a href="#"><img alt="" src="./resources/images/ico_cart.png"></a>
 				</div>
 			</div>
 </header>
