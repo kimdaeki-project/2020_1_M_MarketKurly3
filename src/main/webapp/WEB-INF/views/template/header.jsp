@@ -19,7 +19,7 @@
 				</ul>
 			</div>
 			<div class="headerLogo">
-				<a href="./index.jsp"><img alt="" src="./resources/images/logo.png"></a>
+				<a href="./index.jsp"><img alt="" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
 			</div>
 			<div class="gnb">
 				<ul>
@@ -32,11 +32,11 @@
 				<div class="side_search">
 					<form class="">
 						<input type="text" id="search" class="sc" value="데일리장보기">
-						<input type="image" id="searchIcon" class="sicon" src="./resources/images/ico_search.png">
+						<input type="image" id="searchIcon" class="sicon" src="${pageContext.request.contextPath}/resources/images/ico_search.png">
 					</form>
 				</div>
 				<div class="cart_count">
-					<a href="#"><img alt="" src="./resources/images/ico_cart.png"></a>
+					<a href="#"><img alt="" src="${pageContext.request.contextPath}/resources/images/ico_cart.png"></a>
 				</div>
 			</div>
 </header>
