@@ -5,6 +5,8 @@
   
   <mapper namespace="com.iu.mk.member.memberDAO">
   
+<!--   	<insert id="memberJoin" parameterType="MemberVO" resultType></insert> -->
+  
   	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
 		SELECT * FROM MEMBER WHERE id=#{id}
 	</select>
