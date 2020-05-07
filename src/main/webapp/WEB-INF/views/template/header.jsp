@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 
 
-<header>
+
 			<div class="userMenu">
 				<ul class="listMenu">
 					<li><a href="./join.jsp">회원가입</a></li>
@@ -39,4 +39,3 @@
 					<a href="#"><img alt="" src="${pageContext.request.contextPath}/resources/images/ico_cart.png"></a>
 				</div>
 			</div>
-</header>
