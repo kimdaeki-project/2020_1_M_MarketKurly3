@@ -70,16 +70,16 @@
 			</div>
 			<div class="cartPut">
 				<div class="inner_option">
-					<<!-- strong>통통살 가라아게</strong> --><!-- display:none -->
+					<!-- strong>통통살 가라아게</strong> --><!-- display:none -->
 					<div class="in_option">
 						<ul class="list_nopackage">
 							<li>
 								<span class="tit_item">구매수량</span>
 								<div class="option">
 									<span class="count">
-										<button type="button" class="btn_down">수량내리기</button>
-										<input type="number" readonly="readonly">
-										<button type="button" class="btn_up">수량올리기</button>
+										<button type="button" class="btn down">수량내리기</button>
+										<input type="number" readonly="readonly" class="inp">
+										<button type="button" class="btn up">수량올리기</button>
 									</span>
 									<span class="price">
 										<span class="ori_price">4,800원</span>
