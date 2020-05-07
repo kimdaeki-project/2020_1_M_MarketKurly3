@@ -15,7 +15,7 @@
       <property name="driverClassName" value="${oracle.driver}"/>
    </bean>   
 	
-<!-- 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="mapperLocations" value="classpath:DB/mapper/*Mapper.xml"></property>
 		<property name="configLocation" value="classpath:DB/config/mybatisConfig.xml"></property>
@@ -25,13 +25,13 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
 	</bean>
 	
-	multi part
+	<!-- multi part -->
 	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
-		Encoding 설정
+		<!-- Encoding 설정 -->
 		<property name="defaultEncoding" value="UTF-8"></property>
-		파일 하나당 용량 제한 단위 byte :: 10mb
+		<!-- 파일 하나당 용량 제한 단위 byte :: 10mb -->
 		<property name="maxUploadSizePerFile" value="10485760"></property>
-		총 파일의 용량 제한 단위 byte :: total 100mb 까지
+		<!-- 총 파일의 용량 제한 단위 byte :: total 100mb 까지 -->
 		<property name="maxUploadSize" value="104857600"></property>
-	</bean> -->
+	</bean> 
 </beans>
