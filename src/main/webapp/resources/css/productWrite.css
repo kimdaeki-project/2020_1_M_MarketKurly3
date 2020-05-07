@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.container {
+	margin:0 auto;
+}
+
+.container_inner{
+	margin-top: 50px;
+}

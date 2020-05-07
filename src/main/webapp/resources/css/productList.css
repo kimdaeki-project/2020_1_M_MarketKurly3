@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.container {
+	margin:0 auto;
+}
+
+
+.btn{
+	float: right;
+}
+
+.inner_lnb{
+	margin-top:20px;
+	width: 700px;
+	height: 40px;
+	
+}
+.inner_lnb2{
+	width: 700px;
+	height: 40px;
+}
