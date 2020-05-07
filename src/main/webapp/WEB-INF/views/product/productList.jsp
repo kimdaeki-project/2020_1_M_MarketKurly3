@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productList.css">
 	<c:import url="../template/boot.jsp"></c:import>
 </head>
 <body>
@@ -15,6 +16,10 @@
 <div class="product_list">
 				<div class="list_goods">
 				
+				<div class="btn">
+					<a href="./productWrite" class="btn btn-default">write</a>
+				</div>
+				
 				<div class="inner_lnb">
 					<div class="ico_cate">
 						<span class="ico"></span>
@@ -22,12 +27,13 @@
 					</div>
 				</div> 
 				
-				<ul class="list">
-					<li>
-						<a class="on">전체보기</a>
-					</li>				
-				</ul>
-				
+				<div class="inner_lnb2">
+					<div class="ico_cate2">
+						<span class="ico2"></span>
+						<span class="tit2">전체조회</span>
+					</div>
+				</div> 
+							
 				
 					<ul >
 						<li>
