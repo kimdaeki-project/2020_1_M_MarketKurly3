@@ -25,4 +25,6 @@ public class MemberService {
 		return memberDAO.memberDelete(memberVO);
 	}
 	
+	//update,insert,delete > int
+	
 }

@@ -12,14 +12,23 @@
 
 			<div class="userMenu">
 				<ul class="listMenu">
+				
+				<c:if test="${empty member}">
+					<li><a href="${pageContext.request.contextPath}/member/memberJoin">회원가입</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a></li>
+				</c:if>	
+				
+				<c:if test="${not empty member}">
 					<li><a href="./join.jsp">회원가입</a></li>
 					<li><a href="./login.jsp">로그인</a></li>
+				</c:if>	
+				
 					<li><a href="./board.jsp">고객센터</a></li>
 					<li><a href="#">배송지역 검색</a></li>
 				</ul>
 			</div>
 			<div class="headerLogo">
-				<a href="./index.jsp"><img alt="" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
+				<a href="${pageContext.request.contextPath}"><img alt="" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
 			</div>
 			<div class="gnb">
 				<ul>

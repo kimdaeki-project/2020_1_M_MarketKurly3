@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class MemberController {
 
 	private MemberService memberService;
 	
-	
+	//memberJoin
 	@GetMapping("memberJoin")
 	public ModelAndView memberJoin(MemberVO memberVO) { 
 		ModelAndView mv = new ModelAndView();
@@ -49,9 +50,9 @@ public class MemberController {
 		return mv;
 	}
 	
-	
+	//memberLogin
 	@GetMapping("memberLogin")
-	public ModelAndView memberLogin(MemberVO memberVO) { 
+	public ModelAndView memberLogin(@CookieValue(value = "cId", required =false) String cId , Model model) { 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/memberLogin");
 		
@@ -69,10 +70,20 @@ public class MemberController {
 		response.addCookie(cookie);
 		
 		memberVO = memberService.memberLogin(memberVO);
+
+		 if(memberVO != null) {
+			 session.setAttribute("member", memberVO);
+			 mv.setViewName("redirect:../");//ar,pager를 못받아 넘기기 때문에 재검색해준다.
+		 }else {
+			 mv.addObject("result", "Login Fail");
+			 mv.addObject("path", "./memberJoin");
+			 mv.setViewName("common/result");
+		 }
 		
 		return mv;
 	}
 	
+	//memberDelete
 	@GetMapping("memberDelete")
 	public ModelAndView memberDelete( HttpSession session, ModelAndView mv) throws Exception {
 		

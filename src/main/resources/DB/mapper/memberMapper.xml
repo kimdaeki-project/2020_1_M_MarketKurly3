@@ -5,10 +5,12 @@
   
   <mapper namespace="com.iu.mk.member.memberDAO">
   
-<!--   	<insert id="memberJoin" parameterType="MemberVO" resultType></insert> -->
+	<insert id="memberJoin" parameterType="MemberVO" >
+		insert into member VALUES (#{id},#{pw},#{name},#{age},#{address},#{phone},#{email},M_NUM_SEQ.nextval)
+	</insert> 
   
   	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
-		SELECT * FROM MEMBER WHERE id=#{id}
+		SELECT * FROM MEMBER WHERE id=#{id} and pw=#{pw}
 	</select>
   
   	<delete id="memberDelete" parameterType="MemberVO">

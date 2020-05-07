@@ -16,6 +16,7 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 		
+		<form action="./memberLogin" method="post">
 		<section class="login">
 			<div class="section_login">
 				<h3 class="tit_login">로그인</h3>
@@ -33,12 +34,14 @@
 						</div>
 						<button type="submit"><span>로그인</span></button>
 					</form>
-					<a href="#"><span>회원가입</span></a>
+					<a href="./memberJoin"><span>회원가입</span></a>
 				</div>
 			</div>
 		</section>
-
+		</form>
+		
 		<c:import url="../template/footer.jsp"></c:import>
+		
 
 </body>
 </html>
