@@ -14,6 +14,21 @@
 
 <div class="product_list">
 				<div class="list_goods">
+				
+				<div class="inner_lnb">
+					<div class="ico_cate">
+						<span class="ico"></span>
+						<span class="tit">신상품</span>
+					</div>
+				</div> 
+				
+				<ul class="list">
+					<li>
+						<a class="on">전체보기</a>
+					</li>				
+				</ul>
+				
+				
 					<ul >
 						<li>
 							<a href="#" class="thumb_goods">
