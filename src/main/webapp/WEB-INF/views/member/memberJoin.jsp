@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 
 	<link rel="stylesheet" type="text/css" href="./css/layout.css">
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
 	<link rel="stylesheet" type="text/css" href="./css/join.css">
 	
     <c:import url="../template/boot.jsp"></c:import>
@@ -38,8 +37,9 @@
 									<td class="memberCols2">
 										<input type="text" name="m_id" label="아이디"
 										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
-										<a href="#"><span class="bns_button">중복확인</span></a>
-										<p id="s1">dd</p>
+										
+										&emsp;<a href="#"><span class="bns_button">중복확인</span></a>
+										<p id="s1"></p>
 									</td>
 								</tr>
 								<tr>
@@ -71,7 +71,7 @@
 									<td class="memberCols2">
 										<input type="text" name="m_email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch" id="mEmail">
-										<a href="#"><span class="bns_button">이메일 중복확인</span></a>
+										&emsp;<a href="#"><span class="bns_button">이메일 중복확인</span></a>
 										<p id="s5"></p>
 									</td>
 								</tr>
@@ -80,10 +80,10 @@
 									<td class="memberCols2">
 										<input type="text" name="m_phone" label="휴대폰"
 										placeholder="숫자만 입력해주세요" class="ch">
-										<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
+										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
 						
 										<input type="text" name="m_phone_c" label="휴대폰인증" id="mPhone">
-										<a href="#"><span class="bns_button disabled">인증번호확인</span></a>
+										&emsp;<a href="#"><span class="bns_button disabled">인증번호확인</span></a>
 										<p id="s6"></p>
 									</td>
 								</tr>
@@ -124,6 +124,7 @@
 										<p id="s8"></p>
 									</td>
 								</tr>
+								<br>
 								<tr class="birth">
 									<td class="memberCols1">생년월일</td>
 									<td class="memberCols2">
@@ -133,12 +134,11 @@
 											<input type="text" name="birth_mon" id="birth_mon" size="2" maxlength="2" placeholder="MM">
 											<span class="bar">/</span>
 											<input type="text" name="birth_day" id="birth_day" size="2" maxlength="2" placeholder="DD">
-										
 										</div>
 										<p id="s9"></p>
 									</td>
 								</tr>
-								<tr class="route">
+<!-- 								<tr class="route">
 									<td class="memberCols1">추가입력 사항</td>
 									<td class="memberCols2">
 										<div class="group_radio">	
@@ -153,11 +153,11 @@
 										</div>
 									
 									</td>
-								</tr>
+								</tr> -->
 							</table>
 						</div>
 					<div id="avoidDbl">
-						<input type="submit" class="btn_sm" id="btn_submit">가입하기</button>
+						<input type="submit" class="btn_sm" id="btn_submit" value="가입하기"><br><br><br>
 					</div>
 					</form>
 				
@@ -200,7 +200,7 @@
 			mId.addEventListener("keyup",function(){
 				//s1.innerHTML="6글자 이상 입력하세요";
 				if(mId.value.length>=6){
-					s1.innerHTML="확인";
+					s1.innerHTML="사용가능한 아이디입니다.";
 					s1.style.color="skyblue";
 					mIdResult=true;
 				}else{
@@ -221,22 +221,26 @@
 			var mPwResult=false;
 			
 			mPw.addEventListener("change",function(){//비밀번호의 값이 변경되었을 때
-				alert("음음") 	//질문 : 첫번째 입력하고 나갔을 때.. 떠도 상관 없음!
+				//alert("음음") 	//질문 : 첫번째 입력하고 나갔을 때.. 떠도 상관 없음!
 				mPw2.value="";
 				mPwResult=false;	//
 				s3.innerHTML="비밀번호가 일치하지 않습니다.";
+				s3.style.color="RED";
 				s3.setAttribute("class","fail");
 			});
 			
 			mPw.addEventListener("blur",function(){
 				if(mPw.value.length>=6){
 					s2.innerHTML="사용 가능한 비밀번호입니다.";
+					s2.style.color="skyblue";
 					mPwResult=true;
 				}else if(mPw.value.length<6 && mPw.value.length>=1){
 					s2.innerHTML="비밀번호를 다시 입력해주세요.";
+					s2.style.color="RED";
 					mPwResult=false;
 				}else if(mPw.value==""){
 					s2.innerHTML = "필수 정보입니다."
+					s2.style.color="RED";
 					mPw2.value="";
 					//s3.innerHTML = "비밀번호가 일치하지 않습니다.";
 				}
@@ -248,16 +252,19 @@
 			var mPw2Result=false;
 			mPw2.addEventListener("blur",function(){
 				if(mPw2.value==mPw.value && mPw2.value.length>=1){
-					s3.innerHTML="사용 가능한 비밀번호입니다.";
+					s3.innerHTML="비밀번호가 일치합니다.";
+					s3.style.color="skyblue";
 					s3.setAttribute("class","success");
 					mPw2Result=true;
 				}else if(mPw2.value!=mPw.value){
 					s3.innerHTML="비밀번호가 일치하지 않습니다.";
+					s3.style.color="RED";
 					mPw2.value="";
 					s3.setAttribute("class","fail");
 					mPw2Result=false;
 				}else if(mPw2.value==""){
 					s3.innerHTML = "필수 정보입니다."
+					s3.style.color="RED";
 				}
 			});
 			
@@ -268,6 +275,7 @@
 			mName.addEventListener("blur",function(){
 				if(mName.value==""){
 					s4.innerHTML = "필수 정보입니다."
+					s4.style.color="RED";
 				}else{
 					s4.innerHTML = ""
 				}
@@ -275,6 +283,7 @@
 			mEmail.addEventListener("blur",function(){
 				if(mEmail.value==""){
 					s5.innerHTML = "필수 정보입니다."
+					s5.style.color="RED";
 				}else{
 					s5.innerHTML = ""
 				}
@@ -282,6 +291,7 @@
 			mPhone.addEventListener("blur",function(){
 				if(mPhone.value==""){
 					s6.innerHTML = "필수 정보입니다."
+					s6.style.color="RED";
 				}else{
 					s6.innerHTML = ""
 				}

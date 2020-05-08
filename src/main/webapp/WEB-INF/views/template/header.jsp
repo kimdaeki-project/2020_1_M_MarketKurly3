@@ -19,8 +19,8 @@
 				</c:if>	
 				
 				<c:if test="${not empty member}">
-					<li><a href="./join.jsp">회원가입</a></li>
-					<li><a href="./login.jsp">로그인</a></li>
+					<li><a href="./join.jsp">MyPage</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/memberLogOut">로그아웃</a></li>
 				</c:if>	
 				
 					<li><a href="./board.jsp">고객센터</a></li>

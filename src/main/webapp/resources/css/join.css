@@ -91,7 +91,7 @@
 			border:1px solid #ccc;
 			border-radius:3px;
 			padding:0 9px;
-			color:#d4d4d4;
+			color:black;
 			font-size:14px;
 			outline:none;
 		}
@@ -139,8 +139,8 @@
 
 		.btn_sm	{
 			display:block;
-			width:340px;
-			height:54px;
+			width:360px;
+			height:70px;
 			border:0;
 			border-radius:3px;
 			background-color:#5f0080;

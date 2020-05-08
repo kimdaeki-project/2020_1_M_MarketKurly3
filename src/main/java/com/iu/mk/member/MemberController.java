@@ -4,6 +4,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -22,7 +23,14 @@ import com.iu.mk.member.MemberService;
 @RequestMapping(value="/member/**")
 public class MemberController {
 
+	@Autowired
 	private MemberService memberService;
+	
+	//memberJoinConfirm
+	@GetMapping("memberJoinConfirm")
+	public void memberJoinConfirm() {
+		
+	}
 	
 	//memberJoin
 	@GetMapping("memberJoin")
@@ -68,7 +76,7 @@ public class MemberController {
 		}
 		//memberVO에서 가져온 id정보를 담은 cookie를 응답에추가한다.
 		response.addCookie(cookie);
-		
+		System.out.println(memberService);
 		memberVO = memberService.memberLogin(memberVO);
 
 		 if(memberVO != null) {
@@ -82,6 +90,15 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	//memberLogOut
+	@GetMapping("memberLogOut")
+	public String memberLogOut(HttpSession session)throws Exception{
+		session.invalidate(); // session끊기(무효화)
+		//redirect는 String을 써야한다.
+		return "redirect:../";
+	}
+	
 	
 	//memberDelete
 	@GetMapping("memberDelete")
