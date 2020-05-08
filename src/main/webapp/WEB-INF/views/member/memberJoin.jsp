@@ -19,13 +19,17 @@
 			
 		<section class="join">
 			<div class="content">
+			
 				<div class="page_location">
-					<a class="link" href="#">홈</a> >
+					<a class="link" href="${pageContext.request.contextPath}">홈</a> >
+					<a class="link" href="${pageContext.request.contextPath}/member/memberJoinConfirm">약관동의</a> >
 					<strong class="currnet">회원가입</strong>
 				</div>
+				
 				<div class="tit_join">
 					<p>회원가입</p>
 				</div>
+				
 				<div class="member_join">
 					<h3>*필수입력사항</h3>
 					<form id="frm" name="frmMember" method="post" action="./join_2.html">

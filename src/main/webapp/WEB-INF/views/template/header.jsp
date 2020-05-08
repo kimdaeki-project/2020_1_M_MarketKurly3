@@ -14,7 +14,7 @@
 				<ul class="listMenu">
 				
 				<c:if test="${empty member}">
-					<li><a href="${pageContext.request.contextPath}/member/memberJoin">회원가입</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/memberJoinConfirm">회원가입</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a></li>
 				</c:if>	
 				

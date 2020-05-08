@@ -28,8 +28,11 @@ public class MemberController {
 	
 	//memberJoinConfirm
 	@GetMapping("memberJoinConfirm")
-	public void memberJoinConfirm() {
+	public ModelAndView memberJoinConfirm(MemberVO memberVO) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberJoinConfirm");
 		
+		return mv;
 	}
 	
 	//memberJoin
