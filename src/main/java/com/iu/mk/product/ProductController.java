@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.mk.product.productfile.ProductFileService;
+import com.iu.mk.product.productfile.ProductFileVO;
+import com.iu.mk.util.Pager;
+
 @Controller
 @RequestMapping("/product/**")
 public class ProductController {
@@ -15,11 +19,15 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+
 	
 	@GetMapping("productList")
-	public ModelAndView productList(ModelAndView mv) throws Exception{
-		List<ProductVO> ar = productService.productList();
+	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
+		List<ProductVO> ar = productService.productList(pager);
+	//	List<ProductFileVO> ar2 = productFileService.fileList(productVO.getP_num());
+		System.out.println(pager.getTotalPage());
 		mv.addObject("list",ar);
+		mv.addObject("pager",pager);
 		mv.setViewName("product/productList");
 		
 		return mv;
@@ -27,6 +35,7 @@ public class ProductController {
 	
 	@GetMapping("productWrite")
 	public String productWrite() throws Exception{
+
 		return "product/productWrite";
 	}
 }

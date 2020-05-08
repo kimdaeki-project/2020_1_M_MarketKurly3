@@ -43,7 +43,7 @@
 							<div class="info_goods">
 								<span class="name"><a href="#">[제주창해수산] 딱새우 300g(냉동)</a></span>
 								<span class="price">6,800원</span>
-								<span class="cost">2,180원</span>
+								
 							</div>
 						</li>
 						<li>
@@ -53,7 +53,7 @@
 							<div class="info_goods">
 								<span class="name"><a href="#">[일건식] 무가당 생강진액 1L</a></span>
 								<span class="price">15,500원</span>
-								<span class="cost">2,180원</span>
+								
 							</div>
 						</li>
 						<li>
@@ -63,7 +63,7 @@
 							<div class="info_goods">
 								<span class="name"><a href="#">[교토마블] 데니쉬 식빵 6종</a></span>
 								<span class="price">7,200원</span>
-								<span class="cost">2,180원</span>
+								
 							</div>
 						</li>
 						<li>
@@ -73,7 +73,7 @@
 							<div class="info_goods">
 								<span class="name"><a href="#">[상하] 더블업 모짜렐라 슬라이스</a></span>
 								<span class="price">3,588원</span>
-								<span class="cost">2,180원</span>
+								
 							</div>
 						</li>
 					</ul>
@@ -123,7 +123,30 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+</div>
+
+	<c:forEach items="${list}" var="vo">
+			<li>
+				<a href="#" class="thumb_goods">
+					<img src="${ }">
+				</a>
+				<div class="info_goods">
+					<span><a href="">${vo.p_name}</a></span>
+					<span>${vo.price}</span>
+					
+				</div>
+			</li>	
+	
+
+	 </c:forEach>
+						
+			
+			
+			
+			
+			
+			
+			
 			
 <c:import url="../template/footer.jsp"></c:import>
 </body>

@@ -20,6 +20,14 @@
 	<h2>관리자 상품 등록</h2>
 <form action="./productWrite" id="frm" method="post" enctype="multipart/form-data">
   
+  	<div class="form-group">
+      <select class="form-control" id="sel1" name="kind">
+				    <option value="me">육류</option>
+				    <option value="ve">채소·과일</option>
+				    <option value="de">디저트</option>
+  	</select>
+    </div>
+  
   	 <div class="form-group">
       <label for="timg">Title-Img:</label>
       <input type="file" class="form-control" id="timg" placeholder="타이틀 이미지 선택" name="timg" >
@@ -41,9 +49,7 @@
     </div>
     
     
-    <div id="file">
-	   
-    </div>
+ 
    
     <input type="button" id="btn" class="btn btn-default" value="Write">
    
