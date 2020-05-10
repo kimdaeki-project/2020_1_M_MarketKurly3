@@ -47,12 +47,12 @@ div.order_sconts {
 	letter-spacing: -1px;
 }
 
-table.InDataTable{
-	width: 100%;
-	margin-top: 7px;
-	border-top: 1px solid #a9a9a9;
-	border-bottom: 1px solid #a9a9a9;
-	font-family: Tahoma, sans-serif;
+table.InDataTable {
+    width: 100%;
+    margin-top: 7px;
+    border-top: 1px solid #a9a9a9;
+    border-bottom: 1px solid #a9a9a9;
+    font-family: Tahoma, sans-serif;
 }
 
 table {
@@ -115,10 +115,20 @@ thead {
 }
 
 
+
+
 table.InDataTable th{
 	background: #ebebeb;
 	font-weight: normal;
 	text-align: left;
+}
+
+table.InDataTable tr:first-child td {
+    border: none;
+}
+
+table.InDataTable tr:first-child th, table.InDataTable tr:first-child td {
+    border: none;
 }
 
 table.InDataTable td {
@@ -148,8 +158,9 @@ table.InDataTable address em, table.InDataTable address span {
     display: block;
 }
 
-table.InDataTable td em {
-    font-weight: bold;
+address {
+    margin-bottom: 1px;
+  
 }
 
 em, address {
@@ -165,6 +176,12 @@ em, address {
 
 
 <!--배송지 변경 버튼  색상 조절 -->
+
+a {
+    color: #4d4d4d;
+    text-decoration: none;
+}
+
 .address_modify .btn_modify{
 	display : inline-block;
 	font-weight: bold;
@@ -196,6 +213,13 @@ ul, ol, li {
     list-style: none;
 }
 
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, form, fieldset, pre, figure, blockquote, input, button, textarea {
+    padding: 0;
+    margin: 0;
+}
+
+
 .tdin_price {
     color: #ea0000;
     font-size: 16px;
@@ -219,6 +243,10 @@ ul, ol, li {
     table-layout: fixed;
 }
 
+.CartTable1_Wrap table thead th:first-child, .CartTable1_Wrap table tbody td:first-child, .CartTable1_Wrap table thead th.chk + th, .CartTable1_Wrap table tbody td.chk + td, .CartTable1_Wrap table thead th.thtype2 {
+    border-left: none !important;
+}
+
 
 .CartTable1_Wrap table thead th {
     padding: 13px 0 10px;
@@ -235,6 +263,22 @@ ul, ol, li {
     text-align: center;
 }
 
+
+.CartTable1_Wrap .order_tbl td {
+    height: 107px;
+}
+
+.CartTable1_Wrap .order_tbl td:first-child {
+    padding-top: 15px;
+    padding-bottom:15px;
+    vertical-align: top;
+}
+
+.CartTable1_Wrap table > tbody > tr:first-child > td {
+    border-top: none;
+}
+
+
 .CartTable1_Wrap .order_tbl .dp_photo {
     display: block;
     width: 90px;
@@ -250,8 +294,35 @@ ul, ol, li {
     padding: 0 20px 0 0;
 }
 
+div.OrderPrdW_Goods {
+    position: relative;
+    margin: 15px 0;
+    padding: 0 15px 0 122px;
+    text-align: left;
+}
+
 div.OrderPrdW_Goods .pup_info + .dp_title {
     margin-top: 11px;
+}
+
+.CartTable1_Wrap .dp_title a {
+    display: block;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.order_tbl .pup_info + .dp_title + .result_option, .order_tbl .pup_info + .dp_title + .result_option2 {
+    margin-top: 15px;
+}
+
+.result_option, .result_option2, .result_option3 {
+    margin-top: 15px;
+    padding: 3px 0 0 5px;
+    color: #4e6cce;
+    font: 11px "Helvetica Neue", "Apple SD Gothic Neo", "돋움", dotum, sans-serif;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 div.shopinfo_wrap {
@@ -268,6 +339,8 @@ div.shopinfo_wrap {
 div.PriceCheckWrap {
     margin-top: 50px;
     border-top: 2px solid #333;
+    
+ 
    
 }
 .payment_detail .PriceCheckWrap {
@@ -301,6 +374,27 @@ div.PriceCheckWrap .PriceSPWrap {
     border-bottom: 1px solid #dedfe2;
 }
 
+div.PriceSPWrap {
+    height: 69px;
+    border-bottom: 1px solid #cfd3df;
+}
+
+div.PriceSPWrap .Price {
+    float: right;
+    padding: 22px 30px 0 0;
+    color: #111;
+    font: bold 23px Tahoma, sans-serif;
+    letter-spacing: -1px;
+}
+
+div.PriceSPWrap .tit {
+    float: left;
+    padding: 29px 0 0 30px;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
 div.PriceCheckWrap div.PriceSPWrap .tit {
     float: left;
     padding: 24px 0 10px 30px;
@@ -319,11 +413,10 @@ div.PriceCheckWrap .PaymentWrap .PriceSPWrap {
     border-color: #d1d5dd;
 }
 
-div.PriceCheckWrap div.PriceSPWrap .tit {
-    float: left;
-    padding: 24px 0 10px 30px;
-    color: #333;
-    letter-spacing: -1px;
+div.PriceCheckWrap div.Discount_Wrap .tit {
+    margin-left: -14px;
+    padding-left: 44px !important;
+    
 }
 
 
@@ -356,7 +449,34 @@ div.PriceCheckWrap .PaymentWrap .PriceSPWrap .Price {
     font-family: Tahoma, sans-serif;
 }
 
+.conList .intit {
+    padding-top: 12px;
+    color: #333;
+}
+.conList .intit:first-child {
+    padding-top: 15px;
+}
+
+.conList .intit + ul {
+    padding-top: 0;
+}
+
+.conList .payTxt {
+    float: left;
+}
+.conList .Price {
+    float: right;
+    color: #111;
+    font-family: Tahoma, sans-serif;
+}
+
+div.PriceCheckWrap .Discount_Wrap {
+    width: 326px;
+}
+
+
 <!--확인 완료 버튼 -->
+
 .OrderW_FinaLBtnW {
     padding-top: 20px;
     text-align: center;
@@ -366,12 +486,23 @@ div.PriceCheckWrap .PaymentWrap .PriceSPWrap .Price {
     margin: 0 3px;
 }
 
-.ladtype, .xladtype, a.mdtype, button.mdtype, button.dtype, button.arrdtype, a.dtype, a.arrdtype {
+.xladtype {
     border-color: #d81818;
     border-bottom-color: #9e1212;
     background: #ed2f2f;
+    background-image: -webkit-linear-gradient(#ed2f2f, #dd0e0e);
     color: #fff;
 }
+
+
+.defbtn_xlar {
+    height: 41px;
+    line-height: 43px;
+    line-height: 46px\0/IE;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 
 
 .defbtn_xlar > span, .defbtn_xlar > em {

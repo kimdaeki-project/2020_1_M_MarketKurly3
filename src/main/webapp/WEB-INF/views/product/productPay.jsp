@@ -52,7 +52,9 @@
 								</address>
 								
 								<div class="address_modify">
-									<a href="#" class="btn_modify"><span>배송지 변경</span></a>
+									<a href="#" class="btn_modify">
+									<span>배송지 변경</span>
+									</a>
 								</div>
 							</div>
 						</td>
@@ -112,7 +114,7 @@
 			<tbody>
 				<tr>
 					<th scope="row">환불방식</th>
-					<th>무통장입금</th>
+					<td>무통장입금</td>
 				</tr>
 			</tbody>
 		</table>
@@ -132,7 +134,7 @@
 		</div>
 		<!-- 상품 담기는 테이블 -->
 		<div class="CartTable1_Wrap"> 
-			<table class="order_tb1" summary="주문한 상품의 상품/옵션정보 , 수량 , 상품금액, 배송비를 보여줍니다">
+			<table class="order_tbl" summary="주문한 상품의 상품/옵션정보 , 수량 , 상품금액, 배송비를 보여줍니다">
 				<caption>주문하신 상품정보</caption>
 				<colgroup>
 					<col style="width:122px;">
@@ -155,16 +157,14 @@
 						<td>
 							<div class="dp_photo">
 								<a href="#">
-									<img alt="" src=""> <!-- 상품 대표 이미지 들어갈 공간 90*90pix -->
+									<img alt="" src="../resources/images/goods_img_05.jpg"> <!-- 상품 대표 이미지 들어갈 공간 90*90pix -->
 								</a>
 							</div>
 						</td>
 						<td class="td_prdwrap">
-							<div class="OrderPrdw_Goods">
+							<div class="OrderPrdW_Goods">
 								<div class="infoWrap">
-									<div class="pup_info">
-										<span class="prdico delayshipping">배송지연보상</span>
-									</div>
+									
 									<div class="dp_title">
 										<a href="#">아디다스 입고, 반팔 반바지 팬츠 레깅스</a>
 									</div>
@@ -242,25 +242,25 @@
 							</div>
 						</div>
 						<!-- 결제 금액 -->
-						<div class="PaymentWrap">
-							<div class="PriceSPWrap">
-								<h5 class="tit">결제금액</h5>
-								<span class="Price">34,900
-								<span class="won">원</span>
-								</span>
-							</div>
-							<div class="conList">
-								<ul>
-									<li>
-									<strong class="PointBk">
-										<span class="payTxt">무통장 입금</span>
-										<span class="Price">34,900원</span>
-									</strong>
-										
-									</li>
-								</ul>
-							</div>
-						</div>
+							<div class="PaymentWrap">
+								<div class="PriceSPWrap">
+									<h5 class="tit">결제금액</h5>
+									<span class="Price">34,900
+									<span class="won">원</span>
+									</span>
+								</div>
+								<div class="conList">
+									<ul>
+										<li>
+										<strong class="PointBk">
+											<span class="payTxt">무통장 입금</span>
+											<span class="Price">34,900원</span>
+										</strong>
+											
+										</li>
+									</ul>
+								</div>
+							</div><!-- paymentWrap -->
 						
 					</div>
 				</div>
@@ -268,16 +268,18 @@
 			</div>
 		</div>
 		<!-- 결제 내역 End -->
-		
+	
 		<!-- 주문완료 확인 버튼 -->
-		<div class="OrderW_FinalLBtnW">
-			<a href="#" class="defbtn_xlar xladtype"><span>주문 완료 확인</span></a>
+		<div class="OrderW_FinaLBtnW">
+			<a href="#" class="defbtn_xlar xladtype" data-is-ab-send="1"><span>주문 완료 확인</span></a>
 		</div>
-	</div>
+		 
 		
+	</div>
+	<!-- payment detail End --> 		
 	
 	</div>
-
+	<!-- layBody End -->
 
 
 
