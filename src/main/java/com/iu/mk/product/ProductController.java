@@ -38,4 +38,10 @@ public class ProductController {
 
 		return "product/productWrite";
 	}
+	
+	//cartpay.jsp 연결용 나중에 이름 변경 필요
+	@GetMapping("productPay")
+	public String productPay() throws Exception{
+		 return "product/productPay";
+	}
 }

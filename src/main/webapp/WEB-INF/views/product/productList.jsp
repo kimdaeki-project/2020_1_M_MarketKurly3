@@ -128,7 +128,7 @@
 	<c:forEach items="${list}" var="vo">
 			<li>
 				<a href="#" class="thumb_goods">
-					<img src="${ }">
+					<img src="">
 				</a>
 				<div class="info_goods">
 					<span><a href="">${vo.p_name}</a></span>
