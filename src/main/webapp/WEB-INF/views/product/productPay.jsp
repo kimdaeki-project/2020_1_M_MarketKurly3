@@ -15,17 +15,17 @@
 
 <!-- cartpay  결제 후 이미지 jsp 파일 -->
 
-<div class="bodyWrap">
-	<div class="layBody">
+<div id="layBodyWrap">
+	<div id="layBody">
 	<!-- 주문 완료 wrap -->
 		<div class="cw_hgroup">
-			<h2 class="tit_order_end">주문완료</h2>
+			<h2 class="tit order_end">주문완료</h2>
 		</div>
 	 
 	 <!-- 입금확인 멘트 블록-->
-		<div class="OrderEndWrap">
+		<div class="OrderW_EndTop">
 			<div class="endinfo_bank">
-				<strong>입금이 완료되었습니다.</strong>
+				<h2><strong>입금이 완료되었습니다.</strong></h2>
 				<p>상품 배송이 시작됩니다.</p>
 			</div>
 		</div>
@@ -46,15 +46,13 @@
 							<div class="InfoW">
 								<address>
 									<em>신연주</em>
-								"	
-
-                        
+									
                         			(42242) 서울특별시 서대문구 동교로 294 (연희동)
-                        			"
                         			<span> -/ 010-1111-2222</span>
 								</address>
+								
 								<div class="address_modify">
-									<a href="#"><span>배송지 변경</span></a>
+									<a href="#" class="btn_modify"><span>배송지 변경</span></a>
 								</div>
 							</div>
 						</td>
@@ -66,6 +64,7 @@
 				<ul>
 					<li>배송지 변경은 <em>MY PAGE > 주문 확인</em>에서 가능합니다.</li>
 					<li>신용카드 포인트 결제는 카드사 홈페이지의 카드사 포인트 및 세이브 내역에서 확인 가능합니다. </li>
+					<li>증빙서류는 MY PAGE > 증빙서류 발급 에서 확인 및 출력이 가능합니다.</li>
 				</ul>
 			</div>
 		</div>	
@@ -86,7 +85,7 @@
 				<tr>
 					<th scope="row">입금정보</th>
 					<td>신한은행(MarketCurly) <em>1234567890</em>
-					"/"
+					/
 					<span class="tdin_note"> 예금주명은 'MarketCurly'로 확인됩니다.</span>
 					</td>
 				</tr>
@@ -94,7 +93,7 @@
 				<tr>
 					<th scope="row">입금할 금액</th>
 					<td>
-						<strong class="tdin_price">"34,900"<span>원</span></strong>
+						<strong class="tdin_price">34,900<span>원</span></strong>
 					</td>
 				</tr>
 			</tbody>
@@ -197,8 +196,7 @@
 			<h3 class="cp_intit">결제내역</h3>
 			<span class="direct_icon">바로가기OFF</span>
 		</div>
-		
-		
+
 		<div class="PriceCheckWrap" style="display:">
 			<div class="PriceCheckWrapT" id="priceCheck3_area">
 				<div class="PriceCheckWrapB">
@@ -207,10 +205,10 @@
 						<div class="OrderSUM_Wrap">
 							<div class="PriceSPWrap">
 								<h5 class="tit">주문금액</h5>
-								<span class="Price">"34,900" 
+								<span class="Price">34,900
 								 <span class="won">원</span>
 								</span>
-								::after
+								
 							</div>
 							<div class="conList">
 								<h6 class="intit">구매상품 총 1개</h6>
@@ -218,7 +216,7 @@
 									<li>
 										<span class="payTxt">상품금액</span>
 										<span class="Price">34,900원</span>
-										::after
+										
 									</li>
 								</ul>
 							</div>
@@ -227,18 +225,17 @@
 						<div class="Discount_Wrap">
 							<div class="PriceSPWrap">
 								<h5 class="tit">할인금액</h5>
-								<span class="Price">"0"
+								<span class="Price">0
 								<span class="won">원</span>
 								</span>
-								::after
+								
 							</div>
 							<div class="conList">
 								<h6 class="intit">구매상품 총 1개</h6>
 								<ul>
 									<li>
-										"
 										
-										"
+										
 										
 									</li>
 								</ul>
@@ -248,10 +245,9 @@
 						<div class="PaymentWrap">
 							<div class="PriceSPWrap">
 								<h5 class="tit">결제금액</h5>
-								<span class="Price">"34,900"
+								<span class="Price">34,900
 								<span class="won">원</span>
 								</span>
-								::after
 							</div>
 							<div class="conList">
 								<ul>
@@ -260,12 +256,12 @@
 										<span class="payTxt">무통장 입금</span>
 										<span class="Price">34,900원</span>
 									</strong>
-										::after
+										
 									</li>
 								</ul>
 							</div>
 						</div>
-						::after
+						
 					</div>
 				</div>
 				
@@ -275,7 +271,7 @@
 		
 		<!-- 주문완료 확인 버튼 -->
 		<div class="OrderW_FinalLBtnW">
-			<a href="#"><span>주문 완료 확인</span></a>
+			<a href="#" class="defbtn_xlar xladtype"><span>주문 완료 확인</span></a>
 		</div>
 	</div>
 		

@@ -1,1 +1,379 @@
 @charset "UTF-8";
+
+#layBodyWrap{
+	position : relative;
+	z-index : 20;
+	width:980px;
+	margin: 0 auto;
+	padding: 10px 0 50px;
+}
+
+#layBody{
+	width: 100%;
+	margin-top:30px;
+}
+
+.cw_hgroup{
+	position: relative;
+	height: 58px;
+	margin-top: 9px;
+	border-bottom: 4px solid #444;
+}
+
+.cw_hgroup .tit{
+	width: 218px;
+	height: 45px;
+
+}
+
+.OrderW_EndTop{
+	padding: 65px 0 55px;
+	border-bottom: 1px solid #a9a9a9;
+	text-align: center;
+}
+
+
+div.order_sconts {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+}
+
+.cp_intit{
+	padding-top: 30px;
+	color: #111;
+	font-weight: bold;
+	font-size: 14px;
+	letter-spacing: -1px;
+}
+
+table.InDataTable{
+	width: 100%;
+	margin-top: 7px;
+	border-top: 1px solid #a9a9a9;
+	border-bottom: 1px solid #a9a9a9;
+	font-family: Tahoma, sans-serif;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+table{
+	display: table;
+	box-sizing: border-box;
+	border-color: gray;
+	 border-collapse: separate;
+    border-spacing: 2px;
+}
+
+caption{
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+}
+
+caption {
+	display: table-caption;
+	text-align: -webkit-center;
+}
+
+colgroup {
+	display: table-column-group;
+}
+
+col {
+    display: table-column;
+}
+
+tbody{
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+tr{
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+
+table.InDataTable th{
+	background: #ebebeb;
+	font-weight: normal;
+	text-align: left;
+}
+
+table.InDataTable td {
+    color: #111;
+}
+
+table.InDataTable th, table.InDataTable td {
+    padding: 14px 0 11px 20px;
+    border-top: 1px solid #d3d3d3;
+}
+
+table.InDataTable td em {
+    font-weight: bold;
+}
+
+.InDataTable .InfoW{
+	position: relative;
+	color: #4d4d4d;
+}
+<!-- 주소 관련 --> 
+
+table.InDataTable address{
+	line-height: 160%;
+}
+
+table.InDataTable address em, table.InDataTable address span {
+    display: block;
+}
+
+table.InDataTable td em {
+    font-weight: bold;
+}
+
+em, address {
+    font-style: normal;
+}
+
+
+.address_modify{
+	position: absolute;
+	top: 10px;
+	right: 23px;
+}
+
+
+<!--배송지 변경 버튼  색상 조절 -->
+.address_modify .btn_modify{
+	display : inline-block;
+	font-weight: bold;
+	color: #ea1717;
+	border: 1px solid #f43142;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+	letter-spacing: -1px;
+}
+
+.address_modify .btn_modify span{
+	display: inline-block;
+	padding: 0 28px;
+	height: 27px;
+	border: 1px solid #fff;
+	line-height: 28px;
+	background: -webkig-gradient(linear,0% 0% ,0%  100%, from(#fff), to(#fff1ec));
+}
+
+<!-- -->
+
+div.Btm_infoW{
+	margin-top: 10px;
+    padding: 20px 20px 17px;
+    border: 1px solid #d6d6d6;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+.tdin_price {
+    color: #ea0000;
+    font-size: 16px;
+}
+
+<!-- 주문한 상품 정보 -->
+
+.order_sconts .CartTable1_Wrap {
+    margin-top: 7px;
+}
+
+.CartTable1_Wrap {
+    margin-top: 20px;
+}
+
+.CartTable1_Wrap > table {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #a9a9a9;
+    table-layout: fixed;
+}
+
+
+.CartTable1_Wrap table thead th {
+    padding: 13px 0 10px;
+    background: #ebebeb;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #d8d8d8;
+    letter-spacing: -1px;
+}
+
+.CartTable1_Wrap table tbody td {
+    padding: 0;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ebebeb;
+    text-align: center;
+}
+
+.CartTable1_Wrap .order_tbl .dp_photo {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+.CartTable1_Wrap .order_tbl .OrderPrdW_Goods {
+    min-height: 50px;
+    margin-bottom: 9px;
+    padding: 0 20px 0 0;
+}
+
+div.OrderPrdW_Goods .pup_info + .dp_title {
+    margin-top: 11px;
+}
+
+div.shopinfo_wrap {
+    position: relative;
+    z-index: 1;
+}
+
+<!-- 결제 내역 -->
+
+.payment_detail .PriceCheckWrap {
+    margin-top: 8px;
+}
+
+div.PriceCheckWrap {
+    margin-top: 50px;
+    border-top: 2px solid #333;
+   
+}
+.payment_detail .PriceCheckWrap {
+    margin-top: 8px;
+}
+
+div.PriceCheckWrap .PriceCheckWrapT {
+    border: 1px solid #8d8d8d;
+    border-top: none;
+}
+
+div.PriceCheckWrap div.R_PriceWrap {
+    width: 100%;
+}
+
+div.PriceCheckWrap div.R_PriceWrap > div {
+    float: left;
+    width: 326px;
+    padding-bottom: 13px;
+}
+
+div.PriceCheckWrap div.R_PriceWrap > div {
+    float: left;
+    width: 326px;
+    padding-bottom: 13px;
+}
+
+div.PriceCheckWrap .PriceSPWrap {
+    width: 100%;
+    height: 59px;
+    border-bottom: 1px solid #dedfe2;
+}
+
+div.PriceCheckWrap div.PriceSPWrap .tit {
+    float: left;
+    padding: 24px 0 10px 30px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+div.PriceCheckWrap .PriceSPWrap .Price {
+    float: right;
+    padding: 15px 29px 0 0;
+    font: bold 23px Tahoma, sans-serif;
+    color: #111;
+}
+
+div.PriceCheckWrap .PaymentWrap .PriceSPWrap {
+    border-color: #d1d5dd;
+}
+
+div.PriceCheckWrap div.PriceSPWrap .tit {
+    float: left;
+    padding: 24px 0 10px 30px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+
+<!--  최종 결제 금액 빨간색 -->
+div.PriceCheckWrap .PaymentWrap .PriceSPWrap .Price {
+    color: #ea0000;
+}
+
+.conList {
+    padding: 0 30px;
+}
+
+.conList ul {
+    padding-top: 10px;
+}
+
+.conList li {
+    margin-top: 5px;
+    padding-left: 5px;
+   
+}
+
+.conList li > strong span.payTxt {
+    color: #333;
+}
+
+.conList .Price {
+    float: right;
+    color: #111;
+    font-family: Tahoma, sans-serif;
+}
+
+<!--확인 완료 버튼 -->
+.OrderW_FinaLBtnW {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.OrderW_FinaLBtnW a {
+    margin: 0 3px;
+}
+
+.ladtype, .xladtype, a.mdtype, button.mdtype, button.dtype, button.arrdtype, a.dtype, a.arrdtype {
+    border-color: #d81818;
+    border-bottom-color: #9e1212;
+    background: #ed2f2f;
+    color: #fff;
+}
+
+
+.defbtn_xlar > span, .defbtn_xlar > em {
+    padding: 0 28px;
+}
