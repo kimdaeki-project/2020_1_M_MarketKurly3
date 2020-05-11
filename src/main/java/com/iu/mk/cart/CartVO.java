@@ -1,10 +1,29 @@
 package com.iu.mk.cart;
 
+import java.util.List;
+
 public class CartVO {
 	private long m_num;
 	private long random_num;
 	private long p_num;
 	private long p_count;
+	
+	
+	
+	private List<CartVO> cartVOs;
+	
+	
+	
+	
+	
+	
+	
+	public List<CartVO> getCartVOs() {
+		return cartVOs;
+	}
+	public void setCartVOs(List<CartVO> cartVOs) {
+		this.cartVOs = cartVOs;
+	}
 	public long getM_num() {
 		return m_num;
 	}

@@ -12,10 +12,12 @@
   		<typeAlias type="java.util.List" alias="List"/>
   		
   		<typeAlias type="com.iu.mk.member.MemberVO" alias="MemberVO"/>
+
   		
   		<typeAlias type="com.iu.mk.product.ProductVO" alias="ProductVO"/>
   		<typeAlias type="com.iu.mk.product.productfile.ProductFileVO" alias="ProductFileVO"/>
   	
+
   	</typeAliases>
   
   </configuration>
