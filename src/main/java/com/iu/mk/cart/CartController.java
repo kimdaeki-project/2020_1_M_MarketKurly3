@@ -1,6 +1,9 @@
 package com.iu.mk.cart;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +22,21 @@ public class CartController {
 	
 
 	@GetMapping("cartList")
-	public ModelAndView cartList(ModelAndView mv) {
+	public ModelAndView cartList(ModelAndView mv, int m_num) throws Exception {
+		
+		
+		m_num = 1;
+		List<CartVO> ar = cartService.cartList(m_num);
+		
+		mv.addObject("list", ar);
 		mv.setViewName("cart/cartList");
 		
 		return mv;
 	}
+	
+	
+	
+	
 
 	@GetMapping("productSelect")
 	public ModelAndView productSelect(ModelAndView mv) {

@@ -9,341 +9,228 @@
 	<title>Market Kurly</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartLayout.css">
 	<c:import url="../template/boot.jsp"></c:import>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartList.css">
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	
 <div class="container">
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <span class="pull-right">(<strong>5</strong>) items</span>
-                    <h5>Items in your cart</h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-                            <tbody>
-                            <tr>
-                                <td width="90">
-                                    <div class="cart-product-imitation">
-                                    </div>
-                                </td>
-                                <td class="desc">
-                                    <h3>
-                                    <a href="#" class="text-navy">
-                                        Desktop publishing software
-                                    </a>
-                                    </h3>
-                                    <p class="small">
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    </p>
-                                    <dl class="small m-b-none">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
-                                    </dl>
-
-                                    <div class="m-t-sm">
-                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
-                                        |
-                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    $180,00
-                                    <s class="small text-muted">$230,00</s>
-                                </td>
-                                <td width="65">
-                                    <input type="text" class="form-control" placeholder="1">
-                                </td>
-                                <td>
-                                    <h4>
-                                        $180,00
-                                    </h4>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-
-                            <tbody>
-                            <tr>
-                                <td width="90">
-                                    <div class="cart-product-imitation">
-                                    </div>
-                                </td>
-                                <td class="desc">
-                                    <h3>
-                                        <a href="#" class="text-navy">
-                                            Text editor
-                                        </a>
-                                    </h3>
-                                    <p class="small">
-                                        There are many variations of passages of Lorem Ipsum available
-                                    </p>
-                                    <dl class="small m-b-none">
-                                        <dt>Description lists</dt>
-                                        <dd>List is perfect for defining terms.</dd>
-                                    </dl>
-
-                                    <div class="m-t-sm">
-                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
-                                        |
-                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    $50,00
-                                    <s class="small text-muted">$63,00</s>
-                                </td>
-                                <td width="65">
-                                    <input type="text" class="form-control" placeholder="2">
-                                </td>
-                                <td>
-                                    <h4>
-                                        $100,00
-                                    </h4>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-
-                            <tbody>
-                            <tr>
-                                <td width="90">
-                                    <div class="cart-product-imitation">
-                                    </div>
-                                </td>
-                                <td class="desc">
-                                    <h3>
-                                        <a href="#" class="text-navy">
-                                            CRM software
-                                        </a>
-                                    </h3>
-                                    <p class="small">
-                                        Distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    </p>
-                                    <dl class="small m-b-none">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
-                                    </dl>
-
-                                    <div class="m-t-sm">
-                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
-                                        |
-                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    $110,00
-                                </td>
-                                <td width="65">
-                                    <input type="text" class="form-control" placeholder="1">
-                                </td>
-                                <td>
-                                    <h4>
-                                        $110,00
-                                    </h4>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-
-                            <tbody>
-                            <tr>
-                                <td width="90">
-                                    <div class="cart-product-imitation">
-                                    </div>
-                                </td>
-                                <td class="desc">
-                                    <h3>
-                                        <a href="#" class="text-navy">
-                                            PM software
-                                        </a>
-                                    </h3>
-                                    <p class="small">
-                                        Readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    </p>
-                                    <dl class="small m-b-none">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
-                                    </dl>
-
-                                    <div class="m-t-sm">
-                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
-                                        |
-                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    $130,00
-                                </td>
-                                <td width="65">
-                                    <input type="text" class="form-control" placeholder="1">
-                                </td>
-                                <td>
-                                    <h4>
-                                        $130,00
-                                    </h4>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-
-                            <tbody>
-                            <tr>
-                                <td width="90">
-                                    <div class="cart-product-imitation">
-                                    </div>
-                                </td>
-                                <td class="desc">
-                                    <h3>
-                                        <a href="#" class="text-navy">
-                                            Photo editor
-                                        </a>
-                                    </h3>
-                                    <p class="small">
-                                        Page when looking at its layout. The point of using Lorem Ipsum is
-                                    </p>
-                                    <dl class="small m-b-none">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
-                                    </dl>
-                                    <div class="m-t-sm">
-                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
-                                        |
-                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    $700,00
-                                </td>
-                                <td width="65">
-                                    <input type="text" class="form-control" placeholder="1">
-                                </td>
-                                <td>
-                                    <h4>
-                                        $70,00
-                                    </h4>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="ibox-content">
-                    <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
-                    <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>
-
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Cart Summary</h5>
-                </div>
-                <div class="ibox-content">
-                    <span>
-                        Total
-                    </span>
-                    <h2 class="font-bold">
-                        $390,00
-                    </h2>
-
-                    <hr>
-                    <span class="text-muted small">
-                        *For United States, France and Germany applicable sales tax will be applied
-                    </span>
-                    <div class="m-t-sm">
-                        <div class="btn-group">
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
-                        <a href="#" class="btn btn-white btn-sm"> Cancel</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Support</h5>
-                </div>
-                <div class="ibox-content text-center">
-                    <h3><i class="fa fa-phone"></i> +43 100 783 001</h3>
-                    <span class="small">
-                        Please contact with us if you have any questions. We are avalible 24h.
-                    </span>
-                </div>
-            </div>
-
-            <div class="ibox">
-                <div class="ibox-content">
-
-                    <p class="font-bold">
-                    Other products you may be interested
-                    </p>
-                    <hr>
-                    <div>
-                        <a href="#" class="product-name"> Product 1</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div>
-                        <a href="#" class="product-name"> Product 2</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="layout-wrapper">
+<div class="layout-page-header">
+	<h2 class="layout-page-title">장바구니</h2>
+	<div class="pg-sub-desc">
+		<p>주문하실 상품명 및 수량을 정확하게 확인해주세요.</p>
+	</div>
 </div>
+<div class="main">
+	<div class="contents">
+		<!--사이드바-->
+		<div id="qnb">
+		</div>
+		<!--사이드바 end-->
+
+
+
+		<div class="user_form_section_cart">
+			<form id="viewCart" name="frmCart" method="post" action="/shop/order/order.php">
+				<input type="hidden" name="mode" value="setOrder">
+				<div class="tbl_comm cart_goods section_cart">
+					<table class="tbl_comm tbl_header">
+						<caption>장바구니 목록 제목</caption>
+						<colgroup>
+							<col style="width:375px;">
+							<col style="width:432px;">
+							<col style="width:115px;">
+							<col style="width:110px;">
+							<col style="width:auto;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th id="thSelect">
+									<div class="all_select">
+										<label class="label_check checked">
+											<input type="checkbox" name="allCheck" class="ico_check">
+										</label>
+										<span class="tit">
+											전체선택 (
+											<span class="num_count">1</span>
+											/
+											<span class="num_total">1</span>
+											)
+										</span>
+									</div>
+								</th>
+								<th id="thInfo">상품 정보</th>
+								<th id="thCount">수량</th>
+								<th id="thCost">상품금액</th>
+								<th id="thDelete"></th>
+							</tr>
+						</thead>
+					</table>
+					<div id="viewGoods">
+						<div>
+						<div class="view_goods">
+							<table class="tbl_goods goods">
+								<caption>장바구니 목록 내용</caption>
+								<colgroup>
+									<col style="width:76px;">
+									<col style="width:100px;">
+									<col style="width:488px;">
+									<col style="width:112px;">
+									<col style="width:86px;">
+									<col style="width:110px;">
+									<col style="width:auto;">
+								</colgroup>
+								<tbody>
+									<c:forEach items="${list}" var="vo">
+									<tr>
+										<td id="thSelect" class="goods_check">
+											
+												<label class="label_check checked">
+													<input type="checkbox" name="ico_check" value="31176">
+												</label>
+									
+							
+										</td>
+										<td header="thInfo" class="goods_thumb"><!-- 상품 정보 -->
+											<a href="링크걸기" class="thumb">
+												<img src="${pageContext.request.contextPath}/resources/images/avocado.jpg" alt="상품 이미지" onerror=""> 
+											</a>
+										</td>
+										<td header="thInfo" class="goods_info">
+											<a href="링크걸기" class="name">
+												GAP 방울토마토 500g
+											</a>
+											<dl class="goods_cost">
+												<dt class="screen_out">판매 가격</dt>
+												<dd class="selling_price">
+													<span class="num">3,900</span>
+													<span class="txt">원</span>
+												</dd>
+											</dl>
+										</td>
+										<td header="thInfo" class="goods_condition">
+											<div class="condition">
+												
+											</div>
+										</td>
+										<td header="thCount">
+											<div class="goods_quantity">
+											<div class="quantity">
+												<strong class="screen_out">수량</strong>
+												<button type="button" class="btn btn_reduce">
+													<img src="${pageContext.request.contextPath}/resources/images/ico_minus_24x4.png" alt="감소">
+												</button>
+												<input type="text" readonly="readonly" class="inp_quantity">
+												<button type="button" class="btn btn_rise">
+													<img src="${pageContext.request.contextPath}/resources/images/ico_plus_24x4.png" alt="증가">
+												</button>
+											</div>
+											</div>
+										</td>
+										<td header="thCost">
+											<dl class="goods_total">
+												<dt class="screen_out">합계</dt>
+												<dd class="result">
+													<span class="num">3,900</span>
+													<span class="txt">원</span>
+												</dd>
+											</dl>
+										</td>
+										<td header="thDelete" class="goods_delete">
+												<button type="button" class="btn btn_delete">
+													<img src="${pageContext.request.contextPath}/resources/images/btn_close.jpg" alt="삭제">
+												</button>
+										</td>
+									</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				
+				
+				
+				<div class="all_select select_option">
+					
+					<div class="label_cc">
+						<label class="label_check checked">
+							<input type="checkbox" name="allCheck" class="ico_check">
+						</label>
+						<span class="tit">
+							전체선택 (
+							<span class="num_count">1</span>
+							/
+							<span class="num_total">1</span>
+							)
+						</span>
+					</div>
+					<button type="button" class="btn_delete">선택 삭제</button>
+					<!-- <button type="button" class="btn_delete">품절 상품 삭제</button> -->
+				</div>
+				<div class="cart_result">
+					<div class="cart_amount">
+						<dl class="list amount cell_except">
+							<dt class="tit">상품 금액</dt>
+							<dd class="result">
+								<span class="inner_result">
+									<span class="num">3,900</span>
+									<span class="txt">원</span>
+								</span>
+							</dd>
+						</dl>
+						<div class="deco deco_plus">
+							<img alt="plus" src="${pageContext.request.contextPath}/resources/images/plus.png">
+						</div>
+						<dl class="list amount_delivery cell_except">
+							<dt class="tit">배송비</dt>
+							<dd class="result">
+								<span class="inner_result add">
+									<span class="num">3,000</span>
+									<span class="txt">원</span>
+								</span>
+							</dd>
+						</dl>
+						<div class="deco deco_equal">
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/eq.png">
+						</div>
+						<dl class="list amout_result cell_except">
+							<dt class="tit">결제 예정 금액</dt>
+							<dd class="result">
+								<span class="inner_result add">
+									<span class="num">6,900</span>
+									<span class="txt">원</span>
+								</span>
+							</dd>
+						</dl>
+					</div>
+					<div class="notice_cart"></div>
+					<button type="button" class="btn_submit">주문하기
+						<span class="price">(6,900 원)</span>
+					</button>
+				</div>
+				<p class="info_notice"></p>
+			</form>
+		</div>
+
+
+
+		<!--loading-->
+		<div class="bg_loading">
+		</div>
+		<!--loading-->
+
+	</div>
+</div>
+
+
+
+</div><!-- wrapper -->
 </div>
 	
 	

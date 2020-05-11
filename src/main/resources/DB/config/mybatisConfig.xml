@@ -7,7 +7,7 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.iu.mk.member.MemberVO" alias="MemberVO"/>
-  	
+  		<typeAlias type="com.iu.mk.cart.CartVO" alias="CartVO"/>
   	</typeAliases>
   
   </configuration>
