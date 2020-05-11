@@ -5,7 +5,7 @@
   
 <mapper namespace="com.iu.mk.cart.CartDAO">
 
-
+<!-- 
 	<resultMap type="CartVO" id="selectCart">
 		<id column="random_num" property="random_num"/>
 		<result column="m_num" property="m_num"/>
@@ -17,6 +17,7 @@
 		</collection>
 		
 	</resultMap>
+	 -->
 	
 	<select id="CartVO" parameterType="java.lang.Integer" resultType="CartVO">
 		select * from cart where m_num=#{num};

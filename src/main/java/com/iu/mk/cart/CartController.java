@@ -50,13 +50,13 @@ public class CartController {
 	@PostMapping("cartInsert")
 	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
 		
-		//장바구니 번호 최초 1번 생성, login시 session에 장바구니 유무 체크
+		//장바구니 번호 최초 1번 생성, login시 session에 장바구니 유무 체크 >> session에 하면 사라짐
 		int cart = (Integer) session.getAttribute("cart"); //0:카트없음 or 1:카트있음
 		if(cart==0) {
 			//cart 테이블의 random_num 생성
 		}
 		
-		cartVO.setRandom_num();
+		/* cartVO.setRandom_num(); */
 		//cartDe에 상품 넣기
 		cartService.cartInsert(cartVO);
 		
