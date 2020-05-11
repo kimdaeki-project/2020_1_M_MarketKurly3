@@ -17,8 +17,17 @@
 <div class="container">
 
 <div class="container_inner">
-	<h2>관리자 상품 등록</h2>
+<h2>관리자 상품 등록</h2>
+
 <form action="./productWrite" id="frm" method="post" enctype="multipart/form-data">
+  
+  	<div class="form-group">
+      <select class="form-control" id="sel1" name="kind">
+				    <option value="me">Meat</option>
+				    <option value="ve">Vegetable</option>
+				    <option value="de">Dessert</option>
+  	</select>
+    </div>
   
   	 <div class="form-group">
       <label for="timg">Title-Img:</label>
@@ -41,9 +50,7 @@
     </div>
     
     
-    <div id="file">
-	   
-    </div>
+ 
    
     <input type="button" id="btn" class="btn btn-default" value="Write">
    

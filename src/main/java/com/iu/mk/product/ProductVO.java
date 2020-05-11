@@ -1,12 +1,30 @@
 package com.iu.mk.product;
 
+import java.util.List;
+
+import com.iu.mk.product.productfile.ProductFileVO;
+
 public class ProductVO {
 	
 	private long p_num;
 	private String p_name;
 	private long price;
-	private long p_kind;
+	private int p_kind;
 	private String contents;
+	
+	private List<ProductFileVO> productFileVOs;
+	
+
+	
+	public List<ProductFileVO> getProductFileVOs() {
+		return productFileVOs;
+	}
+	public void setProductFileVOs(List<ProductFileVO> productFileVOs) {
+		this.productFileVOs = productFileVOs;
+	}
+	
+	
+	
 	public long getP_num() {
 		return p_num;
 	}
@@ -25,10 +43,10 @@ public class ProductVO {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	public long getP_kind() {
+	public int getP_kind() {
 		return p_kind;
 	}
-	public void setP_kind(long p_kind) {
+	public void setP_kind(int p_kind) {
 		this.p_kind = p_kind;
 	}
 	public String getContents() {
