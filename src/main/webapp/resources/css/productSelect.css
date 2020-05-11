@@ -28,6 +28,9 @@ background:#eee;
 }
 
 
+
+
+
 .goods_price .dc	{
 	display: block;
 }
@@ -75,6 +78,7 @@ background:#eee;
 	overflow: hidden;
 	padding: 18px 0;
 	border-bottom: 1px solid #f4f4f4;
+	margin:0;
 	
 }
 
@@ -92,9 +96,14 @@ background:#eee;
 	line-height: 20px;
 }
 
-.tit_item	{
-	display: none;
+
+.goods_info .emph	{
+	font-size: 12px;
+	color: #666;
+	display: block;
 }
+
+
 
 
 
@@ -125,29 +134,157 @@ background:#eee;
 .goods_dcinfo {
 	float:right;
 	width: 560px;
-	padding: 10px 0 29px;
+	margin: 0;
+	
 }
+
+
 
 
 .goods_price {
 	float:right;
 	width: 560px;
-	padding: 10px 0 29px;
+	padding: 0;
 }
 
 
 .goods_info {
 	float:right;
 	width: 560px;
-	padding: 10px 0 29px;
+	padding:0;
+}
+
+
+
+.cartPut .inner_option {
+	width:560px;
+	float:right;
+}
+
+
+.cartPut .list_nopackage {
+	overflow: hidden;
+	padding: 18px 0;
+	border-bottom: 1px solid #f4f4f4;
+	margin:0;
+}
+
+
+
+.cartPut .list_nopackage .tit_item {
+	float: left;
+	width: 150px;
+	font-size: 14px;
+	color: #666;
+	line-height: 20px;
+	font-weight: 500;
+}
+
+.cartPut .list_nopackage .option	{
+	overflow: hidden;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+
+.cartPut .count	{
+	display:inline-block;
+	overflow:hidden;
+	floar:left;
+	width:92px;
+	height:24px;
+	border: 1px solid #dddfe1;
+	border-radius: 3px;
+}
+
+
+.cartPut .list_nopackage .btn	{
+	overflow: hidden;
+	position: relative;
+	float: left;
+	width: 22px;
+	height: 22px;
+	border: 0;
+	background: #f6f7f7;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -9999px;
+}
+
+.cartPut .list_nopackage .down {
+	
+}
+
+.cartPut .list_nopackage .inp	{
+	float:left;
+	width: 42px;
+	height: 24px;
+	padding: 0 0 2px;
+	border: 0;
+	background: #fff;
+	color:#000;
+	line-height: 18px;
+	text-align: center;
+}
+
+
+.cartPut .total	{
+	padding:30px 0 20px;
+	border-top:1px solid #f4f4f4;
+}
+
+
+.cartPut .total .price	{
+	overflow:hidden;
+	text-align: right;
+}
+
+
+.cartPut .total .price .tit	{
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 20px;
+	vertical-align: 2px;
+}
+
+.cartPut .total .price .sum	.num{
+	padding-left: 8px;
+	font-weight: 800;
+	font-size: 32px;
+	line-height: 32px;
+}
+
+.cartPut .total .price .sum	.won	{
+	padding-left: 2px;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 20px;
+	vertical-align: -1px;
 }
 
 
 
 
+.group_btn	{
+	display: block;
+	float:right;
+	width:280px;
+	
+}
 
-
-
+.group_btn .txt_type	{
+	display: block;
+	width: 278px;
+	height:52px;
+	font-weight:700;
+	color:#fff;
+	font-size: 16px;
+	line-height: 52px;
+	text-align: center;
+	background: #5f0080;
+	border: #5f0081;
+	border-radius: 3px;
+}
 
 /* 
 

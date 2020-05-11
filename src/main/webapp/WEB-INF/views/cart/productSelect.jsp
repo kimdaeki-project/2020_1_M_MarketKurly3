@@ -16,7 +16,6 @@
 	</head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<div class="test">ffgggggggggg</div>
 	
 	
 	<div class="container">
@@ -32,19 +31,19 @@
 					<strong class="name">통통살 가라아게</strong>
 					<span>육즙이 가득한 풍성한 맛</span>
 				</p>
-				<p class="goods_dcinfo">회원할인가</p>
+				<!-- <p class="goods_dcinfo">회원할인가</p> -->
 				<p class="goods_price">
 					<span class="dc">
 						<span class="dc_price">3360
 							<span class="won">원</span>
 						</span>
-						<span class="dc_percent">30%</span>
+						<!-- <span class="dc_percent">30%</span> -->
 					</span>
-					<span class="original">
+					<!-- <span class="original">
 						<span class="ori_price">4800
 							<span class="won">원</span>
 						</span>
-					</span>
+					</span> -->
 				</p>
 				<div class="goods_info">
 					<dl class="list">
@@ -70,16 +69,16 @@
 			</div>
 			<div class="cartPut">
 				<div class="inner_option">
-					<<!-- strong>통통살 가라아게</strong> --><!-- display:none -->
+					<!-- strong>통통살 가라아게</strong> --><!-- display:none -->
 					<div class="in_option">
 						<ul class="list_nopackage">
 							<li>
 								<span class="tit_item">구매수량</span>
 								<div class="option">
 									<span class="count">
-										<button type="button" class="btn_down">수량내리기</button>
-										<input type="number" readonly="readonly">
-										<button type="button" class="btn_up">수량올리기</button>
+										<button type="button" class="btn down">수량내리기</button>
+										<input type="number" readonly="readonly" class="inp">
+										<button type="button" class="btn up">수량올리기</button>
 									</span>
 									<span class="price">
 										<span class="ori_price">4,800원</span>
