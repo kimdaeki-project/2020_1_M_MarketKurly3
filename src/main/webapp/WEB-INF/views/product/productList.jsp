@@ -140,9 +140,12 @@
 
 	<c:forEach items="${list}" var="vo">
 			<li>
-				<a href="#" class="thumb_goods">
-					<img src="">
+			<c:forEach items="${vo.productFileVOs}" var="file">
+				<a href="../productFile/fileDown?filenum=${file.filenum}" class="thumb_goods">
+					<img src="${file.oriname}">
 				</a>
+			</c:forEach>
+				
 				<div class="info_goods">
 					<span><a href="">${vo.p_name}</a></span>
 					<span>${vo.price}</span>

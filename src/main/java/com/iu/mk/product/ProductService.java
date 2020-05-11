@@ -43,7 +43,9 @@ public class ProductService {
 	 */
 	
 	public int productWrite(ProductVO productVO, MultipartFile files) throws Exception{
+		
 		String path = session.getServletContext().getRealPath("/resources/uploadproduct");
+		System.out.println(path); //실제 파일이 들어오는지 확인하는 경로
 		
 		//시퀀스 번호 받기
 		productVO.setP_num(productDAO.productNum());
@@ -59,6 +61,7 @@ public class ProductService {
 			productFileVO.setFilename(fileName);
 			productFileVO.setOriname(files.getOriginalFilename());
 			productFileVO.setP_kind(productVO.getP_kind());
+			
 			productFileDAO.fileInsert(productFileVO);//보드파일테이블 삽입
 			if(result<1) {
 				throw new Exception();// 롤백을 위한 강제 예외처리

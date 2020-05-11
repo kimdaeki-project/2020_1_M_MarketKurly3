@@ -6,7 +6,7 @@ public class ProductFileVO {
 	private long p_num;
 	private String oriname;
 	private String filename;
-	private int p_kind;
+	private String p_kind;
 	public long getFilenum() {
 		return filenum;
 	}
@@ -31,10 +31,10 @@ public class ProductFileVO {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public int getP_kind() {
+	public String getP_kind() {
 		return p_kind;
 	}
-	public void setP_kind(int p_kind) {
+	public void setP_kind(String p_kind) {
 		this.p_kind = p_kind;
 	}
 	

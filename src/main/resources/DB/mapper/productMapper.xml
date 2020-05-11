@@ -32,13 +32,13 @@
 				(select * from product where
 				<choose>
 					<when test="kind =='me'">
-						1 
+						meat 
 					</when>
 					<when test="kind == 've'">
-						2					
+						vegetable				
 					</when>
 				 	<otherwise>
-				 		3
+				 		dessert
 				 	</otherwise>
 				</choose>
 				<include refid="search"></include> and p_num>=1 order by p_num desc) P)
@@ -52,7 +52,7 @@
   	</select>
   	
   	<insert id="productWrite" parameterType="ProductVO">
-  		insert into product values(#{p_num},#{p_name},#{price},#{p_kind},#{contents})
+  		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{p_kind})
   	</insert>
   	
  
@@ -61,13 +61,13 @@
   		select count(p_num) from product
   		<where>
   		<if test="kind== 'me'">
- 				1 <include refid="search"></include>
+ 				meat <include refid="search"></include>
  			</if>
  			<if test="kind=='ve'">
- 				2 <include refid="search"></include>
+ 				vegetable <include refid="search"></include>
  			</if> 
  			<if test="kind=='de'">
- 				3 <include refid="search"></include>
+ 				dessert <include refid="search"></include>
  			</if>
   		
   		

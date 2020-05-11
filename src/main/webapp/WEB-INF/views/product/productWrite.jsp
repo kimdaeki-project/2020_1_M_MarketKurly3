@@ -22,21 +22,21 @@
 <form action="./productWrite" id="frm" method="post" enctype="multipart/form-data">
   
   	<div class="form-group">
-      <select class="form-control" id="sel1" name="kind">
-				    <option value="me">Meat</option>
-				    <option value="ve">Vegetable</option>
-				    <option value="de">Dessert</option>
-  	</select>
+      <select class="form-control" id="kind" name="kind" >
+				  <option value="me" selected="selected">Meat</option>
+				  <option value="ve" selected="selected">Vegetable</option>
+				  <option value="de" selected="selected">Dessert</option>
+  	  </select>
     </div>
   
   	 <div class="form-group">
-      <label for="timg">Title-Img:</label>
-      <input type="file" class="form-control" id="timg" placeholder="타이틀 이미지 선택" name="timg" >
+      <label for="files">Title-Img:</label>
+      <input type="file" class="form-control files" id="files" placeholder="타이틀 이미지 선택" name="files" >
     </div>
   
      <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" >
+      <input type="text" class="form-control" id="p_name" placeholder="Enter Title" name="p_name" >
     </div>
     
     <div class="form-group">
@@ -59,7 +59,7 @@
 </div> 
 </div>
 
-<script type="text/javascript" >
+<script type="text/javascript" src="../resources/js/boardForm.js" >
 
 
 	$("#contents").summernote({
