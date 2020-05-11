@@ -17,14 +17,15 @@
 <div class="container">
 
 <div class="container_inner">
-	<h2>관리자 상품 등록</h2>
+<h2>관리자 상품 등록</h2>
+
 <form action="./productWrite" id="frm" method="post" enctype="multipart/form-data">
   
   	<div class="form-group">
       <select class="form-control" id="sel1" name="kind">
-				    <option value="me">육류</option>
-				    <option value="ve">채소·과일</option>
-				    <option value="de">디저트</option>
+				    <option value="me">Meat</option>
+				    <option value="ve">Vegetable</option>
+				    <option value="de">Dessert</option>
   	</select>
     </div>
   

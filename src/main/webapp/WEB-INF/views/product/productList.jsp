@@ -27,13 +27,26 @@
 					</div>
 				</div> 
 				
-				<div class="inner_lnb2">
-					<div class="ico_cate2">
-						<span class="ico2"></span>
-						<span class="tit2">전체조회</span>
-					</div>
-				</div> 
-							
+				<form class="form-inline" action="./productList">
+					<!-- 종류 분류 -->
+					<div class="input-group input-group-sm col-xs-2" >
+				    	<select class="form-control" id="sel1" name="kind">
+						    <option value="me">Meat</option>
+						    <option value="ve">Vegetable</option>
+						    <option value="de">Dessert</option>
+		  				</select>
+	  				</div>
+	  				
+					<!-- 검색 -->
+					<div class="input-group input-group-sm col-xs-4">
+	  				
+				      <input type="text" class="form-control" placeholder="Search" name="search">
+				      <div class="input-group-btn">
+				        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				      </div>
+		    		</div>		
+				</form>
+				
 				
 					<ul >
 						<li>
@@ -140,8 +153,20 @@
 
 	 </c:forEach>
 						
-			
-			
+	<!-- 페이지 이동 -->		
+	<div>
+	<ul class="pagination">
+		<c:if test="${pager.curBlock gt 1}">
+			<li><a href="./productList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
+		</c:if>
+		<c:forEach begin="${pager.startNum }" end="${pager.lastNum}" var="i">
+			<li><a href="./productList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+		</c:forEach>
+		<c:if test="${pager.curBlock lt pager.totalBlock}">
+			<li><a href="./productList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a> </li>
+		</c:if>
+	</ul>
+	</div>		
 			
 			
 			

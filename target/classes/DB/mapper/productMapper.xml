@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.iu.mk.product.ProductDAO">
+ <mapper namespace="com.iu.mk.product.ProductDAO">
   
   
   <resultMap type="ProductVO" id="listResult">
@@ -22,29 +22,29 @@
 	</collection>
   </resultMap>
    
+   <sql id="search">
+ 		like '%'||#{search} ||'%'
+ 	</sql>
  
   	<select id="productList" parameterType="Pager" resultMap="listResult" >
-  		select PP.* ,PF.filenum,PF.oriname,PF.filename from(
-			(select p.*, rownum from
-				(select * from product where 
-  			<choose>
+  		select * from
+			(select P.*, rownum R from
+				(select * from product where
+				<choose>
 					<when test="kind =='me'">
-						meat
+						1 
 					</when>
 					<when test="kind == 've'">
-						vegetable					
+						2					
 					</when>
 				 	<otherwise>
-				 		dessert
+				 		3
 				 	</otherwise>
 				</choose>
 				<include refid="search"></include> and p_num>=1 order by p_num desc) P)
-			where R between #{startRow} and #{lastRow})PP)
-			inner join  productfile PF
-			on(PP.p_num=PF.p_num)
+			where R between #{startRow} and #{lastRow}
 			
-
-			
+	
   	</select>
   	
   	<select id="productNum" resultType="Long">
@@ -52,33 +52,28 @@
   	</select>
   	
   	<insert id="productWrite" parameterType="ProductVO">
-  		insert into product values(#{num},#{p_name},#{price},#{p_kind},#{contents})
+  		insert into product values(#{p_num},#{p_name},#{price},#{p_kind},#{contents})
   	</insert>
   	
-  	
-  	
-  	
-  	
-  	
-  	
-  <!-- 	 전체 글의 갯수 가져오기 
+ 
+<!--  전체 글의 갯수 가져오기   --> 	
   	<select id="productCount" parameterType="Pager" resultType="Long">
   		select count(p_num) from product
   		<where>
   		<if test="kind== 'me'">
- 				meat <include refid="search"></include>
+ 				1 <include refid="search"></include>
  			</if>
  			<if test="kind=='ve'">
- 				vegetable <include refid="search"></include>
+ 				2 <include refid="search"></include>
  			</if> 
  			<if test="kind=='de'">
- 				dessert <include refid="search"></include>
+ 				3 <include refid="search"></include>
  			</if>
   		
   		
   		</where> 
   	
-  	</select>-->
+  	</select>
   
   
   

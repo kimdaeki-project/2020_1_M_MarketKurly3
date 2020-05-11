@@ -37,9 +37,10 @@ public class ProductService {
 		return productDAO.productList(pager);
 	}
 	
-	public List<ProductVO> getProductFile(ProductVO productVO) throws Exception{
-		return productDAO.getProductFile(productVO);
-	}
+	/*
+	 * public List<ProductVO> getProductFile(ProductVO productVO) throws Exception{
+	 * return productDAO.getProductFile(productVO); }
+	 */
 	
 	public int productWrite(ProductVO productVO, MultipartFile files) throws Exception{
 		String path = session.getServletContext().getRealPath("/resources/uploadproduct");
@@ -50,6 +51,7 @@ public class ProductService {
 		
 		//테이블에 넣어
 		int result = productDAO.productWrite(productVO); //product 채워짐
+		
 		if(files.getSize()>0) {
 			ProductFileVO productFileVO = new ProductFileVO();
 			String fileName = fileSaver.saveByTransfer(files, path); //이미지파일 저장

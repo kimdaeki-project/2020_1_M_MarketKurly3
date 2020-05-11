@@ -16,7 +16,6 @@ public class ProductDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
 	private final String NAMESPACE="com.iu.mk.product.ProductDAO.";
 	
 	//전체 글 갯수 카운트
@@ -37,7 +36,8 @@ public class ProductDAO {
 		return sqlSession.selectList(NAMESPACE+"productList",pager);
 	}
 	
-	public List<ProductVO> getProductFile(ProductVO productVO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getProductFile",productVO);
-	}
+	/*
+	 * public List<ProductVO> getProductFile(ProductVO productVO) throws Exception{
+	 * return sqlSession.selectList(NAMESPACE+"getProductFile",productVO); }
+	 */
 }
