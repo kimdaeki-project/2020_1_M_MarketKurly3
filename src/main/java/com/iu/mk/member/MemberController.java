@@ -68,9 +68,9 @@ public class MemberController {
 		memberVO = (MemberVO)memberService.checkId(memberVO);
 		//null > 가입가능
 		//null이 아니면 중복
-		String result = "이미 등록된 아이디입니다.";
+		String result = "0";//사용불가능
 		if(memberVO==null) {
-			result = "사용이 가능합니다.";
+			result = "1";//사용가능
 		}
 		//ajaxResult로 보내기
 		mv.addObject("result", result);

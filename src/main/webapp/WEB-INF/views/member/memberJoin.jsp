@@ -189,6 +189,7 @@
 			
 			var ch = document.getElementsByClassName("ch");
 			var s1 = document.getElementById("s1");	//아이디
+			var s1_1 = document.getElementById("s1_1");	//아이디
 			var s2 = document.getElementById("s2");	//비번
 			var s3 = document.getElementById("s3");	//비번2
 			var s4 = document.getElementById("s4");	//이름
@@ -213,7 +214,7 @@
 					alert("6자이상 입력해주세요.")
 					
 				}else{
-				//중복되는경우(alert, 이미 등록된 아이디입니다.(innerHTML))
+				
 					$.ajax({
 				     type:"POST",
 				     url:"./checkId",
@@ -221,11 +222,16 @@
 				            id:$('#mId').val()
 				     },
 				     success:function(data){
-							alert(data);
-							if(data.equals("사용이 가능합니다.")){
+				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
+				    	 
+							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
+								//사용가능한경우(alert, 사용가능한 아이디입니다.(innerHTML))	
+								alert("사용가능한 아이디입니다.")
 								s1_1.innerHTML="사용가능한 아이디입니다.";
 								s1_1.style.color="skyblue";
 							}else{
+								//중복되는경우(alert, 이미 등록된 아이디입니다.(innerHTML))
+								alert("이미 등록된 아이디입니다.")
 								s1_1.innerHTML="이미 등록된 아이디입니다.";
 								s1_1.style.color="red";	
 							}
@@ -235,7 +241,7 @@
 					 }
 					})
 				
-				//사용가능한경우(alert, 사용가능한 아이디입니다.(innerHTML))	
+				
 				}	
 
 			}
