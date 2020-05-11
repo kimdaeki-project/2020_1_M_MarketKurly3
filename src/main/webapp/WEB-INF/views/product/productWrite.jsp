@@ -62,12 +62,6 @@
 <script type="text/javascript" src="../resources/js/boardForm.js" >
 
 
-	$("#contents").summernote({
-		height : 400
-	});
-
-
-
 </script>
 
 

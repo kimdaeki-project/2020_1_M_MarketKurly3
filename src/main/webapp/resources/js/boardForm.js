@@ -25,6 +25,11 @@ $("#btn").click(function() {
 		alert("필수 요소는 모두 입력하세요.");
 	}
 	
-	
-	
 });
+
+
+
+$("#contents").summernote({
+	height : 400
+});
+
