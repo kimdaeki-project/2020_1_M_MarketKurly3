@@ -25,6 +25,9 @@ public class MemberService {
 		return memberDAO.memberDelete(memberVO);
 	}
 	
+	public MemberVO checkId(MemberVO memberVO)throws Exception{
+		return memberDAO.checkId(memberVO);
+	}
 	//update,insert,delete > int
 	
 }

@@ -61,6 +61,30 @@ public class MemberController {
 		return mv;
 	}
 	
+	//checkId
+	@PostMapping("checkId")
+	public ModelAndView checkId(MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO = (MemberVO)memberService.checkId(memberVO);
+		//null > 가입가능
+		//null이 아니면 중복
+		String result = "이미 등록된 아이디입니다.";
+		if(memberVO==null) {
+			result = "사용이 가능합니다.";
+		}
+		//ajaxResult로 보내기
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");	
+		
+		return mv;
+	}
+	
+	//checkEmail
+	@PostMapping("checkEmail")
+	public void checkEmail()throws Exception{
+		
+	}
+	
 	//memberLogin
 	@GetMapping("memberLogin")
 	public ModelAndView memberLogin(@CookieValue(value = "cId", required =false) String cId , Model model) { 
@@ -84,6 +108,7 @@ public class MemberController {
 
 		 if(memberVO != null) {
 			 session.setAttribute("member", memberVO);
+			 session.setAttribute("cart", 0);
 			 mv.setViewName("redirect:../");//ar,pager를 못받아 넘기기 때문에 재검색해준다.
 		 }else {
 			 mv.addObject("result", "Login Fail");

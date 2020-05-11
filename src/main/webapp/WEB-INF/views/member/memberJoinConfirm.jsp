@@ -142,11 +142,30 @@
 		
 		});  
  	
-  	//무료배송, 할인쿠폰 부분선택
+		 /*-------------------------------------------- */ 	
+  	//무료배송, 할인쿠폰 전체선택
   		$(".c2").click(function(){
   			$(".c3").prop("checked", $(".c2").prop("checked"));
   		});
-  	
+		 
+  	//무료배송, 할인쿠폰 부분선택	 
+		$(".c3").on("click", function() { //each > 배열을 관리할 수 있다.
+			var result = true;
+		
+			$(".c3").each(function() {
+				
+				if(!$(this).prop("checked")){//get
+					
+					result=false;
+				}
+			});
+			
+			$(".c2").prop("checked", result); 
+		
+		});	
+		 
+		 
+  		 /*-------------------------------------------- */ 
 		//버튼
 		$(".b1").click(function() {
 			if($("#d1").prop("checked")){//전체동의

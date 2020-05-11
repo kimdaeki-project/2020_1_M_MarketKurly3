@@ -43,8 +43,9 @@
 										<input type="text" name="m_id" label="아이디"
 										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
 										
-										&emsp;<a href="#"><span class="bns_button">중복확인</span></a>
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_id(); return false;"><span class="bns_button">중복확인</span></a>
 										<p id="s1"></p>
+										<p id="s1_1"></p>
 									</td>
 								</tr>
 								<tr>
@@ -88,7 +89,7 @@
 										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
 						
 										<input type="text" name="m_phone_c" label="휴대폰인증" id="mPhone">
-										&emsp;<a href="#"><span class="bns_button disabled">인증번호확인</span></a>
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button disabled">인증번호확인</span></a>
 										<p id="s6"></p>
 									</td>
 								</tr>
@@ -113,15 +114,15 @@
 									<td class="memberCols2">
 										<div class="group_radio" id="mSex">	
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="m">
+												<input type="radio" name="sex_option" label="성별" value="man">
 												<span class="text_position">남자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="w">
+												<input type="radio" name="sex_option" label="성별" value="woman">
 												<span class="text_position">여자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="n">
+												<input type="radio" name="sex_option" label="성별" value="nochoice">
 												<span class="text_position">선택안함</span>
 											</label>
 				
@@ -174,7 +175,9 @@
 		
 		<c:import url="../template/footer.jsp"></c:import>
 		
-		
+		<script type="text/javascript">
+			
+		</script>
 		<script type="text/javascript">
 			var mId = document.getElementById("mId");
 			var mPw = document.getElementById("mPw"); 
@@ -201,11 +204,60 @@
 			var frm = document.getElementById("frm");
 			
 			
+			/* ...................중복확인........................ */
+			
+			function overlap_id() {
+				
+				if(mId.value.length<6){
+				//6글자가 넘지않는경우(alert)	
+					alert("6자이상 입력해주세요.")
+					
+				}else{
+				//중복되는경우(alert, 이미 등록된 아이디입니다.(innerHTML))
+					$.ajax({
+				     type:"POST",
+				     url:"./checkId",
+				     data:{
+				            id:$('#mId').val()
+				     },
+				     success:function(data){
+							alert(data);
+							if(data.equals("사용이 가능합니다.")){
+								s1_1.innerHTML="사용가능한 아이디입니다.";
+								s1_1.style.color="skyblue";
+							}else{
+								s1_1.innerHTML="이미 등록된 아이디입니다.";
+								s1_1.style.color="red";	
+							}
+				   	 },
+					 error:function(){
+							alert("에러발생");
+					 }
+					})
+				
+				//사용가능한경우(alert, 사용가능한 아이디입니다.(innerHTML))	
+				}	
+
+			}
+			
+			function overlap_email() {
+				
+				//email 잘못된 이메일 형식인 경우
+				
+				//중복되는 경우
+				
+				//사용가능한 경우
+				
+				
+			}
+			
+			/* .............................................. */
+			
 			var mIdResult=false;
 			mId.addEventListener("keyup",function(){
 				//s1.innerHTML="6글자 이상 입력하세요";
 				if(mId.value.length>=6){
-					s1.innerHTML="사용가능한 아이디입니다.";
+					s1.innerHTML="6자 이상 입력하였습니다.";
 					s1.style.color="skyblue";
 					mIdResult=true;
 				}else{
@@ -316,7 +368,7 @@
 				}
 				if((mIdResult && mPwResult && mPw2Result && check)==false){
 			  //if(!(t1Result && t2Result && t3Result && check)){  //false
-					alert("필수요소 입력하세요")
+					alert("필수요소들을 입력해주세요")
 			  		//t1.focus();
 					e.preventDefault();
 				}else{
