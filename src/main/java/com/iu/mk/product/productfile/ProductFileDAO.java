@@ -18,6 +18,7 @@ public class ProductFileDAO {
 	}
 	
 	public int fileInsert(ProductFileVO productFileVO) throws Exception{
+		System.out.println(productFileVO.getOriname()); // o
 		return sqlSession.insert(NAMESPACE+"fileInsert",productFileVO);
 	}
 	
