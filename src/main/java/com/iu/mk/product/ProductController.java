@@ -54,7 +54,8 @@ public class ProductController {
 		while(er.hasMoreElements()) {
 		System.out.println(er.nextElement());//다음요소를  꺼내와
 		}
-		////
+		//------------확인end-----------------
+		//kind 가져와서  vo에 넣기
 		String kind = request.getParameter("kind");
 		productVO.setP_kind(kind);
 				
