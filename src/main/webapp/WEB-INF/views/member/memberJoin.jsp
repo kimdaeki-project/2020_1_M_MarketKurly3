@@ -32,6 +32,7 @@
 				
 				<div class="member_join">
 					<h3>*필수입력사항</h3>
+					
 					<form id="frm" name="frmMember" method="post" action="./join_2.html">
 						
 						<div class="border_write">

@@ -54,7 +54,15 @@
 			background-color:#fff;
 			border:1px solid #f3f2f4;
 		}
-		
+
+		.frm1 	{
+			width:640px;
+			margin:0 auto;
+		}
+		.frm2	{
+			background-color:#fff;
+			border:1px solid #f3f2f4;
+		}
 		/* ......................................... */
 		
 		.border_write	{

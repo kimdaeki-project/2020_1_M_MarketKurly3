@@ -25,11 +25,13 @@
 					<p>약관동의</p>
 				</div>
 				
-				<div class="member_join">
+				<div class="member_join frm1" >
 				<h3>*선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</h3>
-					<form id="frm0" name="frmMember0" method="post" action="./memberJoin">
 					
-					<div class="border_write1">
+					<!-- <form id="frm0" name="frmMember0" method="get" action="./memberLogin">   -->
+					<div class="frm2">
+					
+					<div class="border_write1" >
 					<h4><input id="d1" type="checkbox"><strong> 전체동의</strong></h4>
 					
 					<input class="c1" type="checkbox">
@@ -67,7 +69,7 @@
 					<!-- 약관2 --><br>
 					<div class="border_write2">
 					<input class="c1" type="checkbox">
-					개인정보처리방침 (필수)<br><br>
+					개인정보처리방침1 (필수)<br><br>
 					<div style="overflow:scroll; width:450px; height:150px; padding:10px; background-color:#f2f2f2;">
 					<img src="${pageContext.request.contextPath}/resources/images/personal information.PNG">
 					</div>
@@ -76,7 +78,7 @@
 					<!-- 약관3 --><br>
 					<div class="border_write2">
 					<input class="c1" type="checkbox">
-					개인정보처리방침 (선택)<br><br>
+					개인정보처리방침2 (필수)<br><br>
 					<div style="overflow:scroll; width:450px; height:150px; padding:10px; background-color:#f2f2f2;">
 					<img src="${pageContext.request.contextPath}/resources/images/personal information2.PNG">
 					</div>
@@ -84,11 +86,11 @@
 					
 					<!-- 약관4 --><br>
 					<div class="border_write2">
-					<input class="c1" type="checkbox">
-					무료배송, 할인쿠폰 등 혜택/정보 수신 (선택)<br><br>
-					&emsp;<input class="c1" type="checkbox">SMS  
+					<input class="c1 c2" type="checkbox">
+					무료배송, 할인쿠폰 등 혜택/정보 수신 (필수)<br><br>
+					&emsp;<input class="c1 c3" type="checkbox">SMS  
 					&emsp;&emsp;&emsp;
-					<input class="c1" type="checkbox">이메일
+					<input class="c1 c3" type="checkbox">이메일
 					<img src="${pageContext.request.contextPath}/resources/images/agree sms.PNG" height="35px">
 					</div>
 					
@@ -100,9 +102,11 @@
 					
 					<!-- 제출버튼 -->
 					<div id="avoidDbl">
-						<input type="submit" class="btn_sm" id="btn_submit d1" value="다음단계"><br><br><br>
+						<button type="submit" class="btn_sm b1" id="btn_submit" >다음단계</button><br><br><br>
 					</div>
-					</form>
+				<!-- </form>   -->
+				</div>
+				
 				</div>
 				
 			</div>
@@ -112,19 +116,20 @@
 	
 	<!-- 설정값 / 2.jquery로 바꾸기 /1.class 배열-->
 	<script type="text/javascript">
-
- 	//전체선택 체크 
- 		$("#d1").click(function() {
+		
+ 	 //전체선택 체크 
+  		$("#d1").click(function() {
 			
  			$(".c1").prop("checked", $("#d1").prop("checked"));	
  			//$("#chkBox").prop('checked', true) ;
+ 			//prop 속성값을 가져오거나 추가한다.(checked의 속성값 > true, false) //
 		});
 
  		
- 	//부분선택 체크(클릭 이벤트로 감싸기)
-		$(".c1").on("click", function() {
-			
+  	//부분선택 체크(클릭 이벤트로 감싸기)
+		$(".c1").on("click", function() { //each > 배열을 관리할 수 있다.
 			var result = true;
+		
 			$(".c1").each(function() {
 				
 				if(!$(this).prop("checked")){//get
@@ -135,14 +140,29 @@
 			
 			$("#d1").prop("checked", result); 
 		
-		}); 
+		});  
  	
+  	//무료배송, 할인쿠폰 부분선택
+  		$(".c2").click(function(){
+  			$(".c3").prop("checked", $(".c2").prop("checked"));
+  		});
+  	
 		//버튼
+		$(".b1").click(function() {
+			if($("#d1").prop("checked")){//전체동의
+				alert("성공");
+				location.href="./memberJoin";
+			}else {
+				alert("약관에 모두 동의해주세요.");
+				
+			}
+		});
+		
 		
 		
 		 /*-------------------------------------------- */ 
 		
-/* 		var d1 = document.getElementById("d1");
+ 	/* 	var d1 = document.getElementById("d1");
 		var c1 = document.getElementsByClassName("c1");
 		var b1 = document.getElementById("b1");
 		
@@ -180,9 +200,9 @@
 			}else {
 				alert("약관에 모두 동의해주세요.");
 			}
-		}); */
-		
-	</script>
+		}); 
+		 */
+	</script> 
 	
 	
 	
