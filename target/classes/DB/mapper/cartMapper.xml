@@ -12,7 +12,7 @@
 		<result column="p_num" property="p_num"/>
 		<result column="p_count" property="p_count"/>
 		
-		<collection property="" javaType="java.util.List" ofType="">
+		<collection property="" javaType="List" ofType="">
 		
 		</collection>
 		
