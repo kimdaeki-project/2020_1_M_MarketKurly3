@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -47,7 +48,24 @@ public class CartController {
 	
 	
 	@PostMapping("cartInsert")
-	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv) throws Exception {
+	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
+		
+		//장바구니 번호 최초 1번 생성, login시 session에 장바구니 유무 체크
+		int cart = (Integer) session.getAttribute("cart"); //0:카트없음 or 1:카트있음
+		if(cart==0) {
+			//cart 테이블의 random_num 생성
+		}
+		
+		cartVO.setRandom_num();
+		//cartDe에 상품 넣기
+		cartService.cartInsert(cartVO);
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		int result = cartService.cartInsert(cartVO);
