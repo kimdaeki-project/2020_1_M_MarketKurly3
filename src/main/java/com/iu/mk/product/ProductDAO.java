@@ -36,8 +36,5 @@ public class ProductDAO {
 		return sqlSession.selectList(NAMESPACE+"productList",pager);
 	}
 	
-	/*
-	 * public List<ProductVO> getProductFile(ProductVO productVO) throws Exception{
-	 * return sqlSession.selectList(NAMESPACE+"getProductFile",productVO); }
-	 */
+
 }

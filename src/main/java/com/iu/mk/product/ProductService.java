@@ -58,9 +58,9 @@ public class ProductService {
 			ProductFileVO productFileVO = new ProductFileVO();
 			String fileName = fileSaver.saveByTransfer(files, path); //이미지파일 저장
 			productFileVO.setP_num(productVO.getP_num());
-			productFileVO.setFilename(fileName);
-			productFileVO.setOriname(files.getOriginalFilename());
-			productFileVO.setP_kind(productVO.getP_kind());
+			productFileVO.setFileName(fileName);;
+			productFileVO.setOriName(files.getOriginalFilename());
+			productFileVO.setKind(productVO.getKind());
 			
 			productFileDAO.fileInsert(productFileVO);//보드파일테이블 삽입
 			if(result<1) {
