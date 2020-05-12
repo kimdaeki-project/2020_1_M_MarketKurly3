@@ -12,6 +12,33 @@
 	<link rel="stylesheet" type="text/css" href="./css/join.css">
 	
     <c:import url="../template/boot.jsp"></c:import>
+ 
+ <!-- jusoPopup 스크립트 -->   
+    <script language="javascript">
+// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+//document.domain = "abc.go.kr";
+
+function goPopup(){
+	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+	var pop = window.open("./jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	
+	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+}
+
+
+function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.form.roadFullAddr.value = roadFullAddr;
+		document.form.addrDetail.value = addrDetail;
+		document.form.jibunAddr.value = jibunAddr;
+
+		
+}
+
+</script>
+
 </head>
 <body>
 <!-- 경로 : member/memberJoin이 기준 -->
@@ -98,7 +125,7 @@
 									<td class="memberCols1">배송주소</td>
 									
 									<td class="memberCols2">
-										<a href="#">
+										<a href="javascipt:void(0);" onclick="confirm_address(); return false;">
 											<span class="bns_button">
 												<span class="ico"></span>
 												<span class="txt">주소 검색</span>
@@ -174,12 +201,42 @@
 			</div>
 		</section>
 
-		
-		<c:import url="../template/footer.jsp"></c:import>
+	<form name="form" id="form" method="post">
+
+		<input type="button" onClick="goPopup();" value="팝업_domainChk" />
+		<div id="list"></div>
+		<div id="callBackDiv">
+			<table>
+				<tr>
+					<!-- <td>도로명주소 전체(포멧)</td> -->
+					<td><input type="hidden" style="width: 500px;" id="roadFullAddr"
+						name="roadFullAddr" /></td>
+				</tr>
+				
+				<tr>
+					<!-- <td>지번</td> -->
+					<td><input type="text" style="width: 500px;" id="jibunAddr"
+						name="jibunAddr" /></td>
+				</tr>
+				
+				<tr>
+					<!-- <td>고객입력 상세주소</td> -->
+					<td><input type="text" style="width: 500px;" id="addrDetail"
+						name="addrDetail" /></td>
+				</tr>
+
+			</table>
+		</div>
+
+	</form>
+
+
+	<c:import url="../template/footer.jsp"></c:import>
 		
 		<script type="text/javascript">
-			
+			var 
 		</script>
+		
 		<script type="text/javascript">
 			var mId = document.getElementById("mId");
 			var mPw = document.getElementById("mPw"); 

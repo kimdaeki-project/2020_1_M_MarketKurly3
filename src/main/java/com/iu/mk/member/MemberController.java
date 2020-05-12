@@ -158,5 +158,19 @@ public class MemberController {
 		return mv;
 	}
 	
+	@GetMapping("Sample")
+	public void Sample() {
+		
+	}
 	
+	@GetMapping("jusoPopup")
+	public void jusoPopup() {
+		
+	}
+	
+	@PostMapping("jusoPopup")
+	public void jusoPopup(String roadFullAddr) {
+		
+		System.out.println(roadFullAddr);
+	}
 }
