@@ -51,7 +51,7 @@ public class CartController {
 		productVO.setP_num(p_num);
 		System.out.println(productVO.getP_num()+":::pnum");
 		System.out.println(productVO.getContents());
-		System.out.println(productVO.getP_kind());
+		System.out.println(productVO.getKind());
 		System.out.println(productVO.getP_name());
 		System.out.println(productVO.getP_num());
 		System.out.println(productVO.getPrice());
@@ -61,7 +61,7 @@ public class CartController {
 		
 		System.out.println("==========================");
 		System.out.println(productVO.getContents());
-		System.out.println(productVO.getP_kind());
+		System.out.println(productVO.getKind());
 		System.out.println(productVO.getP_name());
 		System.out.println(productVO.getP_num());
 		System.out.println(productVO.getPrice());
@@ -81,12 +81,6 @@ public class CartController {
 	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv) throws Exception {
 		//상세페이지에 들어있는 product의 정보들이 넘어올 것임
 		//
-		
-		
-		
-		
-		
-		
 		
 		
 		int result = cartService.cartInsert(cartVO);
