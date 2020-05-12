@@ -47,14 +47,21 @@ public class ProductController {
 	@PostMapping("productWrite")
 	public ModelAndView productWrite(ProductVO productVO, ModelAndView mv,MultipartFile files,HttpServletRequest request) throws Exception{
 		//컨텐츠가 안넘오면 넘어오는 파라미터가 있는지 없느지 확인하는 방법
-		System.out.println("dddd");
+		
 		Enumeration<String> er = request.getParameterNames();//넘어오는 파라미터 이름들
 				
 			
 		while(er.hasMoreElements()) {
 		System.out.println(er.nextElement());//다음요소를  꺼내와
 		}
+		//------------확인end-----------------
+		//kind 가져와서  vo에 넣기
+		String kind = request.getParameter("kind");
+		System.out.println("kind  : "+ kind);
+		productVO.setKind(kind);
 				
+		//System.out.println("productVO:"+productVO.getP_kind());
+		//System.out.println("img : "+files.getOriginalFilename());
 		
 		int result = productService.productWrite(productVO, files);
 		 

@@ -2,16 +2,19 @@ package com.iu.mk.product.productfile;
 
 public class ProductFileVO {
 	
-	private long filenum;
+	private long fileNum;
 	private long p_num;
-	private String oriname;
-	private String filename;
-	private int p_kind;
-	public long getFilenum() {
-		return filenum;
+
+	private String oriName;
+	private String fileName;
+	private String kind;
+	
+	public long getFileNum() {
+		return fileNum;
+
 	}
-	public void setFilenum(long filenum) {
-		this.filenum = filenum;
+	public void setFileNum(long fileNum) {
+		this.fileNum = fileNum;
 	}
 	public long getP_num() {
 		return p_num;
@@ -19,24 +22,25 @@ public class ProductFileVO {
 	public void setP_num(long p_num) {
 		this.p_num = p_num;
 	}
-	public String getOriname() {
-		return oriname;
+	public String getOriName() {
+		return oriName;
 	}
-	public void setOriname(String oriname) {
-		this.oriname = oriname;
+	public void setOriName(String oriName) {
+		this.oriName = oriName;
 	}
-	public String getFilename() {
-		return filename;
+	public String getFileName() {
+		return fileName;
 	}
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
-	public int getP_kind() {
-		return p_kind;
+	public String getKind() {
+		return kind;
 	}
-	public void setP_kind(int p_kind) {
-		this.p_kind = p_kind;
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
+	
 	
 	
 

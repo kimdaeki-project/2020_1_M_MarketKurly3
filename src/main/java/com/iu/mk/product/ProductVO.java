@@ -9,8 +9,8 @@ public class ProductVO {
 	private long p_num;
 	private String p_name;
 	private long price;
-	private int p_kind;
 	private String contents;
+	private String kind;
 	
 	private List<ProductFileVO> productFileVOs;
 	
@@ -43,18 +43,19 @@ public class ProductVO {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	public int getP_kind() {
-		return p_kind;
-	}
-	public void setP_kind(int p_kind) {
-		this.p_kind = p_kind;
-	}
 	public String getContents() {
 		return contents;
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	
 	
 	
 	
