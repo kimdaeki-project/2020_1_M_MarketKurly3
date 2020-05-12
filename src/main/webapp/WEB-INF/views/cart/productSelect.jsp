@@ -14,7 +14,7 @@
 
 		</style>
 	</head>
-<body>
+<body onload="init();">
 	<c:import url="../template/header.jsp"></c:import>
 	
 	
@@ -26,10 +26,9 @@
 					
 						<div>
 						
-							<img src="${pageContext.request.contextPath}/resources/images/uploadproduct/${profile.filename}"/>
+							<img src="${pageContext.request.contextPath}/resources/uploadproduct/${profile.fileName}"/>
 						</div>
 					</c:forEach>
-					<img src="${pageContext.request.contextPath}/resources/images/1538037871289y0.jpg"/>
 				</div>
 				<p class="goods_name">
 					<span class="btn_share">
@@ -83,22 +82,27 @@
 								<span class="tit_item">구매수량</span>
 								<div class="option">
 									<span class="count">
-										<button type="button" class="btn down">수량내리기</button>
-										<input type="number" readonly="readonly" class="inp">
-										<button type="button" class="btn up">수량올리기</button>
+										<form name="fo" method="get">
+										<input type="hidden" name="sell_price" value="${product.price}">
+										<button type="button" class="btn down" onclick="del();" value="-">수량내리기</button>
+										<input type="number" readonly="readonly" onchange="change();" name="amount" class="inp" value="1" size="10">
+										<button type="button" class="btn up" onclick="add();"  value="+">수량올리기</button>
+										금액  : <input type="text" name="num" size="11" readonly="readonly" class=""> 원
+										</form>
 									</span>
-									<span class="price">
+									<!-- <span class="price">
 										<span class="ori_price">4,800원</span>
 										<span class="dc_price">3,360원</span>
-									</span>
+									</span> -->
 								</div>
 							</li>
 						</ul>
 						<div class="total">
 							<div class="price">
 								<strong class="tit">총 상품 금액:</strong>
-								<span class="sum">
-									<span class="num">6,720</span>
+								<span class="sum" name="su">
+									<input type="text" name="num" class="num" size="11" readonly="readonly" class=""> 원
+									<!-- <span class="num">6,720</span> -->
 									<span class="won">원</span>
 								</span>
 							</div>
@@ -128,5 +132,52 @@
   
   
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	
+	<script type="text/javascript">
+		var sell_price;
+		var amount;
+		
+		function init () {
+			sell_price = document.form.sell_price.value;
+			amount = document.form.amount.value;
+			document.form.sum.value = sell_price;
+			change();
+		}
+		
+		
+		function add () {
+			hm = document.form.amount;
+			sum = document.form.sum;
+			hm.value ++ ;
+
+			sum.value = parseInt(hm.value) * sell_price;
+		}
+
+		
+		function del () {
+			hm = document.form.amount;
+			sum = document.form.sum;
+				if (hm.value > 1) {
+					hm.value -- ;
+					sum.value = parseInt(hm.value) * sell_price;
+				}
+		}
+		
+		
+		function change(){
+			hm = document.fo.amount;
+			sum = document.fo.sum;
+				if(hm.value < 0){
+					hm.value = 0;
+				}
+			sum.value = parseInt(hm.value) * sell_price;
+		}
+		
+	
+	</script>
+	
+	
+	
 </body>
 </html>

@@ -71,11 +71,18 @@ public class CartController {
 		
 		
 		System.out.println(productVO.getP_name()+"::pname");
+		
+		
 		mv.addObject("product", productVO);
 		mv.setViewName("cart/productSelect");
 		
 		return mv;
 	}
+	
+	
+	
+	
+	
 	
 	
 	@PostMapping("cartInsert")
