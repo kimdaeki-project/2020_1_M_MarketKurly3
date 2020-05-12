@@ -10,15 +10,16 @@
   	<id column="p_num" property="p_num"/>
   	<result column="p_name" property="p_name"/>
   	<result column="price" property="price"/>
-  	<result column="p_kind" property="p_kind"/>
-	<result column="contents" property="contents"/>
+  	<result column="contents" property="contents"/>
+  	<result column="kind" property="kind"/>
+
 	
 	<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
-		<id column="filenum" property="filenum"/>
+		<id column="fileNum" property="fileNum"/>
   		<result column="p_num" property="p_num"/>
-  		<result column="oriname" property="oriname"/> 
-  		<result column="filename" property="filename"/> 
-  		<result column="p_kind" property="p_kind"/> 
+  		<result column="oriName" property="oriName"/> 
+  		<result column="fileName" property="fileName"/> 
+  		<result column="kind" property="kind"/> 
 	</collection>
   </resultMap>
    
@@ -30,21 +31,12 @@
   		select * from
 			(select P.*, rownum R from
 				(select * from product where
-				<choose>
-					<when test="kind =='me'">
-						meat 
-					</when>
-					<when test="kind == 've'">
-						vegetable				
-					</when>
-				 	<otherwise>
-				 		dessert
-				 	</otherwise>
-				</choose>
-				<include refid="search"></include> and p_num>=1 order by p_num desc) P)
+				<if test="kind!=null">
+					kind=#{kind}
+					<include refid="search"></include> and
+				</if>
+				 p_num>=1 order by p_num desc) P)
 			where R between #{startRow} and #{lastRow}
-			
-	
   	</select>
   	
   	<select id="productNum" resultType="Long">
@@ -52,7 +44,7 @@
   	</select>
   	
   	<insert id="productWrite" parameterType="ProductVO">
-  		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{p_kind})
+  		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{kind})
   	</insert>
   	
  
@@ -69,8 +61,6 @@
  			<if test="kind=='de'">
  				dessert <include refid="search"></include>
  			</if>
-  		
-  		
   		</where> 
   	
   	</select>

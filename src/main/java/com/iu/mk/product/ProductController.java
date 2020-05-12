@@ -57,10 +57,11 @@ public class ProductController {
 		//------------확인end-----------------
 		//kind 가져와서  vo에 넣기
 		String kind = request.getParameter("kind");
-		productVO.setP_kind(kind);
+		System.out.println("kind  : "+ kind);
+		productVO.setKind(kind);
 				
-		System.out.println("productVO:"+productVO.getP_kind());
-		System.out.println("img : "+files.getOriginalFilename());
+		//System.out.println("productVO:"+productVO.getP_kind());
+		//System.out.println("img : "+files.getOriginalFilename());
 		
 		int result = productService.productWrite(productVO, files);
 		 

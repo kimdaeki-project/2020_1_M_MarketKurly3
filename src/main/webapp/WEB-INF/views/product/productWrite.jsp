@@ -35,7 +35,7 @@
     </div>
   
      <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="p_name">Title:</label>
       <input type="text" class="form-control" id="p_name" placeholder="Enter Title" name="p_name" >
     </div>
     
@@ -48,9 +48,7 @@
       <label for="contents">Contents:</label>
       <textarea rows="20" cols=""  class="form-control" id="contents" placeholder="Enter Contents" name="contents"></textarea>
     </div>
-    
-    
- 
+      
    
     <input type="button" id="btn" class="btn btn-default" value="Write">
    

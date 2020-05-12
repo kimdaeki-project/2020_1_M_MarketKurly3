@@ -6,7 +6,7 @@
   <mapper namespace="com.iu.mk.product.productfile.ProductFileDAO">
   
   	<insert id="fileInsert" parameterType="ProductFileVO">
-  		insert into productfile values (filenum_seq.nextval,#{p_num},#{oriname},#{filename},#{p_kind})
+  		insert into productfile values (fileNum_seq.nextval,#{p_num},#{oriName},#{fileName},#{kind})
   	</insert>
   
   </mapper>
