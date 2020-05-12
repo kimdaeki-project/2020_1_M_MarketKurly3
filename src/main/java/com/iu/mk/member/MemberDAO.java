@@ -25,4 +25,12 @@ public class MemberDAO {
 	public int memberDelete(MemberVO memberVO)throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"memberDelete",memberVO);
 	}
+	
+	public MemberVO checkId(MemberVO memberVO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"checkId",memberVO);
+	}
+	
+	public MemberVO checkEmail(MemberVO memberVO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"checkEmail",memberVO);
+	}
 }

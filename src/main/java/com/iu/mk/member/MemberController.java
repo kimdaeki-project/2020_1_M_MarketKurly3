@@ -61,6 +61,41 @@ public class MemberController {
 		return mv;
 	}
 	
+	//checkId
+	@PostMapping("checkId")
+	public ModelAndView checkId(MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO = (MemberVO)memberService.checkId(memberVO);
+		//null > 가입가능
+		//null이 아니면 중복
+		String result = "0";//사용불가능
+		if(memberVO==null) {
+			result = "1";//사용가능
+		}
+		//ajaxResult로 보내기
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");	
+		
+		return mv;
+	}
+	
+	//checkEmail
+	@PostMapping("checkEmail")
+	public ModelAndView checkEmail(MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO= (MemberVO)memberService.checkEmail(memberVO);
+		
+		String result = "0";//사용불가능
+		if(memberVO==null) {
+			result="1";//사용가능
+		}
+		
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");	
+		
+		return mv;
+	}
+	
 	//memberLogin
 	@GetMapping("memberLogin")
 	public ModelAndView memberLogin(@CookieValue(value = "cId", required =false) String cId , Model model) { 
@@ -84,6 +119,7 @@ public class MemberController {
 
 		 if(memberVO != null) {
 			 session.setAttribute("member", memberVO);
+			 session.setAttribute("cart", 0);
 			 mv.setViewName("redirect:../");//ar,pager를 못받아 넘기기 때문에 재검색해준다.
 		 }else {
 			 mv.addObject("result", "Login Fail");
@@ -122,5 +158,19 @@ public class MemberController {
 		return mv;
 	}
 	
+	@GetMapping("Sample")
+	public void Sample() {
+		
+	}
 	
+	@GetMapping("jusoPopup")
+	public void jusoPopup() {
+		
+	}
+	
+	@PostMapping("jusoPopup")
+	public void jusoPopup(String roadFullAddr) {
+		
+		System.out.println(roadFullAddr);
+	}
 }

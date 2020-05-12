@@ -12,6 +12,34 @@
 	<link rel="stylesheet" type="text/css" href="./css/join.css">
 	
     <c:import url="../template/boot.jsp"></c:import>
+ 
+ 
+ 
+	 <!-- jusoPopup 스크립트 (도로명주소)-->   
+	    <script language="javascript">
+	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+	//document.domain = "abc.go.kr";
+	
+	function goPopup(){
+		// 주소검색을 수행할 팝업 페이지를 호출합니다.
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window.open("./jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		
+		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+	    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
+	
+	
+	function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
+			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			document.form.roadFullAddr.value = roadFullAddr;
+			document.form.addrDetail.value = addrDetail;
+			document.form.jibunAddr.value = jibunAddr;
+	}
+	</script>
+
+
+
 </head>
 <body>
 <!-- 경로 : member/memberJoin이 기준 -->
@@ -32,7 +60,8 @@
 				
 				<div class="member_join">
 					<h3>*필수입력사항</h3>
-					<form id="frm" name="frmMember" method="post" action="./join_2.html">
+					
+					<form id="form" name="form" method="post" action="./join_2.html">
 						
 						<div class="border_write">
 							<table class="tbl_comm">
@@ -42,8 +71,9 @@
 										<input type="text" name="m_id" label="아이디"
 										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
 										
-										&emsp;<a href="#"><span class="bns_button">중복확인</span></a>
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_id(); return false;"><span class="bns_button">중복확인</span></a>
 										<p id="s1"></p>
+										<p id="s1_1"></p>
 									</td>
 								</tr>
 								<tr>
@@ -75,7 +105,8 @@
 									<td class="memberCols2">
 										<input type="text" name="m_email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch" id="mEmail">
-										&emsp;<a href="#"><span class="bns_button">이메일 중복확인</span></a>
+										
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button">이메일 중복확인</span></a>
 										<p id="s5"></p>
 									</td>
 								</tr>
@@ -87,40 +118,62 @@
 										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
 						
 										<input type="text" name="m_phone_c" label="휴대폰인증" id="mPhone">
-										&emsp;<a href="#"><span class="bns_button disabled">인증번호확인</span></a>
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button disabled">인증번호확인</span></a>
 										<p id="s6"></p>
 									</td>
 								</tr>
 								<tr class="add">
 									<td class="memberCols1">배송주소</td>
+									
 									<td class="memberCols2">
-					
-										<a href="#">
+										<a href="javascipt:void(0);" onclick="goPopup(); return false;">
 											<span class="bns_button">
 												<span class="ico"></span>
 												<span class="txt">주소 검색</span>
 											</span>
 										</a>
+<!-- 도로명 주소 검색 / jusoPopup설정:form의 id, name이 form인 경우 -->
+
+		<div id="callBackDiv">
+			<table>
+				<tr>
+					<td><input type="hidden" style="width: 400px;" id="roadFullAddr"
+						name="roadFullAddr" /></td>
+				</tr>
+				
+				<tr>
+					<td><input type="text" style="width: 400px;" id="jibunAddr"
+						name="jibunAddr" /></td>
+				</tr>
+				
+				<tr>
+					<td><input type="text" style="width: 400px;" id="addrDetail"
+						name="addrDetail" /></td>
+				</tr>
+
+			</table>
+		</div>
 										<p class="text_guide">
 											<span>배송가능 여부를 확인할 수 있습니다.</span>
 										</p>
 										<p id="s7"></p>
 									</td>
+									
 								</tr>
 								<tr class="select_sex">
 									<td class="memberCols1">성별</td>
 									<td class="memberCols2">
 										<div class="group_radio" id="mSex">	
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="m">
+												<input type="radio" name="sex_option" label="성별" value="man">
 												<span class="text_position">남자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="w">
+												<input type="radio" name="sex_option" label="성별" value="woman">
 												<span class="text_position">여자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="n">
+												<input type="radio" name="sex_option" label="성별" value="nochoice">
 												<span class="text_position">선택안함</span>
 											</label>
 				
@@ -133,6 +186,7 @@
 									<td class="memberCols1">생년월일</td>
 									<td class="memberCols2">
 										<div class="birthday" id="mBir">	
+										<!-- birth_year/birth_mon/birth_day의 value값 post로 넘기기 -->
 											<input type="text" name="birth_year" id="birth_year" size="4" maxlength="4" placeholder="YYYY">
 											<span class="bar">/</span>
 											<input type="text" name="birth_mon" id="birth_mon" size="2" maxlength="2" placeholder="MM">
@@ -142,6 +196,7 @@
 										<p id="s9"></p>
 									</td>
 								</tr>
+								
 <!-- 								<tr class="route">
 									<td class="memberCols1">추가입력 사항</td>
 									<td class="memberCols2">
@@ -158,6 +213,7 @@
 									
 									</td>
 								</tr> -->
+								
 							</table>
 						</div>
 					<div id="avoidDbl">
@@ -170,9 +226,41 @@
 			</div>
 		</section>
 
+
+<!-- 도로명 주소 검색  -->
+<!-- 	<form name="form" id="form" method="post">
+
+		<div id="callBackDiv">id 없애거나 변경가능
+			<table>
+				<tr>
+					<td>도로명주소 전체(포멧)</td>
+					<td><input type="hidden" style="width: 300px;" id="roadFullAddr"
+						name="roadFullAddr" /></td>
+				</tr>
+				
+				<tr>
+					<td>지번</td>
+					<td><input type="text" style="width: 300px;" id="jibunAddr"
+						name="jibunAddr" /></td>
+				</tr>
+				
+				<tr>
+					<td>고객입력 상세주소</td>
+					<td><input type="text" style="width: 300px;" id="addrDetail"
+						name="addrDetail" /></td>
+				</tr>
+
+			</table>
+		</div>
+
+	</form> -->
+
+
+	<c:import url="../template/footer.jsp"></c:import>
 		
-		<c:import url="../template/footer.jsp"></c:import>
-		
+		<script type="text/javascript">
+			var 
+		</script>
 		
 		<script type="text/javascript">
 			var mId = document.getElementById("mId");
@@ -185,6 +273,7 @@
 			
 			var ch = document.getElementsByClassName("ch");
 			var s1 = document.getElementById("s1");	//아이디
+			var s1_1 = document.getElementById("s1_1");	//아이디
 			var s2 = document.getElementById("s2");	//비번
 			var s3 = document.getElementById("s3");	//비번2
 			var s4 = document.getElementById("s4");	//이름
@@ -200,11 +289,96 @@
 			var frm = document.getElementById("frm");
 			
 			
+			/* ...................중복확인........................ */
+			
+			function overlap_id() {
+				
+				if(mId.value.length<6){
+				//6글자가 넘지않는경우(alert)	
+					alert("6자이상 입력해주세요.")
+					
+				}else{
+				
+					$.ajax({
+				     type:"POST",
+				     url:"./checkId",
+				     data:{
+				            id:$('#mId').val()
+				     },
+				     success:function(data){
+				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
+				    	 
+							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
+								//사용가능한경우(alert, 사용가능한 아이디입니다.(innerHTML))	
+								alert("사용가능한 아이디입니다.")
+								s1_1.innerHTML="사용가능한 아이디입니다.";
+								s1_1.style.color="skyblue";
+							}else{
+								//중복되는경우(alert, 이미 등록된 아이디입니다.(innerHTML))
+								alert("이미 등록된 아이디입니다.")
+								s1_1.innerHTML="이미 등록된 아이디입니다.";
+								s1_1.style.color="red";	
+							}
+				   	 },
+					 error:function(){
+							alert("에러발생");
+					 }
+					})
+				
+				
+				}	
+
+			}
+			
+ 			function overlap_email() {
+				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+				if(regEmail.test(mEmail.value)){//test > true, false //진행순서를 잘 보아야한다.
+					//중복되는 경우
+					
+					//사용가능한 경우
+					
+					$.ajax({
+				     type:"POST",
+				     url:"./checkEmail",
+				     data:{
+				            email:$('#mEmail').val()
+				     },
+				     success:function(data){
+				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
+				    	 
+							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
+								//사용가능한경우
+								alert("사용가능한 이메일 입니다.")
+								s5.innerHTML="사용가능한 이메일 입니다.";
+								s5.style.color="skyblue";	
+							}else{
+								//중복되는경우
+								alert("이미 등록된 이메일입니다. 다시 작성하여 주세요.")
+								s5.innerHTML="이미 등록된 이메일입니다.";
+								s5.style.color="red";	
+							}
+				   	 },
+					 error:function(){
+							alert("에러발생");
+					 }
+					})
+
+				}else{
+				//email 잘못된 이메일 형식인 경우
+					alert("올바른 이메일 형식이 아닙니다.")
+					s5.innerHTML="올바른 이메일 형식이 아닙니다.";
+					s5.style.color="red";	
+				}
+			} 
+			
+			/* .............................................. */
+			
 			var mIdResult=false;
 			mId.addEventListener("keyup",function(){
 				//s1.innerHTML="6글자 이상 입력하세요";
 				if(mId.value.length>=6){
-					s1.innerHTML="사용가능한 아이디입니다.";
+					s1.innerHTML="6자 이상 입력하였습니다.";
 					s1.style.color="skyblue";
 					mIdResult=true;
 				}else{
@@ -315,7 +489,7 @@
 				}
 				if((mIdResult && mPwResult && mPw2Result && check)==false){
 			  //if(!(t1Result && t2Result && t3Result && check)){  //false
-					alert("필수요소 입력하세요")
+					alert("필수요소들을 입력해주세요")
 			  		//t1.focus();
 					e.preventDefault();
 				}else{
