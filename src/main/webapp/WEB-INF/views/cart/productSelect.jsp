@@ -22,19 +22,26 @@
 		<div class="product">
 			<div class="inner_view">
 				<div class="thumb">
+					<c:forEach items="${product.productFileVOs}" var="profile">
+					
+						<div>
+						
+							<img src="${pageContext.request.contextPath}/resources/images/uploadproduct/${profile.filename}"/>
+						</div>
+					</c:forEach>
 					<img src="${pageContext.request.contextPath}/resources/images/1538037871289y0.jpg"/>
 				</div>
 				<p class="goods_name">
 					<span class="btn_share">
 						<!-- <button id="btnShere">공유하기</button> -->
 					</span>
-					<strong class="name">통통살 가라아게</strong>
+					<strong class="name">${product.p_name}</strong>
 					<span>육즙이 가득한 풍성한 맛</span>
 				</p>
 				<!-- <p class="goods_dcinfo">회원할인가</p> -->
 				<p class="goods_price">
 					<span class="dc">
-						<span class="dc_price">3360
+						<span class="dc_price">${product.price}
 							<span class="won">원</span>
 						</span>
 						<!-- <span class="dc_percent">30%</span> -->

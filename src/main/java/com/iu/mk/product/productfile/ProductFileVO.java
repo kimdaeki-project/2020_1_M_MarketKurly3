@@ -7,6 +7,9 @@ public class ProductFileVO {
 	private String oriname;
 	private String filename;
 	private String p_kind;
+	
+	
+	
 	public long getFilenum() {
 		return filenum;
 	}

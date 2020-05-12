@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.mk.member.MemberVO;
+import com.iu.mk.product.ProductVO;
+
 @Controller
 @RequestMapping(value = "/cart/**")
 public class CartController {
@@ -22,11 +25,14 @@ public class CartController {
 	
 
 	@GetMapping("cartList")
-	public ModelAndView cartList(ModelAndView mv, int m_num) throws Exception {
+	public ModelAndView cartList(ModelAndView mv, int cart_num, HttpSession session) throws Exception {
+		//로그인시 세션에 정보 저장 session.setAttribute("member", memberVO);
+		//memberVO에 있는 cart_num 꺼내서 넘겨주기
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
+		//List<CartVO> ar = cartService.cartList(memberVO.getCartNum()); 나중에 받아오기~
+		List<CartVO> ar = cartService.cartList(cart_num); //지금은 VO 수정이 안 되어서 일단 나중에!
 		
-		m_num = 1;
-		List<CartVO> ar = cartService.cartList(m_num);
 		
 		mv.addObject("list", ar);
 		mv.setViewName("cart/cartList");
@@ -39,7 +45,32 @@ public class CartController {
 	
 
 	@GetMapping("productSelect")
-	public ModelAndView productSelect(ModelAndView mv) {
+	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num) throws Exception {
+		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
+		
+		productVO.setP_num(p_num);
+		System.out.println(productVO.getP_num()+":::pnum");
+		System.out.println(productVO.getContents());
+		System.out.println(productVO.getP_kind());
+		System.out.println(productVO.getP_name());
+		System.out.println(productVO.getP_num());
+		System.out.println(productVO.getPrice());
+		System.out.println(productVO.getProductFileVOs());
+		
+		productVO = (ProductVO) cartService.productSelect(productVO.getP_num());
+		
+		System.out.println("==========================");
+		System.out.println(productVO.getContents());
+		System.out.println(productVO.getP_kind());
+		System.out.println(productVO.getP_name());
+		System.out.println(productVO.getP_num());
+		System.out.println(productVO.getPrice());
+		System.out.println(productVO.getProductFileVOs());
+		
+		
+		
+		System.out.println(productVO.getP_name()+"::pname");
+		mv.addObject("product", productVO);
 		mv.setViewName("cart/productSelect");
 		
 		return mv;
@@ -48,6 +79,14 @@ public class CartController {
 	
 	@PostMapping("cartInsert")
 	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv) throws Exception {
+		//상세페이지에 들어있는 product의 정보들이 넘어올 것임
+		//
+		
+		
+		
+		
+		
+		
 		
 		
 		int result = cartService.cartInsert(cartVO);
