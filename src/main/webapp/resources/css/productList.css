@@ -20,6 +20,15 @@
 	height: 40px;
 }
 
-li{
+ul.list{
  list-style-type: none;
 	}
+
+.product_list{
+	width: 1050px;
+	height: 2025px;
+}
+.product_list  .list_goods .list {
+    overflow: hidden;
+    width: 1008px;
+}
