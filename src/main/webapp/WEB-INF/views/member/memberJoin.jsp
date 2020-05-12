@@ -77,7 +77,8 @@
 									<td class="memberCols2">
 										<input type="text" name="m_email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch" id="mEmail">
-										&emsp;<a href="#"><span class="bns_button">이메일 중복확인</span></a>
+										
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button">이메일 중복확인</span></a>
 										<p id="s5"></p>
 									</td>
 								</tr>
@@ -95,8 +96,8 @@
 								</tr>
 								<tr class="add">
 									<td class="memberCols1">배송주소</td>
+									
 									<td class="memberCols2">
-					
 										<a href="#">
 											<span class="bns_button">
 												<span class="ico"></span>
@@ -108,6 +109,7 @@
 										</p>
 										<p id="s7"></p>
 									</td>
+									
 								</tr>
 								<tr class="select_sex">
 									<td class="memberCols1">성별</td>
@@ -246,16 +248,47 @@
 
 			}
 			
-			function overlap_email() {
-				
+ 			function overlap_email() {
+				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+				if(regEmail.test(mEmail.value)){//test > true, false //진행순서를 잘 보아야한다.
+					//중복되는 경우
+					
+					//사용가능한 경우
+					
+					$.ajax({
+				     type:"POST",
+				     url:"./checkEmail",
+				     data:{
+				            email:$('#mEmail').val()
+				     },
+				     success:function(data){
+				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
+				    	 
+							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
+								//사용가능한경우
+								alert("사용가능한 이메일 입니다.")
+								s5.innerHTML="사용가능한 이메일 입니다.";
+								s5.style.color="skyblue";	
+							}else{
+								//중복되는경우
+								alert("이미 등록된 이메일입니다. 다시 작성하여 주세요.")
+								s5.innerHTML="이미 등록된 이메일입니다.";
+								s5.style.color="red";	
+							}
+				   	 },
+					 error:function(){
+							alert("에러발생");
+					 }
+					})
+
+				}else{
 				//email 잘못된 이메일 형식인 경우
-				
-				//중복되는 경우
-				
-				//사용가능한 경우
-				
-				
-			}
+					alert("올바른 이메일 형식이 아닙니다.")
+					s5.innerHTML="올바른 이메일 형식이 아닙니다.";
+					s5.style.color="red";	
+				}
+			} 
 			
 			/* .............................................. */
 			

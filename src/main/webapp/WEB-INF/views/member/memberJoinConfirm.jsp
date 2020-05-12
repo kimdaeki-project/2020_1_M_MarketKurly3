@@ -86,11 +86,11 @@
 					
 					<!-- 약관4 --><br>
 					<div class="border_write2">
-					<input class="c1 c2" type="checkbox">
-					무료배송, 할인쿠폰 등 혜택/정보 수신 (필수)<br><br>
-					&emsp;<input class="c1 c3" type="checkbox">SMS  
+					<input class=" c2" type="checkbox">
+					무료배송, 할인쿠폰 등 혜택/정보 수신 (선택)<br><br>
+					&emsp;<input class=" c3" type="checkbox">SMS  
 					&emsp;&emsp;&emsp;
-					<input class="c1 c3" type="checkbox">이메일
+					<input class=" c3" type="checkbox">이메일
 					<img src="${pageContext.request.contextPath}/resources/images/agree sms.PNG" height="35px">
 					</div>
 					

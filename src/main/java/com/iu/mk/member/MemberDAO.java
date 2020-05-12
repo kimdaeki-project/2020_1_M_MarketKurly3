@@ -29,4 +29,8 @@ public class MemberDAO {
 	public MemberVO checkId(MemberVO memberVO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"checkId",memberVO);
 	}
+	
+	public MemberVO checkEmail(MemberVO memberVO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"checkEmail",memberVO);
+	}
 }

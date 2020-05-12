@@ -20,5 +20,9 @@
 	<select id="checkId" parameterType="MemberVO" resultType="MemberVO">
 		SELECT id FROM MEMBER WHERE id=#{id}
 	</select>
+	
+	<select id="checkEmail" parameterType="MemberVO" resultType="MemberVO">
+		SELECT email FROM MEMBER WHERE email=#{email}
+	</select>
   
   </mapper>

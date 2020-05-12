@@ -81,8 +81,19 @@ public class MemberController {
 	
 	//checkEmail
 	@PostMapping("checkEmail")
-	public void checkEmail()throws Exception{
+	public ModelAndView checkEmail(MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO= (MemberVO)memberService.checkEmail(memberVO);
 		
+		String result = "0";//사용불가능
+		if(memberVO==null) {
+			result="1";//사용가능
+		}
+		
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");	
+		
+		return mv;
 	}
 	
 	//memberLogin
