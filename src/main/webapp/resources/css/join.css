@@ -80,7 +80,7 @@
 		
 		.br2 { /* soyeon작성 */
 		vertical-align:top;
-		margin-bottom: 5px;
+		margin-bottom: 8px;
 		}
 		
 		.border_write .memberCols1	{
@@ -163,8 +163,8 @@
 		
 		
 		
-		.avoidDbl		{
-			width:340px;
+		#avoidDbl		{
+			vertical-align:top;
 			margin:0 auto;	
 		}
 
@@ -207,7 +207,21 @@
 		}
 
 
-
+		.bns_button2	{ /* soyeon작성 */
+			display:inline-block;
+			width:120px;
+			height:38px;
+			margin-lefe:10px;
+			font-size:14px;
+			border:1px solid #5f0080;
+			background-color: white;
+			color:#5f0080;
+			text-align:center;
+			line-height:34px;
+			border-radius:4px;
+			padding-top:2px;
+		
+		}
 
 
 

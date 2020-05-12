@@ -104,17 +104,17 @@
 									<td class="memberCols1 br">이메일*</td>
 									<td class="memberCols2">
 										<input type="text" name="m_email" label="이메일"
-										placeholder="예: marketkurly@kurly.com" class="ch" id="mEmail">
+										placeholder="예: marketkurly@kurly.com" class="ch br2" id="mEmail">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button">이메일 중복확인</span></a>
+										<p id="s5"></p>
 										
 										<input type="text" name="m_emailNum" label="인증번호"
-										placeholder="인증번호 입력란" class="ch">
+										placeholder="인증번호 입력란" class="ch br2">
 										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
 										
-										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button disabled">인증번호확인</span></a>
-										
-										<p id="s5"></p>
+										&emsp;<a href="#"><span class="bns_button2 disabled">인증번호 확인</span></a>
+										<!-- <p id="s5"></p> -->
 									</td>
 								</tr>
 								<tr class="mobile">
@@ -130,7 +130,7 @@
 									
 									<td class="memberCols2">
 										<a href="javascipt:void(0);" onclick="goPopup(); return false;">
-											<span class="bns_button">
+											<span class="bns_button br2">
 												<span class="ico"></span>
 												<span class="txt">주소 검색</span>
 											</span>
@@ -145,12 +145,12 @@
 				</tr>
 				
 				<tr>
-					<td><input type="text" style="width: 400px;" id="jibunAddr"
+					<td><input type="text" style="width: 400px;" id="jibunAddr" class="br2"
 						name="jibunAddr" readonly="readonly"/></td>
 				</tr>
 				
 				<tr>
-					<td><input type="text" style="width: 400px;" id="addrDetail"
+					<td><input type="text" style="width: 400px;" id="addrDetail" class="br2"
 						name="addrDetail" /></td>
 				</tr>
 
@@ -333,6 +333,49 @@
 
 			}
 			
+			var mEmailResult=false;
+			mEmail.addEventListener("keyup",function(){
+				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+				if(regEmail.test(mEmail.value)){//test > true, false //진행순서를 잘 보아야한다.
+					//중복되는 경우
+					
+					//사용가능한 경우
+					
+					$.ajax({
+				     type:"POST",
+				     url:"./checkEmail",
+				     data:{
+				            email:$('#mEmail').val()
+				     },
+				     success:function(data){
+				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
+				    	 
+							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
+								//사용가능한경우
+								s5.innerHTML="사용가능한 이메일 입니다.";
+								s5.style.color="skyblue";	
+								mEmailResult=true;
+							}else{
+								//중복되는경우
+								s5.innerHTML="이미 등록된 이메일입니다.";
+								s5.style.color="red";	
+								mEmailResult=false;
+							}
+				   	 },
+					 error:function(){
+							alert("에러발생");
+					 }
+					})
+
+				}else{
+				//email 잘못된 이메일 형식인 경우
+					s5.innerHTML="올바른 이메일 형식이 아닙니다.";
+					s5.style.color="red";	mEmailResult=false;
+				}
+			});
+
+		/* 	
  			function overlap_email() {
 				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
@@ -373,7 +416,7 @@
 					s5.innerHTML="올바른 이메일 형식이 아닙니다.";
 					s5.style.color="red";	
 				}
-			} 
+			}  */
 			
 			/* .............................................. */
 			
@@ -394,6 +437,7 @@
 			mId.addEventListener("blur",function(){
 				if(mId.value==""){
 					s1.innerHTML = "필수 정보입니다."
+					s1.style.color="RED";
 				}
 			});
 			
@@ -492,7 +536,7 @@
 				}
 				if((mIdResult && mPwResult && mPw2Result && check)==false){
 			  //if(!(t1Result && t2Result && t3Result && check)){  //false
-					alert("필수요소들을 입력해주세요")
+					alert("중복확인 및 필수요소들을 입력해주세요")
 			  		//t1.focus();
 					e.preventDefault();
 				}else{
