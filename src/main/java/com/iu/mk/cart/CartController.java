@@ -52,7 +52,7 @@ public class CartController {
 		productVO.setP_num(p_num);
 		System.out.println(productVO.getP_num()+":::pnum");
 		System.out.println(productVO.getContents());
-		System.out.println(productVO.getP_kind());
+		System.out.println(productVO.getKind());
 		System.out.println(productVO.getP_name());
 		System.out.println(productVO.getP_num());
 		System.out.println(productVO.getPrice());
@@ -62,7 +62,7 @@ public class CartController {
 		
 		System.out.println("==========================");
 		System.out.println(productVO.getContents());
-		System.out.println(productVO.getP_kind());
+		System.out.println(productVO.getKind());
 		System.out.println(productVO.getP_name());
 		System.out.println(productVO.getP_num());
 		System.out.println(productVO.getPrice());
