@@ -65,6 +65,8 @@ function init(){
 		}
 }
 </script>
+
+<!-- form 에서 id, name이 form인 경우 설정주기 -->
 <body onload="init();">
 	<form id="form" name="form" method="post">
 		<input type="hidden" id="confmKey" name="confmKey" value=""/>

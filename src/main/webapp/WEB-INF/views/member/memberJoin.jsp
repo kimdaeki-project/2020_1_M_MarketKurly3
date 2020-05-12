@@ -13,31 +13,32 @@
 	
     <c:import url="../template/boot.jsp"></c:import>
  
- <!-- jusoPopup 스크립트 -->   
-    <script language="javascript">
-// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
-//document.domain = "abc.go.kr";
-
-function goPopup(){
-	// 주소검색을 수행할 팝업 페이지를 호출합니다.
-	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	var pop = window.open("./jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+ 
+ 
+	 <!-- jusoPopup 스크립트 (도로명주소)-->   
+	    <script language="javascript">
+	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+	//document.domain = "abc.go.kr";
 	
-	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-}
-
-
-function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
-		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form.roadFullAddr.value = roadFullAddr;
-		document.form.addrDetail.value = addrDetail;
-		document.form.jibunAddr.value = jibunAddr;
-
+	function goPopup(){
+		// 주소검색을 수행할 팝업 페이지를 호출합니다.
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window.open("./jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 		
-}
+		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+	    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
+	
+	
+	function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
+			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			document.form.roadFullAddr.value = roadFullAddr;
+			document.form.addrDetail.value = addrDetail;
+			document.form.jibunAddr.value = jibunAddr;
+	}
+	</script>
 
-</script>
+
 
 </head>
 <body>
@@ -60,7 +61,7 @@ function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
 				<div class="member_join">
 					<h3>*필수입력사항</h3>
 					
-					<form id="frm" name="frmMember" method="post" action="./join_2.html">
+					<form id="form" name="form" method="post" action="./join_2.html">
 						
 						<div class="border_write">
 							<table class="tbl_comm">
@@ -125,12 +126,33 @@ function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
 									<td class="memberCols1">배송주소</td>
 									
 									<td class="memberCols2">
-										<a href="javascipt:void(0);" onclick="confirm_address(); return false;">
+										<a href="javascipt:void(0);" onclick="goPopup(); return false;">
 											<span class="bns_button">
 												<span class="ico"></span>
 												<span class="txt">주소 검색</span>
 											</span>
 										</a>
+<!-- 도로명 주소 검색 / jusoPopup설정:form의 id, name이 form인 경우 -->
+
+		<div id="callBackDiv">
+			<table>
+				<tr>
+					<td><input type="hidden" style="width: 400px;" id="roadFullAddr"
+						name="roadFullAddr" /></td>
+				</tr>
+				
+				<tr>
+					<td><input type="text" style="width: 400px;" id="jibunAddr"
+						name="jibunAddr" /></td>
+				</tr>
+				
+				<tr>
+					<td><input type="text" style="width: 400px;" id="addrDetail"
+						name="addrDetail" /></td>
+				</tr>
+
+			</table>
+		</div>
 										<p class="text_guide">
 											<span>배송가능 여부를 확인할 수 있습니다.</span>
 										</p>
@@ -164,6 +186,7 @@ function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
 									<td class="memberCols1">생년월일</td>
 									<td class="memberCols2">
 										<div class="birthday" id="mBir">	
+										<!-- birth_year/birth_mon/birth_day의 value값 post로 넘기기 -->
 											<input type="text" name="birth_year" id="birth_year" size="4" maxlength="4" placeholder="YYYY">
 											<span class="bar">/</span>
 											<input type="text" name="birth_mon" id="birth_mon" size="2" maxlength="2" placeholder="MM">
@@ -173,6 +196,7 @@ function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
 										<p id="s9"></p>
 									</td>
 								</tr>
+								
 <!-- 								<tr class="route">
 									<td class="memberCols1">추가입력 사항</td>
 									<td class="memberCols2">
@@ -189,6 +213,7 @@ function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
 									
 									</td>
 								</tr> -->
+								
 							</table>
 						</div>
 					<div id="avoidDbl">
@@ -201,34 +226,34 @@ function jusoCallBack(roadFullAddr,addrDetail,jibunAddr){
 			</div>
 		</section>
 
-	<form name="form" id="form" method="post">
 
-		<input type="button" onClick="goPopup();" value="팝업_domainChk" />
-		<div id="list"></div>
-		<div id="callBackDiv">
+<!-- 도로명 주소 검색  -->
+<!-- 	<form name="form" id="form" method="post">
+
+		<div id="callBackDiv">id 없애거나 변경가능
 			<table>
 				<tr>
-					<!-- <td>도로명주소 전체(포멧)</td> -->
-					<td><input type="hidden" style="width: 500px;" id="roadFullAddr"
+					<td>도로명주소 전체(포멧)</td>
+					<td><input type="hidden" style="width: 300px;" id="roadFullAddr"
 						name="roadFullAddr" /></td>
 				</tr>
 				
 				<tr>
-					<!-- <td>지번</td> -->
-					<td><input type="text" style="width: 500px;" id="jibunAddr"
+					<td>지번</td>
+					<td><input type="text" style="width: 300px;" id="jibunAddr"
 						name="jibunAddr" /></td>
 				</tr>
 				
 				<tr>
-					<!-- <td>고객입력 상세주소</td> -->
-					<td><input type="text" style="width: 500px;" id="addrDetail"
+					<td>고객입력 상세주소</td>
+					<td><input type="text" style="width: 300px;" id="addrDetail"
 						name="addrDetail" /></td>
 				</tr>
 
 			</table>
 		</div>
 
-	</form>
+	</form> -->
 
 
 	<c:import url="../template/footer.jsp"></c:import>
