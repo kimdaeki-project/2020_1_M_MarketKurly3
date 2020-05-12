@@ -73,6 +73,16 @@
 			margin:10px 0;
 		}
 		
+		.br { /* soyeon작성 */
+		vertical-align:top;
+		margin-bottom: 30px;
+		}
+		
+		.br2 { /* soyeon작성 */
+		vertical-align:top;
+		margin-bottom: 5px;
+		}
+		
 		.border_write .memberCols1	{
 			padding:30px 0 0 30px;
 			width:150px;

@@ -66,7 +66,7 @@
 						<div class="border_write">
 							<table class="tbl_comm">
 								<tr>
-									<td class="memberCols1">아이디*</td>
+									<td class="memberCols1 br">아이디*</td>
 									<td class="memberCols2">
 										<input type="text" name="m_id" label="아이디"
 										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
@@ -77,7 +77,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="memberCols1">비밀번호*</td>
+									<td class="memberCols1 br">비밀번호*</td>
 									<td class="memberCols2">
 										<input type="password" name="m_pw" label="비밀번호"
 										placeholder="비밀번호를 입력해주세요" id="mPw">
@@ -85,7 +85,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="memberCols1">비밀번호확인*</td>
+									<td class="memberCols1 br">비밀번호확인*</td>
 									<td class="memberCols2">
 										<input type="password" name="m_pw_c" label="비밀번호체크"
 										placeholder="비밀번호를 한번 더 입력해주세요" id="mPw2">
@@ -93,7 +93,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="memberCols1">이름*</td>
+									<td class="memberCols1 br">이름*</td>
 									<td class="memberCols2">
 										<input type="text" name="m_name" label="이름"
 										placeholder="고객님의 이름을 입력해주세요" class="ch" id="mName">
@@ -101,12 +101,19 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="memberCols1">이메일*</td>
+									<td class="memberCols1 br">이메일*</td>
 									<td class="memberCols2">
 										<input type="text" name="m_email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch" id="mEmail">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button">이메일 중복확인</span></a>
+										
+										<input type="text" name="m_emailNum" label="인증번호"
+										placeholder="인증번호 입력란" class="ch">
+										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
+										
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button disabled">인증번호확인</span></a>
+										
 										<p id="s5"></p>
 									</td>
 								</tr>
@@ -114,12 +121,8 @@
 									<td class="memberCols1">휴대폰*</td>
 									<td class="memberCols2">
 										<input type="text" name="m_phone" label="휴대폰"
-										placeholder="숫자만 입력해주세요" class="ch">
-										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
-						
-										<input type="text" name="m_phone_c" label="휴대폰인증" id="mPhone">
-										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button disabled">인증번호확인</span></a>
-										<p id="s6"></p>
+										placeholder="ex. 010-0000-0000 (숫자만 입력)" class="ch">
+										
 									</td>
 								</tr>
 								<tr class="add">
@@ -143,7 +146,7 @@
 				
 				<tr>
 					<td><input type="text" style="width: 400px;" id="jibunAddr"
-						name="jibunAddr" /></td>
+						name="jibunAddr" readonly="readonly"/></td>
 				</tr>
 				
 				<tr>
@@ -161,7 +164,7 @@
 									
 								</tr>
 								<tr class="select_sex">
-									<td class="memberCols1">성별</td>
+									<td class="memberCols1 br">성별</td>
 									<td class="memberCols2">
 										<div class="group_radio" id="mSex">	
 											<label class="label_radio">
@@ -183,7 +186,7 @@
 								</tr>
 								<br>
 								<tr class="birth">
-									<td class="memberCols1">생년월일</td>
+									<td class="memberCols1 br">생년월일</td>
 									<td class="memberCols2">
 										<div class="birthday" id="mBir">	
 										<!-- birth_year/birth_mon/birth_day의 value값 post로 넘기기 -->
