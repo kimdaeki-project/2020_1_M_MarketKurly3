@@ -28,15 +28,18 @@
  	</sql>
  
   	<select id="productList" parameterType="Pager" resultMap="listResult" >
-  		select * from
+  		SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from
+  		(select * from
 			(select P.*, rownum R from
 				(select * from product where
 				<if test="kind!=null">
 					kind=#{kind}
 					<include refid="search"></include> and
 				</if>
-				 p_num>=1 order by p_num desc) P)
-			where R between #{startRow} and #{lastRow}
+				 p_num>=10001 order by p_num desc) P)
+			where R between #{startRow} and #{lastRow}) PP
+			inner join productFile PF
+            on(PP.p_num=PF.p_num)
   	</select>
   	
   	<select id="productNum" resultType="Long">

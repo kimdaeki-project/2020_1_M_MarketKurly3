@@ -91,64 +91,19 @@
 						</li>
 					</ul>
 					
-
-				
-					<ul>
-						<li>
-							<a href="#" class="thumb_goods">
-								<img src="../resources/images/goods_img_01.jpg">
-							</a>
-							<div class="info_goods">
-								<span class="name"><a href="#">[제주창해수산] 딱새우 300g(냉동)</a></span>
-								<span class="price">6,800원</span>
-								
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumb_goods">
-								<img src="../resources/images/goods_img_02.jpg">
-							</a>
-							<div class="info_goods">
-								<span class="name"><a href="#">[일건식] 무가당 생강진액 1L</a></span>
-								<span class="price">15,500원</span>
-								
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumb_goods">
-								<img src="../resources/images/goods_img_03.jpg">
-							</a>
-							<div class="info_goods">
-								<span class="name"><a href="#">[교토마블] 데니쉬 식빵 6종</a></span>
-								<span class="price">7,200원</span>
-								
-							</div>
-						</li>
-						<li>
-							<a href="#" class="thumb_goods">
-								<img src="../resources/images/goods_img_04.jpg">
-							</a>
-							<div class="info_goods">
-								<span class="name"><a href="#">[상하] 더블업 모짜렐라 슬라이스</a></span>
-								<span class="price">3,588원</span>
-								
-							</div>
-						</li>
-					</ul>
 				</div>
 </div>
-	
+	<!-- list 반복 -->
 	<c:forEach items="${list}" var="vo">
 			<li>
 			<a href="../productSelect?p_num=${vo.p_num}" class="thumb_goods">
-				<img src="../resources/images/uploadproduct/${vo.productFileVOs.get(0).fileName}">
+				<img src="../resources/uploadproduct/${vo.productFileVOs.get(0).fileName}">
 			</a>
 				<div class="info_goods">
 					<span><a href="">${vo.p_name}</a></span>
 					<span>${vo.price}</span>
 				</div>
 			</li>	
-
 	 </c:forEach>
 						
 	<!-- 페이지 이동 -->		
