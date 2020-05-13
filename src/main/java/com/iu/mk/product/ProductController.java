@@ -28,6 +28,9 @@ public class ProductController {
 	
 	@GetMapping("productList")
 	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
+		System.out.println("kind : " + pager.getKind());
+		System.out.println("search : " + pager.getSearch());
+		
 		List<ProductVO> ar = productService.productList(pager);
 	//	List<ProductFileVO> ar2 = productFileService.fileList(productVO.getP_num());
 		System.out.println(pager.getTotalPage());

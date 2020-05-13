@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-.container {
+.page_article {
+	width:1050px;
 	margin:0 auto;
 }
 
@@ -13,22 +14,61 @@
 	margin-top:20px;
 	width: 700px;
 	height: 40px;
-	
-}
-.inner_lnb2{
-	width: 700px;
-	height: 40px;
+	padding: 0 20px;
 }
 
+.form-inline{
+	padding: 0 20px;
+	
+}
 ul.list{
  list-style-type: none;
 	}
 
-.product_list{
+.lnbMenu {
+    padding-top: 26px;
+}
+
+
+.goodsList{
 	width: 1050px;
 	height: 2025px;
 }
-.product_list  .list_goods .list {
+
+.goodsList .list_goodss {
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.list_goodss ul .list_li{
+	width:249px;
+	float:left;
+	margin-top:15px;
+	margin-bottom:15px;
+	list-style-type: none;
+}
+
+.goodsList .list_goodss .list .list_li{
+	float: left;
+    width: 320px;
+    padding: 28px 22px 0 0;
+}
+
+
+.goodsList .list_goodss .list .list_li img{
+	width: 290px;
+	height: 395px;
+}
+
+
+.goodsList  .list_goodss .list {
     overflow: hidden;
     width: 1008px;
+	height: 2000px;
+   
+}
+
+.goodsList .list_goodss .inner_listgoods {
+    overflow: hidden;
+    width: 990px;
 }

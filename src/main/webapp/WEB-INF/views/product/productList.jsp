@@ -12,13 +12,11 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
+<div class="page_article">
 
-<div class="product_list">
+<div id="lnbMenu">
 	
-			<div class="list_goods">
-			
 				<div class="inner_listgoods">
-				
 				<div class="btn">
 					<a href="./productWrite" class="btn btn-default">write</a>
 				</div>
@@ -33,7 +31,7 @@
 				<form class="form-inline" action="./productList">
 					<!-- 종류 분류 -->
 					<div class="input-group input-group-sm col-xs-2" >
-				    	<select class="form-control" id="sel1" name="kind">
+				    	<select class="form-control" id="kind" name="kind">
 						    <option value="me">Meat</option>
 						    <option value="ve">Vegetable</option>
 						    <option value="de">Dessert</option>
@@ -47,29 +45,41 @@
 				      <div class="input-group-btn">
 				        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 				      </div>
-		    		</div>		
+		    		</div>
+		    				
 				</form>
+</div>
+</div>
+	<div class="goodsList">
+	
+			<!-- img list -->	
+			<div class="list_goodss">
+			
 				
 				<!-- list 반복 -->
-			<c:forEach items="${list}" var="vo">
-				<ul class="list">
-					<li>
-					<a href="../productSelect?p_num=${vo.p_num}" class="thumb_goods">
-						<img src="../resources/uploadproduct/${vo.productFileVOs.get(0).fileName}" height="396" width="308">
-					</a>
-						<div class="info_goods">
-							<span><a href="">${vo.p_name}</a></span>
-							<span>${vo.price}</span>
-						</div>
-					</li>
-					
-				</ul>	
-			 </c:forEach>
+				
+			<ul class="list">
+				
+					<c:forEach items="${list}" var="vo">
+						
+							<li class="list_li">
+								<a href="../productSelect?p_num=${vo.p_num}" class="thumb_goods">
+									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
+								</a>
+									<div class="info_goods">
+										<span><a href="">${vo.p_name}</a></span>
+										<span>${vo.price}</span>
+									</div>
+							</li>
+							
+					 </c:forEach>
+				
+			 </ul>
 				
 			</div> <!-- innerlistgoods end -->	
 					
 		</div>
-</div>
+
 
 	
 						
@@ -88,7 +98,7 @@
 	</ul>
 	</div>		
 			
-			
+</div><!-- page_article end -->		
 			
 			
 			

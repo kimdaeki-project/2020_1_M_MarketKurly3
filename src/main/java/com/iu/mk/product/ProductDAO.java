@@ -33,6 +33,8 @@ public class ProductDAO {
 	}
 	
 	public List<ProductVO> productList(Pager pager) throws Exception{
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
 		return sqlSession.selectList(NAMESPACE+"productList",pager);
 	}
 	
