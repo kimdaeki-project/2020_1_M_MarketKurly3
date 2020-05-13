@@ -82,7 +82,8 @@
 									<col style="width:auto;">
 								</colgroup>
 								<tbody>
-									<c:forEach items="${list}" var="vo">
+									<c:forEach items="${list}" var="vo" varStatus="status">
+									
 									<tr>
 										<td id="thSelect" class="goods_check">
 											
@@ -100,6 +101,7 @@
 										<td header="thInfo" class="goods_info">
 											<a href="링크걸기" class="name">
 												GAP 방울토마토 500g
+												${plist[status.index].p_name}
 											</a>
 											<dl class="goods_cost">
 												<dt class="screen_out">판매 가격</dt>
@@ -121,7 +123,7 @@
 												<button type="button" class="btn btn_reduce">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_minus_24x4.png" alt="감소">
 												</button>
-												<input type="text" readonly="readonly" class="inp_quantity">
+												<input type="text" readonly="readonly" class="inp_quantity" value="${vo.count}">
 												<button type="button" class="btn btn_rise">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_plus_24x4.png" alt="증가">
 												</button>

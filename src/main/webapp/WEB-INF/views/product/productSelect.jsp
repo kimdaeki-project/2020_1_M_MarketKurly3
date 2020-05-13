@@ -176,6 +176,7 @@
 			//sum.value = parseInt(hm.value) * parseInt(sell_price);
 			
 			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
+			
 			$(document).ready(function() {
 		        $('#count').val(hm.value);
 		    });

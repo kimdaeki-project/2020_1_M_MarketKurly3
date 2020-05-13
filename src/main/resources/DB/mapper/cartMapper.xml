@@ -8,19 +8,30 @@
 
 <mapper namespace="com.iu.mk.cart.CartDAO">
 
-<!-- 
 	<resultMap type="CartVO" id="selectCart">
 		<id column="random_num" property="random_num"/>
 		<result column="m_num" property="m_num"/>
 		<result column="p_num" property="p_num"/>
 		<result column="p_count" property="p_count"/>
 		
-		<collection property="" javaType="List" ofType="">
+		<collection property="productVO" javaType="List" ofType="ProductVO">
+			<id column="p_num" property="p_num"/>
+	  		<result column="p_name" property="p_name"/>
+	  		<result column="price" property="price"/>
+	  		<result column="contents" property="contents"/>
+	  		<result column="kind" property="kind"/>
+		</collection>
 		
+		<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
+			<id column="fileNum" property="fileNum"/>
+	  		<result column="p_num" property="p_num"/>
+	  		<result column="oriName" property="oriName"/> 
+	  		<result column="fileName" property="fileName"/> 
+	  		<result column="kind" property="kind"/> 
 		</collection>
 		
 	</resultMap>
-	 -->
+
 	
 	<select id="CartVO" parameterType="java.lang.Integer" resultType="CartVO">
 		select * from cart where cart_num=#{cart_num};
@@ -28,8 +39,12 @@
 
 
 	<insert id="cartInsert" parameterType="CartVO">
-		insert into cart value (cq_num.nextval, #{p_num}, #{count}, #{cart_num}, 0)
+		insert into cart values (CQ_NUM_SEQ.nextval, #{p_num}, #{count}, #{cart_num}, 0)
 	</insert>
+	
+	<select id="cartList" parameterType="Long" resultType="CartVO">
+		select * from cart where cart_num=#{cart_num}
+	</select>
 
 
 </mapper>

@@ -18,8 +18,8 @@ public class CartService {
 	
 	
 	
-	public List<CartVO> cartList(int num) throws Exception {
-		return cartDAO.cartList(num);
+	public List<CartVO> cartList(Long cart_num) throws Exception {
+		return cartDAO.cartList(cart_num);
 	}
 	
 	

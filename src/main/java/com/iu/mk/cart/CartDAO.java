@@ -17,8 +17,8 @@ public class CartDAO {
 	private final String NAMESPACE = "com.iu.mk.cart.CartDAO.";
 	
 	
-	public List<CartVO> cartList(int num) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"cartList");
+	public List<CartVO> cartList(Long cart_num) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"cartList",cart_num);
 
 	}
 
