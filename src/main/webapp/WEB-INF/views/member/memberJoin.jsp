@@ -61,7 +61,7 @@
 				<div class="member_join">
 					<h3>*필수입력사항</h3>
 					
-					<form id="form" name="form" method="post" action="./join_2.html">
+					<form id="form" name="form" method="post" action="./memberJoin">
 						
 						<div class="border_write">
 							<table class="tbl_comm">
@@ -71,7 +71,7 @@
 										<input type="text" name="m_id" label="아이디"
 										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
 										
-										&emsp;<a href="javascipt:void(0);" onclick="overlap_id(); return false;"><span class="bns_button">중복확인</span></a>
+										&emsp;<a href="javascipt:void(0);" onclick="overlap_id(); return false;" id="test"><span class="bns_button">중복확인</span></a>
 										<p id="s1"></p>
 										<p id="s1_1"></p>
 									</td>
@@ -106,15 +106,15 @@
 										<input type="text" name="m_email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch br2" id="mEmail">
 										
-										&emsp;<a href="javascipt:void(0);" onclick="overlap_email(); return false;"><span class="bns_button">이메일 중복확인</span></a>
+										&emsp;<a href="javascipt:void(0);" onclick="email_injeung(); return false;"><span class="bns_button disabled">인증번호받기</span></a>
 										<p id="s5"></p>
-										
+										<p id="s5_0"></p>
 										<input type="text" name="m_emailNum" label="인증번호"
-										placeholder="인증번호 입력란" class="ch br2">
-										&emsp;<a href="#"><span class="bns_button disabled">인증번호받기</span></a>
+										placeholder="인증번호 입력란" class="ch br2" id="mEmailNum">
 										
-										&emsp;<a href="#"><span class="bns_button2 disabled">인증번호 확인</span></a>
-										<!-- <p id="s5"></p> -->
+										&emsp;<a href="javascipt:void(0);" onclick="email_hwagin(); return false;"><span class="bns_button2 disabled">인증번호 확인</span></a>
+										<p id="s5_1"></p>
+										
 									</td>
 								</tr>
 								<tr class="mobile">
@@ -261,9 +261,7 @@
 
 	<c:import url="../template/footer.jsp"></c:import>
 		
-		<script type="text/javascript">
-			var 
-		</script>
+
 		
 		<script type="text/javascript">
 			var mId = document.getElementById("mId");
@@ -281,6 +279,8 @@
 			var s3 = document.getElementById("s3");	//비번2
 			var s4 = document.getElementById("s4");	//이름
 			var s5 = document.getElementById("s5");	//이메일
+			var s5_0 = document.getElementById("s5_0");	//이메일
+			var s5_1 = document.getElementById("s5_1");	//인증번호 확인
 			var s6 = document.getElementById("s6");	//폰
 			var s7 = document.getElementById("s7");	//주소
 			var s8 = document.getElementById("s8");	//성별
@@ -292,8 +292,8 @@
 			var frm = document.getElementById("frm");
 			
 			
-			/* ...................중복확인........................ */
-			
+			/* ...................중복확인 시작........................ */
+			/* 버튼형 아이디 중복확인 */
 			function overlap_id() {
 				
 				if(mId.value.length<6){
@@ -333,48 +333,45 @@
 
 			}
 			
-			var mEmailResult=false;
-			mEmail.addEventListener("keyup",function(){
-				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-
-				if(regEmail.test(mEmail.value)){//test > true, false //진행순서를 잘 보아야한다.
-					//중복되는 경우
-					
-					//사용가능한 경우
-					
-					$.ajax({
+			/* 이메일 인증메일 보내기 */
+			function email_injeung() {
+				$.ajax({
 				     type:"POST",
-				     url:"./checkEmail",
+				     url:"./injeungEmail.do",
 				     data:{
-				            email:$('#mEmail').val()
+				          m_email:$('#mEmail').val()
 				     },
 				     success:function(data){
-				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
-				    	 
-							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
-								//사용가능한경우
-								s5.innerHTML="사용가능한 이메일 입니다.";
-								s5.style.color="skyblue";	
-								mEmailResult=true;
-							}else{
-								//중복되는경우
-								s5.innerHTML="이미 등록된 이메일입니다.";
-								s5.style.color="red";	
-								mEmailResult=false;
-							}
-				   	 },
+				    	 alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');
+				     },
 					 error:function(){
 							alert("에러발생");
-					 }
-					})
+					 }				     
+				})
+				
+			}
+				
+			/* 인증번호 확인 */
+			function email_hwagin() {
+				$.ajax({
+				     type:"POST", 
+				     url:"./hwaginEmail.do${dice}",
+				     data:{
+				            email:$('#mEmailNum').val()
+				     },
+				     success:function(data){
+				    	 
+				     },
+					 error:function(){
+							alert("에러발생");
+					 }	
+				})
+			}
+			
+			
 
-				}else{
-				//email 잘못된 이메일 형식인 경우
-					s5.innerHTML="올바른 이메일 형식이 아닙니다.";
-					s5.style.color="red";	mEmailResult=false;
-				}
-			});
 
+			/* 버튼형 이메일 중복확인 */
 		/* 	
  			function overlap_email() {
 				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -418,8 +415,9 @@
 				}
 			}  */
 			
-			/* .............................................. */
+			/* ......................중복확인 끝........................ */
 			
+			/* innerhtml 아이디 중복확인 */
 			var mIdResult=false;
 			mId.addEventListener("keyup",function(){
 				//s1.innerHTML="6글자 이상 입력하세요";
@@ -442,9 +440,52 @@
 			});
 			
 			
+			/* innerhtml 이메일 중복확인 */
+			var mEmailResult=false;
+			mEmail.addEventListener("keyup",function(){
+				var regEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+				if(regEmail.test(mEmail.value)){//test > true, false //진행순서를 잘 보아야한다.
+					//중복되는 경우
+					
+					//사용가능한 경우
+					
+					$.ajax({
+				     type:"POST",
+				     url:"./checkEmail",
+				     data:{
+				            email:$('#mEmail').val()
+				     },
+				     success:function(data){
+				    	 data=data.trim();//공백이 들어있을 수 있기때문에 trim 해준다.
+				    	 
+							if(data==1){//한글은 깨질수있기때문에 숫자가 영어로 넘겨준다.
+								//사용가능한경우
+								s5.innerHTML="사용가능한 이메일 입니다.";
+								s5.style.color="skyblue";	
+								mEmailResult=true;
+							}else{
+								//중복되는경우
+								s5.innerHTML="이미 등록된 이메일입니다.";
+								s5.style.color="red";	
+								mEmailResult=false;
+							}
+				   	 },
+					 error:function(){
+							alert("에러발생");
+					 }
+					})
+
+				}else{
+				//email 잘못된 이메일 형식인 경우
+					s5.innerHTML="올바른 이메일 형식이 아닙니다.";
+					s5.style.color="red";	mEmailResult=false;
+				}
+			});
 			
+			
+			/* innerhtml 비밀번호 확인 */
 			var mPwResult=false;
-			
 			mPw.addEventListener("change",function(){//비밀번호의 값이 변경되었을 때
 				//alert("음음") 	//질문 : 첫번째 입력하고 나갔을 때.. 떠도 상관 없음!
 				mPw2.value="";
@@ -473,7 +514,7 @@
 			});
 			
 			
-			
+			/* innerhtml 2차비밀번호 확인 */
 			var mPw2Result=false;
 			mPw2.addEventListener("blur",function(){
 				if(mPw2.value==mPw.value && mPw2.value.length>=1){
@@ -496,7 +537,7 @@
 			
 			
 			
-			
+			/* 이름 */
 			mName.addEventListener("blur",function(){
 				if(mName.value==""){
 					s4.innerHTML = "필수 정보입니다."
@@ -505,14 +546,18 @@
 					s4.innerHTML = ""
 				}
 			});
+			
+			/* 이메일 */
 			mEmail.addEventListener("blur",function(){
 				if(mEmail.value==""){
-					s5.innerHTML = "필수 정보입니다."
-					s5.style.color="RED";
+					s5_0.innerHTML = "필수 정보입니다."
+					s5_0.style.color="RED";
 				}else{
-					s5.innerHTML = ""
+					s5_0.innerHTML = ""
 				}
 			});
+			
+			/* 폰 */
 			mPhone.addEventListener("blur",function(){
 				if(mPhone.value==""){
 					s6.innerHTML = "필수 정보입니다."
@@ -523,6 +568,8 @@
 			});
 			
 			
+			
+			/* 가입전 필수정보 입력확인 */
 			var ch = document.getElementsByClassName("ch");
 			
 			btn_submit.addEventListener("click",function(e){
@@ -545,7 +592,9 @@
 				
 			},false);
 			
-			
+			$("#test").click(function() {
+				
+			});
 			
 		
 		</script>

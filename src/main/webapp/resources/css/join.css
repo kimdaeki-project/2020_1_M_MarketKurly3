@@ -185,11 +185,6 @@
 
 
 
-
-
-
-
-		
 		.bns_button	{
 			display:inline-block;
 			width:130px;
@@ -209,7 +204,7 @@
 
 		.bns_button2	{ /* soyeon작성 */
 			display:inline-block;
-			width:120px;
+			width:130px;
 			height:38px;
 			margin-lefe:10px;
 			font-size:14px;
