@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.mk.member.MemberVO;
@@ -45,24 +44,43 @@ public class CartController {
 	
 	
 
-	
+	@GetMapping("productSelect")
+	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num) throws Exception {
+		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
+		
+		productVO.setP_num(p_num);
+		System.out.println(productVO.getP_num()+":::pnum");
+		System.out.println(productVO.getContents());
+		System.out.println(productVO.getKind());
+		System.out.println(productVO.getP_name());
+		System.out.println(productVO.getP_num());
+		System.out.println(productVO.getPrice());
+		System.out.println(productVO.getProductFileVOs());
+		
+		productVO = (ProductVO) cartService.productSelect(productVO.getP_num());
+		
+		System.out.println("==========================");
+		System.out.println(productVO.getContents());
+		System.out.println(productVO.getKind());
+		System.out.println(productVO.getP_name());
+		System.out.println(productVO.getP_num());
+		System.out.println(productVO.getPrice());
+		System.out.println(productVO.getProductFileVOs());
+		
+		
+		
+		System.out.println(productVO.getP_name()+"::pname");
+		mv.addObject("product", productVO);
+		mv.setViewName("cart/productSelect");
+		
+		return mv;
+	}
 	
 	
 	@PostMapping("cartInsert")
-	public ModelAndView cartInsert(HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
-
-		
-		
-		System.out.println(productVO.getP_num());
-		System.out.println(cartVO.getP_num());
-		System.out.println(cartVO.getCount()+"count..");
-		System.out.println(cartVO.getCart_num());
-		
-		
-		
-		cartVO.setP_num(productVO.getP_num());
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		//cartVO.setCart_num(memberVO.getCount_Num); 해서 장바구니 번호 넣어주기
+	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv) throws Exception {
+		//상세페이지에 들어있는 product의 정보들이 넘어올 것임
+		//
 		
 		
 		int result = cartService.cartInsert(cartVO);
@@ -81,13 +99,4 @@ public class CartController {
 		return mv;
 	}
 	
-	
-	
-	
-	
-	//cartpay.jsp 연결용 나중에 이름 변경 필요
-	@GetMapping("cartPay")
-	public String cartPay() throws Exception{
-		 return "cart/cartPay";
-	}
 }

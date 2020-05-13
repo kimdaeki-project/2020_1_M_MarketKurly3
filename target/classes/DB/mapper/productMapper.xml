@@ -70,12 +70,6 @@
   
   
   
-	<select id="productSelect" parameterType="Long" resultMap="listResult">
-		select P.*, F.*
-		from product P left Join productFile F
-		on (P.p_num = F.p_num)
-		where P.p_num=#{p_num}
-	</select>
   	
   	
   	

@@ -2,24 +2,16 @@ package com.iu.mk.member;
 
 public class MemberVO {
 
-	private long m_num;
 	private String id;
 	private String pw;
 	private String name;
-	private int birth;
+	private int age;
 	private String address;
 	private String phone;
 	private String email;
-	private String sex;
-	private long cart_num;
+	private long m_num;
 	
 	
-	public long getM_num() {
-		return m_num;
-	}
-	public void setM_num(long m_num) {
-		this.m_num = m_num;
-	}
 	public String getId() {
 		return id;
 	}
@@ -38,11 +30,11 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getBirth() {
-		return birth;
+	public int getAge() {
+		return age;
 	}
-	public void setBirth(int birth) {
-		this.birth = birth;
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public String getAddress() {
 		return address;
@@ -62,19 +54,12 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getSex() {
-		return sex;
+	public long getM_num() {
+		return m_num;
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setM_num(long m_num) {
+		this.m_num = m_num;
 	}
-	public long getCart_num() {
-		return cart_num;
-	}
-	public void setCart_num(long cart_num) {
-		this.cart_num = cart_num;
-	}
-
 	
 	
 	

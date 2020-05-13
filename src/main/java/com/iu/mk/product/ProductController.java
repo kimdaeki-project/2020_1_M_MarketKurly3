@@ -79,30 +79,9 @@ public class ProductController {
 		return mv;
 	}
 	
-
-	
-	
-	
-	
-	@GetMapping("productSelect")
-	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num) throws Exception {
-		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
-		
-		productVO.setP_num(p_num);
-		
-		productVO = (ProductVO) productService.productSelect(productVO.getP_num());
-		
-		
-		System.out.println(productVO.getP_name()+"::pname");
-		
-		
-		mv.addObject("product", productVO);
-		mv.setViewName("product/productSelect");
-		
-		return mv;
+	//cartpay.jsp 연결용 나중에 이름 변경 필요
+	@GetMapping("productPay")
+	public String productPay() throws Exception{
+		 return "product/productPay";
 	}
-	
-	
-	
-	
 }

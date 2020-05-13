@@ -61,7 +61,6 @@ public class MemberController {
 		return mv;
 	}
 	
-	//중복확인 이므로 post타입만 사용 (checkId,checkEmail)
 	//checkId
 	@PostMapping("checkId")
 	public ModelAndView checkId(MemberVO memberVO)throws Exception{
