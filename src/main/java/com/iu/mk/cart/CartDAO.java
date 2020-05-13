@@ -28,7 +28,7 @@ public class CartDAO {
 	 */
 
 	public int cartInsert(CartVO cartVO) throws Exception {
-		return sqlSession.insert(NAMESPACE + "cartInsert");
+		return sqlSession.insert(NAMESPACE + "cartInsert", cartVO);
 	}
 	
 	

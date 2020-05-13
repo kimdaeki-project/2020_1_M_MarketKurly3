@@ -86,8 +86,21 @@ public class CartController {
 	
 	
 	@PostMapping("cartInsert")
-	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv) throws Exception {
+	public ModelAndView cartInsert(HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
 
+		
+		
+		System.out.println(productVO.getP_num());
+		System.out.println(cartVO.getP_num());
+		System.out.println(cartVO.getCount()+"count..");
+		System.out.println(cartVO.getCart_num());
+		
+		
+		
+		cartVO.setP_num(productVO.getP_num());
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		//cartVO.setCart_num(memberVO.getCount_Num); 해서 장바구니 번호 넣어주기
+		
 		
 		int result = cartService.cartInsert(cartVO);
 		if(result>0) {

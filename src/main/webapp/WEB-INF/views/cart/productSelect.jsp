@@ -15,6 +15,10 @@
 		</style>
 	</head>
 <body onload="init();">
+
+	
+
+
 	<c:import url="../template/header.jsp"></c:import>
 	
 	
@@ -76,19 +80,19 @@
 			<div class="cartPut">
 				<div class="inner_option">
 					<!-- strong>통통살 가라아게</strong> --><!-- display:none -->
+					<form name="fo" method="get">
 					<div class="in_option">
 						<ul class="list_nopackage">
 							<li>
 								<span class="tit_item">구매수량</span>
 								<div class="option">
 									<span class="count">
-										<form name="fo" method="get">
-										<input type="hidden" name="sell_price" value="${product.price}">
-										<button type="button" class="btn down" onclick="del();" value="-">수량내리기</button>
-										<input type="number" readonly="readonly" onchange="change();" name="amount" class="inp" value="1" size="10">
-										<button type="button" class="btn up" onclick="add();"  value="+">수량올리기</button>
-										금액  : <input type="text" name="num" size="11" readonly="readonly" class=""> 원
-										</form>
+										
+											<input type="hidden" name="sell_price" value="${product.price}">
+											<button type="button" class="btn down" onclick="del();" value="-">-</button>
+											<input type="number" readonly="readonly" onchange="change();" name="amount" class="inp" value="1" size="10">
+											<button type="button" class="btn up" onclick="add();"  value="+">+</button>
+										
 									</span>
 									<!-- <span class="price">
 										<span class="ori_price">4,800원</span>
@@ -101,7 +105,7 @@
 							<div class="price">
 								<strong class="tit">총 상품 금액:</strong>
 								<span class="sum" name="su">
-									<input type="text" name="num" class="num" size="11" readonly="readonly" class=""> 원
+									<p name="num" class="num" id="num"></p>
 									<!-- <span class="num">6,720</span> -->
 									<span class="won">원</span>
 								</span>
@@ -109,19 +113,25 @@
 							<p class="text_point"></p>
 						</div><!-- total close -->
 					</div><!-- in_option close -->
-					<div class="group_btn">
-						<span class="btn_type1">
-							<button type="button" class="txt_type">장바구니 담기</button>
-						</span>
-					</div>
+					</form>
+					
+					<form action="./cartInsert" method="post" name="frmWishlist">
+						<input type="hidden" name="count" id="count" value="">
+						<input type="hidden" name="p_num" value="${product.p_num}">
+						<div class="group_btn">
+							<span class="btn_type1">
+								<button type="submit" class="txt_type">장바구니 담기</button>
+							</span>
+						</div>
+					</form>
 				</div><!-- inner_option close -->
-				<form action="" method="post" name="frmBuyNow">
+			<!-- 	<form action="" method="post" name="frmBuyNow">
 					<input type="hidden" name="mode" value="addItem">
 					<input type="hidden" name="goodsno" value="">
-				</form>
-				<form action="" method="post" name="frmWishlist">
+				</form> -->
+				
 					
-				</form>
+				
 				
 				
 			</div><!-- cartput close -->
@@ -134,50 +144,69 @@
 	<c:import url="../template/footer.jsp"></c:import>
 	
 	
-	<script type="text/javascript">
+
+		<script type="text/javascript">
 		var sell_price;
 		var amount;
+		/* var aaaa = document.getElementById("num")
+		aaaa.innerHTML='ddddddd'; */
+	
 		
 		function init () {
-			sell_price = document.form.sell_price.value;
-			amount = document.form.amount.value;
-			document.form.sum.value = sell_price;
+			sell_price = parseInt(document.fo.sell_price.value);
+			console.log(sell_price);
+			console.log(typeof sell_price);
+			amount = document.fo.amount.value;
+			//document.fo.num.value = sell_price;
+			//document.fo.num.value = sell_price;
+			
+			//document.fo.num.innerHTML=sell_price;
+			document.getElementById("num").innerHTML=sell_price;
 			change();
 		}
 		
+		//document.getElementById("num").innerHTML=sell_price;
 		
 		function add () {
-			hm = document.form.amount;
-			sum = document.form.sum;
+			hm = document.fo.amount;
+			sum = document.fo.num;
 			hm.value ++ ;
+			
 
-			sum.value = parseInt(hm.value) * sell_price;
+			//sum.value = parseInt(hm.value) * parseInt(sell_price);
+			
+			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
+			$(document).ready(function() {
+		        $('#count').val(hm.value);
+		    });
 		}
 
 		
 		function del () {
-			hm = document.form.amount;
-			sum = document.form.sum;
+			hm = document.fo.amount;
+			sum = document.fo.num;
 				if (hm.value > 1) {
 					hm.value -- ;
-					sum.value = parseInt(hm.value) * sell_price;
+					//num.value = parseInt(hm.value) * sell_price;
+					
+					document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
 				}
 		}
 		
 		
 		function change(){
 			hm = document.fo.amount;
-			sum = document.fo.sum;
+			num = document.fo.num;
 				if(hm.value < 0){
 					hm.value = 0;
 				}
-			sum.value = parseInt(hm.value) * sell_price;
+			//num.value = parseInt(hm.value) * sell_price;
+			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
+			
 		}
 		
 	
 	</script>
-	
-	
 	
 </body>
 </html>

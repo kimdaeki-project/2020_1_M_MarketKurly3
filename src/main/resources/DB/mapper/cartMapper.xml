@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
+
+
 <mapper namespace="com.iu.mk.product.ProductDAO">
 
 <!-- 
@@ -48,9 +50,9 @@
 		where P.p_num=#{p_num}
 	</select>
 
-
-
-
+	<insert id="cartInsert" parameterType="CartVO">
+		insert into cart value (cq_num.nextval, #{p_num}, #{count}, #{cart_num}, 0)
+	</insert>
 
 
 </mapper>

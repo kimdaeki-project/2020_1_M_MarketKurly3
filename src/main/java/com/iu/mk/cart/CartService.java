@@ -31,16 +31,11 @@ public class CartService {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 	
 	public int cartInsert(CartVO cartVO) throws Exception{
 		
-		//시퀀스 번호 받기 -- random_num
+		
 		
 		int result = cartDAO.cartInsert(cartVO);
 		
