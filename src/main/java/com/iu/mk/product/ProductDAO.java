@@ -39,4 +39,9 @@ public class ProductDAO {
 	}
 	
 
+	public ProductVO productSelect(Long p_num) throws Exception{
+		System.out.println(p_num+":::dao_num");
+		return sqlSession.selectOne(NAMESPACE+"productSelect",p_num);
+	}
+	
 }

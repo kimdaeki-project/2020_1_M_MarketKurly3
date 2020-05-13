@@ -77,4 +77,11 @@ public class ProductService {
 	
 	
 	
+	public ProductVO productSelect(Long p_num) throws Exception{
+		System.out.println(p_num+":::sservice_num");
+		return productDAO.productSelect(p_num);
+	}
+	
+	
+	
 }
