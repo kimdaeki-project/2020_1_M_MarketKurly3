@@ -68,7 +68,7 @@
 								<tr>
 									<td class="memberCols1 br">아이디*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_id" label="아이디"
+										<input type="text" name="id" label="아이디"
 										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="overlap_id(); return false;" id="test"><span class="bns_button">중복확인</span></a>
@@ -79,7 +79,7 @@
 								<tr>
 									<td class="memberCols1 br">비밀번호*</td>
 									<td class="memberCols2">
-										<input type="password" name="m_pw" label="비밀번호"
+										<input type="password" name="pw" label="비밀번호"
 										placeholder="비밀번호를 입력해주세요" id="mPw">
 										<p id="s2"></p>
 									</td>
@@ -87,7 +87,7 @@
 								<tr>
 									<td class="memberCols1 br">비밀번호확인*</td>
 									<td class="memberCols2">
-										<input type="password" name="m_pw_c" label="비밀번호체크"
+										<input type="password" name="pw2" label="비밀번호체크"
 										placeholder="비밀번호를 한번 더 입력해주세요" id="mPw2">
 										<p id="s3"></p>
 									</td>
@@ -95,7 +95,7 @@
 								<tr>
 									<td class="memberCols1 br">이름*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_name" label="이름"
+										<input type="text" name="name" label="이름"
 										placeholder="고객님의 이름을 입력해주세요" class="ch" id="mName">
 										<p id="s4"></p>
 									</td>
@@ -103,13 +103,13 @@
 								<tr>
 									<td class="memberCols1 br">이메일*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_email" label="이메일"
+										<input type="text" name="email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch br2" id="mEmail">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="email_injeung(); return false;"><span class="bns_button disabled">인증번호받기</span></a>
 										<p id="s5"></p>
 										<p id="s5_0"></p>
-										<input type="text" name="m_emailNum" label="인증번호"
+										<input type="text" name="emailNum" label="인증번호"
 										placeholder="인증번호 입력란" class="ch br2" id="mEmailNum">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="email_hwagin(); return false;"><span class="bns_button2 disabled">인증번호 확인</span></a>
@@ -120,7 +120,7 @@
 								<tr class="mobile">
 									<td class="memberCols1">휴대폰*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_phone" label="휴대폰"
+										<input type="text" name="phone" label="휴대폰"
 										placeholder="ex. 010-0000-0000 (숫자만 입력)" class="ch">
 										
 									</td>
@@ -166,17 +166,17 @@
 								<tr class="select_sex">
 									<td class="memberCols1 br">성별</td>
 									<td class="memberCols2">
-										<div class="group_radio" id="mSex">	
+										<div class="group_radio" id="mSex" >	
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="man">
+												<input type="radio" name="sex" label="성별" value="man">
 												<span class="text_position">남자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="woman">
+												<input type="radio" name="sex" label="성별" value="woman">
 												<span class="text_position">여자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="nochoice">
+												<input type="radio" name="sex" label="성별" value="nochoice">
 												<span class="text_position">선택안함</span>
 											</label>
 				
@@ -195,6 +195,7 @@
 											<input type="text" name="birth_mon" id="birth_mon" size="2" maxlength="2" placeholder="MM">
 											<span class="bar">/</span>
 											<input type="text" name="birth_day" id="birth_day" size="2" maxlength="2" placeholder="DD">
+											
 										</div>
 										<p id="s9"></p>
 									</td>
@@ -339,7 +340,7 @@
 				     type:"POST",
 				     url:"./injeungEmail.do",
 				     data:{
-				          m_email:$('#mEmail').val()
+				          email:$('#mEmail').val()
 				     },
 				     success:function(data){
 				    	 alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');
@@ -357,7 +358,7 @@
 				     type:"POST", 
 				     url:"./hwaginEmail.do${dice}",
 				     data:{
-				            email:$('#mEmailNum').val()
+				            emailNum:$('#mEmailNum').val()
 				     },
 				     success:function(data){
 				    	 
@@ -568,7 +569,8 @@
 			});
 			
 			
-			
+	/* -------------------------------------------------------------*/
+	
 			/* 가입전 필수정보 입력확인 */
 			var ch = document.getElementsByClassName("ch");
 			

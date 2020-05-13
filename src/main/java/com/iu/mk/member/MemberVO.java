@@ -6,12 +6,40 @@ public class MemberVO {
 	private String id;
 	private String pw;
 	private String name;
-	private int birth;
-	private String address;
+	private String birth;//
+
+	private String birth_year;
+	private String birth_mon;
+	private String birth_day;
+	
+	
+	public String getBirth_year() {
+		return birth_year;
+	}
+	public void setBirth_year(String birth_year) {
+		this.birth_year = birth_year;
+	}
+	public String getBirth_mon() {
+		return birth_mon;
+	}
+	public void setBirth_mon(String birth_mon) {
+		this.birth_mon = birth_mon;
+	}
+	public String getBirth_day() {
+		return birth_day;
+	}
+	public void setBirth_day(String birth_day) {
+		this.birth_day = birth_day;
+	}
+	
+	
+	
+	private String address;//
 	private String phone;
 	private String email;
 	private String sex;
 	private long cart_num;
+	
 	
 	
 	public long getM_num() {
@@ -38,12 +66,14 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getBirth() {
+	
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+	
 	public String getAddress() {
 		return address;
 	}
@@ -74,6 +104,9 @@ public class MemberVO {
 	public void setCart_num(long cart_num) {
 		this.cart_num = cart_num;
 	}
+	
+	
+
 
 	
 	

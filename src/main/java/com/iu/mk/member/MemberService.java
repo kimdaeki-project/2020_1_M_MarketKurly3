@@ -13,7 +13,7 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public int memberJoin(MemberVO memberVO, HttpSession session)throws Exception{
+	public int memberJoin(MemberVO memberVO)throws Exception{
 		return memberDAO.memberJoin(memberVO);
 	}
 	
