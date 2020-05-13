@@ -24,7 +24,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-
+	
 	
 	@GetMapping("productList")
 	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
@@ -32,7 +32,6 @@ public class ProductController {
 		System.out.println("search : " + pager.getSearch());
 		
 		List<ProductVO> ar = productService.productList(pager);
-	//	List<ProductFileVO> ar2 = productFileService.fileList(productVO.getP_num());
 		System.out.println(pager.getTotalPage());
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);

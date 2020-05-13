@@ -17,9 +17,7 @@
 <div id="lnbMenu">
 	
 				<div class="inner_listgoods">
-				<div class="btn">
-					<a href="./productWrite" class="btn btn-default">write</a>
-				</div>
+				
 				
 				<div class="inner_lnb">
 					<div class="ico_cate">
@@ -63,12 +61,12 @@
 					<c:forEach items="${list}" var="vo">
 						
 							<li class="list_li">
-								<a href="../productSelect?p_num=${vo.p_num}" class="thumb_goods">
+								<a href="../product/productSelect?p_num=${vo.p_num}" class="thumb_goods">
 									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
 								</a>
 									<div class="info_goods">
-										<span><a href="">${vo.p_name}</a></span>
-										<span>${vo.price}</span>
+										<span class="name"><a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a></span>
+										<span class="cost">${vo.price}원</span>
 									</div>
 							</li>
 							
@@ -84,7 +82,7 @@
 	
 						
 	<!-- 페이지 이동 -->		
-	<div>
+	<div class="page1">
 	<ul class="pagination">
 		<c:if test="${pager.curBlock gt 1}">
 			<li><a href="./productList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
@@ -97,12 +95,13 @@
 		</c:if>
 	</ul>
 	</div>		
+	
+	<c:import url="../template/footer.jsp"></c:import>
+</body>
+</html>
 			
 </div><!-- page_article end -->		
 			
 			
 			
 			
-<c:import url="../template/footer.jsp"></c:import>
-</body>
-</html>

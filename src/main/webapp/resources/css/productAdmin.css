@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@charset "UTF-8";
+
 .page_article {
 	width:1050px;
 	height: 100%;
@@ -11,24 +13,11 @@
 	float: right;
 }
 
-.inner_lnb{
-	margin-top:20px;
-	width: 700px;
-	height: 40px;
-	padding: 0 20px;
-}
 
-.form-inline{
-	padding: 0 20px;
-	
-}
 ul.list{
  list-style-type: none;
 	}
 
-.lnbMenu {
-    padding-top: 26px;
-}
 
 
 .goodsList{
