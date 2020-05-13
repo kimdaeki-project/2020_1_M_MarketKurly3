@@ -10,19 +10,25 @@ import com.iu.mk.product.ProductVO;
 
 @Repository
 public class CartDAO {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
+
 	private final String NAMESPACE = "com.iu.mk.product.ProductDAO.";
 	
 	
 	public List<CartVO> cartList(int num) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"cartList");
+
 	}
-	
-	
-	public int cartInsert(CartVO cartVO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"cartInsert");
+
+	/*
+	 * public Long getCartNum() throws Exception {
+	 * return.sqlSession.select(NAMESPACE+"getCartNum"); }
+	 */
+
+	public int cartInsert(CartVO cartVO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "cartInsert", cartVO);
 	}
 	
 	

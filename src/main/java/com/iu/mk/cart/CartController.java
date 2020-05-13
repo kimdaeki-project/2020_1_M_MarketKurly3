@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.mk.member.MemberVO;
@@ -70,6 +71,8 @@ public class CartController {
 		
 		
 		System.out.println(productVO.getP_name()+"::pname");
+		
+		
 		mv.addObject("product", productVO);
 		mv.setViewName("cart/productSelect");
 		
@@ -77,10 +80,26 @@ public class CartController {
 	}
 	
 	
+	
+	
+	
+	
+	
 	@PostMapping("cartInsert")
-	public ModelAndView cartInsert(HttpServletRequest request, CartVO cartVO, ModelAndView mv) throws Exception {
-		//상세페이지에 들어있는 product의 정보들이 넘어올 것임
-		//
+	public ModelAndView cartInsert(HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
+
+		
+		
+		System.out.println(productVO.getP_num());
+		System.out.println(cartVO.getP_num());
+		System.out.println(cartVO.getCount()+"count..");
+		System.out.println(cartVO.getCart_num());
+		
+		
+		
+		cartVO.setP_num(productVO.getP_num());
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		//cartVO.setCart_num(memberVO.getCount_Num); 해서 장바구니 번호 넣어주기
 		
 		
 		int result = cartService.cartInsert(cartVO);
