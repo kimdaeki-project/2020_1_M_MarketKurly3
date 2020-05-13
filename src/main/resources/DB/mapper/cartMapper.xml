@@ -8,7 +8,7 @@
 
 <mapper namespace="com.iu.mk.cart.CartDAO">
 
-	<resultMap type="CartVO" id="selectCart">
+	<resultMap type="CartVO" id="cartResult">
 		<id column="random_num" property="random_num"/>
 		<result column="m_num" property="m_num"/>
 		<result column="p_num" property="p_num"/>
@@ -42,7 +42,7 @@
 		insert into cart values (CQ_NUM_SEQ.nextval, #{p_num}, #{count}, #{cart_num}, 0)
 	</insert>
 	
-	<select id="cartList" parameterType="Long" resultType="CartVO">
+	<select id="cartList" parameterType="Long" resultMap="cartResult">
 		select * from cart where cart_num=#{cart_num}
 	</select>
 
