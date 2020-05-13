@@ -6,7 +6,7 @@
   <mapper namespace="com.iu.mk.member.MemberDAO">
   
 	<insert id="memberJoin" parameterType="MemberVO" >
-		insert into member VALUES (M_NUM_SEQ.nextval,#{id},#{pw},#{name},#{birth},#{address},#{phone},#{email},#{sex},CART_NUM_SEQ.nextval)
+		insert into member VALUES (#{id},#{pw},#{name},#{age},#{address},#{phone},#{email},M_NUM_SEQ.nextval)
 	</insert> 
   
   	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
