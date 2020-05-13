@@ -16,14 +16,6 @@ public class CartService {
 	
 	
 	
-	public ProductVO productSelect(Long p_num) throws Exception{
-		System.out.println(p_num+":::sservice_num");
-		return cartDAO.productSelect(p_num);
-	}
-	
-	
-	
-	
 	
 	
 	public List<CartVO> cartList(int num) throws Exception {
@@ -31,16 +23,11 @@ public class CartService {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 	
 	public int cartInsert(CartVO cartVO) throws Exception{
 		
-		//시퀀스 번호 받기 -- random_num
+		
 		
 		int result = cartDAO.cartInsert(cartVO);
 		
