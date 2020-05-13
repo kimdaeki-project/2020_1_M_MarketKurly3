@@ -6,7 +6,7 @@
 
 
 
-<mapper namespace="com.iu.mk.product.ProductDAO">
+<mapper namespace="com.iu.mk.cart.CartDAO">
 
 <!-- 
 	<resultMap type="CartVO" id="selectCart">
@@ -25,30 +25,7 @@
 	<select id="CartVO" parameterType="java.lang.Integer" resultType="CartVO">
 		select * from cart where cart_num=#{cart_num};
 	</select> 
-	<resultMap type="ProductVO" id="selectResult">																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
-		<id column="p_num" property="p_num"/>
-		<result column="p_name" property="p_name"/>
-		<result column="price" property="price"/>
-		<result column="contents" property="contents"/>
-		<result column="kind" property="kind"/>
-		
-		<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
-			<id column="fileNum" property="fileNum"/>
-			<result column="p_num" property="p_num"/>
-			<result column="oriName" property="oriName"/>
-			<result column="fileName" property="fileName"/>
-			<result column="kind" property="kind"/>
-		</collection>
-	</resultMap>
 
-
-
-	<select id="productSelect" parameterType="Long" resultMap="selectResult">
-		select P.*, F.*
-		from product P left Join productFile F
-		on (P.p_num = F.p_num)
-		where P.p_num=#{p_num}
-	</select>
 
 	<insert id="cartInsert" parameterType="CartVO">
 		insert into cart value (cq_num.nextval, #{p_num}, #{count}, #{cart_num}, 0)

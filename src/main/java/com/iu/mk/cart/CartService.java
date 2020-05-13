@@ -16,14 +16,6 @@ public class CartService {
 	
 	
 	
-	public ProductVO productSelect(Long p_num) throws Exception{
-		System.out.println(p_num+":::sservice_num");
-		return cartDAO.productSelect(p_num);
-	}
-	
-	
-	
-	
 	
 	
 	public List<CartVO> cartList(int num) throws Exception {

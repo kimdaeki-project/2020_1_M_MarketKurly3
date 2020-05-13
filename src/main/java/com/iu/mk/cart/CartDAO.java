@@ -14,7 +14,7 @@ public class CartDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private final String NAMESPACE = "com.iu.mk.product.ProductDAO.";
+	private final String NAMESPACE = "com.iu.mk.cart.CartDAO.";
 	
 	
 	public List<CartVO> cartList(int num) throws Exception{
@@ -31,12 +31,7 @@ public class CartDAO {
 		return sqlSession.insert(NAMESPACE + "cartInsert", cartVO);
 	}
 	
-	
-	public ProductVO productSelect(Long p_num) throws Exception{
-		System.out.println(p_num+":::dao_num");
-		return sqlSession.selectOne(NAMESPACE+"productSelect",p_num);
-	}
-	
+
 	
 	
 }

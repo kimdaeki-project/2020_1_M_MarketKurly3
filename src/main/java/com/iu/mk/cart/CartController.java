@@ -45,43 +45,6 @@ public class CartController {
 	
 	
 
-	@GetMapping("productSelect")
-	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num) throws Exception {
-		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
-		
-		productVO.setP_num(p_num);
-		System.out.println(productVO.getP_num()+":::pnum");
-		System.out.println(productVO.getContents());
-		System.out.println(productVO.getKind());
-		System.out.println(productVO.getP_name());
-		System.out.println(productVO.getP_num());
-		System.out.println(productVO.getPrice());
-		System.out.println(productVO.getProductFileVOs());
-		
-		productVO = (ProductVO) cartService.productSelect(productVO.getP_num());
-		
-		System.out.println("==========================");
-		System.out.println(productVO.getContents());
-		System.out.println(productVO.getKind());
-		System.out.println(productVO.getP_name());
-		System.out.println(productVO.getP_num());
-		System.out.println(productVO.getPrice());
-		System.out.println(productVO.getProductFileVOs());
-		
-		
-		
-		System.out.println(productVO.getP_name()+"::pname");
-		
-		
-		mv.addObject("product", productVO);
-		mv.setViewName("cart/productSelect");
-		
-		return mv;
-	}
-	
-	
-	
-	
 	
 	
 	
@@ -118,4 +81,13 @@ public class CartController {
 		return mv;
 	}
 	
+	
+	
+	
+	
+	//cartpay.jsp 연결용 나중에 이름 변경 필요
+	@GetMapping("cartPay")
+	public String cartPay() throws Exception{
+		 return "cart/cartPay";
+	}
 }
