@@ -115,7 +115,7 @@
 					</div><!-- in_option close -->
 					</form>
 					
-					<form action="./cartInsert" method="post" name="frmWishlist">
+					<form action="../cart/cartInsert" method="post" name="frmWishlist">
 						<input type="hidden" name="count" id="count" value="">
 						<input type="hidden" name="p_num" value="${product.p_num}">
 						<div class="group_btn">
