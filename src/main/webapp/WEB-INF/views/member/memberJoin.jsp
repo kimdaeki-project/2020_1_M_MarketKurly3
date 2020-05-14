@@ -145,7 +145,7 @@
 				</tr>
 				
 				<tr>
-					<td><input type="text" style="width: 400px;" id="jibunAddr" class="br2"
+					<td><input type="text" style="width: 400px;" id="jibunAddr" class="br2 ch"
 						name="jibunAddr" readonly="readonly"/></td>
 				</tr>
 				
@@ -168,15 +168,15 @@
 									<td class="memberCols2">
 										<div class="group_radio" id="mSex" >	
 											<label class="label_radio">
-												<input type="radio" name="sex" label="성별" value="man">
+												<input type="radio" name="sex" label="성별" value="man" class="sex">
 												<span class="text_position">남자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex" label="성별" value="woman">
+												<input type="radio" name="sex" label="성별" value="woman" class="sex">
 												<span class="text_position">여자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex" label="성별" value="nochoice">
+												<input type="radio" name="sex" label="성별" value="nochoice" class="sex" checked="checked">
 												<span class="text_position">선택안함</span>
 											</label>
 				
@@ -223,7 +223,7 @@
 						
 					<div id="avoidDbl">
 						<input type="submit" class="btn_sm" id="btn_submit" value="가입하기">
-						<input type="submit"  id="btn_submit2" value="가입하기"><br><br><br>
+						<br><br><br>
 					</div>
 					</form>
 				
@@ -274,7 +274,7 @@
 			var mEmail = document.getElementById("mEmail"); 
 			var mPhone = document.getElementById("mPhone"); 
 			
-			
+		
 			var ch = document.getElementsByClassName("ch");
 			var s1 = document.getElementById("s1");	//아이디
 			var s1_1 = document.getElementById("s1_1");	//아이디
@@ -505,7 +505,7 @@
 					s2.style.color="skyblue";
 					mPwResult=true;
 				}else if(mPw.value.length<6 && mPw.value.length>=1){
-					s2.innerHTML="비밀번호를 다시 입력해주세요.";
+					s2.innerHTML="비밀번호를 6글자 이상 다시 입력해주세요.";
 					s2.style.color="RED";
 					mPwResult=false;
 				}else if(mPw.value==""){
@@ -564,7 +564,7 @@
 			/* 폰 */
  			mPhone.addEventListener("blur",function(){
 				if(mPhone.value==""){
-					s6.innerHTML = "필수 정보입니다."
+					s6.innerHTML = "필수 정보입니다.";
 					s6.style.color="RED";
 				}else{
 					s6.innerHTML = ""
@@ -573,6 +573,16 @@
 			
 			
 	/* -------------------------------------------------------------*/
+		var sex = document.getElementsByClassName("sex");
+ 		
+			for(i=0; i<sex.length; i++){
+				if(sex[i].value==null){
+				sex[i].value=="";
+			}
+		} 
+
+		
+		
 	
 			/* 가입전 필수정보 입력확인 */
 			//넘어가기 전에 확인하려면 input타입의 submit을 button으로 바꿔서 실행해본다
@@ -599,7 +609,13 @@
 					console.log(mPwResult);
 					console.log(mPw2Result);
 					console.log(check);
+
 					
+					if(mIdResult==false){
+						s1_1.innerHTML = "아이디 중복확인을 눌러주세요";
+						s1_1.style.color="RED";
+						
+					}
 				}
 				
 			

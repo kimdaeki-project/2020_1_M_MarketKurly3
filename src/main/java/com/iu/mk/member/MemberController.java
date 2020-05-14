@@ -26,7 +26,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	//memberJoinConfirm
+	//memberJoinConfirm (약관동의)
 	@GetMapping("memberJoinConfirm")
 	public ModelAndView memberJoinConfirm(MemberVO memberVO) {
 		ModelAndView mv = new ModelAndView();
@@ -54,13 +54,14 @@ public class MemberController {
 		memberVO.setAddress(roadFullAddr);
 		System.out.println(memberVO.getAddress());
 		
+		
 
 		int result = 0;
 		try {	
 			result = memberService.memberJoin(memberVO);
 		} catch (Exception e) {
 			
-			  mv.addObject("result","내용을 입력해주세요"); mv.addObject("path","memberJoin");
+			  mv.addObject("result","에러발생"); mv.addObject("path","memberJoin");
 			  mv.setViewName("common/result");
 			 
 			
@@ -159,6 +160,16 @@ public class MemberController {
 		session.invalidate(); // session끊기(무효화)
 		//redirect는 String을 써야한다.
 		return "redirect:../";
+	}
+	
+	
+	//memberMyPage
+	@GetMapping("memberMyPage")
+	public void memberMyPage( )throws Exception{
+		
+		//MemberVO memberVO =(MemberVO)session.getAttribute("member"); //Login할때 받아온 MemberVO값(value)을 member(key)에 담아주었다.
+		//마이페이지 들어오려면 이미 로그인된 상태니까 굳이 session보낼필요 없을듯 
+		
 	}
 	
 	
