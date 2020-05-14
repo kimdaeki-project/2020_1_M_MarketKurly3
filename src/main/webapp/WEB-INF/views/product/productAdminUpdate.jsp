@@ -25,7 +25,7 @@
  
   	<div class="form-group">
   	<label for="kind">kind:</label>
-      <select class="form-control" id="kind" name="kind"  onchange="init()">
+      <select class="form-control" id="kind" name="kind"  >
 				  <option value="me" >Meat</option>
 				  <option value="ve" >Vegetable</option>
 				  <option value="de" >Dessert</option>
@@ -75,17 +75,29 @@
 	alert(kind);  /* de */
 	
 	
-	if($("#kind").val()==kind){
+	if($("#kind option[value='me']")==kind){
+		$("#kind").val("me");
+	}else if($("#kind option[value='de']")==kind){
+		$("#kind").val("de");
+	}
+	
+	//이상햐게 됨
+	/* if($("#kind option[value='me']")==kind){
+		$("#kind").val('me');
+	}else if($("#kind option[value='de']")==kind){
+		$("#kind").val('de');
+	}
+	 */
+	
+/* 	
+	if($("#kind option").val()==kind){
 		$(this).attr("selected", "selected");
 	} 
 	
-	
-	function init(){
-		var kind = document.getElementById("h3").innerText;	
-		 document.getElementById("kind").innerText="ddd"+kind;
-	}
-	
-
+	$('select').on('change',function(){
+		alert(this.value);
+	})	;
+ */
 		
 	
 	/* $("#kind").val(kind).attr("selected", "selected"); */
