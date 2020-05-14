@@ -32,16 +32,14 @@ public class MemberVO {
 		this.birth_day = birth_day;
 	}
 	
-	
+	//name값이 넘어온다.
 	
 	private String address;//
 	private String phone;
 	private String email;
 	private String sex;
 	private long cart_num;
-	
-	
-	
+
 	public long getM_num() {
 		return m_num;
 	}

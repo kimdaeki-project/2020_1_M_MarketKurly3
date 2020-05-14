@@ -45,16 +45,29 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView memberJoin2(MemberVO memberVO, HttpSession session, ModelAndView mv, String roadFullAddr)throws Exception {
-//		System.out.println(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
+	public ModelAndView memberJoin2(MemberVO memberVO, HttpSession session, ModelAndView mv, String roadFullAddr){
+		
+		//		System.out.println(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
 		memberVO.setBirth(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
 		System.out.println(memberVO.getBirth());
 		
 		memberVO.setAddress(roadFullAddr);
 		System.out.println(memberVO.getAddress());
 		
-		
-		int result = memberService.memberJoin(memberVO); //(괄호안에 더 넣을 수도 있음)
+
+		int result = 0;
+		try {	
+			result = memberService.memberJoin(memberVO);
+		} catch (Exception e) {
+			
+			  mv.addObject("result","내용을 입력해주세요"); mv.addObject("path","memberJoin");
+			  mv.setViewName("common/result");
+			 
+			
+			e.printStackTrace();
+			
+			return mv;
+		} 
 
 		
 		if(result>0) {
