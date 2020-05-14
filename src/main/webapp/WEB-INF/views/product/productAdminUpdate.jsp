@@ -20,10 +20,12 @@
 <h2>관리자 상품 업데이트 </h2>
 
 <form action="./productAdminUpdate" id="frm" method="post" enctype="multipart/form-data">
-  
+	<input class="kind12" type="hidden" value="${product.kind}">
+	<h3 id="h3">${product.kind}</h3>
+ 
   	<div class="form-group">
   	<label for="kind">kind:</label>
-      <select class="form-control" id="kind" name="kind" >
+      <select class="form-control" id="kind" name="kind"  onchange="init()">
 				  <option value="me" >Meat</option>
 				  <option value="ve" >Vegetable</option>
 				  <option value="de" >Dessert</option>
@@ -67,6 +69,29 @@
 
 <script type="text/javascript">
 
+
+/* var kind = document.getElementsByClassName("kind12").value; */
+	var kind = document.getElementById("h3").innerText;
+	alert(kind);  /* de */
+	
+	
+	if($("#kind").val()==kind){
+		$(this).attr("selected", "selected");
+	} 
+	
+	
+	function init(){
+		var kind = document.getElementById("h3").innerText;	
+		 document.getElementById("kind").innerText="ddd"+kind;
+	}
+	
+
+		
+	
+	/* $("#kind").val(kind).attr("selected", "selected"); */
+
+
+
 	count = 1;
 	$(".fileDelete").click(function() {
 		var check = confirm("정말 삭제하시겠습니까?");
@@ -84,6 +109,17 @@
 			});
 		}
 	});
+	
+		
+	
+	
+	
+	
+		
+	
+
+	
+	
 
 </script>
 
