@@ -18,6 +18,7 @@ public class CartDAO {
 	
 	
 	public List<CartVO> cartList(Long cart_num) throws Exception{
+		System.out.println("dao_cart_num : " +cart_num);
 		return sqlSession.selectList(NAMESPACE+"cartList",cart_num);
 
 	}

@@ -122,6 +122,7 @@
 							<span class="btn_type1">
 								<button type="submit" class="txt_type">장바구니 담기</button>
 							</span>
+							
 						</div>
 					</form>
 				</div><!-- inner_option close -->

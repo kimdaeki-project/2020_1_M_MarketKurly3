@@ -9,12 +9,13 @@
 <mapper namespace="com.iu.mk.cart.CartDAO">
 
 	<resultMap type="CartVO" id="cartResult">
-		<id column="random_num" property="random_num"/>
-		<result column="m_num" property="m_num"/>
+		<id column="cq_num" property="cq_num"/>
 		<result column="p_num" property="p_num"/>
-		<result column="p_count" property="p_count"/>
+		<result column="count" property="count"/>
+		<result column="cart_num" property="cart_num"/>
+		<result column="payCheck" property="payCheck"/>
 		
-		<collection property="productVO" javaType="List" ofType="ProductVO">
+		<collection property="productVOs" javaType="List" ofType="ProductVO">
 			<id column="p_num" property="p_num"/>
 	  		<result column="p_name" property="p_name"/>
 	  		<result column="price" property="price"/>
@@ -42,8 +43,24 @@
 		insert into cart values (CQ_NUM_SEQ.nextval, #{p_num}, #{count}, #{cart_num}, 0)
 	</insert>
 	
+<!-- 	
+	<delete id="cartDelete">
+		delete from cart where cq_num = 
+	</delete> -->
+	
+	
+	
 	<select id="cartList" parameterType="Long" resultMap="cartResult">
-		select * from cart where cart_num=#{cart_num}
+		<!-- select * from cart where cart_num=#{cart_num} -->
+		
+		select C.*, P.p_name, P.price, P.kind, F.fileName from cart C
+   		left join product P
+  		on (C.p_num = P.p_num)
+   		left join productFile F
+  		on (C.p_num = F.p_num)
+  		where C.p_num in (select p_num from cart where C.cart_num=#{cart_num}) and C.payCheck=0
+		
+		
 	</select>
 
 

@@ -39,22 +39,11 @@ public class CartController {
 		
 		//List<CartVO> ar = cartService.cartList(memberVO.getCartNum()); 나중에 받아오기~
 		List<CartVO> ar = cartService.cartList(cart_num); //지금은 VO 수정이 안 되어서 일단 나중에!
-		/*
-		 * ProductService productService = new ProductService();
-		 * 
-		 * 
-		 * List<ProductVO> pr = new ArrayList<ProductVO>();
-		 * 
-		 * for(CartVO vo:ar) {
-		 * 
-		 * pr.add((ProductVO)productService.productSelect(vo.getP_num()));
-		 * 
-		 * }
-		 * 
-		 * 
-		 * 
-		 * mv.addObject("plist", pr);
-		 */
+		System.out.println("---------++++----------");
+
+		
+		System.out.println(ar.get(0).getCount()+"///");
+		 
 		mv.addObject("list", ar);
 		mv.setViewName("cart/cartList");
 		

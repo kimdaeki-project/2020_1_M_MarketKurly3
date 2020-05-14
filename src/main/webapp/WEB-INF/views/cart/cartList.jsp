@@ -95,22 +95,27 @@
 										</td>
 										<td header="thInfo" class="goods_thumb"><!-- 상품 정보 -->
 											<a href="링크걸기" class="thumb">
-												<img src="${pageContext.request.contextPath}/resources/images/avocado.jpg" alt="상품 이미지" onerror=""> 
+												<c:forEach items="${vo.productFileVOs}" var="pf">
+												<img src="${pageContext.request.contextPath}/resources/images/${pf.fileName}.jpg" alt="상품 이미지" onerror=""> 
+												</c:forEach>
 											</a>
 										</td>
+										<c:forEach items="${vo.productVOs}" var="pro">
 										<td header="thInfo" class="goods_info">
 											<a href="링크걸기" class="name">
-												GAP 방울토마토 500g
-												${plist[status.index].p_name}
+												
+												${pro.p_name}
+												
 											</a>
 											<dl class="goods_cost">
 												<dt class="screen_out">판매 가격</dt>
 												<dd class="selling_price">
-													<span class="num">3,900</span>
+													<span class="num">${pro.price}</span>
 													<span class="txt">원</span>
 												</dd>
 											</dl>
 										</td>
+										</c:forEach>
 										<td header="thInfo" class="goods_condition">
 											<div class="condition">
 												
@@ -123,7 +128,9 @@
 												<button type="button" class="btn btn_reduce">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_minus_24x4.png" alt="감소">
 												</button>
+												
 												<input type="text" readonly="readonly" class="inp_quantity" value="${vo.count}">
+									
 												<button type="button" class="btn btn_rise">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_plus_24x4.png" alt="증가">
 												</button>

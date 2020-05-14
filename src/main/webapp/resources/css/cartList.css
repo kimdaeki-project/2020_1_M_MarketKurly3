@@ -2,13 +2,6 @@
 
 
 
-dl	{
-	
-	margin:0;
-}
-
-
-
 
 
 .layout-wrapper	{
@@ -91,14 +84,6 @@ dl	{
 .tbl_comm .section_cart	{
 	display:none;
 }
-
-colgroup	{
-/*다시확인*/
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
 
 
 

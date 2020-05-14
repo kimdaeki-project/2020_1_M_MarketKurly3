@@ -2,6 +2,9 @@ package com.iu.mk.cart;
 
 import java.util.List;
 
+import com.iu.mk.product.ProductVO;
+import com.iu.mk.product.productfile.ProductFileVO;
+
 public class CartVO {
 	private long cq_num;
 	private long p_num;
@@ -9,9 +12,40 @@ public class CartVO {
 	private long cart_num;
 	private int payCheck;
 	
+
+
+	private List<ProductFileVO> productFileVOs;
 	
+	private List<ProductVO> productVOs;
+
+
+
+
+
 	
-	private List<CartVO> cartVOs;
+
+
+	public List<ProductFileVO> getProductFileVOs() {
+		return productFileVOs;
+	}
+
+
+
+	public void setProductFileVOs(List<ProductFileVO> productFileVOs) {
+		this.productFileVOs = productFileVOs;
+	}
+
+
+
+	public List<ProductVO> getProductVOs() {
+		return productVOs;
+	}
+
+
+
+	public void setProductVOs(List<ProductVO> productVOs) {
+		this.productVOs = productVOs;
+	}
 
 
 
@@ -75,16 +109,7 @@ public class CartVO {
 
 
 
-	public List<CartVO> getCartVOs() {
-		return cartVOs;
-	}
 
-
-
-	public void setCartVOs(List<CartVO> cartVOs) {
-		this.cartVOs = cartVOs;
-	}
-	
 	
 	
 	
