@@ -71,10 +71,8 @@ public class ProductService {
 		}
 		
 		return result;
-		
 	
 	}
-	
 	
 	
 	public ProductVO productSelect(Long p_num) throws Exception{
@@ -82,6 +80,30 @@ public class ProductService {
 		return productDAO.productSelect(p_num);
 	}
 	
+	
+	//하드디스크의 file save
+	public long productUpdate(ProductVO productVO,MultipartFile files) throws Exception{
+		
+		//하드디스크에 file이 들어있는 실제 경로
+		String path = servletContext.getRealPath("/resources/uploadproduct");
+		System.out.println(path);
+		
+		//table insert
+		long result = productDAO.productUpdate(productVO);
+		
+		if(files.getSize()>0) {
+			ProductFileVO productFileVO  = new ProductFileVO();
+			//filesaver 파일이름 랜덤 생성
+			productFileVO.setP_num(productVO.getP_num());//product p_num과 같은것으로 입력	
+			productFileVO.setOriName(files.getOriginalFilename());
+			productFileVO.setFileName(fileSaver.saveByTransfer(files, path));
+			productFileVO.setKind(productVO.getKind());
+			//productfiledao insert 시켜줌
+			result = productFileDAO.fileInsert(productFileVO);
+		}
+		
+		return result;
+	}
 	
 	
 }

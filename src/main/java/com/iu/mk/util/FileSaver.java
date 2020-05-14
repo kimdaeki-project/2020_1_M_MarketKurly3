@@ -36,10 +36,24 @@ public class FileSaver {
 	}
 	
 	
-	
 	private String makeNameByUUID(String name) {
 		String result = UUID.randomUUID().toString();
 		result = result+"_"+name;
+		return result;
+	}
+	
+	//업로드한 파일 삭제
+	public int deleteFile(String fileNum, String path) throws Exception{
+		//v파일 객체 생성
+		File file = new File(path,fileNum);
+		boolean check=false;
+		int result=0;
+		if(file.exists()) {
+			check=file.delete();
+		}
+		if(check) {
+			result=1;
+		}
 		return result;
 	}
 	

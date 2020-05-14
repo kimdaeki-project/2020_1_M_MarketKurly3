@@ -8,5 +8,13 @@
   	<insert id="fileInsert" parameterType="ProductFileVO">
   		insert into productfile values (fileNum_seq.nextval,#{p_num},#{oriName},#{fileName},#{kind})
   	</insert>
-  
+  	
+  	<select id="fileSelect" parameterType="ProductFileVO" resultType="ProductFileVO">
+  		select * from productfile where fileNum=#{fileNum}
+  	</select>
+  	
+  	<delete id="fileDelete" parameterType="ProductFileVO">
+  		delete productfile where fileNum=#{fileNum}
+  	</delete>
+  	
   </mapper>

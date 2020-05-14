@@ -24,7 +24,14 @@ public class ProductFileDAO {
 		return sqlSession.insert(NAMESPACE+"fileInsert",productFileVO);
 	}
 	
+	public ProductFileVO fileSelect(ProductFileVO productFileVO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"fileSelect",productFileVO);
+	}
 	
+	public int fileDelete(ProductFileVO productFileVO) throws Exception{
+	
+		return sqlSession.delete(NAMESPACE+"fileDelete",productFileVO);
+	}
 	
 	
 }

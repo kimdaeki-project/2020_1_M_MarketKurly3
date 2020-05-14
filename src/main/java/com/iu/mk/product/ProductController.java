@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,8 +82,6 @@ public class ProductController {
 
 	
 	
-	
-	
 	@GetMapping("productSelect")
 	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num) throws Exception {
 		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
@@ -100,6 +99,8 @@ public class ProductController {
 		
 		return mv;
 	}
+	
+	
 	
 	
 	

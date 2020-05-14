@@ -28,6 +28,7 @@ ul.list{
 
 .lnbMenu {
     padding-top: 26px;
+    padding-left: 28px;
 }
 
 
@@ -69,6 +70,8 @@ ul.list{
 	height: 100%;
    
 }
+
+
 
 .goodsList .list_goodss .inner_listgoods {
     overflow: hidden;

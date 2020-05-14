@@ -44,4 +44,10 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE+"productSelect",p_num);
 	}
 	
+	
+	//파라미터로 받아오는 p_num 이라서 int로
+	public long productUpdate(ProductVO productVO)throws Exception{
+		return sqlSession.update(NAMESPACE+"productUpdate",productVO);
+	}
+	
 }
