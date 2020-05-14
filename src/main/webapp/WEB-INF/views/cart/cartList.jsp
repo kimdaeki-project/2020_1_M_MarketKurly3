@@ -49,7 +49,8 @@
 								<th id="thSelect">
 									<div class="all_select">
 										<label class="label_check checked">
-											<input type="checkbox" name="allCheck" class="ico_check">
+											<input type="checkbox" id="allCheck" class="allCheck" name="allCheck" checked="checked">
+											<!--  class="ico_check" -->
 										</label>
 										<span class="tit">
 											전체선택 (
@@ -82,13 +83,13 @@
 									<col style="width:auto;">
 								</colgroup>
 								<tbody>
-									<c:forEach items="${list}" var="vo" varStatus="status">
-									
+									 
+									<c:forEach items="${list}" var="vo">
 									<tr>
 										<td id="thSelect" class="goods_check">
 											
 												<label class="label_check checked">
-													<input type="checkbox" name="ico_check" value="31176">
+													<input type="checkbox" class="c1" name="ico_check" value="31176">
 												</label>
 									
 							
@@ -96,7 +97,7 @@
 										<td header="thInfo" class="goods_thumb"><!-- 상품 정보 -->
 											<a href="링크걸기" class="thumb">
 												<c:forEach items="${vo.productFileVOs}" var="pf">
-												<img src="${pageContext.request.contextPath}/resources/images/${pf.fileName}.jpg" alt="상품 이미지" onerror=""> 
+												<img src="${pageContext.request.contextPath}/resources/images/${pf.fileName}" alt="상품 이미지" onerror=""> 
 												</c:forEach>
 											</a>
 										</td>
@@ -104,18 +105,18 @@
 										<td header="thInfo" class="goods_info">
 											<a href="링크걸기" class="name">
 												
-												${pro.p_name}
+												${pro.p_name}<h3>${pro.price * vo.count}</h3>
 												
 											</a>
 											<dl class="goods_cost">
 												<dt class="screen_out">판매 가격</dt>
 												<dd class="selling_price">
-													<span class="num">${pro.price}</span>
+													<span class="num" id="resultPrice">${pro.price}</span>
 													<span class="txt">원</span>
 												</dd>
 											</dl>
 										</td>
-										</c:forEach>
+										 </c:forEach>
 										<td header="thInfo" class="goods_condition">
 											<div class="condition">
 												
@@ -129,7 +130,7 @@
 													<img src="${pageContext.request.contextPath}/resources/images/ico_minus_24x4.png" alt="감소">
 												</button>
 												
-												<input type="text" readonly="readonly" class="inp_quantity" value="${vo.count}">
+												<input type="text" readonly="readonly" class="inp_quantity" id="resultCount" value="${vo.count}">
 									
 												<button type="button" class="btn btn_rise">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_plus_24x4.png" alt="증가">
@@ -138,11 +139,12 @@
 											</div>
 										</td>
 										<td header="thCost">
+													
 											<dl class="goods_total">
 												<dt class="screen_out">합계</dt>
 												<dd class="result">
-													<span class="num">3,900</span>
-													<span class="txt">원</span>
+													<span class="num2" id="resultNum"><%-- ${vo.count * pro.price} --%></span>
+													<span class="txt2">원</span>
 												</dd>
 											</dl>
 										</td>
@@ -151,7 +153,9 @@
 													<img src="${pageContext.request.contextPath}/resources/images/btn_close.jpg" alt="삭제">
 												</button>
 										</td>
+									
 									</tr>
+									
 									</c:forEach>
 								</tbody>
 							</table>
@@ -169,7 +173,7 @@
 					
 					<div class="label_cc">
 						<label class="label_check checked">
-							<input type="checkbox" name="allCheck" class="ico_check">
+							<input type="checkbox" name="allCheck2" class="allCheck" checked="checked">
 						</label>
 						<span class="tit">
 							전체선택 (
@@ -244,5 +248,72 @@
 	
 	
 	<c:import url="../template/footer.jsp"></c:import>
+
 </body>
+
+
+	<script type="text/javascript">
+		var allCheck = document.getElementsByClassName("allCheck");
+		var c1 = document.getElementsByClassName("c1");
+		console.log(c1.length);
+		console.log(allCheck.checked)
+		
+		//
+		var price = document.getElementById("resultPrice").innerText;
+		var count = document.getElementById("resultCount").value;
+		var resultNum = document.getElementById("resultNum");
+		
+		
+		resultNum.innerText = price*count;
+		 //
+		 
+		 
+		 var kind = document.getElementById("kind").value;
+		 
+		 
+		 
+		 
+		 
+		
+		$(function(){
+		/* 	$("#allCheck").on("click",".c1",function(){
+				
+				$(".c1").prop("checked",$(this).prop("checked"));
+				
+			}); */
+			
+			//allCheck는 default가 true >> checked="checked" 줘놨음
+			
+			//c1도 default true
+			$(".c1").prop("checked",true);
+			
+			
+			//allCheck false일 경우  c1 모두 false
+			$(".allCheck").on("click",function(){
+				$(".c1").prop("checked", $(this).prop("checked"));
+				$(".allCheck").prop("checked",$(this).prop("checked"));
+			});
+			
+			
+			//c1 하나라도 false일 경우 allCheck flase
+			$(".c1").on("click",function(){
+				
+				var result = true;
+				
+				if(!$(this).prop("checked")){
+					result = false;
+				}
+				
+				$(".allCheck").prop("checked",result);
+			});
+
+		})
+		
+
+	
+	
+	</script>
 </html>
+
+
+
