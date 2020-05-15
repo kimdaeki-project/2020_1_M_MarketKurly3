@@ -33,7 +33,7 @@
 			<div class="button_place">
 				
 				<!-- 회원정보 버튼 -->
-				<a href="${pageContext.request.contextPath}">
+				<a href="${pageContext.request.contextPath}/member/memberMyPage_Info">
 					<button class="button">
 						<div class="button_image"><img src="${pageContext.request.contextPath}/resources/images/Member_Information.png" alt="" style="width: 100%; height: 100%;"></div>
 						<br>
@@ -43,7 +43,7 @@
 				</a>
 				
 				<!-- 구매내역 버튼 -->
-				<a href="${pageContext.request.contextPath}">
+				<a href="${pageContext.request.contextPath}/member/memberMyPage_Purchase">
 					<button class="button" style="float : right;">
 						<div class="button_image"><img src="${pageContext.request.contextPath}/resources/images/Purchase_Details.png" alt="" style="width: 100%; height: 100%;"></div>
 						<br>

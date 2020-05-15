@@ -172,6 +172,17 @@ public class MemberController {
 		
 	}
 	
+	//memberMyPage_Info
+	@GetMapping("memberMyPage_Info")
+	public void memberMyPage_Info( )throws Exception{
+
+	}
+	//memberMyPage
+	@GetMapping("memberMyPage_Purchase")
+	public void memberMyPage_Purchase( )throws Exception{
+
+	}
+	
 	
 	//memberDelete
 	@GetMapping("memberDelete")
