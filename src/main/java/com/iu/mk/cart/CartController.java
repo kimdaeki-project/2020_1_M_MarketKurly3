@@ -1,6 +1,5 @@
 package com.iu.mk.cart;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,15 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.mk.member.MemberVO;
-import com.iu.mk.product.ProductDAO;
-import com.iu.mk.product.ProductService;
 import com.iu.mk.product.ProductVO;
 
 @Controller
@@ -108,6 +106,32 @@ public class CartController {
 		
 		return mv;
 	}
+	
+	
+	
+	@GetMapping("getList")
+	public void getList(Long cart_num, Model model) throws Exception{
+		List<CartVO> ar = cartService.cartList(cart_num);
+		model.addAttribute("list", ar);
+	}
+	
+	
+	
+	@PostMapping("cartDelete")
+	@ResponseBody
+	public int cartDelete(CartVO cartVO) throws Exception {
+		System.out.println("cartDelete");
+		System.out.println("cartDelete : " + cartVO.getCq_num());
+		
+		int result = cartService.cartDelete(cartVO.getCq_num());
+		System.out.println("result : "+ result);
+		return result;
+		
+	}
+	
+	
+	
+	
 	
 	
 	

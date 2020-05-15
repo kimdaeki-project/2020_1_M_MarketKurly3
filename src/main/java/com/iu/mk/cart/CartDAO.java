@@ -32,6 +32,9 @@ public class CartDAO {
 		return sqlSession.insert(NAMESPACE + "cartInsert", cartVO);
 	}
 	
+	public int cartDelete(Long cq_num) throws Exception {
+		return sqlSession.delete(NAMESPACE + "cartDelete", cq_num);
+	}
 
 	
 	

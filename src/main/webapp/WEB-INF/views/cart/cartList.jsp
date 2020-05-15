@@ -101,7 +101,7 @@
 										<td header="thInfo" class="goods_thumb"><!-- 상품 정보 -->
 											<a href="링크걸기" class="thumb">
 												<c:forEach items="${vo.productFileVOs}" var="pf">
-												<img src="${pageContext.request.contextPath}/resources/images/${pf.fileName}" alt="상품 이미지" onerror=""> 
+												<img src="${pageContext.request.contextPath}/resources/uploadproduct/${pf.fileName}" alt="상품 이미지" onerror=""> 
 												</c:forEach>
 											</a>
 										</td>
@@ -129,6 +129,7 @@
 										<td header="thCount">
 											<div class="goods_quantity">
 											<div class="quantity">
+												<input type="hidden" id="${vo.cq_num}" class="cqn${status.index}">
 												<input type="hidden" name="curCnt${status.index}" value="${vo.count}">
 												<strong class="screen_out">수량</strong>
 												<button type="button" class="btn btn_reduce d${status.index}" onclick="del(${status.index});">
@@ -158,9 +159,11 @@
 										</td>
 										 </c:forEach>
 										<td header="thDelete" class="goods_delete">
-												<button type="button" class="btn btn_delete">
+												
+												<button type="button" class="btn btn_delete" id="btn_del" onclick="btnDel(${vo.cq_num});">
 													<img src="${pageContext.request.contextPath}/resources/images/btn_close.jpg" alt="삭제">
 												</button>
+											
 										</td>
 									
 									</tr>
@@ -268,10 +271,24 @@
 		console.log("c1.length :" +c1.length);
 		console.log(allCheck)
 		
+		
+		//전체 선택  default
+		//$(".c1").prop("checked",true);
+		for(var i=0; i<c1.length; i++){
+			c1[i].checked = true;
+		}
+		
+		
+		
 		//전체선택 값
 		
 		var ho = document.getElementById("num_total1").innerText;
 		console.log("ho:"+ho);
+		
+	/* 	console.log("c1[0] : "+c1[0].checked);
+		console.log("c1[1] : "+c1[1].checked);
+		console.log("c1[2] : "+c1[2].checked);
+		console.log("c1[3] : "+c1[3].checked); */
 		
 		
 ///////////////////////////
@@ -285,8 +302,8 @@
 				
 			var ar = [];
 			for(var i=0; i<c1.length; i++){
-				if(c1.checked=true){
-					ar.push(i);
+				if(c1.checked){
+					ar.push(c1);
 					console.log("--------------")
 					console.log(ar[i]);  //0 1 2 3 4 5
 	
@@ -300,13 +317,16 @@
 			var pid = "resultPrice"; 
 			
 			for(var i=0; i<c1.length; i++){// 0 1 2 3 4 5
-				pid = pid + i; //resultPrice0  resultPrice1 . . . >> 합계의 id
-				console.log("pid : " + pid);
-				var re = document.getElementById(pid).innerText;
-				arr.push(re);
-				console.log("list : "+ arr[i]);
-				pid = "resultPrice";
-				pay = pay + parseInt(arr[i]);
+				if(c1[i].checked){//0
+					
+					pid = pid + i; //resultPrice0  resultPrice1 . . . >> 합계의 id
+					console.log("pid : " + pid);
+					var re = document.getElementById(pid).innerText;
+					arr.push(re);
+					console.log("list : "+ arr[i]);
+					pid = "resultPrice";
+					pay = pay + parseInt(arr[i]);
+				}
 			}
 			
 			
@@ -327,11 +347,11 @@
 			
 			document.getElementById("delivery").innerText = delivery;
 			
-			
-			
+			console.log("잘 실행되고 잇나요");
+			console.log(pay);
 			document.getElementById("total_price").innerText = (pay+delivery);
 			console.log(delivery);
-	}
+				}
 //////////////////////
 
 
@@ -368,6 +388,8 @@
 				}
 				
 				$(".allCheck").prop("checked",result);
+				count();
+				
 			});
 
 		})
@@ -416,7 +438,7 @@
 			
 			
 			//최종 가격 수정
-			var pp = "proPrice"+num
+			var pp = "proPrice"+num;
 			
 			var proPrice = parseInt(document.getElementById(pp).innerText);
 			console.log(hm * proPrice);
@@ -469,6 +491,37 @@
 			document.getElementById("resultPrice").innerText = parseInt(hm.value) * parseInt(sell_price);
 			
 		}
+		
+		
+		//cart Delete
+		function btnDel (num){
+			
+			
+			$.post("../cart/cartDelete",{cq_num:num},function(data){
+				if(data>0){
+					
+					location.reload();
+				}else{
+					alert("작성 실패");
+				}
+				console.log("here")
+				console.log("data :" + data);
+			});
+			
+		}
+		
+/* 		
+		$("#btn_del").click(function(){
+
+		
+			$.post("../cart/cartDelete",{cq_num:$(".cqn").attr("id")},function(data){
+				
+				
+				console.log(data);
+			}
+				)
+					
+		}); */
 		
 	
 	

@@ -43,10 +43,10 @@
 		insert into cart values (CQ_NUM_SEQ.nextval, #{p_num}, #{count}, #{cart_num}, 0)
 	</insert>
 	
-<!-- 	
-	<delete id="cartDelete">
-		delete from cart where cq_num = 
-	</delete> -->
+ 	
+	<delete id="cartDelete" parameterType="Long">
+		delete from cart where cq_num = #{cq_num}
+	</delete> 
 	
 	
 	
