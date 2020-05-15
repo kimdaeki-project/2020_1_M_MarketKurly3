@@ -52,6 +52,10 @@
   		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{kind})
   	</insert>
   	
+  	<delete id="productDelete" parameterType="Long">
+  		delete product where p_num=#{p_num}
+  	</delete>
+  	
  	<update id="productUpdate" parameterType="ProductVO">
  	 	update product set p_name=#{p_name},price=#{price}, contents=#{contents},kind=#{kind} where p_num=#{p_num}
  	</update>

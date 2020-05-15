@@ -94,4 +94,22 @@ public class ProductAdminController {
 		return path;
 	
 	}
+	
+	
+	@RequestMapping("productAdminDelete")
+	public ModelAndView productDelete(long p_num, ModelAndView mv) throws Exception{
+		long result = productService.productDelete(p_num);
+		
+		if(result>0) {
+			mv.addObject("result","Delete Success");
+		}else {
+			mv.addObject("result","Delete Fail");
+		}
+		
+		mv.addObject("path","./productAdmin");
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
 }

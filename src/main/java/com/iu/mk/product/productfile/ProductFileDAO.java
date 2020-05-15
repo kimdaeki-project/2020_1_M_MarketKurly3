@@ -30,6 +30,10 @@ public class ProductFileDAO {
 	public int fileDelete(ProductFileVO productFileVO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"fileDelete",productFileVO);
 	}
+	//등록 상품 삭제
+	public int fileDeleteAll(Long p_num) throws Exception{
+		return sqlSession.delete(NAMESPACE+"fileDeletes",p_num);
+	}
 	
 	
 }

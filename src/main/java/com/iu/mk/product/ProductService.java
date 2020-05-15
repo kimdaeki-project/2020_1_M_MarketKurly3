@@ -114,4 +114,19 @@ public class ProductService {
 	}
 	
 	
+	public long productDelete(long p_num) throws Exception{
+		List<ProductFileVO> list = productFileDAO.fileList(p_num);
+		//1.hdd에 해당 파일들을 삭제
+		String path = servletContext.getRealPath("resources/uploadproduct");
+		
+		for(ProductFileVO productFileVO :list) {
+			fileSaver.deleteFile(productFileVO.getFileName(), path);
+		}
+		//2.db에서 삭제
+		productFileDAO.fileDeleteAll(p_num);
+		
+		return productDAO.productDelete(p_num);
+	}
+	
+	
 }

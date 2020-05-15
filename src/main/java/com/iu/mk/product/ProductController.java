@@ -37,7 +37,7 @@ public class ProductController {
 		System.out.println(pager.getTotalPage());
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
-		mv.setViewName("product/productAdmin");
+		mv.setViewName("product/productList");
 		
 		return mv;
 	}

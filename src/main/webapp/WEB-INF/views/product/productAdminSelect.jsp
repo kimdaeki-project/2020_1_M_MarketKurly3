@@ -39,6 +39,9 @@
 						 <div class="btn">
 							<a href="./productAdminUpdate?p_num=${product.p_num}" class="btn btn-default">Update</a>
 						 </div>
+						 <div class="btn">
+							<a href="./productAdminDelete?p_num=${product.p_num}" class="btn btn-default">Delete</a>
+						 </div>
 					</c:if>
 				</c:if>
 				

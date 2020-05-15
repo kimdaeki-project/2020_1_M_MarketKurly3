@@ -14,9 +14,17 @@
   	<select id="fileSelect" parameterType="ProductFileVO" resultType="ProductFileVO">
   		select * from productFile where fileNum=#{fileNum}
   	</select>
-  	
+  	<!-- 글 수정시 등록된 사진 삭제 -->
   	<delete id="fileDelete" parameterType="ProductFileVO">
   		delete productFile where fileNum=#{fileNum}
   	</delete>
+  	<!-- 글 자체 삭제 -->
+  	<delete id="fileDeletes" parameterType="Long">
+  		delete productFile where p_num=#{p_num}
+  	</delete>
+  	
+  	<select id="fileList" parameterType="Long" resultType="ProductFileVO">
+  		select * from productFile where p_num=#{p_num}
+  	</select>
   	
   </mapper>
