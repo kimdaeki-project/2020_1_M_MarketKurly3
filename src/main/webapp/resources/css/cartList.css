@@ -362,6 +362,8 @@ a	{
 	color:#5f0080;
 	letter-spacing:-3px;
 	text-align:center;
+	tap-highlight-color:transparent;
+	outline:0;
 }
 
 

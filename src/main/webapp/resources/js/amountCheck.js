@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-
 
 <!DOCTYPE html>
 <html>
@@ -58,7 +56,7 @@
 											전체선택 (
 											<span class="num_count">1</span>
 											/
-											<span class="num_total" id="num_total1">1</span>
+											<span class="num_total">1</span>
 											)
 										</span>
 									</div>
@@ -72,7 +70,7 @@
 					</table>
 					<div id="viewGoods">
 						<div>
-						<div class="view_goods" onload="total();">
+						<div class="view_goods">
 							<table class="tbl_goods goods">
 								<caption>장바구니 목록 내용</caption>
 								<colgroup>
@@ -86,14 +84,12 @@
 								</colgroup>
 								<tbody>
 									 
-									<c:forEach items="${list}" var="vo" varStatus="status">
-									<input type="hidden" id="chIdx" value="${fn:length(list)}">
+									<c:forEach items="${list}" var="vo">
 									<tr>
 										<td id="thSelect" class="goods_check">
 											
 												<label class="label_check checked">
-													
-													<input type="checkbox" class="c1" name="ico_check" id="ch${status.index}" value="31176">
+													<input type="checkbox" class="c1" name="ico_check" value="31176">
 												</label>
 									
 							
@@ -115,7 +111,7 @@
 											<dl class="goods_cost">
 												<dt class="screen_out">판매 가격</dt>
 												<dd class="selling_price">
-													<span class="num proPrice" id="proPrice${status.index}">${pro.price}</span>
+													<span class="num proPrice" id="proPrice">${pro.price}</span>
 													<span class="txt">원</span>
 												</dd>
 											</dl>
@@ -129,17 +125,14 @@
 										<td header="thCount">
 											<div class="goods_quantity">
 											<div class="quantity">
-												<input type="hidden" name="curCnt${status.index}" value="${vo.count}">
 												<strong class="screen_out">수량</strong>
-												<button type="button" class="btn btn_reduce d${status.index}" onclick="del(${status.index});">
+												<button type="button" class="btn btn_reduce">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_minus_24x4.png" alt="감소">
 												</button>
 												
-												<input type="text" readonly="readonly" class="inp_quantity re${status.index}" id="re${status.index}" value="${vo.count}">
-												
+												<input type="text" readonly="readonly" class="inp_quantity" id="resultCount" value="${vo.count}">
 									
-												<%-- <input type="text" readonly="readonly" class="inp_quantity re${status.index}" id="resultCount" value="${vo.count}"> --%>
-												<button type="button" class="btn btn_rise u${status.index}" onclick="add(${status.index});">
+												<button type="button" class="btn btn_rise">
 													<img src="${pageContext.request.contextPath}/resources/images/ico_plus_24x4.png" alt="증가">
 												</button>
 											</div>
@@ -151,7 +144,7 @@
 											<dl class="goods_total">
 												<dt class="screen_out">합계</dt>
 												<dd class="result">
-													<span class="num" id="resultPrice${status.index}">${vo.count * pro.price}</span>
+													<span class="num" id="resultNum">${vo.count * pro.price}</span>
 													<span class="txt">원</span>
 												</dd>
 											</dl>
@@ -201,7 +194,7 @@
 							<dt class="tit">상품 금액</dt>
 							<dd class="result">
 								<span class="inner_result">
-									<span class="num" id="pay_price">3,900</span>
+									<span class="num">3,900</span>
 									<span class="txt">원</span>
 								</span>
 							</dd>
@@ -213,7 +206,7 @@
 							<dt class="tit">배송비</dt>
 							<dd class="result">
 								<span class="inner_result add">
-									<span class="num" id="delivery">3,000</span>
+									<span class="num">3,000</span>
 									<span class="txt">원</span>
 								</span>
 							</dd>
@@ -225,7 +218,7 @@
 							<dt class="tit">결제 예정 금액</dt>
 							<dd class="result">
 								<span class="inner_result add">
-									<span class="num" id="total_price">6,900</span>
+									<span class="num">6,900</span>
 									<span class="txt">원</span>
 								</span>
 							</dd>
@@ -262,80 +255,22 @@
 
 
 	<script type="text/javascript">
-		count();
 		var allCheck = document.getElementsByClassName("allCheck");
 		var c1 = document.getElementsByClassName("c1");
-		console.log("c1.length :" +c1.length);
+		console.log(c1.length);
 		console.log(allCheck)
 		
-		//전체선택 값
+		//
+/* 		var price = document.getElementById("resultPrice").innerText;
+		var count = document.getElementById("resultCount").value;
+		var resultNum = document.getElementById("resultNum");
 		
-		var ho = document.getElementById("num_total1").innerText;
-		console.log("ho:"+ho);
 		
-		
-///////////////////////////
+		resultNum.innerText = price*count; */
+		 //
 		 
-		function count(){
-			
-			var c1 = document.getElementsByClassName("c1");
-			console.log("c1.length :" +c1.length);
-			//ch1의길이
-			//체크되어있으면 ar에 index 번호 넣어주기
-				
-			var ar = [];
-			for(var i=0; i<c1.length; i++){
-				if(c1.checked=true){
-					ar.push(i);
-					console.log("--------------")
-					console.log(ar[i]);  //0 1 2 3 4 5
+		 
 	
-				}
-			}
-			
-			
-			//가격 배열에 넣어주기
-			var arr = [];
-			var pay = 0;
-			var pid = "resultPrice"; 
-			
-			for(var i=0; i<c1.length; i++){// 0 1 2 3 4 5
-				pid = pid + i; //resultPrice0  resultPrice1 . . . >> 합계의 id
-				console.log("pid : " + pid);
-				var re = document.getElementById(pid).innerText;
-				arr.push(re);
-				console.log("list : "+ arr[i]);
-				pid = "resultPrice";
-				pay = pay + parseInt(arr[i]);
-			}
-			
-			
-			console.log("totalPay : "  + pay);
-			
-			
-		
-			//계산한 값 넣어주기
-			document.getElementById("pay_price").innerText = pay;
-			
-			var delivery = 0;
-			var deli = document.getElementById("delivery").innerText;
-			if(pay>=50000){
-				delivery = 0;
-			}else {
-				delivery = 3000;
-			}
-			
-			document.getElementById("delivery").innerText = delivery;
-			
-			
-			
-			document.getElementById("total_price").innerText = (pay+delivery);
-			console.log(delivery);
-	}
-//////////////////////
-
-
-
 
 		
 		$(function(){
@@ -377,96 +312,64 @@
 		
 		
 		
-		//수량 변경 ***********************************************
-
-		
-		function init () {
-			/* sell_price = document.getElementById("proPrice").innerText;
-			console.log(sell_price);
-			console.log(typeof sell_price);
-			
-			
-			amount = document.getElementByClassName("resultCount");
-
-			document.getElementById("num").innerHTML=sell_price; */
-			//change();
-		}
+		//수량 변경
+		var sell_price;
+		var amount;
+		/* var aaaa = document.getElementById("num")
+		aaaa.innerHTML='ddddddd'; */
 	
 		
-		function add (num) {	
-			//index 숫자 가져와서 이름 생성
-			var nn = "re"+num;
-			console.log(nn);
+		function init () {
+			sell_price = document.getElementById("resultPrice").innerText;
+			console.log(sell_price);
+			console.log(typeof sell_price);
+			amount = document.fo.amount.value;
+			//document.fo.num.value = sell_price;
+			//document.fo.num.value = sell_price;
 			
-			//생성한 이름과 같은 Id의 값
-			hm = parseInt(document.getElementById(nn).value);  //개수
+			//document.fo.num.innerHTML=sell_price;
+			document.getElementById("num").innerHTML=sell_price;
+			change();
+		}
+		
+		//document.getElementById("num").innerHTML=sell_price;
+		
+		function add () {
+			hm = document.fo.amount;
+			sum = document.fo.num;
+			hm.value ++ ;
 			
-			console.log("index : " + num);
+
+			//sum.value = parseInt(hm.value) * parseInt(sell_price);
 			
-			console.log("값 : " + hm);
-			console.log("text");
-			//해당 개수 증가
-			hm++;
+			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
 			
-			
-			//증가값 입력
 			$(document).ready(function() {
-		        $("#"+nn).val(hm);
-		    }); 
-			
-			
-			//최종 가격 수정
-			var pp = "proPrice"+num
-			
-			var proPrice = parseInt(document.getElementById(pp).innerText);
-			console.log(hm * proPrice);
-			
-			var rp = "resultPrice"+num
-			document.getElementById(rp).innerText = hm * proPrice;
-			
-			count();
+		        $('#count').val(hm.value);
+		    });
 		}
 
 		
-		function del (num) {
-			var nn = "re"+num;
-			hm = parseInt(document.getElementById(nn).value);  //개수
-		
-			///sum = document.fo.num;
-				if (hm> 1) {
-					hm--;
+		function del () {
+			hm = document.fo.amount;
+			sum = document.fo.num;
+				if (hm.value > 1) {
+					hm.value -- ;
 					//num.value = parseInt(hm.value) * sell_price;
 					
-					//document.getElementById("#resultPrice").innerHTML = parseInt(hm.value) * parseInt(sell_price);
-					$(document).ready(function() {
-				        $("#"+nn).val(hm);
-				    }); 
-					
-					//최종 가격 수정
-					var pp = "proPrice"+num
-					
-					var proPrice = parseInt(document.getElementById(pp).innerText);
-					console.log(hm * proPrice);
-					
-					var rp = "resultPrice"+num
-					document.getElementById(rp).innerText = hm * proPrice;
+					document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
 				}
-				
-				
-				count();
-				
 		}
 		
 		
 		function change(){
-			hm = document.getElementsByClassName("inp_quantity"); 
-			sell_price = document.getElementById("resultPrice").innerText;
-			//num = document.fo.num;
+			hm = document.fo.amount;
+			num = document.fo.num;
 				if(hm.value < 0){
 					hm.value = 0;
 				}
 			//num.value = parseInt(hm.value) * sell_price;
-			document.getElementById("resultPrice").innerText = parseInt(hm.value) * parseInt(sell_price);
+			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
 			
 		}
 		
