@@ -37,6 +37,7 @@
 				
 				
 				<div class="company">
+				<br>
 					<ul class="list">
 						<li><a href="#">컬리소개</a></li>
 						<li><a href="#">컬리소개영상</a></li>
