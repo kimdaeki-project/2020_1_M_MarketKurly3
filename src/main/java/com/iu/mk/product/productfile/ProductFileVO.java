@@ -11,7 +11,6 @@ public class ProductFileVO {
 	
 	public long getFileNum() {
 		return fileNum;
-
 	}
 	public void setFileNum(long fileNum) {
 		this.fileNum = fileNum;

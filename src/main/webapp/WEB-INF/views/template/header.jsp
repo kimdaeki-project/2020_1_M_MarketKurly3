@@ -19,7 +19,11 @@
 				</c:if>	
 				
 				<c:if test="${not empty member}">
+
 					<li><a href="${pageContext.request.contextPath}/member/memberMyPage">MyPage</a></li>
+
+					
+
 					<li><a href="${pageContext.request.contextPath}/member/memberLogOut">로그아웃</a></li>
 				</c:if>	
 				
@@ -33,9 +37,9 @@
 			<div class="gnb">
 				<ul>
 					<li class="menu1"><a href="#">전체 카테고리</a></li>
-					<li><a href="#">신상품</a></li>
-					<li><a href="#">베스트</a></li>
-					<li><a href="#">알뜰쇼핑</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/productList">신상품</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/productList"">베스트</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/productList"">알뜰쇼핑</a></li>
 					<li><a href="#">이벤트</a></li>
 				</ul>
 				<div class="side_search">

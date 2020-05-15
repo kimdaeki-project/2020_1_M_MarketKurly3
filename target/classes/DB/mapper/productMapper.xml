@@ -52,9 +52,9 @@
   		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{kind})
   	</insert>
   	
- <!-- 	<update id="productUpdate" parameterType="ProductVO">
- 	 	update product set kind=#{kind} where p_num={p_num}
- 	</update> -->
+ 	<update id="productUpdate" parameterType="ProductVO">
+ 	 	update product set p_name=#{p_name},price=#{price}, contents=#{contents},kind=#{kind} where p_num=#{p_num}
+ 	</update>
  	
 <!--  전체 글의 갯수 가져오기   --> 	
   	<select id="productCount" parameterType="Pager" resultType="Long">
@@ -70,6 +70,12 @@
   
   
   
+	<select id="productSelect" parameterType="Long" resultMap="listResult">
+		select P.*, F.*
+		from product P left Join productFile F
+		on (P.p_num = F.p_num)
+		where P.p_num=#{p_num}
+	</select>
   	
   	
   	

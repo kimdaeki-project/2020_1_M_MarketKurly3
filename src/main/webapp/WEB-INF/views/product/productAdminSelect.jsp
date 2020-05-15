@@ -34,7 +34,13 @@
 					</c:forEach>
 				</div>
 				
-				
+				<c:if test="${not empty member}">
+					<c:if test="${member.id eq 'admin'}">
+						 <div class="btn">
+							<a href="./productAdminUpdate?p_num=${product.p_num}" class="btn btn-default">Update</a>
+						 </div>
+					</c:if>
+				</c:if>
 				
 				<p class="goods_name">
 					<span class="btn_share">
@@ -207,9 +213,10 @@
 			
 		}
 		
-		
-		
 	
+		
+		
+		
 	</script>
 	
 </body>

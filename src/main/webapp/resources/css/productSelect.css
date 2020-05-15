@@ -9,7 +9,9 @@ button	{
 	padding:0;
 }
 
-
+.btn{
+	float: right;
+}
 
 .container {
 	margin:0 auto;
