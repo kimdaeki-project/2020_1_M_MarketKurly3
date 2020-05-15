@@ -75,12 +75,6 @@
 <script type="text/javascript">
 
 
-/* var kind = document.getElementsByClassName("kind12").value; */
-	/* var kind = document.getElementById("h3").innerText;
-	alert(kind);  de */
-	
-
-	
 	
 	var kind = $("#h3").text();
 	alert(kind);
