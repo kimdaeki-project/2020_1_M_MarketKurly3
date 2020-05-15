@@ -17,6 +17,8 @@ public class ProductFileController {
 	
 	@PostMapping("fileInsert")
 	public ModelAndView fileInsert(MultipartFile files) throws Exception{
+		
+		
 		ModelAndView mv = new ModelAndView();
 		String fileName = productFileService.fileInsert(files);
 		mv.addObject("result", fileName);
@@ -27,12 +29,12 @@ public class ProductFileController {
 	@PostMapping("fileDelete")
 	@ResponseBody
 	public int fileDelete(ProductFileVO productFileVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
+		//ModelAndView mv = new ModelAndView();
 		
 		int result = productFileService.fileDelete(productFileVO);
 		System.out.println("result : "+result);
-		mv.addObject("result",result);
-		mv.setViewName("common/ajaxResult");
+		//mv.addObject("result",result);
+		//mv.setViewName("common/ajaxResult");
 		
 		return result;
 	}

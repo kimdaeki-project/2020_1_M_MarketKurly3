@@ -42,6 +42,8 @@ public class FileSaver {
 		return result;
 	}
 	
+	
+	
 	//업로드한 파일 삭제
 	public int deleteFile(String fileNum, String path) throws Exception{
 		//v파일 객체 생성

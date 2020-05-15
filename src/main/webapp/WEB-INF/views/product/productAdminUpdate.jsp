@@ -31,7 +31,12 @@
 				  <option value="de" >Dessert</option>
   	  </select>
     </div>
-  
+    
+  	<div class="form-group">
+     
+      <input type="hidden" class="form-control" id="p_num" placeholder="Enter Title" name="p_num" value="${product.p_num}" >
+    </div>
+  	
   	 <div class="form-group">
       <label for="files">Title-Img:</label>
       <input type="file" class="form-control files" id="files" placeholder="타이틀 이미지 선택" name="files" >
@@ -71,15 +76,17 @@
 
 
 /* var kind = document.getElementsByClassName("kind12").value; */
-	var kind = document.getElementById("h3").innerText;
-	alert(kind);  /* de */
+	/* var kind = document.getElementById("h3").innerText;
+	alert(kind);  de */
 	
+	/* var kind = $("#h3").text();
+	alert(kind);
 	
 	if($("#kind option[value='me']")==kind){
-		$("#kind").val("me");
+		$("#kind").prop("selected",true);
 	}else if($("#kind option[value='de']")==kind){
-		$("#kind").val("de");
-	}
+		$("#kind").prop("selected",true);
+	} */
 	
 	//이상햐게 됨
 	/* if($("#kind option[value='me']")==kind){
@@ -124,14 +131,7 @@
 	
 		
 	
-	
-	
-	
-		
-	
 
-	
-	
 
 </script>
 

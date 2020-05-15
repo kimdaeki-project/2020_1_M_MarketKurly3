@@ -53,7 +53,7 @@
   	</insert>
   	
  	<update id="productUpdate" parameterType="ProductVO">
- 	 	update product set p_name=#{p_name},price=#{price},contents=#{contents},kind=#{kind} where p_num=#{p_num}
+ 	 	update product set p_name=#{p_name},price=#{price}, contents=#{contents},kind=#{kind} where p_num=#{p_num}
  	</update>
  	
 <!--  전체 글의 갯수 가져오기   --> 	

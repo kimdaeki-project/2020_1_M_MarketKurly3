@@ -19,9 +19,13 @@
 	
 				<div class="inner_listgoods">
 				 <h1>관리자 페이지
-				 <div class="btn">
-					<a href="./productWrite" class="btn btn-default">write</a>
-				</div></h1>
+					 <div class="btn">
+						<a href="./productWrite" class="btn btn-default">Write</a>
+					 </div>
+					 <div class="btn">
+						<a href="./productWrite" class="btn btn-default">Delete</a>
+					 </div>
+				</h1>
 				 
 				</div>
 </div>
@@ -38,14 +42,14 @@
 				
 					<c:forEach items="${list}" var="vo">
 						
-							<li class="list_li">
-								<a href="../product/productAdminSelect?p_num=${vo.p_num}" class="thumb_goods">
-									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
-								</a>
-									<div class="info_goods">
-										<span class="name"><a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a></span>
-										<span class="cost">${vo.price}원</span>
-									</div>
+						<li class="list_li">
+							<a href="../product/productAdminSelect?p_num=${vo.p_num}" class="thumb_goods">
+								<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
+							</a>
+								<div class="info_goods">
+									<span class="name"><a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a></span>
+									<span class="cost">${vo.price}원</span>
+								</div>
 							</li>
 							
 					 </c:forEach>

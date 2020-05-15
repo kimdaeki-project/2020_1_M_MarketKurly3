@@ -96,12 +96,12 @@
 	</ul>
 	</div>		
 	
-	<c:import url="../template/footer.jsp"></c:import>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
 			
-</div><!-- page_article end -->		
-			
+<!-- page_article end -->		
+	</div>
 			
 			
 			

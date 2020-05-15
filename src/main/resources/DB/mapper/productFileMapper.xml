@@ -5,16 +5,18 @@
   
   <mapper namespace="com.iu.mk.product.productfile.ProductFileDAO">
   
+  	
+  
   	<insert id="fileInsert" parameterType="ProductFileVO">
-  		insert into productfile values (fileNum_seq.nextval,#{p_num},#{oriName},#{fileName},#{kind})
+  		insert into productFile values (fileNum_seq.nextval,#{p_num},#{oriName},#{fileName},#{kind})
   	</insert>
   	
   	<select id="fileSelect" parameterType="ProductFileVO" resultType="ProductFileVO">
-  		select * from productfile where fileNum=#{fileNum}
+  		select * from productFile where fileNum=#{fileNum}
   	</select>
   	
   	<delete id="fileDelete" parameterType="ProductFileVO">
-  		delete productfile where fileNum=#{fileNum}
+  		delete productFile where fileNum=#{fileNum}
   	</delete>
   	
   </mapper>

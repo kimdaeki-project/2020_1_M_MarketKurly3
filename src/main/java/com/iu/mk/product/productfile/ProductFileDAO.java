@@ -18,7 +18,6 @@ public class ProductFileDAO {
 	}
 	
 	public int fileInsert(ProductFileVO productFileVO) throws Exception{
-		
 		System.out.println(productFileVO.getOriName()); // 이미지 사진이 filedao까지 들어오는지 확인
 		
 		return sqlSession.insert(NAMESPACE+"fileInsert",productFileVO);
@@ -29,7 +28,6 @@ public class ProductFileDAO {
 	}
 	
 	public int fileDelete(ProductFileVO productFileVO) throws Exception{
-	
 		return sqlSession.delete(NAMESPACE+"fileDelete",productFileVO);
 	}
 	

@@ -33,10 +33,11 @@ public class ProductController {
 		System.out.println("search : " + pager.getSearch());
 		
 		List<ProductVO> ar = productService.productList(pager);
+		System.out.println(ar.get(1).getP_name());
 		System.out.println(pager.getTotalPage());
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
-		mv.setViewName("product/productList");
+		mv.setViewName("product/productAdmin");
 		
 		return mv;
 	}
@@ -60,14 +61,18 @@ public class ProductController {
 		//------------확인end-----------------
 		//kind 가져와서  vo에 넣기
 		String kind = request.getParameter("kind");
-		System.out.println("kind  : "+ kind);
+		
 		productVO.setKind(kind);
 				
 		//System.out.println("productVO:"+productVO.getP_kind());
-		//System.out.println("img : "+files.getOriginalFilename());
+		
+		System.out.println("controller img : "+files.getOriginalFilename());
 		
 		int result = productService.productWrite(productVO, files);
-		 
+		
+		System.out.println("controller result : "+result);
+		
+		
 		 if(result > 0) {
 			 mv.setViewName("redirect:./productList");
 		 }else {
