@@ -19,6 +19,7 @@
 <section class="mypage">
 
 <!-- top -->
+
 	<div class="mypage_top">
 		<div class="user"><span class=glad>일반</span> &ensp; <span class=name>김소연</span> 님~ 방문을 환영합니다!</div>
 	</div> 
@@ -34,16 +35,20 @@
 				<!-- 회원정보 버튼 -->
 				<a href="${pageContext.request.contextPath}">
 					<button class="button">
-						<div class="button_image1"><img src="${pageContext.request.contextPath}/resources/images/ico_instagram.jpg" alt=""></div>
-						ddd
+						<div class="button_image"><img src="${pageContext.request.contextPath}/resources/images/Member_Information.png" alt="" style="width: 100%; height: 100%;"></div>
+						<br>
+						<div class="button_text1">회원정보</div>
+						<div class="button_text2">Member Information</div>
 					</button>
 				</a>
 				
 				<!-- 구매내역 버튼 -->
 				<a href="${pageContext.request.contextPath}">
 					<button class="button" style="float : right;">
-						<div>rrr</div>
-						aaa
+						<div class="button_image"><img src="${pageContext.request.contextPath}/resources/images/Purchase_Details.png" alt="" style="width: 100%; height: 100%;"></div>
+						<br>
+						<div class="button_text1"">구매내역</div>
+						<div class="button_text2">Purchase Details</div>
 					</button>
 				 </a>
 				 

@@ -29,7 +29,7 @@
 .user {
 	float : left;
 	background-color: white;
-	width:100%;
+	width:50%;
 	height: 50%;
 	margin: 0 auto ;
 	height: 100%;
@@ -61,11 +61,11 @@
 .mypage_contents {
 				width:1050px;
 				margin:0 auto;
-				height:600px;
+				height:560px;
 				
 				background-color: white;
 				overflow:hidden;
-				padding: 30px 180px 180px 180px;
+				padding: 30px 180px 200px 180px;
 
 
 }
@@ -96,10 +96,21 @@
 	border-radius: 2em;
 }
 
-.button_image1 {
-	width : 200px;
-	height : 200px;
-	background-color : pink;
+.button_image {
+	width : 120px;
+	height : 120px;
+	background-color : white;
 	margin: 0 auto;
 }
 
+.button_text1 {
+	font-size:25px; 
+	font-weight:600;
+	color: #5f0080;
+}
+
+.button_text2 {
+	font-size:18px; 
+	font-weight:400;
+	color: #5f0080;
+}
