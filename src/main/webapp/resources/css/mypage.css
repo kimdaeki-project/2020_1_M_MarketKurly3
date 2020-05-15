@@ -65,7 +65,7 @@
 				
 				background-color: white;
 				overflow:hidden;
-				padding: 50px 180px 180px 180px;
+				padding: 30px 180px 180px 180px;
 
 
 }
@@ -96,4 +96,10 @@
 	border-radius: 2em;
 }
 
+.button_image1 {
+	width : 200px;
+	height : 200px;
+	background-color : pink;
+	margin: 0 auto;
+}
 

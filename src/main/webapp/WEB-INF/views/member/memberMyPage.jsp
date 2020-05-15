@@ -25,20 +25,28 @@
 
 <!-- contents -->	
 	<div class="mypage_contents">
- 		<div class="contents_inner">
+	<span style="font-size:30px; font-weight:500; ">마이 컬리</span>
+ 		<div class="contents_inner"><br>
 		<span style="color:grey; float : right;">※ 버튼을 클릭해 주세요.&emsp;</span><br>
 			
 			<div class="button_place">
 				
-<%-- 				<!-- 회원정보 버튼 -->
+				<!-- 회원정보 버튼 -->
 				<a href="${pageContext.request.contextPath}">
-				<button class="button"><div>rrr</div>ddd</button>
+					<button class="button">
+						<div class="button_image1"><img src="${pageContext.request.contextPath}/resources/images/ico_instagram.jpg" alt=""></div>
+						ddd
+					</button>
 				</a>
 				
 				<!-- 구매내역 버튼 -->
 				<a href="${pageContext.request.contextPath}">
-				<button class="button" style="float : right;"><div>rrr</div>aaa</button>
-				 --%>
+					<button class="button" style="float : right;">
+						<div>rrr</div>
+						aaa
+					</button>
+				 </a>
+				 
 			</div>
 		</div> 
 	</div>
