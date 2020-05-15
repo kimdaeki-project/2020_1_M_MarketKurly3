@@ -19,7 +19,10 @@
 				</c:if>	
 				
 				<c:if test="${not empty member}">
-
+						<c:if test="${member.id eq 'admin'}">
+		    			<li><a href="${pageContext.request.contextPath}/product/productAdmin">관리자모드</a></li>
+		   			 </c:if>
+					
 					<li><a href="${pageContext.request.contextPath}/member/memberMyPage">MyPage</a></li>
 
 					
