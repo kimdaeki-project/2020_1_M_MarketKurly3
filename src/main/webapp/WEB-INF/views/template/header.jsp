@@ -24,9 +24,6 @@
 		   			 </c:if>
 					
 					<li><a href="${pageContext.request.contextPath}/member/memberMyPage">MyPage</a></li>
-
-					
-
 					<li><a href="${pageContext.request.contextPath}/member/memberLogOut">로그아웃</a></li>
 				</c:if>	
 				
