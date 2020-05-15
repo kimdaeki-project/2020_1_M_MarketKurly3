@@ -1,18 +1,85 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
 
-#mypage_top {
-	width : 100%;
-	height: 200px;
-	padding : 15px;
-	background-color: #f7f7f7;
-	margin : 0 auto;
+
+
+/* script쪽은 id를 주로 쓰고 css는 class를 주로쓴다. */
+
+
+
+.mypage {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/* top */
+.mypage_top {
+				width:1050px;
+				margin:0 auto;
+				height:110px;
+				
+				background-color: white;
+				overflow:hidden;
+				padding-bottom:20px;
+				border-bottom:1px solid #eee;
+				
+				padding: 20px 50px 20px 100px;
+			
+}
+
+.user {
+	float : left;
+	background-color: white;
+	width:100%;
+	height: 50%;
+	margin: 0 auto ;
+	height: 100%;
+	font-size: 17px;
+	
+	padding: 20px;
 	
 }
 
-#user {
-	float : left;
-	background-color: white;
-	width:1050px;
-	margin: 0 260px ;
-	height: 100%;
+.glad {
+	height : 100%;
+	width: 100px;
+	border: 1px solid #5f0080; 
+	border-radius: 5px;
+	color: #5f0080;
+	font-size: 17px;
+	padding : 14px;
+	
+	/* border-radius: 2em; */
 }
+.name {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+/* contents */
+.mypage_contents {
+				width:1050px;
+				margin:0 auto;
+				height:500px;
+				
+				background-color: white;
+				overflow:hidden;
+				padding: 50px 100px;
+				
+				font-family: noto sans;
+
+}
+
+.contents_inner {
+	float : left;
+	background-color: #f7f7f7;
+	width:100%;
+	height: 50%;
+	margin: 0 auto ;
+	height: 100%;
+	
+}
+
+
+

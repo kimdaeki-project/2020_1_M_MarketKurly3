@@ -17,9 +17,15 @@
 <c:import url="../template/header.jsp"></c:import>
 
 <section class="mypage">
-	<div id="mypage_top">
-		<div id="user">dddddddd</div>
+	<div class="mypage_top">
+		<div class="user"><span class=glad>일반</span> &ensp; <span class=name>김소연</span> 님~ 방문을 환영합니다!</div>
 	</div> 
+	
+	<div class="mypage_contents">
+		<div class="contents_inner">
+
+		</div>
+	</div>
 </section>
 
 
