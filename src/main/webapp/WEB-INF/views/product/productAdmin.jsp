@@ -22,8 +22,8 @@
 					 <div class="btn">
 						<a href="./productWrite" class="btn btn-default">Write</a>
 					 </div>
-					 <div class="btn">
-						<a href="./productWrite" class="btn btn-default">Delete</a>
+					 <div class="btnDel">
+						<a href="./productAdminDelete?p_num=${product.p_num}" class="btn btn-default">Delete</a>
 					 </div>
 				</h1>
 				 
@@ -37,13 +37,14 @@
 			
 				
 				<!-- list 반복 -->
-				
+			
 			<ul class="list">
 				
 					<c:forEach items="${list}" var="vo">
 						
 						<li class="list_li">
 							<a href="../product/productAdminSelect?p_num=${vo.p_num}" class="thumb_goods">
+							<input type="checkbox" name="checkbox" id="c1">
 								<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
 							</a>
 								<div class="info_goods">
@@ -77,6 +78,61 @@
 			</c:if>
 		</ul>
 	</div>	
+	
+	
+	<script type="text/javascript">
+	
+	/* function btnDel() {
+		
+	
+	$("#checkbox").click(function() {
+
+		$("input[name=checkbox]:checked").each(function() {
+
+			var test = $(this).val();
+
+			console.log(test);
+
+		});
+
+	});
+	
+	} */
+	
+
+		 function btnDel(num) {
+
+		$("#c1").click(function() {
+			
+			$("#c1").prop("checked");
+		
+		
+			
+			
+		 	/* if(check){
+				var s=$(this);
+				$.post("../productFile/fileDeletes",{p_num:num},function(data){
+					if(data>0){
+						s.parent.remove();
+						alert("Delete Success");
+					}else{
+						alert("Delete Fail");
+					}
+				});
+			}  */
+		});
+			
+			
+		} 
+	
+	
+	</script>
+	
+	
+	
+	
+	
+	
 	
 	
 <c:import url="../template/footer.jsp"></c:import>

@@ -26,7 +26,7 @@
   	<div class="form-group">
   	<label for="kind">kind:</label>
       <select class="form-control" id="kind" name="kind"  >
-				  <option value="me" >Meat</option>
+				  <option value="me"  >Meat</option>
 				  <option value="ve" >Vegetable</option>
 				  <option value="de" >Dessert</option>
   	  </select>
@@ -79,35 +79,22 @@
 	/* var kind = document.getElementById("h3").innerText;
 	alert(kind);  de */
 	
-	/* var kind = $("#h3").text();
+
+	
+	
+	var kind = $("#h3").text();
 	alert(kind);
 	
-	if($("#kind option[value='me']")==kind){
-		$("#kind").prop("selected",true);
-	}else if($("#kind option[value='de']")==kind){
-		$("#kind").prop("selected",true);
-	} */
 	
-	//이상햐게 됨
-	/* if($("#kind option[value='me']")==kind){
-		$("#kind").val('me');
-	}else if($("#kind option[value='de']")==kind){
-		$("#kind").val('de');
-	}
-	 */
-	
-/* 	
-	if($("#kind option").val()==kind){
-		$(this).attr("selected", "selected");
+	if($("#kind option[value=me]").val()==kind){
+		$("#kind option[value=me]").prop("selected",true);
+	}else if($("#kind option[value=ve]").val()==kind){
+		$("#kind option[value=ve]").prop("selected",true);
+	} else {
+		$("#kind option[value=de").prop("selected",true);
 	} 
 	
-	$('select').on('change',function(){
-		alert(this.value);
-	})	;
- */
-		
 	
-	/* $("#kind").val(kind).attr("selected", "selected"); */
 
 
 
