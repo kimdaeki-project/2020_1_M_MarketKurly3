@@ -26,6 +26,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//test
+	@GetMapping("test")
+	public void test()throws Exception {
+		
+	}
+	
+	
 	//memberJoinConfirm (약관동의)
 	@GetMapping("memberJoinConfirm")
 	public ModelAndView memberJoinConfirm(MemberVO memberVO) {
@@ -170,6 +177,17 @@ public class MemberController {
 		//MemberVO memberVO =(MemberVO)session.getAttribute("member"); //Login할때 받아온 MemberVO값(value)을 member(key)에 담아주었다.
 		//마이페이지 들어오려면 이미 로그인된 상태니까 굳이 session보낼필요 없을듯 
 		
+	}
+	
+	//memberMyPage_Info
+	@GetMapping("memberMyPage_Info")
+	public void memberMyPage_Info( )throws Exception{
+
+	}
+	//memberMyPage
+	@GetMapping("memberMyPage_Purchase")
+	public void memberMyPage_Purchase( )throws Exception{
+
 	}
 	
 	
