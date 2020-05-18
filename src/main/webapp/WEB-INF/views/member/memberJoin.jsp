@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<link rel="stylesheet" type="text/css" href="./css/layout.css">
-	<link rel="stylesheet" type="text/css" href="./css/join.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/layout.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/join.css">
 	
     <c:import url="../template/boot.jsp"></c:import>
  
@@ -68,8 +68,8 @@
 								<tr>
 									<td class="memberCols1 br">아이디*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_id" label="아이디"
-										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId">
+										<input type="text" name="id" label="아이디"
+										placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" id="mId" class="ch">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="overlap_id(); return false;" id="test"><span class="bns_button">중복확인</span></a>
 										<p id="s1"></p>
@@ -79,15 +79,15 @@
 								<tr>
 									<td class="memberCols1 br">비밀번호*</td>
 									<td class="memberCols2">
-										<input type="password" name="m_pw" label="비밀번호"
-										placeholder="비밀번호를 입력해주세요" id="mPw">
+										<input type="password" name="pw" label="비밀번호"
+										placeholder="비밀번호를 입력해주세요" id="mPw"  class="ch">
 										<p id="s2"></p>
 									</td>
 								</tr>
 								<tr>
 									<td class="memberCols1 br">비밀번호확인*</td>
 									<td class="memberCols2">
-										<input type="password" name="m_pw_c" label="비밀번호체크"
+										<input type="password" label="비밀번호체크"
 										placeholder="비밀번호를 한번 더 입력해주세요" id="mPw2">
 										<p id="s3"></p>
 									</td>
@@ -95,7 +95,7 @@
 								<tr>
 									<td class="memberCols1 br">이름*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_name" label="이름"
+										<input type="text" name="name" label="이름"
 										placeholder="고객님의 이름을 입력해주세요" class="ch" id="mName">
 										<p id="s4"></p>
 									</td>
@@ -103,14 +103,14 @@
 								<tr>
 									<td class="memberCols1 br">이메일*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_email" label="이메일"
+										<input type="text" name="email" label="이메일"
 										placeholder="예: marketkurly@kurly.com" class="ch br2" id="mEmail">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="email_injeung(); return false;"><span class="bns_button disabled">인증번호받기</span></a>
 										<p id="s5"></p>
 										<p id="s5_0"></p>
-										<input type="text" name="m_emailNum" label="인증번호"
-										placeholder="인증번호 입력란" class="ch br2" id="mEmailNum">
+										<input type="text" name="emailNum" label="인증번호"
+										placeholder="인증번호 입력란" class="br2" id="mEmailNum">
 										
 										&emsp;<a href="javascipt:void(0);" onclick="email_hwagin(); return false;"><span class="bns_button2 disabled">인증번호 확인</span></a>
 										<p id="s5_1"></p>
@@ -120,13 +120,13 @@
 								<tr class="mobile">
 									<td class="memberCols1">휴대폰*</td>
 									<td class="memberCols2">
-										<input type="text" name="m_phone" label="휴대폰"
+										<input type="text" name="phone" label="휴대폰" id="mPhone"
 										placeholder="ex. 010-0000-0000 (숫자만 입력)" class="ch">
-										
 									</td>
 								</tr>
+								<p id="s6"></p>
 								<tr class="add">
-									<td class="memberCols1">배송주소</td>
+									<td class="memberCols1">배송주소*</td>
 									
 									<td class="memberCols2">
 										<a href="javascipt:void(0);" onclick="goPopup(); return false;">
@@ -145,7 +145,7 @@
 				</tr>
 				
 				<tr>
-					<td><input type="text" style="width: 400px;" id="jibunAddr" class="br2"
+					<td><input type="text" style="width: 400px;" id="jibunAddr" class="br2 ch"
 						name="jibunAddr" readonly="readonly"/></td>
 				</tr>
 				
@@ -164,19 +164,19 @@
 									
 								</tr>
 								<tr class="select_sex">
-									<td class="memberCols1 br">성별</td>
+									<td class="memberCols1 br">성별*</td>
 									<td class="memberCols2">
-										<div class="group_radio" id="mSex">	
+										<div class="group_radio" id="mSex" >	
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="man">
+												<input type="radio" name="sex" label="성별" value="man" class="sex">
 												<span class="text_position">남자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="woman">
+												<input type="radio" name="sex" label="성별" value="woman" class="sex">
 												<span class="text_position">여자</span>
 											</label>
 											<label class="label_radio">
-												<input type="radio" name="sex_option" label="성별" value="nochoice">
+												<input type="radio" name="sex" label="성별" value="nochoice" class="sex" checked="checked">
 												<span class="text_position">선택안함</span>
 											</label>
 				
@@ -195,6 +195,7 @@
 											<input type="text" name="birth_mon" id="birth_mon" size="2" maxlength="2" placeholder="MM">
 											<span class="bar">/</span>
 											<input type="text" name="birth_day" id="birth_day" size="2" maxlength="2" placeholder="DD">
+											
 										</div>
 										<p id="s9"></p>
 									</td>
@@ -219,8 +220,10 @@
 								
 							</table>
 						</div>
+						
 					<div id="avoidDbl">
-						<input type="submit" class="btn_sm" id="btn_submit" value="가입하기"><br><br><br>
+						<input type="submit" class="btn_sm" id="btn_submit" value="가입하기">
+						<br><br><br>
 					</div>
 					</form>
 				
@@ -271,7 +274,7 @@
 			var mEmail = document.getElementById("mEmail"); 
 			var mPhone = document.getElementById("mPhone"); 
 			
-			
+		
 			var ch = document.getElementsByClassName("ch");
 			var s1 = document.getElementById("s1");	//아이디
 			var s1_1 = document.getElementById("s1_1");	//아이디
@@ -286,14 +289,13 @@
 			var s8 = document.getElementById("s8");	//성별
 			var s9 = document.getElementById("s9");	//생년
 			
-			var btn_submit = document.getElementById("btn_submit"); //가입버튼
-			
-			
+
 			var frm = document.getElementById("frm");
 			
 			
 			/* ...................중복확인 시작........................ */
 			/* 버튼형 아이디 중복확인 */
+			var mIdResult=false;
 			function overlap_id() {
 				
 				if(mId.value.length<6){
@@ -316,6 +318,7 @@
 								alert("사용가능한 아이디입니다.")
 								s1_1.innerHTML="사용가능한 아이디입니다.";
 								s1_1.style.color="skyblue";
+								mIdResult=true;
 							}else{
 								//중복되는경우(alert, 이미 등록된 아이디입니다.(innerHTML))
 								alert("이미 등록된 아이디입니다.")
@@ -339,7 +342,7 @@
 				     type:"POST",
 				     url:"./injeungEmail.do",
 				     data:{
-				          m_email:$('#mEmail').val()
+				          email:$('#mEmail').val()
 				     },
 				     success:function(data){
 				    	 alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');
@@ -357,7 +360,7 @@
 				     type:"POST", 
 				     url:"./hwaginEmail.do${dice}",
 				     data:{
-				            email:$('#mEmailNum').val()
+				            emailNum:$('#mEmailNum').val()
 				     },
 				     success:function(data){
 				    	 
@@ -418,17 +421,17 @@
 			/* ......................중복확인 끝........................ */
 			
 			/* innerhtml 아이디 중복확인 */
-			var mIdResult=false;
+			
 			mId.addEventListener("keyup",function(){
 				//s1.innerHTML="6글자 이상 입력하세요";
 				if(mId.value.length>=6){
 					s1.innerHTML="6자 이상 입력하였습니다.";
 					s1.style.color="skyblue";
-					mIdResult=true;
+					
 				}else{
 					s1.innerHTML="6자 이상 입력하세요.";
 					s1.style.color="RED";
-					mIdResult=false;
+					
 				}
 			});
 			
@@ -486,6 +489,7 @@
 			
 			/* innerhtml 비밀번호 확인 */
 			var mPwResult=false;
+			
 			mPw.addEventListener("change",function(){//비밀번호의 값이 변경되었을 때
 				//alert("음음") 	//질문 : 첫번째 입력하고 나갔을 때.. 떠도 상관 없음!
 				mPw2.value="";
@@ -501,7 +505,7 @@
 					s2.style.color="skyblue";
 					mPwResult=true;
 				}else if(mPw.value.length<6 && mPw.value.length>=1){
-					s2.innerHTML="비밀번호를 다시 입력해주세요.";
+					s2.innerHTML="비밀번호를 6글자 이상 다시 입력해주세요.";
 					s2.style.color="RED";
 					mPwResult=false;
 				}else if(mPw.value==""){
@@ -558,43 +562,69 @@
 			});
 			
 			/* 폰 */
-			mPhone.addEventListener("blur",function(){
+ 			mPhone.addEventListener("blur",function(){
 				if(mPhone.value==""){
-					s6.innerHTML = "필수 정보입니다."
+					s6.innerHTML = "필수 정보입니다.";
 					s6.style.color="RED";
 				}else{
 					s6.innerHTML = ""
 				}
-			});
+			}); 
 			
 			
-			
-			/* 가입전 필수정보 입력확인 */
-			var ch = document.getElementsByClassName("ch");
-			
-			btn_submit.addEventListener("click",function(e){
+	/* -------------------------------------------------------------*/
+		var sex = document.getElementsByClassName("sex");
+ 		
+			for(i=0; i<sex.length; i++){
+				if(sex[i].value==null){
+				sex[i].value=="";
+			}
+		} 
 
-				var check=true;
+		
+		
+	
+			/* 가입전 필수정보 입력확인 */
+			//넘어가기 전에 확인하려면 input타입의 submit을 button으로 바꿔서 실행해본다
+		var btn_submit = document.getElementById("btn_submit");
+	
+		var check=true;
+		btn_submit.addEventListener("click",function(e){
+
 				for(i=0; i<ch.length; i++){
 					if(ch[i].value==""/*==0*/){
 						check=false;
+						console.log("브레이크");
 						break;
 					}
 				}
-				if((mIdResult && mPwResult && mPw2Result && check)==false){
-			  //if(!(t1Result && t2Result && t3Result && check)){  //false
-					alert("중복확인 및 필수요소들을 입력해주세요")
-			  		//t1.focus();
-					e.preventDefault();
+			
+				//if가 true일때만 실행
+				if(mIdResult && mPwResult && mPw2Result && check){
+					console.log("가입성공");
 				}else{
-					alert("성공")
+					alert("중복확인 및 필수요소들을 입력해주세요");
+					e.preventDefault();//form안의 전송 막기
+					console.log(mIdResult);
+					console.log(mPwResult);
+					console.log(mPw2Result);
+					console.log(check);
+
+					
+					if(mIdResult==false){
+						s1_1.innerHTML = "아이디 중복확인을 눌러주세요";
+						s1_1.style.color="RED";
+						
+					}
 				}
 				
-			},false);
 			
-			$("#test").click(function() {
+			}); 
+			
+			
+/* 			$("#test").click(function() {
 				
-			});
+			}); */
 			
 		
 		</script>

@@ -33,7 +33,7 @@
 		
 		.write_form input	{
 			display:inline-block;
-			width:300px;
+			width:338px;
 			height:54px;
 			border:1px solid #ccc;
 			border-radius:3px;
@@ -85,7 +85,7 @@
 		
 		
 		.write_form button	{
-			width:340px;
+			width:338px;
 			height:54px;
 			border:1px solid #5f0080;
 			background-color:#5f0080;

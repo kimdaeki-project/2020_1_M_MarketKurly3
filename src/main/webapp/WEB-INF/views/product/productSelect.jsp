@@ -117,13 +117,14 @@
 					</div><!-- in_option close -->
 					</form>
 					
-					<form action="./cartInsert" method="post" name="frmWishlist">
+					<form action="../cart/cartInsert" method="post" name="frmWishlist">
 						<input type="hidden" name="count" id="count" value="">
 						<input type="hidden" name="p_num" value="${product.p_num}">
 						<div class="group_btn">
 							<span class="btn_type1">
 								<button type="submit" class="txt_type">장바구니 담기</button>
 							</span>
+							
 						</div>
 					</form>
 				</div><!-- inner_option close -->
@@ -178,6 +179,7 @@
 			//sum.value = parseInt(hm.value) * parseInt(sell_price);
 			
 			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
+			
 			$(document).ready(function() {
 		        $('#count').val(hm.value);
 		    });

@@ -10,6 +10,7 @@
 
 
 
+
 			<div class="userMenu">
 				<ul class="listMenu">
 				
@@ -19,10 +20,14 @@
 				</c:if>	
 				
 				<c:if test="${not empty member}">
-					<c:if test="${member.id eq 'admin'}">
+						<c:if test="${member.id eq 'admin'}">
 		    			<li><a href="${pageContext.request.contextPath}/product/productAdmin">관리자모드</a></li>
 		   			 </c:if>
-					<li><a href="./join.jsp">MyPage</a></li>
+					
+					<li><a href="${pageContext.request.contextPath}/member/memberMyPage">MyPage</a></li>
+
+					
+
 					<li><a href="${pageContext.request.contextPath}/member/memberLogOut">로그아웃</a></li>
 				</c:if>	
 				
@@ -51,3 +56,4 @@
 					<a href="#"><img alt="" src="${pageContext.request.contextPath}/resources/images/ico_cart.png"></a>
 				</div>
 			</div>
+

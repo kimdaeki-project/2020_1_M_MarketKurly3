@@ -37,6 +37,7 @@
 				
 				
 				<div class="company">
+				<br>
 					<ul class="list">
 						<li><a href="#">컬리소개</a></li>
 						<li><a href="#">컬리소개영상</a></li>
@@ -64,19 +65,19 @@
 					<em>© KURLY CORP. ALL RIGHTS RESERVED</em>
 					<ul class="list_sns">
 						<li>
-							<a href="#"><img src="./images/ico_instagram.jpg" alt=""></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/ico_instagram.jpg" alt=""></a>
 						</li>
 						<li>
-							<a href="#"><img src="./images/ico_fb.jpg" alt=""></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/ico_fb.jpg" alt=""></a>
 						</li>
 						<li>
-							<a href="#"><img src="./images/ico_blog.jpg" alt=""></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/ico_blog.jpg" alt=""></a>
 						</li>
 						<li>
-							<a href="#"><img src="./images/ico_naverpost.jpg" alt=""></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/ico_naverpost.jpg" alt=""></a>
 						</li>
 						<li>
-							<a href="#"><img src="./images/ico_youtube.jpg" alt=""></a>
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/ico_youtube.jpg" alt=""></a>
 						</li>
 					</ul>
 				</div>

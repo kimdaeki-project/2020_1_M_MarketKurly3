@@ -36,7 +36,7 @@ public class MemberEmailController {
 	
 	//injeungEmail
 	@PostMapping("injeungEmail.do")
-	public ModelAndView injeungEmail(HttpServletRequest request_email, String m_email, HttpServletResponse response_email)throws Exception{
+	public ModelAndView injeungEmail(HttpServletRequest request_email, String email, HttpServletResponse response_email)throws Exception{
 		
 		
 		//이메일: <input type="text" name="m_email"~
@@ -48,7 +48,7 @@ public class MemberEmailController {
 		
 		String setfrom = "thdus3009@gmail.com"; //보내는사람
 		//매개변수로 받아온 HttpServletRequest사용 (요청)
-        String setmail = request_email.getParameter("m_email"); // 받는 사람
+        String setmail = request_email.getParameter("email"); // 받는 사람
         String title = "마켓컬리 - 회원가입 인증 이메일 입니다."; // 제목
         String content = 
         		
@@ -115,17 +115,17 @@ public class MemberEmailController {
     //이메일로 받은 인증번호를 입력하고 전송 버튼을 누르면 맵핑되는 메소드.
     //내가 입력한 인증번호와 메일로 입력한 인증번호가 맞는지 확인해서 맞으면 innerhtml로 " 올바른 인증번호입니다./ 인증번호가 일치하지 않습니다." 띄워주기
 	@PostMapping("hwaginEmail.do${dice}")
-	public ModelAndView hwaginEmail(String m_emailNum, @PathVariable String dice, HttpServletResponse response_equals)throws Exception{
+	public ModelAndView hwaginEmail(String emailNum, @PathVariable String dice, HttpServletResponse response_equals)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		//페이지이동과 자료를 동시에 하기위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
 		
 	      mv.setViewName("/member/memberJoin");
 	        
-	      mv.addObject("emailNum",m_emailNum); ////jsp에서 "${emailNum}"로 사용 (dice:보낸인증번호 / emailNum:내가쓴인증번호)
+	      mv.addObject("emailNum",emailNum); ////jsp에서 "${emailNum}"로 사용 (dice:보낸인증번호 / emailNum:내가쓴인증번호)
 	        
 	      //이걸 script에서 쓸수있을것같은디..
-	        if (m_emailNum.equals(dice)) {
+	        if (emailNum.equals(dice)) {
 	        	response_equals.setContentType("text/html; charset=UTF-8");
 	            PrintWriter out_equals = response_equals.getWriter();
 	            out_equals.println("<script>alert('인증번호가 일치하였습니다.');</script>");
@@ -133,7 +133,7 @@ public class MemberEmailController {
 	            
 	            return mv;
 	            
-	        }else if (m_emailNum != dice) {
+	        }else if (emailNum != dice) {
 	        	response_equals.setContentType("text/html; charset=UTF-8");
 	            PrintWriter out_equals = response_equals.getWriter();
 	            out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>");

@@ -18,22 +18,23 @@ public class CartService {
 	
 	
 	
-	public List<CartVO> cartList(int num) throws Exception {
-		return cartDAO.cartList(num);
+	public List<CartVO> cartList(Long cart_num) throws Exception {
+		return cartDAO.cartList(cart_num);
 	}
 	
 	
-
 	
 	public int cartInsert(CartVO cartVO) throws Exception{
-		
-		
-		
+
 		int result = cartDAO.cartInsert(cartVO);
-		
-		
-		
+	
 		return result;
+	}
+	
+	
+	
+	public int cartDelete(Long cq_num) throws Exception {
+		return cartDAO.cartDelete(cq_num);
 	}
 	
 }

@@ -17,8 +17,9 @@ public class CartDAO {
 	private final String NAMESPACE = "com.iu.mk.cart.CartDAO.";
 	
 	
-	public List<CartVO> cartList(int num) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"cartList");
+	public List<CartVO> cartList(Long cart_num) throws Exception{
+		System.out.println("dao_cart_num : " +cart_num);
+		return sqlSession.selectList(NAMESPACE+"cartList",cart_num);
 
 	}
 
@@ -31,6 +32,9 @@ public class CartDAO {
 		return sqlSession.insert(NAMESPACE + "cartInsert", cartVO);
 	}
 	
+	public int cartDelete(Long cq_num) throws Exception {
+		return sqlSession.delete(NAMESPACE + "cartDelete", cq_num);
+	}
 
 	
 	
