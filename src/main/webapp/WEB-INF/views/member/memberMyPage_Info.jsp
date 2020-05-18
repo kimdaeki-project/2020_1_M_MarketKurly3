@@ -26,10 +26,32 @@
 	
 	
 <!-- contents -->	
-	<div class="mypage_contents">
-		<div class="purple_line">
+	<div class="mypage_contents2">
 			<span style="font-size:30px; font-weight:500;" >회원 정보</span>
-		</div>
+			<br><br>
+			
+				<span style="font-size:20px; font-weight:500;" >&ensp;기본 정보</span>
+				<br><br>
+				<div class="line">
+				<span>
+					<div class="subject">
+					</div>
+				</span>
+				<span>	
+					<div class="content">
+					</div>
+				</span>
+				</div>
+				
+				<br><br>
+				
+				<span style="font-size:20px; font-weight:500;" >&ensp;추가 정보</span>
+				<br><br>
+				<div class="line">
+				dddd
+				</div>
+				
+		<!-- 수정, 삭제 버튼 -->
 	</div>
 </section>
 

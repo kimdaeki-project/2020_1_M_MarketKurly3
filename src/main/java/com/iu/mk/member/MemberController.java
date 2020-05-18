@@ -26,6 +26,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//test
+	@GetMapping("test")
+	public void test()throws Exception {
+		
+	}
+	
+	
 	//memberJoinConfirm (약관동의)
 	@GetMapping("memberJoinConfirm")
 	public ModelAndView memberJoinConfirm(MemberVO memberVO) {

@@ -1,8 +1,32 @@
 @charset "UTF-8";
 
-.purpleline {
-	height: 300px;
-	width : 100%;
-	background-color : pink;
-	border-bottom:2px solid #5f0080;
+.mypage_contents2 {
+				width:1050px;
+				margin:0 auto;
+				height:1000px;
+				overflow:hidden;
+				/*  background-color: skyblue;  */
+				padding: 30px 180px 200px 210px;
+
+
+}
+
+.line {
+	height : 40%; 
+	width: 100%; 
+	border-top: 2px solid #5f0080; 
+	 background-color: #f2f2f2; 
+	padding : 30px 50px;
+}
+
+
+.subject {
+	height : 100%; 
+	width: 30%; 
+	background-color: skyblue;
+}
+
+.content {
+	height : 100%; 
+	width: 70%; 
 }
