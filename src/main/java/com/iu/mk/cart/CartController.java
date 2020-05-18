@@ -17,11 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.mk.member.MemberVO;
 import com.iu.mk.product.ProductVO;
+import com.iu.mk.product.productfile.ProductFileVO;
 
 @Controller
 @RequestMapping(value = "/cart/**")
 public class CartController {
 	
+	private static final List<ProductFileVO> Object = null;
 	@Autowired
 	private CartService cartService;
 	
@@ -40,9 +42,10 @@ public class CartController {
 		List<CartVO> ar = cartService.cartList(cart_num); //지금은 VO 수정이 안 되어서 일단 나중에!
 		System.out.println("---------++++----------");
 
+
 		
-		System.out.println(ar.get(0).getCount()+"///");
-		 
+
+		
 		mv.addObject("list", ar);
 		mv.setViewName("cart/cartList");
 		
@@ -89,7 +92,10 @@ public class CartController {
 		
 		cartVO.setP_num(productVO.getP_num());
 		
-		//cartVO.setCart_num(memberVO.getCount_Num); 해서 장바구니 번호 넣어주기
+	
+		/*
+		 * int result = 0; cartService.cart
+		 */
 		
 		
 		int result = cartService.cartInsert(cartVO);
@@ -181,9 +187,20 @@ public class CartController {
 	@PostMapping("pay")
 	public ModelAndView pay(int totalPrice) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		//주문번호 생성 후 Pay 테이블에 기존의 cartVO
+		
+		
+		
+		
+		
+		
+		
+		System.out.println(totalPrice);
+		
 		mv.addObject("total_price", totalPrice);
 		mv.setViewName("cart/pay");
-		System.out.println(totalPrice);
+		
 		return mv;
 	}
 	
