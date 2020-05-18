@@ -138,6 +138,7 @@ public class MemberController {
 	
 	@PostMapping("memberLogin")
 	public ModelAndView memberLogin2(MemberVO memberVO, HttpSession session, ModelAndView mv, String remember, HttpServletResponse response)throws Exception{
+		
 		Cookie cookie = new Cookie("cId", "");
 		//check박스가 체크되어있다면
 		if(remember!=null) {
@@ -184,6 +185,12 @@ public class MemberController {
 	public void memberMyPage_Info( )throws Exception{
 
 	}
+	
+	@PostMapping("memberMyPage_Info")
+	public void memberMyPage_Info2( )throws Exception{
+		
+	}
+	
 	//memberMyPage
 	@GetMapping("memberMyPage_Purchase")
 	public void memberMyPage_Purchase( )throws Exception{
