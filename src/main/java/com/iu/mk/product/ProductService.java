@@ -114,7 +114,7 @@ public class ProductService {
 	}
 	
 	
-	public long productDelete(long p_num) throws Exception{
+	public int productDelete(long p_num) throws Exception{
 		List<ProductFileVO> list = productFileDAO.fileList(p_num);
 		//1.hdd에 해당 파일들을 삭제
 		String path = servletContext.getRealPath("resources/uploadproduct");

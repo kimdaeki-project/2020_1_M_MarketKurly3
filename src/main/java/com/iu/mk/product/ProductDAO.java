@@ -51,7 +51,7 @@ public class ProductDAO {
 		return sqlSession.update(NAMESPACE+"productUpdate",productVO);
 	}
 	
-	public long productDelete(long p_num) throws Exception{
+	public int productDelete(long p_num) throws Exception{
 		return sqlSession.delete(NAMESPACE+"productDelete",p_num);
 	}
 	

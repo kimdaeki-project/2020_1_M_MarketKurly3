@@ -22,9 +22,7 @@
 					 <div class="btn">
 						<a href="./productWrite" class="btn btn-default">Write</a>
 					 </div>
-					 <div class="btnDel">
-						<a href="./productAdminDelete?p_num=${product.p_num}" class="btn btn-default">Delete</a>
-					 </div>
+					
 				</h1>
 				 
 				</div>
@@ -34,23 +32,28 @@
 	
 			<!-- img list -->	
 			<div class="list_goodss">
-			
+				
+				<input type="checkbox" class="allCheck" name="allCheck" id="allCheck" ><p>전체선택</p>
+				<input type="checkbox" name="allCheck" id="allCheck" >
+				<button type="button" class="btn_delete" id="btn_delete">선택 삭제</button>
 				
 				<!-- list 반복 -->
 			
 			<ul class="list">
 				
-					<c:forEach items="${list}" var="vo">
-						
+					<c:forEach items="${list}" var="vo" varStatus="status">
+						<input type="hidden" id="${vo.p_num}" class="pn${status.index}">
 						<li class="list_li">
 							<a href="../product/productAdminSelect?p_num=${vo.p_num}" class="thumb_goods">
-							<input type="checkbox" name="checkbox" id="c1">
+							<input type="checkbox" name="checkbox" class="c1" id="ch${status.index}">
 								<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
 							</a>
 								<div class="info_goods">
 									<span class="name"><a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a></span>
 									<span class="cost">${vo.price}원</span>
 								</div>
+								<button type="button" class="btn btn_delete" id="btn_del" onclick="btnDel(${vo.p_num});">
+								</button>
 							</li>
 							
 					 </c:forEach>
@@ -81,51 +84,119 @@
 	
 	
 	<script type="text/javascript">
+	var allCheck = document.getElementsByClassName("allCheck");
+	var c1 = document.getElementsByClassName("c1");
+	console.log("c1.length : " + c1.length);
+	console.log(allCheck);
 	
-	/* function btnDel() {
+	function count() {
+		var c1 =document.getElementsByClassName("c1");
+		console.log("c1.length :" +c1.length);
+		//c1 길이
+		//check되어있으면 ar에 index 번호 넣어주기
 		
+		var ar =[];
+		for(var i=0;i<c1.length;i++){
+			if(c1.checked){
+				ar.push(c1);
+				console.log("---");
+				console.log(ar[i]);
+			}
+		}
+	};
 	
-	$("#checkbox").click(function() {
-
-		$("input[name=checkbox]:checked").each(function() {
-
-			var test = $(this).val();
-
-			console.log(test);
-
+	
+	
+	$(function() {
+		/* $(".allchecked").prop("checked",true); */
+		
+		//allcheck false일 경우 c1 모두 flase
+		$(".allCheck").on("click",function(){
+			$(".c1").prop("checked",$(this).prop("checked"));
+			$("allCheck").prop("checked",$(this).prop("checked"));
+			count();
 		});
-
+		
+		//c1 하나라도 false일 경우 allcheck false
+		$(".c1").on("click",function(){
+			var result = true;
+			
+			if(!$(this).prop("checked")){
+				result = false;
+			}
+			
+			$(".allCheck").prop("checked",result);
+			
+			var re = true;
+			for(var i=0;i<c1.length;i++){
+				if(!c1[i].checked){
+					re=false;
+					break;
+				}
+			}
+			$(".allCheck").prop("checked",re);
+			
+			count();
+			
+		});
 	});
 	
-	} */
-	
-
-		 function btnDel(num) {
-
-		$("#c1").click(function() {
-			
-			$("#c1").prop("checked");
-		
-		
-			
-			
-		 	/* if(check){
-				var s=$(this);
-				$.post("../productFile/fileDeletes",{p_num:num},function(data){
-					if(data>0){
-						s.parent.remove();
-						alert("Delete Success");
-					}else{
-						alert("Delete Fail");
-					}
-				});
-			}  */
+	//admin delete
+	function btnDel(num) {
+		$.post("../product/productAdminDelete",{p_num:num},function(data){
+			if(data>0){
+				loacation.reload();
+			}else{
+				alert("삭제 실패");
+			}
+			console.log("here");
+			console.log("data : "+data);
 		});
-			
-			
-		} 
+	}
 	
+	//개별 삭제
+	$("btn_del").click(function(){
+		$.post("../product/productAdminDelete",{p_num:$(".pn").attr("id")},function(data){
+			
+			console.log("pn data : "+data);
+		}
+		)
+	});
 	
+	//선택삭제
+	$("#btn_delete").click(function() {
+		//체크된것 확인 후 이것들을  post로 전송
+		var check = "";
+		
+		for(var i=0;i<c1.length;i++){
+			var cid="ch"+i;
+			ckid = document.getElementById(cid);
+			
+			var pn =".pn"+i;
+			
+			if(ckid.checked){
+				var b = $(pn).attr("id")+"-";
+				
+				check += b;
+				console.log("test"+i);
+			}
+		}
+		console.log(check);
+		
+		//배열 check 보내기
+		$.post("../product/selectDelete",{pn:check},function(data){
+			console.log(data);
+			
+			console.log("data : " + data);
+			if(data>0){
+				location.reload();
+			}
+			
+		
+		
+		});
+		
+	});
 	</script>
 	
 	

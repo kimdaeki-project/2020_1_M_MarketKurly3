@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -96,20 +97,35 @@ public class ProductAdminController {
 	}
 	
 	
-	@RequestMapping("productAdminDelete")
-	public ModelAndView productDelete(long p_num, ModelAndView mv) throws Exception{
-		long result = productService.productDelete(p_num);
+	@PostMapping("productAdminDelete")
+	@ResponseBody
+	public int productDelete(long p_num) throws Exception{
+		int result = productService.productDelete(p_num);
 		
-		if(result>0) {
-			mv.addObject("result","Delete Success");
-		}else {
-			mv.addObject("result","Delete Fail");
+		return result;
+	}
+	
+	@PostMapping("selectDelete")
+	@ResponseBody
+	public int selectDelete(String pn) throws Exception{
+		System.out.println(pn);
+		
+		//파싱후 배열에 담기
+	
+		String ar[] = pn.split("-");
+		for(int i=0;i<ar.length;i++) {
+			System.out.println("ar : "+ar[i]);
+			System.out.println(ar[i]);
 		}
 		
-		mv.addObject("path","./productAdmin");
-		mv.setViewName("common/result");
-		
-		return mv;
+		int result =0;
+		//다녀오기
+		for(int i=0;i<ar.length;i++) {
+			result = productService.productDelete(Long.parseLong((ar[i])));
+			System.out.println(result);
+		}
+		return result;
 	}
+	
 	
 }
