@@ -541,7 +541,7 @@
 		//선택 삭제
 		$("#btn_delete").click(function(){
 			//뭐뭐 체크되어있는지 확인 후 그것들의 cq_num을 post로 전송
-			var check = [];
+			var check = "";
 			
 			for(var i=0; i<c1.length; i++){
 				var cid = "ch"+i;
@@ -553,26 +553,33 @@
 				if(ckid.checked){
 					var b = $(cqn).attr("id") + "-";
 					
-					check.push(b);
+					check += b;
 					console.log("test"+i);
 				}
 			
 			}
+			
+			console.log(check);
 			
 		/* 	for(var i=0; i<check.length; i++){
 				console.log(check[i]);
 			} */
 			
 			//배열 check를 보내기
-/* 			$.post("../cart/selectDelete",{ar:check},function(data){
+			$.post("../cart/selectDelete",{cqn:check},function(data){
 				
 				
 				
 				
 				console.log(data);
 				
+				console.log("data : " + data);
+				if(data>0){
+					location.reload();
+				}
+				
 			})
-			 */
+			 
 			
 			
 		});
