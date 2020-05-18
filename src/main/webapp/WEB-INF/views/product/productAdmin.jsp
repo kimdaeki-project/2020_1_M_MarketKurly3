@@ -34,7 +34,7 @@
 			<div class="list_goodss">
 				
 				<input type="checkbox" class="allCheck" name="allCheck" id="allCheck" ><p>전체선택</p>
-				<input type="checkbox" name="allCheck" id="allCheck" >
+				<input type="checkbox" class="allCheck"   name="allCheck" id="allCheck" >
 				<button type="button" class="btn_delete" id="btn_delete">선택 삭제</button>
 				
 				<!-- list 반복 -->
@@ -95,6 +95,7 @@
 		//c1 길이
 		//check되어있으면 ar에 index 번호 넣어주기
 		
+		
 		var ar =[];
 		for(var i=0;i<c1.length;i++){
 			if(c1.checked){
@@ -108,7 +109,7 @@
 	
 	
 	$(function() {
-		/* $(".allchecked").prop("checked",true); */
+		$(".allchecked").prop("checked",true); 
 		
 		//allcheck false일 경우 c1 모두 flase
 		$(".allCheck").on("click",function(){
