@@ -59,6 +59,9 @@
 			
 				<span style="font-size:20px; font-weight:500;" >&ensp;기본 정보</span>
 				<br><br>
+				
+				<!-- line1 시작 -->
+				
 				<div class="line1">
 				<!-- controller login파트에서 session.setAttribute("member", memberVO);으로 설정하였으므로 member=memberVO가 되고, -->
 				<!-- ${sessionScope.member.id}는 session의 memberVO에서 id라는 정보를 찾는다는 의미이다. -->
@@ -154,12 +157,14 @@
 					
 					</table>
 				</form>
-
-					 
-					
-				</div>
-				
+	
+			</div>
+			
+			<!-- line1 끝 -->	
+			
 				<br><br>
+				
+			<!-- line2 시작 -->
 				
 				<span style="font-size:20px; font-weight:500;" >&ensp;추가 정보</span>
 				<br><br>
@@ -167,33 +172,83 @@
 					<table>
 						<tr>
 							<td class="msubject">성별</td>
-							<td class="mcontent">
-								ㅇㅇ
+							<td class="mcontent3">
+							
+							<input type="hidden" id="sex" value="${member.sex}">
+							
+							
+										<div class="group_radio" id="mSex" >	
+											<label class="label_radio">
+												<input type="radio" name="sex" label="성별" value="man" class="sex" >
+												<span class="text_position">남자</span>
+											</label>
+											<label class="label_radio">
+												<input type="radio" name="sex" label="성별" value="woman" class="sex">
+												<span class="text_position">여자</span>
+											</label>
+											<label class="label_radio">
+												<input type="radio" name="sex" label="성별" value="nochoice" class="sex">
+												<span class="text_position">선택안함</span>
+											</label>
+				
+										</div>
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">생년월일</td>
-							<td class="mcontent">
-								ㅇㅇ
+							<td class="mcontent3"><br>
+								<div class="birthday" id="mBir">	
+									<!-- birth_year/birth_mon/birth_day의 value값 post로 넘기기 -->
+										<input type="text" name="birth_year" id="birth_year" size="4" maxlength="4" placeholder="YYYY">
+										<span class="bar">/</span>
+										<input type="text" name="birth_mon" id="birth_mon" size="2" maxlength="2" placeholder="MM">
+										<span class="bar">/</span>
+										<input type="text" name="birth_day" id="birth_day" size="2" maxlength="2" placeholder="DD">
+														
+								</div>
 							</td>
 						</tr>
 						
 					</table>
 				</div>
-				
+				<!-- line2 끝 -->
 				<br><br>
 				
+				
+				<!-- line3 시작 / DB만들어야함...귀찮-->
+<!-- 				
 				<span style="font-size:20px; font-weight:500;" >&ensp;이용약관 동의</span>
 				<br><br>
 				<div class="line3">
-					내용
+					ddd
 				</div>
+ -->
+				<!-- line3 끝 -->
 				
-		<!-- 수정, 삭제 버튼 -->
+		<!-- 수정, 삭제 버튼 시작-->
+			버튼버튼
+		<!-- 수정, 삭제 버튼 끝-->	
+		
 	</div>
 </section>
 
 <c:import url="../template/footer.jsp"></c:import>
+
+	<script type="text/javascript">
+		var sex =  $("#sex").val(); //db받기
+		console.log(sex);
+		
+		//라디오버튼 #mSex
+		if($("#mSex input[value=man]").val()==sex){/* var sex = sex */
+			$("#mSex input[value=man]").prop("checked",true);
+		}else if($("#mSex input[value=woman]").val()==sex){
+			$("#mSex input[value=woman]").prop("checked",true);
+		} else {
+			$("#mSex input[value=nochoice]").prop("checked",true);
+		} 
+		
+	</script>
+
 </body>
 </html>
