@@ -235,7 +235,7 @@
 						</dl>
 					</div>
 					<div class="notice_cart"></div>
-					<button type="button" class="btn_submit">주문하기
+					<button type="button" class="btn_submit" onclick="location.href='../member/test' ">주문하기
 						<span class="price">(6,900 원)</span>
 					</button>
 				</div>

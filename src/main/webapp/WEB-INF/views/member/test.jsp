@@ -5,7 +5,7 @@
     String email = (String)request.getAttribute("email");
     String phone = (String)request.getAttribute("phone");
     String address = (String)request.getAttribute("address");
-   // int totalPrice = (int)request.getAttribute("totalPrice");    
+   /*  int totalPrice = (int)request.getAttribute("total_price");  */   
 %>
 <!DOCTYPE html>
 <html>
@@ -25,24 +25,25 @@
         IMP.request_pay({
             pg : 'kakaopay',
             pay_method : 'card',
-            merchant_uid : 'merchant_' + new Date().getTime(),
-            name : 'KH Books 도서 결제',
-           <%--  amount : <%=totalPrice%>,  --%>
+            merchant_uid : 'merchant_' + new Date().getTime(), 
+            name : 'Marketkurly 결제',
+           <%--  amount : '<%=totalPrice%>',   --%>
             buyer_email : '<%=email%>',
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
             buyer_addr : '<%=address%>',
             buyer_postcode : '123-456',
-            //m_redirect_url : 'http://www.naver.com'
+           m_redirect_url : 'http://localhost:8080/'
         }, function(rsp) {
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
                 jQuery.ajax({
-                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                    url: "http://localhost:8080/", //cross-domain error가 발생하지 않도록 주의해주세요
                     type: 'POST',
                     dataType: 'json',
                     data: {
                         imp_uid : rsp.imp_uid
+                       
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
                 }).done(function(data) {
@@ -62,7 +63,7 @@
                 });
                 
                 //성공시 이동할 페이지
-                location.href='<%=request.getContextPath()%>/order/paySuccess?msg='+msg;
+                location.href='<%=request.getContextPath()%>/cart/carPay?msg='+msg;
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

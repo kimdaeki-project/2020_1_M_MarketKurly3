@@ -28,8 +28,8 @@ public class MemberController {
 	
 	//test
 	@GetMapping("test")
-	public void test()throws Exception {
-		
+	public String test()throws Exception {
+		return "member/test";
 	}
 	
 	
