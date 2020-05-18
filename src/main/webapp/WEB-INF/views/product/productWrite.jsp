@@ -23,9 +23,9 @@
   
   	<div class="form-group">
       <select class="form-control" id="kind" name="kind" >
-				  <option value="me" selected="selected">Meat</option>
-				  <option value="ve" selected="selected">Vegetable</option>
-				  <option value="de" selected="selected">Dessert</option>
+				  <option value="me" selected="selected" >Meat</option>
+				  <option value="ve" >Vegetable</option>
+				  <option value="de" >Dessert</option>
   	  </select>
     </div>
   
@@ -58,8 +58,6 @@
 </div>
 
 <script type="text/javascript" src="../resources/js/boardForm.js" >
-
-
 </script>
 
 

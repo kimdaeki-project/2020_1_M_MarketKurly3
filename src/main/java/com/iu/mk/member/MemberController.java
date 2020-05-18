@@ -26,7 +26,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	//memberJoinConfirm
+	//memberJoinConfirm (약관동의)
 	@GetMapping("memberJoinConfirm")
 	public ModelAndView memberJoinConfirm(MemberVO memberVO) {
 		ModelAndView mv = new ModelAndView();
@@ -45,8 +45,31 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView memberJoin2(MemberVO memberVO, HttpSession session, ModelAndView mv)throws Exception {
-		int result = memberService.memberJoin(memberVO, session);
+	public ModelAndView memberJoin2(MemberVO memberVO, HttpSession session, ModelAndView mv, String roadFullAddr){
+		
+		//		System.out.println(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
+		memberVO.setBirth(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
+		System.out.println(memberVO.getBirth());
+		
+		memberVO.setAddress(roadFullAddr);
+		System.out.println(memberVO.getAddress());
+		
+		
+
+		int result = 0;
+		try {	
+			result = memberService.memberJoin(memberVO);
+		} catch (Exception e) {
+			
+			  mv.addObject("result","에러발생"); mv.addObject("path","memberJoin");
+			  mv.setViewName("common/result");
+			 
+			
+			e.printStackTrace();
+			
+			return mv;
+		} 
+
 		
 		if(result>0) {
 			mv.addObject("result","Join Success");
@@ -140,6 +163,16 @@ public class MemberController {
 	}
 	
 	
+	//memberMyPage
+	@GetMapping("memberMyPage")
+	public void memberMyPage( )throws Exception{
+		
+		//MemberVO memberVO =(MemberVO)session.getAttribute("member"); //Login할때 받아온 MemberVO값(value)을 member(key)에 담아주었다.
+		//마이페이지 들어오려면 이미 로그인된 상태니까 굳이 session보낼필요 없을듯 
+		
+	}
+	
+	
 	//memberDelete
 	@GetMapping("memberDelete")
 	public ModelAndView memberDelete( HttpSession session, ModelAndView mv) throws Exception {
@@ -169,9 +202,9 @@ public class MemberController {
 		
 	}
 	
-	@PostMapping("jusoPopup")
-	public void jusoPopup(String roadFullAddr) {
-		
-		System.out.println(roadFullAddr);
-	}
+	
+	 @PostMapping("jusoPopup") public void jusoPopup(String roadFullAddr) {
+	  
+	 System.out.println("주소:"+roadFullAddr); }
+	 
 }

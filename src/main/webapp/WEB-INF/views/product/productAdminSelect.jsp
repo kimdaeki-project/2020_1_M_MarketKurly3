@@ -34,7 +34,13 @@
 					</c:forEach>
 				</div>
 				
-				
+				<c:if test="${not empty member}">
+					<c:if test="${member.id eq 'admin'}">
+						 <div class="btn">
+							<a href="./productAdminUpdate?p_num=${product.p_num}" class="btn btn-default">Update</a>
+						 </div>
+					</c:if>
+				</c:if>
 				
 				<p class="goods_name">
 					<span class="btn_share">
@@ -117,14 +123,13 @@
 					</div><!-- in_option close -->
 					</form>
 					
-					<form action="../cart/cartInsert" method="post" name="frmWishlist">
+					<form action="./cartInsert" method="post" name="frmWishlist">
 						<input type="hidden" name="count" id="count" value="">
 						<input type="hidden" name="p_num" value="${product.p_num}">
 						<div class="group_btn">
 							<span class="btn_type1">
 								<button type="submit" class="txt_type">장바구니 담기</button>
 							</span>
-							
 						</div>
 					</form>
 				</div><!-- inner_option close -->
@@ -179,7 +184,6 @@
 			//sum.value = parseInt(hm.value) * parseInt(sell_price);
 			
 			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
-			
 			$(document).ready(function() {
 		        $('#count').val(hm.value);
 		    });
@@ -209,9 +213,10 @@
 			
 		}
 		
-		
-		
 	
+		
+		
+		
 	</script>
 	
 </body>

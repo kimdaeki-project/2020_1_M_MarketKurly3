@@ -1,8 +1,10 @@
 package com.iu.mk.product;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,8 @@ public class ProductService {
 	
 	public List<ProductVO> productList(Pager pager) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
-		
+		System.out.println(pager.getStartRow()+"star");
+		System.out.println(pager.getLastRow()+"last");
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기
 
@@ -62,6 +65,8 @@ public class ProductService {
 			productFileVO.setOriName(files.getOriginalFilename());
 			productFileVO.setKind(productVO.getKind());
 			
+			System.out.println("service img :" + files.getOriginalFilename());
+			
 			productFileDAO.fileInsert(productFileVO);//보드파일테이블 삽입
 			if(result<1) {
 				throw new Exception();// 롤백을 위한 강제 예외처리
@@ -71,17 +76,42 @@ public class ProductService {
 		}
 		
 		return result;
-		
 	
 	}
 	
-	
-	
+	//select
 	public ProductVO productSelect(Long p_num) throws Exception{
 		System.out.println(p_num+":::sservice_num");
 		return productDAO.productSelect(p_num);
 	}
 	
+	
+	//하드디스크의 file save
+	public long productUpdate(ProductVO productVO,MultipartFile files) throws Exception{
+
+		//하드디스크에 file이 들어있는 실제 경로
+		String path = servletContext.getRealPath("/resources/uploadproduct");
+		System.out.println(path);
+		
+		//table insert
+		long result = productDAO.productUpdate(productVO);
+		
+		if(files.getSize()>0) {
+			ProductFileVO productFileVO  = new ProductFileVO();
+			//filesaver 파일이름 랜덤 생성
+			productFileVO.setP_num(productVO.getP_num());//product p_num과 같은것으로 입력	
+			productFileVO.setOriName(files.getOriginalFilename());
+			productFileVO.setFileName(fileSaver.saveByTransfer(files, path));
+			productFileVO.setKind(productVO.getKind());
+			//productfiledao insert 시켜줌
+			
+			System.out.println("check  num: "+productFileVO.getP_num());
+			System.out.println("check name : "+productFileVO.getKind());
+			result = productFileDAO.fileInsert(productFileVO);
+		}
+		
+		return result;
+	}
 	
 	
 }

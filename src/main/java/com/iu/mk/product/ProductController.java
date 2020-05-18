@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-
+	
 	
 	@GetMapping("productList")
 	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
@@ -32,11 +33,11 @@ public class ProductController {
 		System.out.println("search : " + pager.getSearch());
 		
 		List<ProductVO> ar = productService.productList(pager);
-	//	List<ProductFileVO> ar2 = productFileService.fileList(productVO.getP_num());
+		System.out.println(ar.get(1).getP_name());
 		System.out.println(pager.getTotalPage());
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
-		mv.setViewName("product/productList");
+		mv.setViewName("product/productAdmin");
 		
 		return mv;
 	}
@@ -60,14 +61,18 @@ public class ProductController {
 		//------------확인end-----------------
 		//kind 가져와서  vo에 넣기
 		String kind = request.getParameter("kind");
-		System.out.println("kind  : "+ kind);
+		
 		productVO.setKind(kind);
 				
 		//System.out.println("productVO:"+productVO.getP_kind());
-		//System.out.println("img : "+files.getOriginalFilename());
+		
+		System.out.println("controller img : "+files.getOriginalFilename());
 		
 		int result = productService.productWrite(productVO, files);
-		 
+		
+		System.out.println("controller result : "+result);
+		
+		
 		 if(result > 0) {
 			 mv.setViewName("redirect:./productList");
 		 }else {
@@ -80,8 +85,6 @@ public class ProductController {
 	}
 	
 
-	
-	
 	
 	
 	@GetMapping("productSelect")
@@ -101,6 +104,8 @@ public class ProductController {
 		
 		return mv;
 	}
+	
+	
 	
 	
 	

@@ -28,7 +28,7 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE+"productNum");
 	}
 	
-	public int productWrite(ProductVO productVO)throws Exception{
+	public int productWrite(ProductVO productVO)throws Exception{	
 		return sqlSession.insert(NAMESPACE+"productWrite",productVO);
 	}
 	
@@ -42,6 +42,13 @@ public class ProductDAO {
 	public ProductVO productSelect(Long p_num) throws Exception{
 		System.out.println(p_num+":::dao_num");
 		return sqlSession.selectOne(NAMESPACE+"productSelect",p_num);
+	}
+	
+	
+	//파라미터로 받아오는 p_num 이라서 long로
+	public long productUpdate(ProductVO productVO)throws Exception{
+		System.out.println("dao p_num : "+productVO.getP_num());
+		return sqlSession.update(NAMESPACE+"productUpdate",productVO);
 	}
 	
 }

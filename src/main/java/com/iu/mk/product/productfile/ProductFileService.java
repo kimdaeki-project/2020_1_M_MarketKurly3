@@ -23,6 +23,19 @@ public class ProductFileService {
 	@Autowired
 	private ProductFileDAO productFileDAO;
 	
+	
+	public int fileDelete(ProductFileVO productFileVO) throws Exception{
+		productFileVO = productFileDAO.fileSelect(productFileVO);
+		int result = productFileDAO.fileDelete(productFileVO);
+		
+		///하드에서 삭제
+		String product = "uploadproduct";
+		String path = servletContext.getRealPath("/resources/"+product);
+		fileSaver.deleteFile(productFileVO.getFileName(), path);
+		return result;
+	}
+	
+	
 	//contents에서 사진을 넣었을 때 사용
 	public String fileInsert(MultipartFile files) throws Exception{
 		//db에는 안들어가고 하드디스크에만 들어가서 불러오는 경로
