@@ -13,7 +13,7 @@
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartList.css">
 </head>
-<body onload="init();">
+<body onload="count();">
 	<c:import url="../template/header.jsp"></c:import>
 	
 <div class="container">
@@ -195,7 +195,7 @@
 							)
 						</span>
 					</div>
-					<button type="button" class="btn_delete">선택 삭제</button>
+					<button type="button" class="btn_delete" id="btn_delete">선택 삭제</button>
 					<!-- <button type="button" class="btn_delete">품절 상품 삭제</button> -->
 				</div>
 				<div class="cart_result">
@@ -279,6 +279,10 @@
 		}
 		
 		
+
+		
+		
+		
 		
 		//전체선택 값
 		
@@ -322,10 +326,9 @@
 					pid = pid + i; //resultPrice0  resultPrice1 . . . >> 합계의 id
 					console.log("pid : " + pid);
 					var re = document.getElementById(pid).innerText;
-					arr.push(re);
-					console.log("list : "+ arr[i]);
+					
 					pid = "resultPrice";
-					pay = pay + parseInt(arr[i]);
+					pay = pay + parseInt(re);
 				}
 			}
 			
@@ -341,8 +344,10 @@
 			var deli = document.getElementById("delivery").innerText;
 			if(pay>=50000){
 				delivery = 0;
-			}else {
+			}else if(pay<50000){
 				delivery = 3000;
+			}else if(pay=0){
+				delivery = 0;
 			}
 			
 			document.getElementById("delivery").innerText = delivery;
@@ -350,6 +355,10 @@
 			console.log("잘 실행되고 잇나요");
 			console.log(pay);
 			document.getElementById("total_price").innerText = (pay+delivery);
+			if(pay<1){
+				document.getElementById("total_price").innerText = 0;
+			}
+			
 			console.log(delivery);
 				}
 //////////////////////
@@ -359,11 +368,13 @@
 
 		
 		$(function(){
-		/* 	$("#allCheck").on("click",".c1",function(){
+		  /*  $("#allCheck").on("click",".c1",function(){
 				
 				$(".c1").prop("checked",$(this).prop("checked"));
 				
 			}); */
+			
+		
 			
 			//allCheck는 default가 true >> checked="checked" 줘놨음
 			
@@ -375,7 +386,9 @@
 			$(".allCheck").on("click",function(){
 				$(".c1").prop("checked", $(this).prop("checked"));
 				$(".allCheck").prop("checked",$(this).prop("checked"));
+				count();
 			});
+			
 			
 			
 			//c1 하나라도 false일 경우 allCheck flase
@@ -388,6 +401,7 @@
 				}
 				
 				$(".allCheck").prop("checked",result);
+				
 				count();
 				
 			});
@@ -510,20 +524,63 @@
 			
 		}
 		
-/* 		
+ 		
+		//개별 삭제
 		$("#btn_del").click(function(){
-
 		
 			$.post("../cart/cartDelete",{cq_num:$(".cqn").attr("id")},function(data){
 				
-				
 				console.log(data);
 			}
-				)
+			)
 					
-		}); */
+		}); 
+		
+		
+		
+		//선택 삭제
+		$("#btn_delete").click(function(){
+			//뭐뭐 체크되어있는지 확인 후 그것들의 cq_num을 post로 전송
+			var check = [];
+			
+			for(var i=0; i<c1.length; i++){
+				var cid = "ch"+i;
+				ckid = document.getElementById(cid);
+				
+				var cqn = ".cqn"+i;
+				
+				
+				if(ckid.checked){
+					var b = $(cqn).attr("id") + "-";
+					
+					check.push(b);
+					console.log("test"+i);
+				}
+			
+			}
+			
+		/* 	for(var i=0; i<check.length; i++){
+				console.log(check[i]);
+			} */
+			
+			//배열 check를 보내기
+/* 			$.post("../cart/selectDelete",{ar:check},function(data){
+				
+				
+				
+				
+				console.log(data);
+				
+			})
+			 */
+			
+			
+		});
 		
 	
+		
+
+		
 	
 	
 	</script>

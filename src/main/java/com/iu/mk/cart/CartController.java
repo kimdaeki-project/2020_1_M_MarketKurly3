@@ -130,7 +130,18 @@ public class CartController {
 	}
 	
 	
-	
+	@PostMapping("selectDelete")
+	@ResponseBody
+	public int selectDelete(String [] ar) throws Exception {
+		//- 들로 이어진 cq_num을 잘라서 배열에 넣은 후.. 여러번 다녀온다.
+		
+		//매개변수로 배열을 받아온다.
+		for(int i=0; i<ar.length; i++) {
+			System.out.println("ar : " + ar[i]);
+		}
+		
+		return 0;
+	}
 	
 	
 	
