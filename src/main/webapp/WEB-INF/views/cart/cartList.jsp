@@ -34,7 +34,7 @@
 
 
 		<div class="user_form_section_cart">
-			<form id="viewCart" name="frmCart" method="post" action="/shop/order/order.php">
+			<form id="viewCart" name="frmCart" method="post" action="pay">
 				<input type="hidden" name="mode" value="setOrder">
 				<div class="tbl_comm cart_goods section_cart">
 					<table class="tbl_comm tbl_header">
@@ -228,6 +228,7 @@
 							<dt class="tit">결제 예정 금액</dt>
 							<dd class="result">
 								<span class="inner_result add">
+									<input type="hidden" id="totalPrice" value="" name="totalPrice">
 									<span class="num" id="total_price">6,900</span>
 									<span class="txt">원</span>
 								</span>
@@ -235,7 +236,7 @@
 						</dl>
 					</div>
 					<div class="notice_cart"></div>
-					<button type="button" class="btn_submit" onclick="location.href='../member/test' ">주문하기
+					<button type="submit" class="btn_submit" >주문하기
 						<span class="price">(6,900 원)</span>
 					</button>
 				</div>
@@ -355,12 +356,14 @@
 			console.log("잘 실행되고 잇나요");
 			console.log(pay);
 			document.getElementById("total_price").innerText = (pay+delivery);
+			$("#totalPrice").val(pay+delivery);
 			if(pay<1){
 				document.getElementById("total_price").innerText = 0;
+				
 			}
 			
 			console.log(delivery);
-				}
+			}
 //////////////////////
 
 
@@ -584,8 +587,18 @@
 			
 		});
 		
-	
 		
+		
+		
+		function pay(){
+			var totalPay = document.getElementById("total_price").innerText;
+			console.log("totalPay..... : " + totalPay)
+			$.post("./pay",{totalPrice:totalPay},function(data){
+				
+			})
+			
+			
+		}
 
 		
 	

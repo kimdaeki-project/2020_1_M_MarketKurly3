@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -161,6 +162,30 @@ public class CartController {
 	
 	
 	
+	@PostMapping("totalPay")
+	public ModelAndView totalPay(int totalPrice, HttpServletRequest request, ModelAndView mv) throws Exception{
+		System.out.println("totalPrice : " + totalPrice);
+		
+		
+		mv.addObject("total_price", totalPrice);
+		mv.setViewName("cart/pay");
+		
+		request.setAttribute("total_price", totalPrice);
+		/* return "cart/pay"; */
+		
+		return mv;
+	}
+	
+	
+	
+	@PostMapping("pay")
+	public ModelAndView pay(int totalPrice) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("total_price", totalPrice);
+		mv.setViewName("cart/pay");
+		System.out.println(totalPrice);
+		return mv;
+	}
 	
 	
 	
