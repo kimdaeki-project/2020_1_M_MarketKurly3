@@ -118,7 +118,7 @@
 					</form>
 					
 					<form action="../cart/cartInsert" method="post" name="frmWishlist">
-						<input type="hidden" name="count" id="count" value="">
+						<input type="hidden" name="count" id="count" value="1">
 						<input type="hidden" name="p_num" value="${product.p_num}">
 						<div class="group_btn">
 							<span class="btn_type1">

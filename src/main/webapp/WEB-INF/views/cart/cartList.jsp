@@ -235,7 +235,7 @@
 						</dl>
 					</div>
 					<div class="notice_cart"></div>
-					<button type="button" class="btn_submit">주문하기
+					<button type="button" class="btn_submit" onclick="location.href='../member/test.jsp' ">주문하기
 						<span class="price">(6,900 원)</span>
 					</button>
 				</div>
@@ -400,7 +400,18 @@
 					result = false;
 				}
 				
-				$(".allCheck").prop("checked",result);
+				//$(".allCheck").prop("checked",false);
+				
+				var re = true;
+				for(var i=0; i<c1.length; i++){
+					
+					if(!c1[i].checked){
+						re = false;
+						break;
+					}
+				}
+				$(".allCheck").prop("checked",re);
+				
 				
 				count();
 				
@@ -524,55 +535,41 @@
 			
 		}
 		
- 		
-		//개별 삭제
-		$("#btn_del").click(function(){
-		
-			$.post("../cart/cartDelete",{cq_num:$(".cqn").attr("id")},function(data){
-				
-				console.log(data);
-			}
-			)
-					
-		}); 
+ 	
 		
 		
 		
 		//선택 삭제
 		$("#btn_delete").click(function(){
 			//뭐뭐 체크되어있는지 확인 후 그것들의 cq_num을 post로 전송
-			var check = [];
+			var check = "";
 			
 			for(var i=0; i<c1.length; i++){
 				var cid = "ch"+i;
 				ckid = document.getElementById(cid);
 				
 				var cqn = ".cqn"+i;
-				
-				
+			
 				if(ckid.checked){
 					var b = $(cqn).attr("id") + "-";
-					
-					check.push(b);
+					check += b;
 					console.log("test"+i);
 				}
-			
 			}
+		
+				console.log(check);
 			
-		/* 	for(var i=0; i<check.length; i++){
-				console.log(check[i]);
-			} */
 			
-			//배열 check를 보내기
-/* 			$.post("../cart/selectDelete",{ar:check},function(data){
+			//check를 보내기
+			$.post("../cart/selectDelete",{cqn:check},function(data){
 				
 				
-				
-				
-				console.log(data);
-				
+				console.log("data : " + data);
+				if(data>0){
+					location.reload();
+				}
 			})
-			 */
+			
 			
 			
 		});
