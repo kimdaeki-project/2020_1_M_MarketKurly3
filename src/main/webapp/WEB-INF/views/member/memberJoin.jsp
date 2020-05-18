@@ -139,12 +139,12 @@
 
 		<div id="callBackDiv">
 			<table>
-				<tr>
+				<tr><!-- DB로 넘어가는 정보 -->
 					<td><input type="hidden" style="width: 400px;" id="roadFullAddr"
 						name="roadFullAddr" /></td>
 				</tr>
 				
-				<tr>
+				<tr><!-- 보이는 정보 -->
 					<td><input type="text" style="width: 400px;" id="jibunAddr" class="br2 ch"
 						name="jibunAddr" readonly="readonly"/></td>
 				</tr>
@@ -164,7 +164,7 @@
 									
 								</tr>
 								<tr class="select_sex">
-									<td class="memberCols1 br">성별*</td>
+									<td class="memberCols1 br">성별</td>
 									<td class="memberCols2">
 										<div class="group_radio" id="mSex" >	
 											<label class="label_radio">
