@@ -48,7 +48,7 @@
 <!-- top -->
 
 	<div class="mypage_top">
-		<div class="user"><span class=glad>일반</span> &ensp; <span class=name>김소연</span> 님~ 방문을 환영합니다!</div>
+		<div class="user"><span class=glad>일반</span> &ensp; <input style="text" class="name" value="${sessionScope.member.name}" readonly="readonly"> 님~ 방문을 환영합니다!</div>
 	</div> 
 	
 	
@@ -72,14 +72,14 @@
 							<td class="msubject">아이디*</td>
 							<td class="mcontent">
 								<input type="text" name="id" label="아이디"
-										placeholder="${sessionScope.member.id}" id="mmId" readonly="readonly"> <span style="color:gray;">&ensp;※ID는 변경불가</span>
+										value="${sessionScope.member.id}" id="mmId" readonly="readonly"> <span style="color:gray;">&ensp;※ID는 변경불가</span>
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">현재 비밀번호</td>
 							<td class="mcontent">
-								<input type="text" name="pw" label="현재 비밀번호" id="mmPw">
+								<input type="text" label="현재 비밀번호" id="mmPw">
 								<input type="hidden" value="${sessionScope.member.pw}" id="mmPw1">
 							</td>
 						</tr>
@@ -87,14 +87,14 @@
 						<tr>
 							<td class="msubject">새 비밀번호</td>
 							<td class="mcontent">
-								<input type="text" name="pw2" label="새 비밀번호" id="mmPw2">
+								<input type="text" name="pw" label="새 비밀번호" id="mmPw2">
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">비밀번호 확인</td>
 							<td class="mcontent">
-								<input type="text" name="pw2" label="비밀번호 확인" id="mmPw3">
+								<input type="text" label="비밀번호 확인" id="mmPw3">
 							</td>
 						</tr>
 						
@@ -147,7 +147,7 @@
 				
 				<tr>
 					<td><input type="text" style="width: 400px;" id="addrDetail" 
-						name="addrDetail" /></td>
+						name="addrDetail" readonly="readonly"/></td>
 				</tr>
 
 			</table>
@@ -234,8 +234,8 @@
 				
 		<!-- 수정, 삭제 버튼 시작-->
 			<div class="line4">
-			<span><input type="button" class="btn_delete" id="btn_delete" value="탈퇴하기"></span>
-			<a href="javascipt:void(0);" onclick="check_pw(); return false;" id="test"><input type="button" class="btn_update" id="btn_update" value="회원정보 수정"></a>
+			<input type="button" class="btn_delete" id="btn_delete" value="탈퇴하기">
+			<input type="submit" class="btn_update" id="btn_update" value="회원정보 수정">
 			</div>
 		</form>			
 		<!-- 수정, 삭제 버튼 끝-->	
@@ -272,31 +272,50 @@
 		$("#birth_day").prop("value",birth.substring(6,8));
 
 		
-		//비번체크
-		function check_pw() {
-			alert("2 ddd");
-		}
+
 		
-		
-		
-		//update (id:button_update > $("#button_update"))
+		//update (id:btn_update > $("#btn_update"))
 		//넘어가기 전에 확인하려면 input타입의 submit을 button으로 바꿔서 실행해본다
 
 		var check=true;
 
-		
-		$("#btn_update").click(function(e){
+		$("#btn_update").click(function(e){ //버튼을 클릭했을때
 			
 			//mmPw:현재 비밀번호 , mmPw1:DB에서 불러온 비밀번호 , mmPw2:새 비밀번호 , mmPw3:비밀번호 확인 
 			
-			if(($("#mmPw").val()=="")||($("#mmPw1").val()==$("#mmPw").val())){ // mmPw값을 입력하지않았거나 mmPw1값과 일치하는 경우 
+			if($("#mmPw").val()==""){ // mmPw값을 입력하지않았을 경우
 				
-				if(($("#mmPw").val()=="")||($("#mmPw2").val()==$("#mmPw3").val())){
+				if(($("#mmPw2").val()=="")&&($("#mmPw3").val()=="")){ //mmPw2와 mmPw3가 ""일 경우
 					alert("정보가 수정되었습니다.");
 				}else{
-					alert("새 비밀번호를 확인해 주세요.");
+					alert("현재 비밀번호를 정확히 입력해 주세요.");
 					e.preventDefault();
 				}
+
+				
+			}else if($("#mmPw").val()==$("#mmPw1").val()){ //mmPw와 mmPw1값과 일치하는 경우 
+			
+					if($("#mmPw2").val()==$("#mmPw3").val() && !($("#mmPw2").val()=="")){ //mmPw2와 mmPw3 값이 같고 둘다 null값이 아닐때
+							
+							if($("#mmPw2").val().length>=6){ //mmPw2가 6글자 이상인 경우
+								
+								if(!($("#mmPw").val()==$("#mmPw2").val())){ //현재비밀번호와 새비밀번호가 다를때
+									alert("정보가 수정되었습니다.");
+								}else{
+									alert("현재 비밀번호와 다르게 입력해 주세요.")
+									e.preventDefault();
+								}
+								
+							}else{
+								alert("비밀번호를 6자이상 입력해주세요.")
+								e.preventDefault();
+							}
+							
+					}else{
+						alert("새 비밀번호를 확인해 주세요.");
+						e.preventDefault();
+				}
+				
 				
 			}else{ //mmPw값을 정확히 입력하지 않았다면
 				

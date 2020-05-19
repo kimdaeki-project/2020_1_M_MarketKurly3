@@ -56,11 +56,9 @@ public class MemberController {
 		
 		//		System.out.println(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
 		memberVO.setBirth(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
-		System.out.println(memberVO.getBirth());
 		
 		memberVO.setAddress(roadFullAddr);
-		System.out.println(memberVO.getAddress());
-		
+	
 		
 
 		int result = 0;
@@ -189,12 +187,23 @@ public class MemberController {
 	//memberUpdate
 	@PostMapping("memberUpdate")
 	public ModelAndView memberUpdate(HttpSession session, MemberVO memberVO, ModelAndView mv)throws Exception{
-		System.out.println("memberupdate><");
+		
+		memberVO.setBirth(memberVO.getBirth_year()+memberVO.getBirth_mon()+memberVO.getBirth_day());
+		System.out.println(memberVO.getBirth());
+		
+		memberVO.setAddress(memberVO.getRoadFullAddr());
+		System.out.println(memberVO.getAddress());
+		
+		//----------------값은 잘 넘어옴------------------------------------------------------------
+		
+		
 		
 		String id = ((MemberVO)session.getAttribute("member")).getId(); //Login메서드에서 설정해준 session memberVO에서 id를 꺼낸다.
 		memberVO.setId(id); //서비스로 정보를 넘기려면 memberVO안에 넣어야하니까(아래참고) 비어있는 memberVO의 id안에 String id를 넣어준다는 의미.
 		
 		int result = memberService.memberUpdate(memberVO);
+		
+		System.out.println("memberupdate><");
 		
 		//변형되면 1, 변형되지않으면 0
 		if(result>0) {
@@ -253,6 +262,6 @@ public class MemberController {
 	
 	 @PostMapping("jusoPopup") public void jusoPopup(String roadFullAddr) {
 	  
-	 System.out.println("주소:"+roadFullAddr); }
+	 System.out.println("jusoPopup:"+roadFullAddr); }
 	 
 }

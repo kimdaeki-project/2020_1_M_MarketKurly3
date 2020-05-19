@@ -13,19 +13,22 @@
 		SELECT * FROM MEMBER WHERE id=#{id} and pw=#{pw}
 	</select>
   
-  	<!-- 빈공간건드렸을때 -->
+  	
   	<update id="memberUpdate" parameterType="MemberVO">
-  		update member set pw={#pw}, name=#{name}, birth=#{birth}, address=#{address}, phone=#{phone}, email=#{email}, #{sex} where id=#{id}
+  		update member set
+  		<set>
+			<if test=" pw!='' ">
+	  		pw=#{pw}
+	  		</if>
+	  		
+	  		<if test=" roadFullAddr!='' ">
+	  		address=#{address}
+	  		</if>	
+  		</set>
+  		 name=#{name}, birth=#{birth}, phone=#{phone}, email=#{email}, #{sex}
+  		where id=#{id}
   	</update>
   	
-  	<!-- 빈공간을 건들지 않았을때 -->
-  	<update id="memberUpdate2" parameterType="MemberVO">
-  		update member set name=#{name}, birth=#{birth}, phone=#{phone}, email=#{email}, #{sex} where id=#{id}
-  	</update>
-  	
-  
-  
-  
   
   	<delete id="memberDelete" parameterType="MemberVO">
 		delete member where id=#{id}
