@@ -104,7 +104,7 @@
 	 	<div class="goods-view-infomation detail_wrap_outer">
 	 		<ul class="goods-view-infomation-tab-group">
 	 		<li class="goods-view-infomation-tab">
-	 			<a href="#">상품 설명</a>
+	 			<h3>상품 설명</h3>
 	 		</li>
 	 		</ul>
 	 	</div>

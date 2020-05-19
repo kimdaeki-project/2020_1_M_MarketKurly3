@@ -29,17 +29,24 @@ button	{
 	margin-left: 20px; 
 }
 
+.contents li h3{
+	margin-bottom: 10px;
+	font-family: inherit;
+}
+
+
 .goods-view-infomation-tab-group {
     border-bottom: 1px solid #bfbfbf;
     width: 1040px;
-    margin-left: 370px;
+    margin-left: 385px;
+   
 }
 .cimg{
 	width: 1040px;
 	height: 100%;
 }
 .contentsImg {
-	margin-left: 370px;
+	margin-left: 385px;
 	width:1040px;
 	height:1000px;
 }
@@ -48,6 +55,7 @@ button	{
 	margin-top:100px;
 	margin-left: 180px;;
 }
+
 
 
 
