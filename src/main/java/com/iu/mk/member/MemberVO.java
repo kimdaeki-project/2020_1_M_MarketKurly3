@@ -34,7 +34,9 @@ public class MemberVO {
 	
 	//name값이 넘어온다.
 	
-	private String address;//
+	private String address;//(=roadFullAddr) controller에서 설정해줌
+	
+
 	private String phone;
 	private String email;
 	private String sex;
