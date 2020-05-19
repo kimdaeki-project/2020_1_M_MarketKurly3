@@ -186,15 +186,28 @@ public class MemberController {
 
 	}
 	
-	@PostMapping("memberMyPage_Info")
-	public void memberMyPage_Info2( )throws Exception{
+	//memberUpdate
+	@PostMapping("memberUpdate")
+	public ModelAndView memberUpdate(HttpSession session, MemberVO memberVO, ModelAndView mv)throws Exception{
+		System.out.println("memberupdate><");
 		
-	}
-	
-	//memberMyPage
-	@GetMapping("memberMyPage_Purchase")
-	public void memberMyPage_Purchase( )throws Exception{
-
+		String id = ((MemberVO)session.getAttribute("member")).getId(); //Login메서드에서 설정해준 session memberVO에서 id를 꺼낸다.
+		memberVO.setId(id); //서비스로 정보를 넘기려면 memberVO안에 넣어야하니까(아래참고) 비어있는 memberVO의 id안에 String id를 넣어준다는 의미.
+		
+		int result = memberService.memberUpdate(memberVO);
+		
+		//변형되면 1, 변형되지않으면 0
+		if(result>0) {
+			session.setAttribute("member", memberVO);//바뀐 memberVO을 ${member}에 넣는다.
+			mv.addObject("result","회원정보를 수정하였습니다.");
+			mv.addObject("path", "../"); //성공했으면 변경된 값을 재확인 하기 위해 redirect한다. 
+			mv.setViewName("common/result");
+		}else {
+			mv.addObject("result","수정을 실패하였습니다.");
+			mv.addObject("path","./memberMyPage_Info"); //실패했으니 다시 수정하기위해 현재페이지그대로 둔다. (redirect x)
+			mv.setViewName("common/result");
+		}
+		return mv;
 	}
 	
 	
@@ -216,6 +229,16 @@ public class MemberController {
 		}
 		return mv;
 	}
+	
+	
+	//memberMyPage
+	@GetMapping("memberMyPage_Purchase")
+	public void memberMyPage_Purchase( )throws Exception{
+
+	}
+	
+	
+
 	
 	@GetMapping("Sample")
 	public void Sample() {

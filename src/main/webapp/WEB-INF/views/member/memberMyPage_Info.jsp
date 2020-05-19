@@ -61,13 +61,12 @@
 				<br><br>
 				
 				<!-- line1 시작 -->
+		<form id="form" name="form" method="post" action="./memberUpdate"><!-- 여기서 action은 controller주소를 뜻한다. -->
 				
 				<div class="line1">
 				<!-- controller login파트에서 session.setAttribute("member", memberVO);으로 설정하였으므로 member=memberVO가 되고, -->
 				<!-- ${sessionScope.member.id}는 session의 memberVO에서 id라는 정보를 찾는다는 의미이다. -->
-					
-					<form id="form" name="form" method="post" action="./memberMyPage_Info">
-					
+				
 					<table>
 						<tr>
 							<td class="msubject">아이디*</td>
@@ -156,7 +155,7 @@
 						</tr>						
 					
 					</table>
-				</form>
+				
 	
 			</div>
 			
@@ -174,7 +173,7 @@
 							<td class="msubject">성별</td>
 							<td class="mcontent3">
 							
-							<input type="hidden" id="sex" value="${member.sex}">
+							<input type="hidden" id="sex" value="${member.sex}"><!--1단계. DB에서 값 가지고 오기 -->
 							
 							
 										<div class="group_radio" id="mSex" >	
@@ -198,6 +197,9 @@
 						<tr>
 							<td class="msubject">생년월일</td>
 							<td class="mcontent3"><br>
+							
+							<input type="hidden" id="birth" value="${member.birth}">
+							
 								<div class="birthday" id="mBir">	
 									<!-- birth_year/birth_mon/birth_day의 value값 post로 넘기기 -->
 										<input type="text" name="birth_year" id="birth_year" size="4" maxlength="4" placeholder="YYYY">
@@ -212,7 +214,10 @@
 						
 					</table>
 				</div>
+
 				<!-- line2 끝 -->
+				
+				
 				<br><br>
 				
 				
@@ -227,27 +232,43 @@
 				<!-- line3 끝 -->
 				
 		<!-- 수정, 삭제 버튼 시작-->
-			버튼버튼
+			<div class="line4">
+			<span><input type="button" class="btn_delete" id="btn_delete" value="탈퇴하기"></span>
+			<span><input type="submit" class="btn_update" id="btn_update" value="회원정보 수정"></span>
+			</div>
+		</form>			
 		<!-- 수정, 삭제 버튼 끝-->	
-		
 	</div>
 </section>
 
 <c:import url="../template/footer.jsp"></c:import>
 
 	<script type="text/javascript">
-		var sex =  $("#sex").val(); //db받기
+		//sex
+		
+		var sex =  $("#sex").val(); /*2단계. script에 db정보받기*/
 		console.log(sex);
 		
-		//라디오버튼 #mSex
-		if($("#mSex input[value=man]").val()==sex){/* var sex = sex */
-			$("#mSex input[value=man]").prop("checked",true);
+		//라디오버튼전체> #mSex
+		if($("#mSex input[value=man]").val()==sex){ /* 3단계. 해당 라디오 버튼의 밸류값과 DB의 값이 같다면 DB밸류값과 같은 밸류의 라디오 버튼에 checked한다. */
+			$("#mSex input[value=man]").prop("checked",true); // prop > 적용한다. (java의 '=' 와 같은 의미)
 		}else if($("#mSex input[value=woman]").val()==sex){
 			$("#mSex input[value=woman]").prop("checked",true);
 		} else {
 			$("#mSex input[value=nochoice]").prop("checked",true);
 		} 
 		
+		
+		//birth
+		
+		var birth = $("#birth").val();
+		console.log(birth);
+		console.log(birth.substring(0,4));
+
+		$("#birth_year").prop("value",birth.substring(0,4));
+		$("#birth_mon").prop("value",birth.substring(4,6));
+		$("#birth_day").prop("value",birth.substring(6,8));
+
 	</script>
 
 </body>

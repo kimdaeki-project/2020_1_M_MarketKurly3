@@ -32,7 +32,12 @@
 	 background-color: #f2f2f2; 
 	padding : 30px 10px;
 }
+.line4 {
+	height : 15%; 
+	width: 100%; 
 
+	padding : 30px 50px;
+}
 
 
 
@@ -73,4 +78,31 @@
 	font-weight: normal;
 	font-size: 15px;
 	margin-top : 18px;
+}
+
+
+.btn_update	{
+	display:block;
+	width:260px;
+	height:55px;
+	border:0;
+	border-radius:5px;
+	background-color:#5f0080;
+	color:#fff;
+	line-height:45px;
+	float:right;
+	font-size:14px;
+}
+.btn_delete	{
+	display:block;
+	width:260px;
+	height:55px;
+	border:2px solid #730099;
+	border-radius:5px;
+	background-color: white;
+	color:#730099;
+	line-height:45px;
+	float:left;
+	font-weight:500;
+	font-size:14px;
 }
