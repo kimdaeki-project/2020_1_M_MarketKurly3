@@ -14,8 +14,9 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartList.css">
 </head>
 <body onload="count();">
-	<c:import url="../template/header.jsp"></c:import>
-	
+<c:import url="../template/header.jsp"></c:import>
+
+
 <div class="container">
 <div class="layout-wrapper">
 <div class="layout-page-header">

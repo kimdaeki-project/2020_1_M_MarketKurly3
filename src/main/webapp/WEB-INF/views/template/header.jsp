@@ -38,6 +38,7 @@
 			<div class="headerLogo">
 				<a href="${pageContext.request.contextPath}"><img alt="" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
 			</div>
+			<div class="gnb_wrapper">
 			<div class="gnb">
 				<ul>
 					<li class="menu1"><a href="#">전체 카테고리</a></li>
@@ -53,7 +54,7 @@
 					</form>
 				</div>
 				<div class="cart_count">
-					<a href="#"><img alt="" src="${pageContext.request.contextPath}/resources/images/ico_cart.png"></a>
+					<a href="${pageContext.request.contextPath}/cart/cartList"><img alt="" src="${pageContext.request.contextPath}/resources/images/ico_cart.png"></a>
 				</div>
 			</div>
-
+			</div>

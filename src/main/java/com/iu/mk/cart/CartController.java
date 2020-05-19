@@ -34,20 +34,25 @@ public class CartController {
 		//로그인시 세션에 정보 저장 session.setAttribute("member", memberVO);
 		//memberVO에 있는 cart_num 꺼내서 넘겨주기
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		long cart_num = memberVO.getCart_num();
 		
-		System.out.println(memberVO.getCart_num()+"::::::현재 cart_num");
-		
-		//List<CartVO> ar = cartService.cartList(memberVO.getCartNum()); 나중에 받아오기~
-		List<CartVO> ar = cartService.cartList(cart_num); //지금은 VO 수정이 안 되어서 일단 나중에!
-		System.out.println("---------++++----------");
+		if(!(memberVO==null)) {
+			long cart_num = memberVO.getCart_num();
+			
+			System.out.println(memberVO.getCart_num()+"::::::현재 cart_num");
+			
+			//List<CartVO> ar = cartService.cartList(memberVO.getCartNum()); 나중에 받아오기~
+			List<CartVO> ar = cartService.cartList(cart_num); //지금은 VO 수정이 안 되어서 일단 나중에!
+			System.out.println("---------++++----------");
 
-
+			mv.addObject("list", ar);
+			mv.setViewName("cart/cartList");
+			
+		}else {
+			mv.setViewName("member/memberLogin");
+		}
+		
 		
 
-		
-		mv.addObject("list", ar);
-		mv.setViewName("cart/cartList");
 		
 		return mv;
 	}
@@ -65,51 +70,64 @@ public class CartController {
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
-		System.out.println(memberVO.getCart_num());
+		//System.out.println(memberVO.getCart_num());
 		
 		cartVO.setCart_num(memberVO.getCart_num());
 		
 		cartVO.setP_num(productVO.getP_num());
 
-		
-		System.out.println("product/p_num" + productVO.getP_num());
-		
-		System.out.println("cartVO/cp_num" + cartVO.getCq_num());
-		System.out.println("cartVO/p_num" + cartVO.getP_num());
-		System.out.println("cartVO/count" + cartVO.getCount()+"count..");
-		System.out.println("cartVO/cart_num" + cartVO.getCart_num());
-		System.out.println("cartVO/payCheck" + cartVO.getPayCheck());
-		
-		
-		
-		
-		System.out.println(productVO.getP_num());
-		System.out.println(cartVO.getP_num());
-		System.out.println(cartVO.getCount()+"count..");
-		System.out.println(cartVO.getCart_num());
+		/*
+		 * System.out.println("product/p_num" + productVO.getP_num());
+		 * System.out.println("cartVO/cp_num" + cartVO.getCq_num());
+		 * System.out.println("cartVO/p_num" + cartVO.getP_num());
+		 * System.out.println("cartVO/count" + cartVO.getCount()+"count..");
+		 * System.out.println("cartVO/cart_num" + cartVO.getCart_num());
+		 * System.out.println("cartVO/payCheck" + cartVO.getPayCheck());
+		 * 
+		 * System.out.println(productVO.getP_num());
+		 * System.out.println(cartVO.getP_num());
+		 * System.out.println(cartVO.getCount()+"count..");
+		 * System.out.println(cartVO.getCart_num());
+		 */
 		
 		
 		
 		cartVO.setP_num(productVO.getP_num());
 		
-	
-		/*
-		 * int result = 0; cartService.cart
-		 */
 		
 		
-		int result = cartService.cartInsert(cartVO);
-		if(result>0) {
-			//성공시 팝업창  1) 장바구니 이동, 2) 계속 쇼핑하기
-			//일단 common/result로 하고, 정상 작동되면 나중에 팝업창으로 바꾸기
-			mv.addObject("path", "../cart/cartList");
-			mv.addObject("result", "성공했습니다");
+
+		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num());
+			
+
+
+		
+		if(cVO!=null) {
+			//검색 중단, 경고창
+			Long pnum = productVO.getP_num();
+			mv.addObject("path", "../product/productSelect?p_num="+pnum);
+			mv.addObject("result", "이미 추가된 상품입니다.");
 			mv.setViewName("common/result");
 			
+			
+			
 		}else {
-			//실패시 팝업팡  1) 실패했습니다.
+			int result = cartService.cartInsert(cartVO);
+			if(result>0) {
+				//성공시 팝업창  1) 장바구니 이동, 2) 계속 쇼핑하기
+				//일단 common/result로 하고, 정상 작동되면 나중에 팝업창으로 바꾸기
+				mv.addObject("path", "../cart/cartList");
+				mv.addObject("result", "성공했습니다");
+				mv.setViewName("common/result");
+				
+			}else {
+				//실패시 팝업팡  1) 실패했습니다.
+			}
+			
 		}
 		
+		
+
 		
 		return mv;
 	}
@@ -189,8 +207,9 @@ public class CartController {
 		ModelAndView mv = new ModelAndView();
 		
 		//주문번호 생성 후 Pay 테이블에 기존의 cartVO
+		CartDAO cartDAO = new CartDAO();
 		
-		
+		cartDAO.orderNum();
 		
 		
 		

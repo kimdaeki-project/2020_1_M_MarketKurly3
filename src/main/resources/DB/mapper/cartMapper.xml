@@ -62,6 +62,17 @@
 		
 		
 	</select>
+	
+	
+	<select id="cartSearch" parameterType="Long" resultType="CartVO">
+		select * from cart where p_num=#{p_num}
+	</select>
+	
+	
+			
+	<select id="orderNum" resultType="Long">
+		select board_seq.nextval from dual 
+	</select>
 
 
 </mapper>
