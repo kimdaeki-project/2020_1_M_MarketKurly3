@@ -234,7 +234,7 @@
 		<!-- 수정, 삭제 버튼 시작-->
 			<div class="line4">
 			<span><input type="button" class="btn_delete" id="btn_delete" value="탈퇴하기"></span>
-			<span><input type="submit" class="btn_update" id="btn_update" value="회원정보 수정"></span>
+			<span><input type="button" class="btn_update" id="btn_update" value="회원정보 수정"></span>
 			</div>
 		</form>			
 		<!-- 수정, 삭제 버튼 끝-->	
@@ -269,7 +269,46 @@
 		$("#birth_mon").prop("value",birth.substring(4,6));
 		$("#birth_day").prop("value",birth.substring(6,8));
 
+		
+		
+		//update (id:button_update > $("#button_update"))
+		//넘어가기 전에 확인하려면 input타입의 submit을 button으로 바꿔서 실행해본다
+
+		var check=true;
+		$("#button_update").click(function(e){
+
+				for(i=0; i<ch.length; i++){
+					if(ch[i].value==""/*==0*/){
+						check=false;
+						console.log("브레이크");
+						break;
+					}
+				}
+			
+				//if가 true일때만 실행
+				if(mIdResult && mPwResult && mPw2Result && check){
+					console.log("가입성공");
+				}else{
+					alert("중복확인 및 필수요소들을 입력해주세요");
+					e.preventDefault();//form안의 전송 막기
+					console.log(mIdResult);
+					console.log(mPwResult);
+					console.log(mPw2Result);
+					console.log(check);
+
+					
+					if(mIdResult==false){
+						s1_1.innerHTML = "아이디 중복확인을 눌러주세요";
+						s1_1.style.color="RED";
+						
+					}
+				}
+				
+			
+			}); 
+		
 	</script>
+	
 
 </body>
 </html>
