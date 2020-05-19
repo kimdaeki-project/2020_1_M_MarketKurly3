@@ -6,8 +6,8 @@ public class Pager {
 	private Long curPage;//몇번째를 볼거?
 	private Integer perPage;// 페이지당 글 갯수
 	
-	private long startRow;
-	private long lastRow;
+	private long startRow; //1번
+	private long lastRow; //12번
 	
 	private long totalPage; //전체페이지
 	private long totalBlock; //전체 블록
@@ -31,6 +31,7 @@ public class Pager {
 	
 	//---totalcount/totalpage 계산-------
 	
+	//다음페이지 생성
 	public void makePage(long totalCount) {
 		//1. totalCount : 전체 글의 갯수
 		//2. totalCount로 totalPage 계산
@@ -48,7 +49,7 @@ public class Pager {
 			this.totalBlock++;
 		}
 		
-		//4. curpage ->curBlock찾기(몇번째 블록인가)
+		//4. curpage ->curBlock찾기(몇번째 블록인가) curpage 1-5 curblock 1, curpage 6-10 curblock 2
 		this.curBlock = this.curPage/perBlock;
 		if(this.curPage % perBlock !=0) {
 			this.curBlock++;
@@ -58,6 +59,7 @@ public class Pager {
 		this.startNum = (this.curBlock-1)*perBlock+1;
 		this.lastNum = curBlock*perBlock;
 		
+		//마지막 번호면 거기서 끊어주기
 		if(this.curBlock == this.totalBlock) { // 5개씩 끊지만 글 갯수에 맞게되도록
 			this.lastNum = this.totalPage;
 		}

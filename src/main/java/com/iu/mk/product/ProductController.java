@@ -35,8 +35,10 @@ public class ProductController {
 		List<ProductVO> ar = productService.productList(pager);
 		/*
 		 * System.out.println(ar.get(1).getP_name());
-		 * System.out.println(pager.getTotalPage());
 		 */
+		
+	
+		 
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("product/productList");

@@ -30,14 +30,14 @@
 			<div class="list_goodss">
 				
 				<div class="btn btnw">
-				<a href="./productWrite" class="btn btn-default">Write</a>
+				<a href="./productWrite" class="btn btn_insert" style="color:#5f0080">상품 등록</a>
 				</div>
 				
 				<div class="ss">
 					<input type="checkbox" class="allCheck" name="allCheck" id="allCheck" >
 					<p>전체선택</p>
 				</div>
-				<input type="checkbox" class="allCheck"   name="allCheck2" id="allCheck" >
+				<!-- <input type="checkbox" class="allCheck"   name="allCheck2" id="allCheck" > -->
 				<button type="button" class="btn_delete" id="btn_delete">선택 삭제</button>
 				
 				<!-- list 반복 -->
@@ -130,18 +130,18 @@
 			}
 			
 			//선택을 하면 선택 삭제 체크박스 true
-			$(".allCheck").prop("checked",result);
+			/*  $(".allCheck").prop("checked",result);  */
 			
 			var resultS = true;
 			for(var i=0; i<c1.length; i++){
 				
 				if(!c1[i].checked){
-					resultS = false;
+					re = false;
 					break;
 				}
 			}
 			
-			$(".allCheck").prop("checked",resultS);
+			/* $(".allCheck").prop("checked",resultS); */
 			
 			count();
 			

@@ -21,7 +21,7 @@
 
 <form action="./productAdminUpdate" id="frm" method="post" enctype="multipart/form-data">
 	<input class="kind12" type="hidden" value="${product.kind}">
-	<h3 id="h3">${product.kind}</h3>
+	<h5 id="h3" >${product.kind}</h5>
  
   	<div class="form-group">
   	<label for="kind">kind:</label>
@@ -77,7 +77,7 @@
 
 	
 	var kind = $("#h3").text();
-	alert(kind);
+
 	
 	
 	if($("#kind option[value=me]").val()==kind){

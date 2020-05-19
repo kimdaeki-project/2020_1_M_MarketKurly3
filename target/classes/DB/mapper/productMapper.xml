@@ -32,7 +32,7 @@
   		(select * from
 			(select P.*, rownum R from
 				(select * from product where
-				<if test="kind!=null">
+				<if test="kind != ''">
 					kind=#{kind} and  p_name
 					<include refid="search"></include> and
 				</if>
@@ -64,7 +64,7 @@
   	<select id="productCount" parameterType="Pager" resultType="Long">
   		select count(p_num) 
   			from product
-  		<if test="kind!=null"> 
+  		<if test="kind != ''"> 
   		    where kind=#{kind} and  p_name
   		<include refid="search"></include>  
  		</if>
