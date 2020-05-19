@@ -15,9 +15,43 @@ button	{
 
 .container {
 	margin:0 auto;
+	
 
 }
+/*상세 창 수정*/
+.contents {
+	margin:0 auto;
+	height: 100%;
+}
+.contents li{
+	margin:0 auto;
+	margin-top: 150px;
+	margin-left: 20px; 
+}
 
+.goods-view-infomation-tab-group {
+    border-bottom: 1px solid #bfbfbf;
+    width: 1040px;
+    margin-left: 370px;
+}
+.cimg{
+	width: 1040px;
+	height: 100%;
+}
+.contentsImg {
+	margin-left: 370px;
+	width:1040px;
+	height:1000px;
+}
+
+.contentsImg span p{
+	margin-top:100px;
+	margin-left: 180px;;
+}
+
+
+
+/*상세 창 수정*/
 .product {
 	width:1050px;
 	

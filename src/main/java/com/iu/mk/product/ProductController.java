@@ -37,8 +37,6 @@ public class ProductController {
 		 * System.out.println(ar.get(1).getP_name());
 		 */
 		
-	
-		 
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("product/productList");

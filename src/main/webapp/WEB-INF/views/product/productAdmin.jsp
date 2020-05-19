@@ -74,13 +74,13 @@
 	<div class="page1">
 		<ul class="pagination">
 			<c:if test="${pager.curBlock gt 1}">
-				<li><a href="./productList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
+				<li><a href="./productAdmin?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
 			</c:if>
 			<c:forEach begin="${pager.startNum }" end="${pager.lastNum}" var="i">
-				<li><a href="./productList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+				<li><a href="./productAdmin?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${pager.curBlock lt pager.totalBlock}">
-				<li><a href="./productList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a> </li>
+				<li><a href="./productAdmin?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a> </li>
 			</c:if>
 		</ul>
 	</div>	

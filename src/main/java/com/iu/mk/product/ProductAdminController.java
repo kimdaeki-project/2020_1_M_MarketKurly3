@@ -29,7 +29,7 @@ public class ProductAdminController {
 	public ModelAndView productAdmin(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
 		
 		List<ProductVO> ar = productService.productList(pager);
-		System.out.println(pager.getTotalPage());
+		System.out.println("admin totalpage"+pager.getTotalPage());
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("product/productAdmin");
