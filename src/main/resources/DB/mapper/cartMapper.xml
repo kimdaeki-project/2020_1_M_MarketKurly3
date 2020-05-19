@@ -70,9 +70,6 @@
 	
 	
 			
-	<select id="orderNum" resultType="Long">
-		select board_seq.nextval from dual 
-	</select>
 
 
 </mapper>

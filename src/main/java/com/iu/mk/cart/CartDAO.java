@@ -42,8 +42,6 @@ public class CartDAO {
 		return sqlSession.selectOne(NAMESPACE + "cartSearch", p_num);
 	}
 	
-	public long orderNum() throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "orderNum");
-	}
+
 	
 }

@@ -35,7 +35,7 @@
 
 
 		<div class="user_form_section_cart">
-			<form id="viewCart" name="frmCart" method="post" action="pay">
+			<form id="viewCart" name="frmCart" method="post" action="../pay/payInsert">
 				<input type="hidden" name="mode" value="setOrder">
 				<div class="tbl_comm cart_goods section_cart">
 					<table class="tbl_comm tbl_header">

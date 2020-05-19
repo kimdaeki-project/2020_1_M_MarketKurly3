@@ -48,7 +48,7 @@ public class CartController {
 			mv.setViewName("cart/cartList");
 			
 		}else {
-			mv.setViewName("member/memberLogin");
+			mv.setViewName("redirect:../member/memberLogin");
 		}
 		
 		
@@ -91,9 +91,7 @@ public class CartController {
 		 */
 		
 		
-		
-		cartVO.setP_num(productVO.getP_num());
-		
+
 		
 		
 
@@ -202,27 +200,26 @@ public class CartController {
 	
 	
 	
-	@PostMapping("pay")
-	public ModelAndView pay(int totalPrice) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		//주문번호 생성 후 Pay 테이블에 기존의 cartVO
-		CartDAO cartDAO = new CartDAO();
-		
-		cartDAO.orderNum();
-		
-		
-		
-		
-		
-		System.out.println(totalPrice);
-		
-		mv.addObject("total_price", totalPrice);
-		mv.setViewName("cart/pay");
-		
-		return mv;
-	}
-	
+	/*
+	 * @PostMapping("pay") public ModelAndView pay(int totalPrice) throws Exception{
+	 * ModelAndView mv = new ModelAndView();
+	 * 
+	 * //주문번호 생성 후 Pay 테이블에 기존의 cartVO CartDAO cartDAO = new CartDAO();
+	 * 
+	 * //주문번호 생성 Long orderNum = cartDAO.orderNum();
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * System.out.println(totalPrice);
+	 * 
+	 * mv.addObject("total_price", totalPrice); mv.setViewName("cart/pay");
+	 * 
+	 * return mv; }
+	 */
 	
 	
 	//cartpay.jsp 연결용 나중에 이름 변경 필요
