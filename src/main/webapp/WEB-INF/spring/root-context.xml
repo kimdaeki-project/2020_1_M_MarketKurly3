@@ -8,6 +8,9 @@
    </bean>
 	
 	
+	
+	
+	
 	<!-- Gmail - value값은 db.properties에 있음 -->
   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     <property name="host" value="smtp.gmail.com" />

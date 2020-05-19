@@ -21,6 +21,10 @@ public class MemberService {
 		return memberDAO.memberLogin(memberVO);
 	}
 	
+	public int memberUpdate(MemberVO memberVO)throws Exception{
+		return memberDAO.memberUpdate(memberVO);
+	}
+	
 	public int memberDelete(MemberVO memberVO)throws Exception{
 		return memberDAO.memberDelete(memberVO);
 	}

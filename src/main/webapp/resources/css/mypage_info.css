@@ -3,7 +3,7 @@
 .mypage_contents2 {
 				width:1050px;
 				margin:0 auto;
-				height:1000px;
+				height:1300px;
 				overflow:hidden;
 				/*  background-color: skyblue;  */
 				padding: 30px 180px 200px 210px;
@@ -11,22 +11,98 @@
 
 }
 
-.line {
-	height : 40%; 
+.line1 {
+	height : 55%; 
 	width: 100%; 
 	border-top: 2px solid #5f0080; 
 	 background-color: #f2f2f2; 
+	padding : 30px 10px;
+}
+.line2 {
+	height : 18%; 
+	width: 100%; 
+	border-top: 2px solid #5f0080; 
+	 background-color: #f2f2f2; 
+	padding : 30px 10px;
+}
+.line3 {
+	height : 15%; 
+	width: 100%; 
+	border-top: 2px solid #5f0080; 
+	 background-color: #f2f2f2; 
+	padding : 30px 10px;
+}
+.line4 {
+	height : 15%; 
+	width: 100%; 
+
 	padding : 30px 50px;
 }
 
 
-.subject {
-	height : 100%; 
-	width: 30%; 
-	background-color: skyblue;
+
+
+.msubject {
+	padding:20px 0 0 50px;
+	width:150px;
+	vertical-align:top;
+	font-weight: bold;
+	
 }
 
-.content {
-	height : 100%; 
-	width: 70%; 
+.mcontent input{
+	width:280px;
+	height:40px;
+	border:1px solid #ccc;
+	border-radius:3px;
+	margin-top : 10px;
+	color:black;
+	font-size:14px;
+	outline:none;
+	padding-left: 10px;
+}
+
+.mcontent2 input{
+	width:400px;
+	height:40px;
+	border:1px solid #ccc;
+	border-radius:3px;
+	margin-top : 10px;
+	color:black;
+	font-size:14px;
+	outline:none;
+	padding-left: 10px;
+}
+
+.label_radio{
+	font-weight: normal;
+	font-size: 15px;
+	margin-top : 18px;
+}
+
+
+.btn_update	{
+	display:block;
+	width:260px;
+	height:55px;
+	border:0;
+	border-radius:5px;
+	background-color:#5f0080;
+	color:#fff;
+	line-height:45px;
+	float:right;
+	font-size:14px;
+}
+.btn_delete	{
+	display:block;
+	width:260px;
+	height:55px;
+	border:2px solid #730099;
+	border-radius:5px;
+	background-color: white;
+	color:#730099;
+	line-height:45px;
+	float:left;
+	font-weight:500;
+	font-size:14px;
 }
