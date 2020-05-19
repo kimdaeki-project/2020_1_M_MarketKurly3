@@ -13,28 +13,31 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
+
 <div class="page_article">
 
 <div id="lnbMenu">
 	
 				<div class="inner_listgoods">
-				 <h1>관리자 페이지
-					 <div class="btn">
-						<a href="./productWrite" class="btn btn-default">Write</a>
-					 </div>
-					
-				</h1>
-				 
+				 <h1>관리자 페이지</h1>			
 				</div>
 </div>
 
+ 
 <div class="goodsList">
-	
+		
 			<!-- img list -->	
 			<div class="list_goodss">
 				
-				<input type="checkbox" class="allCheck" name="allCheck" id="allCheck" ><p>전체선택</p>
-				<input type="checkbox" class="allCheck"   name="allCheck" id="allCheck" >
+				<div class="btn btnw">
+				<a href="./productWrite" class="btn btn-default">Write</a>
+				</div>
+				
+				<div class="ss">
+					<input type="checkbox" class="allCheck" name="allCheck" id="allCheck" >
+					<p>전체선택</p>
+				</div>
+				<input type="checkbox" class="allCheck"   name="allCheck2" id="allCheck" >
 				<button type="button" class="btn_delete" id="btn_delete">선택 삭제</button>
 				
 				<!-- list 반복 -->
@@ -52,8 +55,8 @@
 									<span class="name"><a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a></span>
 									<span class="cost">${vo.price}원</span>
 								</div>
-								<button type="button" class="btn btn_delete" id="btn_del" onclick="btnDel(${vo.p_num});">
-								</button>
+								<%-- <button type="button" class="btn btn_delete" id="btn_del" onclick="btnDel(${vo.p_num});">
+								</button> --%>
 							</li>
 							
 					 </c:forEach>
@@ -114,7 +117,7 @@
 		//allcheck false일 경우 c1 모두 flase
 		$(".allCheck").on("click",function(){
 			$(".c1").prop("checked",$(this).prop("checked"));
-			$("allCheck").prop("checked",$(this).prop("checked"));
+			$(".allCheck").prop("checked",$(this).prop("checked"));
 			count();
 		});
 		
@@ -126,43 +129,25 @@
 				result = false;
 			}
 			
+			//선택을 하면 선택 삭제 체크박스 true
 			$(".allCheck").prop("checked",result);
 			
-			var re = true;
-			for(var i=0;i<c1.length;i++){
+			var resultS = true;
+			for(var i=0; i<c1.length; i++){
+				
 				if(!c1[i].checked){
-					re=false;
+					resultS = false;
 					break;
 				}
 			}
-			$(".allCheck").prop("checked",re);
+			
+			$(".allCheck").prop("checked",resultS);
 			
 			count();
 			
 		});
 	});
 	
-	//admin delete
-	function btnDel(num) {
-		$.post("../product/productAdminDelete",{p_num:num},function(data){
-			if(data>0){
-				loacation.reload();
-			}else{
-				alert("삭제 실패");
-			}
-			console.log("here");
-			console.log("data : "+data);
-		});
-	}
-	
-	//개별 삭제
-	$("btn_del").click(function(){
-		$.post("../product/productAdminDelete",{p_num:$(".pn").attr("id")},function(data){
-			
-			console.log("pn data : "+data);
-		}
-		)
-	});
 	
 	//선택삭제
 	$("#btn_delete").click(function() {
@@ -185,7 +170,7 @@
 		console.log(check);
 		
 		//배열 check 보내기
-		$.post("../product/selectDelete",{pn:check},function(data){
+		$.post("../product/selectAdminDelete",{pn:check},function(data){
 			console.log(data);
 			
 			console.log("data : " + data);

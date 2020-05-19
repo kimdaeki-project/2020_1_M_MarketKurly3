@@ -98,14 +98,16 @@ public class ProductAdminController {
 	
 	
 	@PostMapping("productAdminDelete")
-	@ResponseBody
-	public int productDelete(long p_num) throws Exception{
+	public ModelAndView productDelete(long p_num , ModelAndView mv) throws Exception{
 		int result = productService.productDelete(p_num);
 		
-		return result;
+		mv.setViewName("redirect:./productAdmin");
+		
+		return mv;
 	}
 	
-	@PostMapping("selectDelete")
+	//선택 삭제
+	@PostMapping("selectAdminDelete")
 	@ResponseBody
 	public int selectDelete(String pn) throws Exception{
 		System.out.println(pn);
