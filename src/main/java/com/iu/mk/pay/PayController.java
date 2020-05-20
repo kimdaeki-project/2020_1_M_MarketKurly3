@@ -128,6 +128,9 @@ public class PayController {
 
 			payVO.setCq_num(cq.get(i).getCq_num());
 			payVO.setOrder_num(orderNum);
+			
+			
+			
 			payVO.setPay_price(cq.get(i).getProductVOs().get(0).getPrice());
 			price += cq.get(i).getProductVOs().get(0).getPrice();
 			result = payService.payInsert(payVO);
