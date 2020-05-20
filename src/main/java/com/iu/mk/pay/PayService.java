@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iu.mk.cart.CartVO;
+import com.iu.mk.product.ProductVO;
+import com.iu.mk.util.Pager;
 
 @Service
 public class PayService {
@@ -24,6 +26,22 @@ public class PayService {
 
 	public int payInsert(PayVO payVO) throws Exception{
 		return payDAO.payInsert(payVO);
+	}
+	
+	public List<PayInfoVO> payList(Pager pager) throws Exception{
+		pager.makeRow(); //시작,끝 row 계산
+		
+		System.out.println(pager.getStartRow()+"star");
+		System.out.println(pager.getLastRow()+"last");
+		if(pager.getKind()==null ) {
+			pager.setKind("");
+		}
+		long totalCount = payDAO.payCount(pager);//전체 글 갯수 가져오기
+		pager.makePage(totalCount);//totalcount넘겨주기
+		
+		System.out.println("totalcount: " + totalCount);//x
+		
+		return payDAO.payList(pager);
 	}
 	
 	
