@@ -14,13 +14,14 @@
 
 		</style>
 	</head>
-<body onload="init();">
+<body>
 
 	
 
 
 	<c:import url="../template/header.jsp"></c:import>
 	
+	<form action="productAdminDelete" id="plist" name="plist" method="post">
 	
 	<div class="container">
 		<div class="product">
@@ -39,8 +40,11 @@
 						 <div class="btn">
 							<a href="./productAdminUpdate?p_num=${product.p_num}" class="btn btn-default">Update</a>
 						 </div>
-						 <div class="btn">
-							<a href="./productAdminDelete?p_num=${product.p_num}" class="btn btn-default">Delete</a>
+						 <div class="btndel">
+						 
+						 	<%-- <a href="./productAdminDelete?p_num=${product.p_num}" class="btn btn-default">Delete</a> --%>
+						 	<input type="hidden" id="pn" value="${product.p_num}" name="p_num">
+							<button type="submit"  class="btn btn-default" value="" >Delete</button>
 						 </div>
 					</c:if>
 				</c:if>
@@ -88,66 +92,38 @@
 	
 				</div>
 			</div>
-			<div class="cartPut">
-				<div class="inner_option">
-					<!-- strong>통통살 가라아게</strong> --><!-- display:none -->
-					<form name="fo" method="get">
-					<div class="in_option">
-						<ul class="list_nopackage">
-							<li>
-								<span class="tit_item">구매수량</span>
-								<div class="option">
-									<span class="count">
-										
-											<input type="hidden" name="sell_price" value="${product.price}">
-											<button type="button" class="btn down" onclick="del();" value="-">-</button>
-											<input type="number" readonly="readonly" onchange="change();" name="amount" class="inp" value="1" size="10">
-											<button type="button" class="btn up" onclick="add();"  value="+">+</button>
-										
-									</span>
-									<!-- <span class="price">
-										<span class="ori_price">4,800원</span>
-										<span class="dc_price">3,360원</span>
-									</span> -->
-								</div>
-							</li>
-						</ul>
-						<div class="total">
-							<div class="price">
-								<strong class="tit">총 상품 금액:</strong>
-								<span class="sum" name="su">
-									<p name="num" class="num" id="num"></p>
-									<!-- <span class="num">6,720</span> -->
-									<span class="won">원</span>
-								</span>
-							</div>
-							<p class="text_point"></p>
-						</div><!-- total close -->
-					</div><!-- in_option close -->
-					</form>
-					
-					<form action="./cartInsert" method="post" name="frmWishlist">
-						<input type="hidden" name="count" id="count" value="">
-						<input type="hidden" name="p_num" value="${product.p_num}">
-						<div class="group_btn">
-							<span class="btn_type1">
-								<button type="submit" class="txt_type">장바구니 담기</button>
-							</span>
-						</div>
-					</form>
-				</div><!-- inner_option close -->
-			<!-- 	<form action="" method="post" name="frmBuyNow">
-					<input type="hidden" name="mode" value="addItem">
-					<input type="hidden" name="goodsno" value="">
-				</form> -->
-				
-					
-				
-				
-				
-			</div><!-- cartput close -->
+			
 	  	</div>
-	</div>
+	  	
+	    
+  	
+  </div>
+	  	
+	  	
+	 <div class="contents">
+	 	<div class="goods-view-infomation detail_wrap_outer">
+	 		<ul class="goods-view-infomation-tab-group">
+	 		<li class="goods-view-infomation-tab">
+	 			<h3>상품 설명</h3>
+	 		</li>
+	 		</ul>
+	 	</div>
+	 	
+	 	<div class="cimg">  
+	 		<div class="contentsImg">
+	 			<span>${product.contents}</span>
+	 			
+	 		</div>
+	 	</div>
+	    	
+	  </div> 	
+	
+
+	
+  </form>
+  
+
+  
   
   
   
@@ -157,10 +133,10 @@
 	
 
 		<script type="text/javascript">
-		var sell_price;
+/* 		var sell_price;
 		var amount;
 		/* var aaaa = document.getElementById("num")
-		aaaa.innerHTML='ddddddd'; */
+		aaaa.innerHTML='ddddddd'; 
 	
 		
 		function init () {
@@ -216,10 +192,20 @@
 			
 		}
 		
-	
+	 
+		 function btnDel(num) {
+			$.post("./productAdmin",{p_num:num},function(data){
+				if(data>0){
+					 loacation.reload(); 
+				}else{
+					alert("삭제 실패");
+				}
+				console.log("here");
+				console.log("data : "+data);
+			});
+		}   */
 		
-		
-		
+
 	</script>
 	
 </body>

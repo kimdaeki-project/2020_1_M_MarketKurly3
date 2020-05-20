@@ -49,7 +49,7 @@
 				</ul>
 				<div class="side_search">
 					<form class="">
-						<input type="text" id="search" class="sc" value="데일리장보기">
+						<input type="text" id="search" class="sc" placeholder="데일리장보기">
 						<input type="image" id="searchIcon" class="sicon" src="${pageContext.request.contextPath}/resources/images/ico_search.png">
 					</form>
 				</div>

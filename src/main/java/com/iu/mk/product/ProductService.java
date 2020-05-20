@@ -32,11 +32,17 @@ public class ProductService {
 	
 	public List<ProductVO> productList(Pager pager) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
+		
 		System.out.println(pager.getStartRow()+"star");
 		System.out.println(pager.getLastRow()+"last");
+		if(pager.getKind()==null ) {
+			pager.setKind("");
+		}
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기
-
+		
+		System.out.println("totalcount: " + totalCount);//x
+		
 		return productDAO.productList(pager);
 	}
 	
@@ -114,7 +120,7 @@ public class ProductService {
 	}
 	
 	
-	public long productDelete(long p_num) throws Exception{
+	public int productDelete(long p_num) throws Exception{
 		List<ProductFileVO> list = productFileDAO.fileList(p_num);
 		//1.hdd에 해당 파일들을 삭제
 		String path = servletContext.getRealPath("resources/uploadproduct");

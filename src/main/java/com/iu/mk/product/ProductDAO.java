@@ -20,6 +20,7 @@ public class ProductDAO {
 	
 	//전체 글 갯수 카운트
 	public long productCount(Pager pager) throws Exception{
+		
 		return sqlSession.selectOne(NAMESPACE+"productCount",pager);
 	}
 	
@@ -35,6 +36,7 @@ public class ProductDAO {
 	public List<ProductVO> productList(Pager pager) throws Exception{
 		System.out.println(pager.getKind());
 		System.out.println(pager.getSearch());
+		
 		return sqlSession.selectList(NAMESPACE+"productList",pager);
 	}
 	
@@ -51,7 +53,7 @@ public class ProductDAO {
 		return sqlSession.update(NAMESPACE+"productUpdate",productVO);
 	}
 	
-	public long productDelete(long p_num) throws Exception{
+	public int productDelete(long p_num) throws Exception{
 		return sqlSession.delete(NAMESPACE+"productDelete",p_num);
 	}
 	

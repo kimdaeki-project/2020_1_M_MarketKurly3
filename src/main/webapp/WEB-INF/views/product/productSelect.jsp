@@ -141,7 +141,23 @@
 	  	</div>
 	</div>
   
-  
+  	 <div class="contents">
+	 	<div class="goods-view-infomation detail_wrap_outer">
+	 		<ul class="goods-view-infomation-tab-group">
+	 		<li class="goods-view-infomation-tab">
+	 			<h3>상품 설명</h3>
+	 		</li>
+	 		</ul>
+	 	</div>
+	 	
+	 	<div class="cimg">  
+	 		<div class="contentsImg">
+	 			<span>${product.contents}</span>
+	 			
+	 		</div>
+	 	</div>
+	    	
+	  </div> 
   
   
 	<c:import url="../template/footer.jsp"></c:import>

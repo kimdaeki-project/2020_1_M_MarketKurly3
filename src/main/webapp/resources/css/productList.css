@@ -34,11 +34,12 @@ ul.list{
 
 .goodsList{
 	width: 1050px;
-	height: 100%;
+	
 
 }
 
 .goodsList .list_goodss {
+	
     overflow: hidden;
     padding: 0 20px;
 }
@@ -107,5 +108,7 @@ ul.list{
 }
 
 .page1{
-	padding-top: 100px;
+	text-align: center;
+	padding-top: 80px;
+	padding-bottom: 60px;
 }
