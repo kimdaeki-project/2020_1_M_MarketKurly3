@@ -151,7 +151,7 @@
 				
 				<tr>
 					<td><input type="text" style="width: 400px;" id="addrDetail" class="br2"
-						name="addrDetail" /></td>
+						name="addrDetail" readonly="readonly"/></td>
 				</tr>
 
 			</table>

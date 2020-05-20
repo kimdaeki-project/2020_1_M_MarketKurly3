@@ -21,7 +21,7 @@
 <!-- top -->
 
 	<div class="mypage_top">
-		<div class="user"><span class=glad>일반</span> &ensp; <span class=name>김소연</span> 님~ 방문을 환영합니다!</div>
+		<div class="user"><span class=glad>일반</span> &ensp; <input style="text" class="name" value="${sessionScope.member.name}" readonly="readonly"> 님~ 방문을 환영합니다!</div>
 	</div> 
 
 <!-- contents -->	

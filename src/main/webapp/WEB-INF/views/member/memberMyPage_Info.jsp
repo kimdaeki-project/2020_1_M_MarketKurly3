@@ -48,7 +48,7 @@
 <!-- top -->
 
 	<div class="mypage_top">
-		<div class="user"><span class=glad>일반</span> &ensp; <span class=name>김소연</span> 님~ 방문을 환영합니다!</div>
+		<div class="user"><span class=glad>일반</span> &ensp; <input style="text" class="name" value="${sessionScope.member.name}" readonly="readonly"> 님~ 방문을 환영합니다!</div>
 	</div> 
 	
 	
@@ -72,28 +72,29 @@
 							<td class="msubject">아이디*</td>
 							<td class="mcontent">
 								<input type="text" name="id" label="아이디"
-										placeholder="${sessionScope.member.id}" id="mmId" readonly="readonly"> <span style="color:gray;">&ensp;※ID는 변경불가</span>
+										value="${sessionScope.member.id}" id="mmId" readonly="readonly"> <span style="color:gray;">&ensp;※ID는 변경불가</span>
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">현재 비밀번호</td>
 							<td class="mcontent">
-								<input type="text" name="pw" label="현재 비밀번호" id="mmPw">
+								<input type="password" label="현재 비밀번호" id="mmPw">
+								<input type="hidden" value="${sessionScope.member.pw}" id="mmPw1">
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">새 비밀번호</td>
 							<td class="mcontent">
-								<input type="text" name="pw2" label="현재 비밀번호" id="mmPw2">
+								<input type="password" name="pw" label="새 비밀번호" id="mmPw2">
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">비밀번호 확인</td>
 							<td class="mcontent">
-								<input type="text" name="pw2" label="현재 비밀번호" id="mmPw2">
+								<input type="password" label="비밀번호 확인" id="mmPw3">
 							</td>
 						</tr>
 						
@@ -101,7 +102,7 @@
 							<td class="msubject">이름*</td>
 							<td class="mcontent">
 								<input type="text" name="name" label="이름"
-										value="${sessionScope.member.id}" id="mmName"> 
+										value="${sessionScope.member.name}" id="mmName"> 
 							</td>
 						</tr>
 												
@@ -146,7 +147,7 @@
 				
 				<tr>
 					<td><input type="text" style="width: 400px;" id="addrDetail" 
-						name="addrDetail" /></td>
+						name="addrDetail" readonly="readonly"/></td>
 				</tr>
 
 			</table>
@@ -233,8 +234,8 @@
 				
 		<!-- 수정, 삭제 버튼 시작-->
 			<div class="line4">
-			<span><input type="button" class="btn_delete" id="btn_delete" value="탈퇴하기"></span>
-			<span><input type="button" class="btn_update" id="btn_update" value="회원정보 수정"></span>
+			<input type="button" class="btn_delete" id="btn_delete" value="탈퇴하기">
+			<input type="submit" class="btn_update" id="btn_update" value="회원정보 수정">
 			</div>
 		</form>			
 		<!-- 수정, 삭제 버튼 끝-->	
@@ -242,7 +243,8 @@
 </section>
 
 <c:import url="../template/footer.jsp"></c:import>
-
+	
+	
 	<script type="text/javascript">
 		//sex
 		
@@ -270,42 +272,85 @@
 		$("#birth_day").prop("value",birth.substring(6,8));
 
 		
+
 		
-		//update (id:button_update > $("#button_update"))
+		//update (id:btn_update > $("#btn_update"))
 		//넘어가기 전에 확인하려면 input타입의 submit을 button으로 바꿔서 실행해본다
 
-		var check=true;
-		$("#button_update").click(function(e){
-
-				for(i=0; i<ch.length; i++){
-					if(ch[i].value==""/*==0*/){
-						check=false;
-						console.log("브레이크");
-						break;
-					}
-				}
+		$("#btn_update").click(function(e){ //버튼을 클릭했을때
 			
-				//if가 true일때만 실행
-				if(mIdResult && mPwResult && mPw2Result && check){
-					console.log("가입성공");
-				}else{
-					alert("중복확인 및 필수요소들을 입력해주세요");
-					e.preventDefault();//form안의 전송 막기
-					console.log(mIdResult);
-					console.log(mPwResult);
-					console.log(mPw2Result);
-					console.log(check);
-
+			//mmPw:현재 비밀번호 , mmPw1:DB에서 불러온 비밀번호 , mmPw2:새 비밀번호 , mmPw3:비밀번호 확인 
+			
+			if($("#mmPw").val()==""){ // mmPw값을 입력하지않았을 경우
+				
+				if(($("#mmPw2").val()=="")&&($("#mmPw3").val()=="")){ //mmPw2와 mmPw3가 ""일 경우
 					
-					if(mIdResult==false){
-						s1_1.innerHTML = "아이디 중복확인을 눌러주세요";
-						s1_1.style.color="RED";
-						
-					}
+				}else{
+					alert("현재 비밀번호를 정확히 입력해 주세요.");
+					e.preventDefault();
+				}
+
+				
+			}else if($("#mmPw").val()==$("#mmPw1").val()){ //mmPw와 mmPw1값과 일치하는 경우 
+			
+					if($("#mmPw2").val()==$("#mmPw3").val() && !($("#mmPw2").val()=="")){ //mmPw2와 mmPw3 값이 같고 둘다 null값이 아닐때
+							
+							if($("#mmPw2").val().length>=6){ //mmPw2가 6글자 이상인 경우
+								
+								if(!($("#mmPw").val()==$("#mmPw2").val())){ //현재비밀번호와 새비밀번호가 다를때
+									
+								}else{
+									alert("현재 비밀번호와 다르게 입력해 주세요.")
+									e.preventDefault();
+								}
+								
+							}else{
+								alert("비밀번호를 6자이상 입력해주세요.")
+								e.preventDefault();
+							}
+							
+					}else{
+						alert("새 비밀번호를 확인해 주세요.");
+						e.preventDefault();
 				}
 				
+				
+			}else{ //mmPw값을 정확히 입력하지 않았다면
+				
+				alert("현재 비밀번호를 정확히 입력해 주세요.");
+				e.preventDefault();
+			}
+	
 			
-			}); 
+		}); 
+		
+		
+		
+		//delete (id:btn_delete > $("#btn_delete"))
+		$("#btn_delete").click(function(e){
+			console.log("삭제");
+			var returnValue = confirm('정말 탈퇴하시겠습니까?');
+			if(returnValue==true){
+				$.ajax({
+					url:"./memberDelete",
+					type:"GET",//method형식
+					data:"{id:id}", //parameter(서버로 보내는 데이터) //id만 보내도 충분하기 때문에 id만 보냄
+					
+					success:function(data){
+						alert(data);
+					},
+					error:function(){
+						alert("에러발생");
+					}
+				})
+				
+			}else{
+				alert("탈퇴가 실패하였습니다.");
+				e.preventDefault();
+			}
+		});
+		
+		
 		
 	</script>
 	
