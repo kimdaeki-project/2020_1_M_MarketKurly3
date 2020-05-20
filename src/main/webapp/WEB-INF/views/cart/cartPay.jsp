@@ -120,7 +120,7 @@
 						<th scope="col" colspan="2">상품/옵션정보</th>
 						<th scope="col">수량</th>
 						<th scope="col">상품금액</th>
-						<th scope="col">배송비</th>
+						<th scope="col">비고</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -204,7 +204,7 @@
 						<!-- 할인금액 -->
 						<div class="Discount_Wrap">
 							<div class="PriceSPWrap">
-								<h5 class="tit">할인금액</h5>
+								<h5 class="tit">배송비</h5>
 								<span class="Price">0
 								<span class="won">원</span>
 								</span>

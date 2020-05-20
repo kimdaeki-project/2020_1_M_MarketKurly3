@@ -23,6 +23,19 @@ public class PayController {
 
 	@Autowired
 	private PayService payService;
+	
+	@PostMapping("payFinal")
+	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO) throws Exception{
+		
+	
+		
+		
+		return mv;
+	}
+	
+	
+	
+	
 
 	@PostMapping("payInsert")
 	public ModelAndView pay(int totalPrice, CartVO cartVO, HttpSession session, ModelAndView mv) throws Exception {

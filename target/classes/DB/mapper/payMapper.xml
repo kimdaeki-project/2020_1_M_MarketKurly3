@@ -5,6 +5,7 @@
 
   <mapper namespace="com.iu.mk.pay.PayDAO">
 	   <resultMap type="CartVO" id="payResult">
+
 	 		<id column="cq_num" property="cq_num"/>
 			<result column="p_num" property="p_num"/>
 			<result column="count" property="count"/>
@@ -18,9 +19,49 @@
 		  		<result column="contents" property="contents"/>
 		  		<result column="kind" property="kind"/>
 			</collection>
+
 	 
 	 </resultMap> 
-  
+
+			
+	
+
+	 
+	  <resultMap type="CartVO" id="payFinal">
+	   
+	 		<id column="cq_num" property="cq_num"/>
+			<result column="p_num" property="p_num"/>
+			<result column="count" property="count"/>
+			<result column="cart_num" property="cart_num"/>
+			<result column="payCheck" property="payCheck"/>
+			
+			<collection property="productVOs" javaType="List" ofType="ProductVO">
+				<id column="p_num" property="p_num"/>
+		  		<result column="p_name" property="p_name"/>
+		  		<result column="price" property="price"/>
+		  		<result column="contents" property="contents"/>
+		  		<result column="kind" property="kind"/>
+			</collection>
+			
+			<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
+				<id column="fileNum" property="fileNum"/>
+		  		<result column="p_num" property="p_num"/>
+		  		<result column="oriName" property="oriName"/> 
+		  		<result column="fileName" property="fileName"/> 
+		  		<result column="kind" property="kind"/> 
+			</collection>
+			
+			<collection property="PayVO" javaType="List" ofType="PayVO">
+				<id column="pq_num" property="pq_num"/>
+				<result column="cq_num" property="cq_num"/>
+				<result column="pay_price" property="pay_price"/>
+				<result column="order_num" property="order_num"/>
+			</collection>
+	
+	 </resultMap> 
+	 
+	 
+
 
   
   	<select id="scCart" parameterType="Long" resultMap="payResult">
@@ -51,9 +92,47 @@
   	</insert>
   
   
-    <update id="payCheckUpdate">
+    	<update id="payCheckUpdate">
   		update cart set payCheck = 1 where cq_num in (select cq_num from pay where order_num=#{order_num})
   	</update>
   
+
+  	<select id="pCount" parameterType="Long" resultType="Long">
+  		select count from cart where cq_num=#{cq_num}
+  	</select>
+  	
+  	
+  	<select id="payFinal" parameterType="Long" resultMap="payFinal">
+  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price  from
+
+		(select FP.* from
+			(SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from
+			(select * from
+			    (select P.*, rownum R from
+			        (select * from product where
+			             p_num>=10001 order by p_num desc) P)
+			    where R between 1 and 24 ) PP
+			left join productFile PF
+			on(PP.p_num=PF.p_num)
+			order by PP.p_num desc ) FP ) 
+			OO 
+
+		inner join 
+
+		(select FC.* from
+		(select * from
+			(select CA.*, rownum R from
+				(select * from cart where p_num>=10001 order by p_num desc) CA) CAA
+			left join pay  PPA
+			on(CAA.cq_num=PPA.cq_num) ) FC) PO
+		
+	
+		on (OO.p_num=PO.p_num)
+  	</select>
+  	
+  	
+  	
+  	
+
   
   </mapper>
