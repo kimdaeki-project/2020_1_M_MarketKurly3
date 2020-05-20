@@ -56,6 +56,7 @@ public class PayDAO {
 		return sqlSession.selectOne(NAMESPACE+"payCount",pager);
 	}
 	
+	//페이 리스트
 	public List<PayInfoVO> payList(Pager pager) throws Exception{
 		System.out.println(pager.getKind());
 		System.out.println(pager.getSearch());
