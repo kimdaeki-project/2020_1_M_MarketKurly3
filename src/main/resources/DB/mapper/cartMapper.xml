@@ -69,6 +69,10 @@
 	</select>
 	
 	
+	<update id="countUpdate" parameterType="java.util.HashMap">
+		update cart set count=#{num} where cq_num=#{cq_num}
+	</update>
+	
 			
 
 

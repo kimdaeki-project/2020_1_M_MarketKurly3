@@ -93,7 +93,7 @@
 											<input type="hidden" name="sell_price" value="${product.price}">
 											<button type="button" class="btn down" onclick="del();" value="-">-</button>
 											<input type="number" readonly="readonly" onchange="change();" name="amount" class="inp" value="1" size="10">
-											<button type="button" class="btn up" onclick="add();"  value="+">+</button>
+											<button type="button" class="btn up" onclick="add();"  value="+"></button>
 										
 									</span>
 									<!-- <span class="price">
