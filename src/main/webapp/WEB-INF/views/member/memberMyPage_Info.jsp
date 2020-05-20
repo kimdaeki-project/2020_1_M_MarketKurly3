@@ -79,7 +79,7 @@
 						<tr>
 							<td class="msubject">현재 비밀번호</td>
 							<td class="mcontent">
-								<input type="text" label="현재 비밀번호" id="mmPw">
+								<input type="password" label="현재 비밀번호" id="mmPw">
 								<input type="hidden" value="${sessionScope.member.pw}" id="mmPw1">
 							</td>
 						</tr>
@@ -87,14 +87,14 @@
 						<tr>
 							<td class="msubject">새 비밀번호</td>
 							<td class="mcontent">
-								<input type="text" name="pw" label="새 비밀번호" id="mmPw2">
+								<input type="password" name="pw" label="새 비밀번호" id="mmPw2">
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="msubject">비밀번호 확인</td>
 							<td class="mcontent">
-								<input type="text" label="비밀번호 확인" id="mmPw3">
+								<input type="password" label="비밀번호 확인" id="mmPw3">
 							</td>
 						</tr>
 						
@@ -102,7 +102,7 @@
 							<td class="msubject">이름*</td>
 							<td class="mcontent">
 								<input type="text" name="name" label="이름"
-										value="${sessionScope.member.id}" id="mmName"> 
+										value="${sessionScope.member.name}" id="mmName"> 
 							</td>
 						</tr>
 												
@@ -286,7 +286,7 @@
 			if($("#mmPw").val()==""){ // mmPw값을 입력하지않았을 경우
 				
 				if(($("#mmPw2").val()=="")&&($("#mmPw3").val()=="")){ //mmPw2와 mmPw3가 ""일 경우
-					alert("정보가 수정되었습니다.");
+					
 				}else{
 					alert("현재 비밀번호를 정확히 입력해 주세요.");
 					e.preventDefault();
@@ -300,7 +300,7 @@
 							if($("#mmPw2").val().length>=6){ //mmPw2가 6글자 이상인 경우
 								
 								if(!($("#mmPw").val()==$("#mmPw2").val())){ //현재비밀번호와 새비밀번호가 다를때
-									alert("정보가 수정되었습니다.");
+									
 								}else{
 									alert("현재 비밀번호와 다르게 입력해 주세요.")
 									e.preventDefault();

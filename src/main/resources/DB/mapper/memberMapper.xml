@@ -16,16 +16,16 @@
   	
   	<update id="memberUpdate" parameterType="MemberVO">
   		update member set
-  		<set>
+  		
 			<if test=" pw!='' ">
-	  		pw=#{pw}
+	  		pw=#{pw},
 	  		</if>
 	  		
 	  		<if test=" roadFullAddr!='' ">
-	  		address=#{address}
+	  		address=#{address},
 	  		</if>	
-  		</set>
-  		 name=#{name}, birth=#{birth}, phone=#{phone}, email=#{email}, #{sex}
+  		
+  		 name=#{name}, birth=#{birth}, phone=#{phone}, email=#{email}, sex=#{sex}
   		where id=#{id}
   	</update>
   	

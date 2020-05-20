@@ -203,13 +203,15 @@ public class MemberController {
 		
 		int result = memberService.memberUpdate(memberVO);
 		
-		System.out.println("memberupdate><");
+		
+		
+		System.out.println("이름 : " + memberVO.getName());
 		
 		//변형되면 1, 변형되지않으면 0
 		if(result>0) {
 			session.setAttribute("member", memberVO);//바뀐 memberVO을 ${member}에 넣는다.
 			mv.addObject("result","회원정보를 수정하였습니다.");
-			mv.addObject("path", "redirect:./memberMyPage_Info"); //성공했으면 변경된 값을 재확인 하기 위해 redirect한다. 
+			mv.addObject("path", "../"); //성공했으면 변경된 값을 재확인 하기 위해 redirect한다. 
 			mv.setViewName("common/result");
 		}else {
 			mv.addObject("result","수정을 실패하였습니다.");
