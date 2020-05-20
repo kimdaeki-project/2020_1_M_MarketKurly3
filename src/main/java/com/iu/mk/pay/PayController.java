@@ -24,6 +24,10 @@ public class PayController {
 	private PayService payService;
 	
 	
+	
+	
+	
+	
 	@PostMapping("payInsert")
 	public ModelAndView pay(int totalPrice, CartVO cartVO, HttpSession session, ModelAndView mv) throws Exception{
 		System.out.println("payy");
@@ -42,9 +46,11 @@ public class PayController {
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		List<CartVO> cq = payService.scCart(memberVO.getCart_num());
 		System.out.println("cq_size : " + cq.size());
-		System.out.println(cq.get(0).getCq_num());
-		System.out.println(cq.get(1).getCq_num());
-		System.out.println(cq.get(0).getProductVOs().get(0).getPrice());
+		/*
+		 * System.out.println(cq.get(0).getCq_num());
+		 * System.out.println(cq.get(1).getCq_num());
+		 * System.out.println(cq.get(0).getProductVOs().get(0).getPrice());
+		 */
 		
 		int result = 0;
 		ProductVO productVO = new ProductVO();
