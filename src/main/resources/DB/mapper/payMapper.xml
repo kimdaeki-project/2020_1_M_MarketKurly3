@@ -55,5 +55,8 @@
   		update cart set payCheck = 1 where cq_num in (select cq_num from pay where order_num=#{order_num})
   	</update>
   
+  	<select id="pCount" parameterType="Long" resultType="Long">
+  		select count from cart where cq_num=#{cq_num}
+  	</select>
   
   </mapper>

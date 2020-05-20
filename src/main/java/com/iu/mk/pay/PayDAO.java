@@ -47,5 +47,9 @@ public class PayDAO {
 	public int payCheckUpdate(Long order_num) throws Exception{
 		return sqlSession.update(NAMESPACE + "payCheckUpdate", order_num);
 	}
+	
+	public Long pCount(Long cq_num) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "pCount", cq_num);
+	}
 
 }
