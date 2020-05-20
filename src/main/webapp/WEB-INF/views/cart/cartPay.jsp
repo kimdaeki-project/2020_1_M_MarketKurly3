@@ -45,10 +45,10 @@
 						<td>
 							<div class="InfoW">
 								<address>
-									<em>신연주</em>
+									<span>${member.name}<span><br>
 									
-                        			(42242) 서울특별시 서대문구 동교로 294 (연희동)
-                        			<span> -/ 010-1111-2222</span>
+                        			${member.address}
+                        			<span> ${member.phone} </span>
 								</address>
 								
 								<div class="address_modify">
@@ -62,13 +62,7 @@
 				</tbody>
 			</table>
 		
-			<div class="Btm_infoW">
-				<ul>
-					<li>배송지 변경은 <em>MY PAGE > 주문 확인</em>에서 가능합니다.</li>
-					<li>신용카드 포인트 결제는 카드사 홈페이지의 카드사 포인트 및 세이브 내역에서 확인 가능합니다. </li>
-					<li>증빙서류는 MY PAGE > 증빙서류 발급 에서 확인 및 출력이 가능합니다.</li>
-				</ul>
-			</div>
+			
 		</div>	
 		
 	<!-- 입금 은행 정보 -->
@@ -86,7 +80,7 @@
 			<tbody>
 				<tr>
 					<th scope="row">입금정보</th>
-					<td>신한은행(MarketCurly) <em>1234567890</em>
+					<td>카카오페이(MarketCurly) <em>1234-5678-90</em>
 					/
 					<span class="tdin_note"> 예금주명은 'MarketCurly'로 확인됩니다.</span>
 					</td>
@@ -95,36 +89,14 @@
 				<tr>
 					<th scope="row">입금할 금액</th>
 					<td>
-						<strong class="tdin_price">34,900<span>원</span></strong>
+						<strong class="tdin_price">${pro.price}<span>원</span></strong>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	
-	<!-- 환불 정보 -->
-	<div class="order_sconts">
-		<h3 class="cp_intit">환불 정보</h3>
-		<table class="InDataTable">
-			 <caption>환불입력 정보</caption>
-				 <colgroup>
-				 	<col style="width:13%;">
-				 	<col>
-				 </colgroup>
-			<tbody>
-				<tr>
-					<th scope="row">환불방식</th>
-					<td>무통장입금</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div class="Btm_infoW">
-				<ul>
-					<li>취소/반품 신청 시, 환불 방식은 무통장입금과 캐시 중에 선택하여 신청하실 수 있습니다.</li>
-					<li><em>[PC > MY PAGE > 환불/입금내역]</em>에서 환불금액을 입금 받을 계좌를 등록 및 수정할 수 있습니다. </li>
-				</ul>
-			</div>
+	
 	</div>
 	
 	<!-- 주문하신 상품정보 -->
@@ -152,12 +124,15 @@
 					</tr>
 				</thead>
 				<tbody>
-				<!-- 통합 배송 상품 -->
+				
+				<!-- 통합 배송 상품 반복 추가 -->
+				<!-- 장바구니의 상품 가지오기 -->
+				<c:forEach items="" var="vo">
 					<tr> 
 						<td>
 							<div class="dp_photo">
 								<a href="#">
-									<img alt="" src="../resources/images/goods_img_05.jpg"> <!-- 상품 대표 이미지 들어갈 공간 90*90pix -->
+									<img alt="" src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}"> <!-- 상품 대표 이미지 들어갈 공간 90*90pix -->
 								</a>
 							</div>
 						</td>
@@ -166,24 +141,29 @@
 								<div class="infoWrap">
 									
 									<div class="dp_title">
-										<a href="#">아디다스 입고, 반팔 반바지 팬츠 레깅스</a>
+										<a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a>
 									</div>
-									<p class="result_option"> 타이즈 2종 택1/84-1_DP2389_80(M) / +19,000원</p>
+									
 								</div>
 							</div>
 							
 						</td>
 						<td>1개</td>
-						<td class="prd_price">34,900원</td>
+						<td class="prd_price">${vo.price}</td> <!-- 결제 가격 -->
 						<td rowspan="1">
 						 <div class="deliver_price">
 						 	<div class="defbtn_info_wrap">
-						 		<em>무료</em>
+						 		<span>${vo.delivery}</span> <!-- 배송비 -->
 						 	</div>
 						 </div>
 						</td>
 					</tr>
+					</c:forEach>
 				<!-- 주문 내역 -->
+				
+				
+				
+				
 				</tbody>
 			</table>
 		</div>
@@ -194,7 +174,7 @@
 	<div class="payment_detail">
 		<div class="order_hgroup" style="dislay:">
 			<h3 class="cp_intit">결제내역</h3>
-			<span class="direct_icon">바로가기OFF</span>
+			
 		</div>
 
 		<div class="PriceCheckWrap" style="display:">
