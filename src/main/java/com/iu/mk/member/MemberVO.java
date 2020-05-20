@@ -36,6 +36,15 @@ public class MemberVO {
 	
 	private String address;//(=roadFullAddr) controller에서 설정해줌
 	
+	private String roadFullAddr;
+	
+
+	public String getRoadFullAddr() {
+		return roadFullAddr;
+	}
+	public void setRoadFullAddr(String roadFullAddr) {
+		this.roadFullAddr = roadFullAddr;
+	}
 
 	private String phone;
 	private String email;
