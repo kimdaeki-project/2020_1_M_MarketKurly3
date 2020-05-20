@@ -37,4 +37,16 @@ public class CartService {
 		return cartDAO.cartDelete(cq_num);
 	}
 	
+	
+	public CartVO cartSearch(Long p_num) throws Exception {
+		System.out.println("search - service");
+		System.out.println(p_num);
+		return cartDAO.cartSearch(p_num);
+	}
+	
+	
+	
+	
+	
+	
 }

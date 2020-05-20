@@ -14,8 +14,9 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cartList.css">
 </head>
 <body onload="count();">
-	<c:import url="../template/header.jsp"></c:import>
-	
+<c:import url="../template/header.jsp"></c:import>
+
+
 <div class="container">
 <div class="layout-wrapper">
 <div class="layout-page-header">
@@ -34,7 +35,7 @@
 
 
 		<div class="user_form_section_cart">
-			<form id="viewCart" name="frmCart" method="post" action="pay">
+			<form id="viewCart" name="frmCart" method="post" action="../pay/payInsert">
 				<input type="hidden" name="mode" value="setOrder">
 				<div class="tbl_comm cart_goods section_cart">
 					<table class="tbl_comm tbl_header">
@@ -56,7 +57,7 @@
 										</label>
 										<span class="tit">
 											전체선택 (
-											<span class="num_count">1</span>
+											<span class="num_count" id="num_count1">1</span>
 											/
 											<span class="num_total" id="num_total1">1</span>
 											)
@@ -160,7 +161,7 @@
 										 </c:forEach>
 										<td header="thDelete" class="goods_delete">
 												
-												<button type="button" class="btn btn_delete" id="btn_del" onclick="btnDel(${vo.cq_num});">
+												<button type="button" class="btn btn_delete" onclick="btnDel(${vo.cq_num});">
 													<img src="${pageContext.request.contextPath}/resources/images/btn_close.jpg" alt="삭제">
 												</button>
 											
@@ -189,9 +190,9 @@
 						</label>
 						<span class="tit">
 							전체선택 (
-							<span class="num_count">1</span>
+							<span class="num_count" id="num_count2">1</span>
 							/
-							<span class="num_total">1</span>
+							<span class="num_total" id="num_total2">1</span>
 							)
 						</span>
 					</div>
@@ -273,6 +274,23 @@
 		console.log(allCheck)
 		
 		
+		
+				
+		//수량 안내 (n/n)
+		document.getElementById("num_total1").innerText = c1.length;
+		document.getElementById("num_total2").innerText = c1.length;
+		
+		
+		
+		
+		$("#num_total1").innerText = c1.length;
+	
+		
+		
+		
+		
+		
+		
 		//전체 선택  default
 		//$(".c1").prop("checked",true);
 		for(var i=0; i<c1.length; i++){
@@ -320,10 +338,12 @@
 			var arr = [];
 			var pay = 0;
 			var pid = "resultPrice"; 
+			var cnt = 0;
 			
 			for(var i=0; i<c1.length; i++){// 0 1 2 3 4 5
 				if(c1[i].checked){//0
 					
+					cnt += 1;
 					pid = pid + i; //resultPrice0  resultPrice1 . . . >> 합계의 id
 					console.log("pid : " + pid);
 					var re = document.getElementById(pid).innerText;
@@ -332,6 +352,15 @@
 					pay = pay + parseInt(re);
 				}
 			}
+			
+			
+			//(n/n)의 첫번째 n
+			document.getElementById("num_count1").innerText = cnt;
+			document.getElementById("num_count2").innerText = cnt;
+			
+			
+			
+			
 			
 			
 			console.log("totalPay : "  + pay);
@@ -356,13 +385,21 @@
 			console.log("잘 실행되고 잇나요");
 			console.log(pay);
 			document.getElementById("total_price").innerText = (pay+delivery);
+			
 			$("#totalPrice").val(pay+delivery);
+			
+			
 			if(pay<1){
 				document.getElementById("total_price").innerText = 0;
 				
 			}
 			
 			console.log(delivery);
+			
+			
+			
+			
+			
 			}
 //////////////////////
 
@@ -404,6 +441,19 @@
 				}
 				
 				$(".allCheck").prop("checked",result);
+				
+				
+				var re = true;
+				for(var i=0; i<c1.length; i++){
+					
+					if(!c1[i].checked){
+						re = false;
+						break;
+					}
+				}
+				$(".allCheck").prop("checked",re);
+				
+				
 				
 				count();
 				
@@ -589,7 +639,7 @@
 		
 		
 		
-		
+/* 		
 		function pay(){
 			var totalPay = document.getElementById("total_price").innerText;
 			console.log("totalPay..... : " + totalPay)
@@ -598,10 +648,10 @@
 			})
 			
 			
-		}
+		} */
 
 		
-	
+
 	
 	</script>
 </html>

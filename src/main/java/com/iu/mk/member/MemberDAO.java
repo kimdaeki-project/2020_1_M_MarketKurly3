@@ -27,7 +27,9 @@ public class MemberDAO {
 	}
 	
 	public int memberDelete(MemberVO memberVO)throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"memberDelete",memberVO);
+		System.out.println("DAO");
+		System.out.println(memberVO.getId());
+		return sqlSession.delete(NAMESPACE+"memberDelete",memberVO);
 	}
 	
 	public MemberVO checkId(MemberVO memberVO)throws Exception{

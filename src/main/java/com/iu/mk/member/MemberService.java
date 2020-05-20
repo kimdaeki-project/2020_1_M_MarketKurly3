@@ -26,6 +26,8 @@ public class MemberService {
 	}
 	
 	public int memberDelete(MemberVO memberVO)throws Exception{
+		System.out.println("서비스");
+		System.out.println(memberVO.getId());
 		return memberDAO.memberDelete(memberVO);
 	}
 	
