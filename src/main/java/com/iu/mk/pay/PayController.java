@@ -27,7 +27,7 @@ public class PayController {
 	@PostMapping("payFinal")
 	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO) throws Exception{
 		
-		List<CartVO>
+	
 		
 		
 		return mv;
