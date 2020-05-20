@@ -16,6 +16,7 @@ import com.iu.mk.cart.CartDAO;
 import com.iu.mk.cart.CartVO;
 import com.iu.mk.member.MemberVO;
 import com.iu.mk.product.ProductVO;
+import com.iu.mk.util.Pager;
 
 @Controller
 @RequestMapping(value = "/pay/**")
@@ -191,4 +192,16 @@ public class PayController {
 		return mv;
 	}
 
+	@GetMapping("payList")
+	public ModelAndView payList(ModelAndView mv,Pager pager,PayInfoVO payInfoVO)throws Exception {
+		
+		List<PayInfoVO> ar = payService.payList(pager);
+		
+		mv.addObject("list",ar);
+		mv.addObject("pager",pager);
+		mv.setViewName("member/memberMyPage_Purchase");
+		
+		return mv;
+	}
+	
 }
