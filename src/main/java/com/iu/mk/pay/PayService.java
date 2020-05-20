@@ -39,4 +39,8 @@ public class PayService {
 	public int payInfoInsert(PayInfoVO payInfoVO) throws Exception{
 		return payDAO.payInfoInsert(payInfoVO);
 	}
+	
+	public int payCheckUpdate(Long order_num) throws Exception {
+		return payDAO.payCheckUpdate(order_num);
+	}
 }

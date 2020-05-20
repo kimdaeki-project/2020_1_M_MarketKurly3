@@ -51,5 +51,9 @@
   	</insert>
   
   
+    <update id="payCheckUpdate">
+  		update cart set payCheck = 1 where cq_num in (select cq_num from pay where order_num=#{order_num})
+  	</update>
+  
   
   </mapper>

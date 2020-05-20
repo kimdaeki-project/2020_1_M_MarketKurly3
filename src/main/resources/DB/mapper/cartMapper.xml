@@ -65,7 +65,7 @@
 	
 	
 	<select id="cartSearch" parameterType="Long" resultType="CartVO">
-		select * from cart where p_num=#{p_num}
+		select * from cart where p_num=#{p_num} and payCheck=0
 	</select>
 	
 	

@@ -43,5 +43,9 @@ public class PayDAO {
 		return sqlSession.insert(NAMESPACE + "payInfoInsert", payInfoVO);
 				
 	}
+	
+	public int payCheckUpdate(Long order_num) throws Exception{
+		return sqlSession.update(NAMESPACE + "payCheckUpdate", order_num);
+	}
 
 }
