@@ -67,7 +67,7 @@
 									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
 								</a>
 									<div class="info_goods">
-										<span class="name"><a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a></span>
+										<span class="name"  ><a href="../product/productSelect?p_num=${vo.p_num}" style="color:#333" >${vo.p_name}</a></span>
 										<span class="cost">${vo.price}원</span>
 									</div>
 							</li>

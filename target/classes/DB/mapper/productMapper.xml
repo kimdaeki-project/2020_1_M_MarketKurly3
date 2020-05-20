@@ -38,7 +38,7 @@
 				</if>
 				 p_num>=10001 order by p_num desc) P)
 			where R between #{startRow} and #{lastRow}) PP
-			inner join productFile PF
+			left join productFile PF
             on(PP.p_num=PF.p_num)
             order by PP.p_num desc
             
