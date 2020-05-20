@@ -277,8 +277,6 @@
 		//update (id:btn_update > $("#btn_update"))
 		//넘어가기 전에 확인하려면 input타입의 submit을 button으로 바꿔서 실행해본다
 
-		var check=true;
-
 		$("#btn_update").click(function(e){ //버튼을 클릭했을때
 			
 			//mmPw:현재 비밀번호 , mmPw1:DB에서 불러온 비밀번호 , mmPw2:새 비밀번호 , mmPw3:비밀번호 확인 
@@ -325,6 +323,34 @@
 	
 			
 		}); 
+		
+		
+		
+		//delete (id:btn_delete > $("#btn_delete"))
+		$("#btn_delete").click(function(e){
+			console.log("삭제");
+			var returnValue = confirm('정말 탈퇴하시겠습니까?');
+			if(returnValue==true){
+				$.ajax({
+					url:"./memberDelete",
+					type:"GET",//method형식
+					data:"{id:id}", //parameter(서버로 보내는 데이터) //id만 보내도 충분하기 때문에 id만 보냄
+					
+					success:function(data){
+						alert(data);
+					},
+					error:function(){
+						alert("에러발생");
+					}
+				})
+				
+			}else{
+				alert("탈퇴가 실패하였습니다.");
+				e.preventDefault();
+			}
+		});
+		
+		
 		
 	</script>
 	
