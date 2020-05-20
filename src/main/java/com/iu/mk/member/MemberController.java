@@ -217,20 +217,27 @@ public class MemberController {
 	
 	
 	//memberDelete
-	@GetMapping("memberDelete")
-	public ModelAndView memberDelete( HttpSession session, ModelAndView mv) throws Exception {
+	@PostMapping("memberDelete")
+	public ModelAndView memberDelete(String id, HttpSession session, ModelAndView mv) throws Exception {
 		
-		MemberVO memberVO =(MemberVO)session.getAttribute("member");
+		//MemberVO memberVO =(MemberVO)session.getAttribute("member");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(id);
+		
+		System.out.println("ㅇㄹㅇㄹㅇㄹㅇㄹ");
+		System.out.println("id:"+id);
+		
 		int result = memberService.memberDelete(memberVO);
+		
+		System.out.println("result:"+result);
+
 		if(result>0) {
 			session.invalidate();
-			mv.addObject("result","회원탈퇴 되었습니다.");
-			mv.addObject("path","../");
-			mv.setViewName("common/result");
+			mv.addObject("result","1");//탈퇴성공
+			mv.setViewName("common/ajaxResult");
 		}else {
-			mv.addObject("result", "탈퇴가 실패하였습니다.");
-			mv.addObject("path", "../");
-			mv.setViewName("common/result");
+			mv.addObject("result", "0");//탈퇴실패
+			mv.setViewName("common/ajaxResult");
 		}
 		return mv;
 	}

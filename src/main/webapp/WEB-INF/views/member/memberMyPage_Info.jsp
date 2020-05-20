@@ -330,27 +330,47 @@
 		$("#btn_delete").click(function(e){
 			console.log("삭제");
 			var returnValue = confirm('정말 탈퇴하시겠습니까?');
-			if(returnValue==true){
-				$.ajax({
+			if(returnValue){
+				
+				
+				 $.ajax({
 					url:"./memberDelete",
-					type:"GET",//method형식
-					data:"{id:id}", //parameter(서버로 보내는 데이터) //id만 보내도 충분하기 때문에 id만 보냄
+					type:"post",//method형식
+					data:{id:$('#mmId').val()}, //parameter(서버로 보내는 데이터) //id만 보내도 충분하기 때문에 id만 보냄
 					
-					success:function(data){
-						alert(data);
+					success:function(data){ 
+						if(data="1"){
+							alert("탈퇴성공");
+							location.replace("${pageContext.request.contextPath}");
+						}else{
+							alert("탈퇴실패");
+							
+						}
 					},
 					error:function(){
 						alert("에러발생");
 					}
-				})
+				}) 
+				
+/* 				
+				$.post("./memberDelete",{id:$('#mmId').val()},function(data){ //post(url,data,function)
+					
+					if(data>0){
+						alert("성공");
+					}else{
+						alert("실패");
+					}
+				
+				});
+					 */
+				
 				
 			}else{
-				alert("탈퇴가 실패하였습니다.");
+				alert("탈퇴가 실패되었습니다.");
 				e.preventDefault();
 			}
 		});
-		
-		
+
 		
 	</script>
 	
