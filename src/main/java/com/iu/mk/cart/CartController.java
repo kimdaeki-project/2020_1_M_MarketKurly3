@@ -96,7 +96,7 @@ public class CartController {
 		
 		
 
-		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num());
+		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num(),memberVO.getCart_num());
 			
 
 

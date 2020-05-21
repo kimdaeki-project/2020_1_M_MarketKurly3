@@ -64,8 +64,9 @@
 	</select>
 	
 	
-	<select id="cartSearch" parameterType="Long" resultType="CartVO">
-		select * from cart where p_num=#{p_num} and payCheck=0
+	<select id="cartSearch" parameterType="java.util.HashMap" resultType="CartVO">
+		select * from cart where p_num=#{p_num} and payCheck=0 and cart_num=#{cart_num}
+		
 	</select>
 	
 	

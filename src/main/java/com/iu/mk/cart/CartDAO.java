@@ -37,10 +37,9 @@ public class CartDAO {
 		return sqlSession.delete(NAMESPACE + "cartDelete", cq_num);
 	}
 
-	public CartVO cartSearch(Long p_num) throws Exception {
+	public CartVO cartSearch(HashMap<String, Long> param) throws Exception {
 		System.out.println("search - dao");
-		System.out.println(p_num);
-		return sqlSession.selectOne(NAMESPACE + "cartSearch", p_num);
+		return sqlSession.selectOne(NAMESPACE + "cartSearch", param);
 	}
 	
 	public int countUpdate(HashMap<String, Long> param) throws Exception{
