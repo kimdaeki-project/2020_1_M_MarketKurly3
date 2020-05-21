@@ -1,5 +1,6 @@
 package com.iu.mk.cart;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,9 @@ public class CartService {
 	}
 	
 	
-	
+	public int countUpdate(HashMap<String, Long> param) throws Exception{
+		return cartDAO.countUpdate(param);
+	}
 	
 	
 	
