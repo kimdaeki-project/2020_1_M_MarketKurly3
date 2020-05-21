@@ -32,7 +32,7 @@
 		
 		<div class="line_p">
 			
-					<c:forEach items="${list}" var="vo">
+					<c:forEach items="${list}" var="vo"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
 						
 							<div class="list_p">
 								<a href="../product/productSelect?p_num=${vo.p_num}" class="thumb_goods">

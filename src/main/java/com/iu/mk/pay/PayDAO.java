@@ -55,6 +55,9 @@ public class PayDAO {
 		return sqlSession.selectOne(NAMESPACE + "pCount", cq_num);
 	}
 
+	
+	
+	
 	//전체 글 갯수 카운트
 	public long payCount(Pager pager) throws Exception{
 		

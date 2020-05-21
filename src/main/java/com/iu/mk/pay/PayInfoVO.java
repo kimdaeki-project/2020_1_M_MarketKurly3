@@ -6,6 +6,7 @@ public class PayInfoVO {
 	private Long delivery;
 	private Long payDate;
 	
+	//외부테이블에서 받아온 정보들(Product, ProductFile)
 	
 	
 	public Long getOrder_num() {

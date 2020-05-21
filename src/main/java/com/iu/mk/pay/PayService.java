@@ -26,9 +26,32 @@ public class PayService {
 
 	public int payInsert(PayVO payVO) throws Exception{
 
+		//개수와 곱해서 다시 넣어주기
+		Long price = payVO.getPay_price();
+		Long count = (long) payDAO.pCount(payVO.getCq_num());
+		payVO.setPay_price(price*count);
+		
+
 		
 		return payDAO.payInsert(payVO);
 	}
+	
+	
+	public Long orderNum() throws Exception{
+		return payDAO.orderNum();
+	}
+
+	
+	public int payInfoInsert(PayInfoVO payInfoVO) throws Exception{
+		return payDAO.payInfoInsert(payInfoVO);
+	}
+	
+	public int payCheckUpdate(Long order_num) throws Exception {
+		return payDAO.payCheckUpdate(order_num);
+	}
+	
+
+	
 	
 	public List<PayInfoVO> payList(Pager pager) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
@@ -38,6 +61,8 @@ public class PayService {
 		if(pager.getKind()==null ) {
 			pager.setKind("");
 		}
+		
+		//여기서 payDAO.payCount 호출
 		long totalCount = payDAO.payCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기
 		
@@ -46,6 +71,7 @@ public class PayService {
 		return payDAO.payList(pager);
 	}
 	
+
 	
 	public Long orderNum() throws Exception{
 		return payDAO.orderNum();
@@ -68,5 +94,6 @@ public class PayService {
 		return payDAO.payCheckUpdate(order_num);
 	}
 	
+
 
 } 
