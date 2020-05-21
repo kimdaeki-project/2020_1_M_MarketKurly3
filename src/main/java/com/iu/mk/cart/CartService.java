@@ -1,5 +1,6 @@
 package com.iu.mk.cart;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +39,21 @@ public class CartService {
 	}
 	
 	
-	public CartVO cartSearch(Long p_num) throws Exception {
+	public CartVO cartSearch(Long p_num, Long cart_num) throws Exception {
 		System.out.println("search - service");
 		System.out.println(p_num);
-		return cartDAO.cartSearch(p_num);
+		
+		HashMap<String, Long> param = new HashMap<String, Long>();
+		param.put("p_num", p_num);
+		param.put("cart_num", cart_num);
+		
+		return cartDAO.cartSearch(param);
 	}
 	
 	
-	
+	public int countUpdate(HashMap<String, Long> param) throws Exception{
+		return cartDAO.countUpdate(param);
+	}
 	
 	
 	

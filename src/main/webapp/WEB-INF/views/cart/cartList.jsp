@@ -130,6 +130,7 @@
 										<td header="thCount">
 											<div class="goods_quantity">
 											<div class="quantity">
+												
 												<input type="hidden" id="${vo.cq_num}" class="cqn${status.index}">
 												<input type="hidden" name="curCnt${status.index}" value="${vo.count}">
 												<strong class="screen_out">수량</strong>
@@ -504,6 +505,18 @@
 		    }); 
 			
 			
+			var cqn = ".cqn"+num;
+			$.post("../cart/countUpdate",{cq_num:$(cqn).attr("id"), num:hm}, function(data){
+				console.log(data);
+				
+			});
+			
+			
+			
+			
+			
+			
+			
 			//최종 가격 수정
 			var pp = "proPrice"+num;
 			
@@ -530,6 +543,17 @@
 					$(document).ready(function() {
 				        $("#"+nn).val(hm);
 				    }); 
+					
+					
+					
+					var cqn = ".cqn"+num;
+					$.post("../cart/countUpdate",{cq_num:$(cqn).attr("id"), num:hm}, function(data){
+						console.log(data);
+						
+					});
+					
+					
+					
 					
 					//최종 가격 수정
 					var pp = "proPrice"+num

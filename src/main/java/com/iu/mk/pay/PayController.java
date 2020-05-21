@@ -1,6 +1,5 @@
 package com.iu.mk.pay;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,9 +25,13 @@ public class PayController {
 	@Autowired
 	private PayService payService;
 	
-	@GetMapping("payFinal")
-	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO,HttpSession session) throws Exception{
-		CartDAO cartDAO = new CartDAO();
+
+	@Autowired
+	private PayDAO payDAO;
+	
+	@PostMapping("payFinal")
+	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO) throws Exception{
+
 		
 		//membervo에서 cart_num 넘겨주기
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
@@ -147,6 +150,7 @@ public class PayController {
 		ProductVO productVO = new ProductVO();
 
 		Long price = 0L;
+		Long totalPrice = 0L;
 		for (int i = 0; i < cq.size(); i++) {
 			PayVO payVO = new PayVO();
 
@@ -154,10 +158,27 @@ public class PayController {
 			payVO.setOrder_num(orderNum);
 			
 			
+			/*
+			 * payVO.setPay_price(cq.get(i).getProductVOs().get(0).getPrice()); price +=
+			 * cq.get(i).getProductVOs().get(0).getPrice(); System.out.println("[" + i +
+			 * "] " + price);
+			 */
 			
-			payVO.setPay_price(cq.get(i).getProductVOs().get(0).getPrice());
-			price += cq.get(i).getProductVOs().get(0).getPrice();
+			
+			price = cq.get(i).getProductVOs().get(0).getPrice();
+			System.out.println("[" + i + "] " + price);
+			
+			Long count = (long) payDAO.pCount(payVO.getCq_num());
+			
+			price = price * count;
+			
+			payVO.setPay_price(price);
+
+			
 			result = payService.payInsert(payVO);
+			
+
+			totalPrice += price;
 
 		}
 
@@ -167,7 +188,7 @@ public class PayController {
 		// payInfo table -------------------------------------------------
 		PayInfoVO payInfoVO = new PayInfoVO();
 		payInfoVO.setOrder_num(orderNum);
-		payInfoVO.setTotal_price(price);
+		payInfoVO.setTotal_price(totalPrice);
 
 		Long delivery = 0L;
 		if (price >= 50000) {

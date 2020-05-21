@@ -29,14 +29,7 @@ public class PayService {
 	}
 
 	public int payInsert(PayVO payVO) throws Exception{
-		//개수와 곱해서 다시 넣어주기
-		Long price = payVO.getPay_price();
-		Long count = (long) payDAO.pCount(payVO.getCq_num());
-		payVO.setPay_price(price*count);
-		
-		
-		
-		
+
 		
 		return payDAO.payInsert(payVO);
 	}
@@ -68,6 +61,10 @@ public class PayService {
 	
 	
 	public int payInfoInsert(PayInfoVO payInfoVO) throws Exception{
+		
+		
+		
+		
 		return payDAO.payInfoInsert(payInfoVO);
 	}
 	

@@ -1,12 +1,13 @@
 package com.iu.mk.cart;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -95,7 +96,7 @@ public class CartController {
 		
 		
 
-		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num());
+		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num(),memberVO.getCart_num());
 			
 
 
@@ -181,6 +182,28 @@ public class CartController {
 		
 		return result;
 	}
+	
+	
+	
+	
+	@PostMapping("countUpdate")
+	@ResponseBody
+	public void countUpdate(Long cq_num, Long num) throws Exception{
+		System.out.println("-----update------");
+		System.out.println(cq_num);
+		System.out.println(num);
+		HashMap<String, Long> param = new HashMap<String, Long>();
+		param.put("cq_num", cq_num);
+		param.put("num", num);
+		
+		int result = cartService.countUpdate(param);
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	
