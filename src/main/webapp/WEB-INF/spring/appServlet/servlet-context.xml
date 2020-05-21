@@ -7,6 +7,47 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+
+
+
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/product/productWrite"/>
+			<beans:bean class="com.iu.s5.interceptor.MemberInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		
+		
+		<interceptor>
+			<mapping path="/cart/cartList"/>
+			<beans:bean class="com.iu.s5.interceptor.CartInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		
+		<interceptor>
+			<mapping path="/pay/patFinal"/>
+			<mapping path="/pay/payInsert"/>
+			<mapping path="/pay/totalInfo"/>
+			<mapping path="/pay/payList"/>
+			<beans:bean class="com.iu.s5.interceptor.PayInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/productFile/fileInsert"/>
+			<mapping path="/productFile/fileDelete"/>
+			<beans:bean class="com.iu.s5.interceptor.CartInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		
+	</interceptors>
+
+
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
