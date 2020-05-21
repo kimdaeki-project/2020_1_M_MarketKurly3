@@ -309,6 +309,11 @@ div.OrderPrdW_Goods .pup_info + .dp_title {
     margin-top: 11px;
 }
 
+.dp_title{
+	padding-left: 20px;
+	padding-top: 15px;
+}
+
 .CartTable1_Wrap .dp_title a {
     display: block;
     word-wrap: break-word;
@@ -342,7 +347,7 @@ div.shopinfo_wrap {
 
 div.PriceCheckWrap {
     margin-top: 50px;
-    border-top: 2px solid #333;
+    border-top: 2px solid #5f0080;
     
  
    
@@ -375,7 +380,8 @@ div.PriceCheckWrap div.R_PriceWrap > div {
 div.PriceCheckWrap .PriceSPWrap {
     width: 100%;
     height: 59px;
-    border-bottom: 1px solid #dedfe2;
+    border-left:1px solid #cfd3df;
+    border-right: 1px solid #cfd3df; 
 }
 
 div.PriceSPWrap {
@@ -401,7 +407,7 @@ div.PriceSPWrap .tit {
 
 div.PriceCheckWrap div.PriceSPWrap .tit {
     float: left;
-    padding: 24px 0 10px 30px;
+    padding: 13px 0 10px 30px;
     color: #333;
     letter-spacing: -1px;
 }
@@ -414,7 +420,7 @@ div.PriceCheckWrap .PriceSPWrap .Price {
 }
 
 div.PriceCheckWrap .PaymentWrap .PriceSPWrap {
-    border-color: #d1d5dd;
+    border-color: #cfd3df;
 }
 
 div.PriceCheckWrap div.Discount_Wrap .tit {
@@ -512,3 +518,6 @@ div.PriceCheckWrap .Discount_Wrap {
 .defbtn_xlar > span, .defbtn_xlar > em {
     padding: 0 28px;
 }
+
+
+

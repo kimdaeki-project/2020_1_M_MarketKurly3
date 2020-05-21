@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.mk.pay.PayInfoVO;
 import com.iu.mk.product.ProductVO;
 
 @Repository
@@ -16,6 +17,7 @@ public class CartDAO {
 	private SqlSession sqlSession;
 
 	private final String NAMESPACE = "com.iu.mk.cart.CartDAO.";
+	
 	
 	
 	public List<CartVO> cartList(Long cart_num) throws Exception{

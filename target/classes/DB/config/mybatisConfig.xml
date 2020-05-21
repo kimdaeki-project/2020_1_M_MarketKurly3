@@ -18,6 +18,7 @@
   		<typeAlias type="com.iu.mk.product.productfile.ProductFileVO" alias="ProductFileVO"/>
   	
   		<typeAlias type="com.iu.mk.cart.CartVO" alias="CartVO"/>
+  		<typeAlias type="com.iu.mk.pay.PayVO" alias="PayVO"/>
   	
 
   	</typeAliases>
