@@ -1,5 +1,6 @@
 package com.iu.mk.pay;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,19 @@ public class PayService {
 	@Autowired
 	private PayDAO payDAO;
 	
-	public List<CartVO> finalCart (long cart_num) throws Exception{
-		return payDAO.finalCart(cart_num);
+	public PayInfoVO totalPrice(Long order_num) throws Exception{
+		return payDAO.totalPrice(order_num);
+	}
+	
+	
+	public List<CartVO> finalCart (long cart_num,long order_num) throws Exception{
+		System.out.println("se :" + cart_num);
+		
+		HashMap<String, Long> param = new HashMap<String, Long>();
+		param.put("cart_num",cart_num);
+		param.put("order_num",order_num);
+		
+		return payDAO.finalCart(param);
 	}
 	
 	

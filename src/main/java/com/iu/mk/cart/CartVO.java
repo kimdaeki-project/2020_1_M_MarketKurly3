@@ -2,6 +2,7 @@ package com.iu.mk.cart;
 
 import java.util.List;
 
+import com.iu.mk.pay.PayInfoVO;
 import com.iu.mk.pay.PayVO;
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.product.productfile.ProductFileVO;
@@ -22,11 +23,8 @@ public class CartVO {
 
 	private List<PayVO> payVOs;
 	
-	private List<CartVO> cartVOs;
-
-
-
 	
+
 
 
 	public List<ProductFileVO> getProductFileVOs() {
@@ -49,6 +47,18 @@ public class CartVO {
 
 	public void setProductVOs(List<ProductVO> productVOs) {
 		this.productVOs = productVOs;
+	}
+
+
+
+	public List<PayVO> getPayVOs() {
+		return payVOs;
+	}
+
+
+
+	public void setPayVOs(List<PayVO> payVOs) {
+		this.payVOs = payVOs;
 	}
 
 

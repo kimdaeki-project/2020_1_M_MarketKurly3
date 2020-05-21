@@ -22,8 +22,8 @@
 				<h3 class="tit_login">로그인</h3>
 				<div class="write_form">
 					<form action="" method="post" enctype="application/x-www-form-urlencoded">
-						<input type="text" name="id" placeholder="아이디를 입력하세요">
-						<input type="password" name="pw" placeholder="비밀번호를 입력하세요">
+						<input type="text" name="id" placeholder="아이디를 입력하세요" value="admin">
+						<input type="password" name="pw" placeholder="비밀번호를 입력하세요" value="1">
 						<div class="checkbox_save">
 							<label><input type="checkbox" class="check" name="remember" value="remember"> 로그인 상태 유지</label>
 							<div class="login_search">

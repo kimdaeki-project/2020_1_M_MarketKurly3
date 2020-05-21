@@ -54,7 +54,7 @@
 				<result column="order_num" property="order_num"/>
 			</collection>
 	
-	  
+	  </resultMap>
 	 
   
 
@@ -96,9 +96,15 @@
   	</select>
   	
   	
+  	<select id="totalPrice" parameterType="Long" resultType="com.iu.mk.pay.PayInfoVO">
+  		select total_price, delivery from payInfo where order_num =#{order_num}
+  	</select>
+  	
+  	
+  	
 
-   <select id="payFinal" parameterType="Long" resultMap="payFinal">
-  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num from
+   <select id="finalCart" parameterType="Long" resultMap="payFinal">
+  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num, OO.p_name from
 
 
 		(select FP.* from
@@ -124,6 +130,7 @@
 		
 	
 		on (OO.p_num=PO.p_num)
+		where cart_num=#{cart_num} and order_num =#{order_num}
   	</select> 
   	
   	
