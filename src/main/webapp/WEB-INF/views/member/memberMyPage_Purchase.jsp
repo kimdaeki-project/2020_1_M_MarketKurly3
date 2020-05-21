@@ -33,17 +33,22 @@
 		<div class="line_p">
 			
 					<c:forEach items="${list}" var="vo"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
-						
+
+						<div class="list_p">
+							ㅍㄹ
+						</div>
+
+					<%-- 						
 							<div class="list_p">
-								<a href="../product/productSelect?p_num=${vo.p_num}" class="thumb_goods">
+								
 									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
-								</a>
+								
 									<div class="info_goods">
 										<span class="name"  ><a href="../product/productSelect?p_num=${vo.p_num}" style="color:#333" >${vo.p_name}</a></span>
 										<span class="cost">${vo.price}원</span>
 									</div>
 							</div>
-							
+					 --%>		
 					 </c:forEach>
 		
 		</div>
