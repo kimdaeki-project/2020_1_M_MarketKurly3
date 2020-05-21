@@ -271,7 +271,7 @@
 	
 		<!-- 주문완료 확인 버튼 -->
 		<div class="OrderW_FinaLBtnW">
-			<a href="#" class="defbtn_xlar xladtype" data-is-ab-send="1"><span>주문 완료 확인</span></a>
+			<a href="../" class="defbtn_xlar xladtype" data-is-ab-send="1"><span>주문 완료 확인</span></a>
 		</div>
 		 
 		
