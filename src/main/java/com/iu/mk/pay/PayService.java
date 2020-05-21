@@ -25,13 +25,6 @@ public class PayService {
 	}
 
 	public int payInsert(PayVO payVO) throws Exception{
-
-		//개수와 곱해서 다시 넣어주기
-		Long price = payVO.getPay_price();
-		Long count = (long) payDAO.pCount(payVO.getCq_num());
-		payVO.setPay_price(price*count);
-		
-
 		
 		return payDAO.payInsert(payVO);
 	}
@@ -51,8 +44,11 @@ public class PayService {
 	}
 	
 
-	
-	
+	public List<Long> scPrice(Long order_num) throws Exception{
+		return payDAO.scPrice(order_num);
+	}
+
+	//soyeon
 	public List<PayInfoVO> payList(Pager pager) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
 		
@@ -70,29 +66,7 @@ public class PayService {
 		
 		return payDAO.payList(pager);
 	}
-	
 
-	
-	public Long orderNum() throws Exception{
-		return payDAO.orderNum();
-	}
-	
-	public List<Long> scPrice(Long order_num) throws Exception{
-		return payDAO.scPrice(order_num);
-	}
-	
-	
-	public int payInfoInsert(PayInfoVO payInfoVO) throws Exception{
-		
-		
-		
-		
-		return payDAO.payInfoInsert(payInfoVO);
-	}
-	
-	public int payCheckUpdate(Long order_num) throws Exception {
-		return payDAO.payCheckUpdate(order_num);
-	}
 	
 
 

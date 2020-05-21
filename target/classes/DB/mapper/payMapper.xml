@@ -23,7 +23,7 @@
 	
 	 </resultMap> 
 	 
-	  <resultMap type="CartVO" id="payFinal">
+<!-- 	  <resultMap type="CartVO" id="payFinal">
 	   
 	 		<id column="cq_num" property="cq_num"/>
 			<result column="p_num" property="p_num"/>
@@ -54,8 +54,7 @@
 				<result column="order_num" property="order_num"/>
 			</collection>
 	
-	 </resultMap> 
-	 
+	  -->
 	 
   
 
@@ -63,7 +62,7 @@
   	<select id="scCart" parameterType="Long" resultMap="payResult">
   		 select C.cq_num, P.price from cart C left Join product p
 		 on (C.p_num = P.p_num)
-		 where cart_num=#{cart_num}
+		 where cart_num=#{cart_num} and payCheck=0
   	</select>
   
   
@@ -95,7 +94,7 @@
   	</select>
   	
   	
-  	<select id="payFinal" parameterType="Long" resultMap="payFinal">
+<!--   	<select id="payFinal" parameterType="Long" resultMap="payFinal">
   		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price  from
 
 		(select FP.* from
@@ -121,7 +120,7 @@
 		
 	
 		on (OO.p_num=PO.p_num)
-  	</select>
+  	</select> -->
   	
   	
   	<!-- soyeon -->
