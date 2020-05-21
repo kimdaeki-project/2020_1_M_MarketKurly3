@@ -47,7 +47,7 @@
 		  		<result column="kind" property="kind"/> 
 			</collection>
 			
-			<collection property="PayVO" javaType="List" ofType="PayVO">
+			<collection property="payVOs" javaType="List" ofType="PayVO">
 				<id column="pq_num" property="pq_num"/>
 				<result column="cq_num" property="cq_num"/>
 				<result column="pay_price" property="pay_price"/>
@@ -97,8 +97,8 @@
   	</select>
   	
   	
-  	<select id="payFinal" parameterType="Long" resultMap="payFinal">
-  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price  from
+   <select id="payFinal" parameterType="Long" resultMap="payFinal">
+  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num from
 
 		(select FP.* from
 			(SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from

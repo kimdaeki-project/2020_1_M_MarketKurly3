@@ -127,33 +127,48 @@
 				
 				<!-- 통합 배송 상품 반복 추가 -->
 				<!-- 장바구니의 상품 가지오기 -->
-				<c:forEach items="" var="vo">
+				<c:forEach items="${list} " var="vo" varStatus="status">
 					<tr> 
+					
 						<td>
 							<div class="dp_photo">
-								<a href="#">
-									<img alt="" src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}"> <!-- 상품 대표 이미지 들어갈 공간 90*90pix -->
-								</a>
+							<c:forEach items="${vo.productFileVOs}" var="pfs">
+							<a href="링크">
+								<img alt="상품이미지" src="${pageContext.request.contextPath}/resources/uploadproduct/${pfs.fileName}"> 
+							</a>
+							</c:forEach>
 							</div>
+							
 						</td>
+					
+					<c:forEach items="${vo.productVOs}" var="pro">
 						<td class="td_prdwrap">
 							<div class="OrderPrdW_Goods">
 								<div class="infoWrap">
 									
 									<div class="dp_title">
-										<a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a>
+										<a href="링크">
+										${pro.p_name}
+										</a>
 									</div>
 									
 								</div>
 							</div>
 							
 						</td>
-						<td>1개</td>
-						<td class="prd_price">${vo.price}</td> <!-- 결제 가격 -->
+					</c:forEach>
+					
+				
+					<td id="cartc${status.index}">${vo.count}</td> <!-- 결제 수량 -->
+					
+					
+					<c:forEach items="${vo.payVOs}" var="pay">
+						<td class="prd_price" id="proPrice${status.index}">${pay.pay_price}</td> <!-- 결제 가격 -->
+					</c:forEach>
 						<td rowspan="1">
 						 <div class="deliver_price">
 						 	<div class="defbtn_info_wrap">
-						 		<span>${vo.delivery}</span> <!-- 배송비 -->
+						 		<span>0</span> <!-- 배송비 -->
 						 	</div>
 						 </div>
 						</td>

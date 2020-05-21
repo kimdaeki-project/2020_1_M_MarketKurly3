@@ -2,6 +2,7 @@ package com.iu.mk.cart;
 
 import java.util.List;
 
+import com.iu.mk.pay.PayVO;
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.product.productfile.ProductFileVO;
 
@@ -12,13 +13,16 @@ public class CartVO {
 	private long cart_num;
 	private int payCheck;
 	
+	
 
 
 	private List<ProductFileVO> productFileVOs;
 	
 	private List<ProductVO> productVOs;
 
-
+	private List<PayVO> payVOs;
+	
+	private List<CartVO> cartVOs;
 
 
 

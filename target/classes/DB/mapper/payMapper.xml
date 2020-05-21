@@ -5,7 +5,7 @@
 
   <mapper namespace="com.iu.mk.pay.PayDAO">
 	   <resultMap type="CartVO" id="payResult">
-
+	   
 	 		<id column="cq_num" property="cq_num"/>
 			<result column="p_num" property="p_num"/>
 			<result column="count" property="count"/>
@@ -19,13 +19,9 @@
 		  		<result column="contents" property="contents"/>
 		  		<result column="kind" property="kind"/>
 			</collection>
-
-	 
-	 </resultMap> 
-
 			
 	
-
+	 </resultMap> 
 	 
 	  <resultMap type="CartVO" id="payFinal">
 	   
@@ -51,7 +47,7 @@
 		  		<result column="kind" property="kind"/> 
 			</collection>
 			
-			<collection property="PayVO" javaType="List" ofType="PayVO">
+			<collection property="payVOs" javaType="List" ofType="PayVO">
 				<id column="pq_num" property="pq_num"/>
 				<result column="cq_num" property="cq_num"/>
 				<result column="pay_price" property="pay_price"/>
@@ -61,7 +57,7 @@
 	 </resultMap> 
 	 
 	 
-
+  
 
   
   	<select id="scCart" parameterType="Long" resultMap="payResult">
@@ -92,18 +88,17 @@
   	</insert>
   
   
-    	<update id="payCheckUpdate">
+    <update id="payCheckUpdate">
   		update cart set payCheck = 1 where cq_num in (select cq_num from pay where order_num=#{order_num})
   	</update>
   
-
   	<select id="pCount" parameterType="Long" resultType="Long">
   		select count from cart where cq_num=#{cq_num}
   	</select>
   	
   	
-  	<select id="payFinal" parameterType="Long" resultMap="payFinal">
-  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price  from
+   <select id="payFinal" parameterType="Long" resultMap="payFinal">
+  		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num from
 
 		(select FP.* from
 			(SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from
@@ -133,6 +128,6 @@
   	
   	
   	
-
+  	
   
   </mapper>

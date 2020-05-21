@@ -18,6 +18,11 @@ public class PayDAO {
 
 	private final String NAMESPACE = "com.iu.mk.pay.PayDAO.";
 	
+	public List<CartVO> finalCart(Long cart_num) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"finalCart",cart_num);
+	}
+	
+	
 	public int pay(PayVO payVO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "payInsert", payVO);
 	}

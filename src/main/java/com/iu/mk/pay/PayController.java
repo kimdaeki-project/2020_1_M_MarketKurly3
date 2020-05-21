@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.mk.cart.CartDAO;
 import com.iu.mk.cart.CartVO;
 import com.iu.mk.member.MemberVO;
+import com.iu.mk.product.ProductService;
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.util.Pager;
 
@@ -25,10 +26,19 @@ public class PayController {
 	@Autowired
 	private PayService payService;
 	
-	@PostMapping("payFinal")
-	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO) throws Exception{
+	@GetMapping("payFinal")
+	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO,HttpSession session) throws Exception{
+		CartDAO cartDAO = new CartDAO();
 		
-	
+		//membervo에서 cart_num 넘겨주기
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		long cart_num = memberVO.getCart_num();
+		
+		 List<CartVO> ar = payService.finalCart(cart_num);
+		 System.out.println("ar size : " + ar.size());
+		 
+		 mv.addObject("list",ar);
+		 mv.setViewName("cart/cartPay");
 		
 		
 		return mv;

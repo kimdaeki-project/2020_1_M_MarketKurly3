@@ -15,6 +15,10 @@ public class PayService {
 	@Autowired
 	private PayDAO payDAO;
 	
+	public List<CartVO> finalCart (long cart_num) throws Exception{
+		return payDAO.finalCart(cart_num);
+	}
+	
 	
 	public int pay(PayVO payVO) throws Exception{
 		return payDAO.pay(payVO);
