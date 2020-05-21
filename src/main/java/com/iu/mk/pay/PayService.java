@@ -31,37 +31,14 @@ public class PayService {
 		payVO.setPay_price(price*count);
 		
 		
-		
-		
-		
 		return payDAO.payInsert(payVO);
-	}
-	
-	public List<PayInfoVO> payList(Pager pager) throws Exception{
-		pager.makeRow(); //시작,끝 row 계산
-		
-		System.out.println(pager.getStartRow()+"star");
-		System.out.println(pager.getLastRow()+"last");
-		if(pager.getKind()==null ) {
-			pager.setKind("");
-		}
-		long totalCount = payDAO.payCount(pager);//전체 글 갯수 가져오기
-		pager.makePage(totalCount);//totalcount넘겨주기
-		
-		System.out.println("totalcount: " + totalCount);//x
-		
-		return payDAO.payList(pager);
 	}
 	
 	
 	public Long orderNum() throws Exception{
 		return payDAO.orderNum();
 	}
-	
-	public List<Long> scPrice(Long order_num) throws Exception{
-		return payDAO.scPrice(order_num);
-	}
-	
+
 	
 	public int payInfoInsert(PayInfoVO payInfoVO) throws Exception{
 		return payDAO.payInfoInsert(payInfoVO);
@@ -72,4 +49,24 @@ public class PayService {
 	}
 	
 
+	
+	
+	public List<PayInfoVO> payList(Pager pager) throws Exception{
+		pager.makeRow(); //시작,끝 row 계산
+		
+		System.out.println(pager.getStartRow()+"star");
+		System.out.println(pager.getLastRow()+"last");
+		if(pager.getKind()==null ) {
+			pager.setKind("");
+		}
+		
+		//여기서 payDAO.payCount 호출
+		long totalCount = payDAO.payCount(pager);//전체 글 갯수 가져오기
+		pager.makePage(totalCount);//totalcount넘겨주기
+		
+		System.out.println("totalcount: " + totalCount);//x
+		
+		return payDAO.payList(pager);
+	}
+	
 } 

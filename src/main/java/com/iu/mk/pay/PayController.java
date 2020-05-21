@@ -192,12 +192,15 @@ public class PayController {
 		return mv;
 	}
 
+	
+	
+	
 	@GetMapping("payList")
 	public ModelAndView payList(ModelAndView mv,Pager pager,PayInfoVO payInfoVO)throws Exception {
 		
 		List<PayInfoVO> ar = payService.payList(pager);
 		
-		mv.addObject("list",ar);
+		mv.addObject("list",ar);//memberMyPage_Purchase에서 ${list}형태로 호출해온다.
 		mv.addObject("pager",pager);
 		mv.setViewName("member/memberMyPage_Purchase");
 		

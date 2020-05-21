@@ -5,7 +5,7 @@
 
   <mapper namespace="com.iu.mk.pay.PayDAO">
 	   <resultMap type="CartVO" id="payResult">
-
+	   
 	 		<id column="cq_num" property="cq_num"/>
 			<result column="p_num" property="p_num"/>
 			<result column="count" property="count"/>
@@ -19,13 +19,9 @@
 		  		<result column="contents" property="contents"/>
 		  		<result column="kind" property="kind"/>
 			</collection>
-
-	 
-	 </resultMap> 
-
 			
 	
-
+	 </resultMap> 
 	 
 	  <resultMap type="CartVO" id="payFinal">
 	   
@@ -61,7 +57,7 @@
 	 </resultMap> 
 	 
 	 
-
+  
 
   
   	<select id="scCart" parameterType="Long" resultMap="payResult">
@@ -80,8 +76,6 @@
 	</select>
 	
 	
-	
-	
 	<select id="scPrice" parameterType="Long" resultType="List">
 		select price from product where p_num in (select p_num from cart where cq_num in (select cq_num from pay where order_num=#{order_num}));
 	</select>
@@ -92,11 +86,10 @@
   	</insert>
   
   
-    	<update id="payCheckUpdate">
+    <update id="payCheckUpdate">
   		update cart set payCheck = 1 where cq_num in (select cq_num from pay where order_num=#{order_num})
   	</update>
   
-
   	<select id="pCount" parameterType="Long" resultType="Long">
   		select count from cart where cq_num=#{cq_num}
   	</select>
@@ -131,8 +124,8 @@
   	</select>
   	
   	
+  	<!-- soyeon -->
   	
   	
-
   
   </mapper>

@@ -76,8 +76,6 @@
 	</select>
 	
 	
-	
-	
 	<select id="scPrice" parameterType="Long" resultType="List">
 		select price from product where p_num in (select p_num from cart where cq_num in (select cq_num from pay where order_num=#{order_num}));
 	</select>
@@ -126,7 +124,7 @@
   	</select>
   	
   	
-  	
+  	<!-- soyeon -->
   	
   	
   
