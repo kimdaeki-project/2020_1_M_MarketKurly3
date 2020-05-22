@@ -28,7 +28,7 @@
 				  <option value="best" >베스트</option>
 				  <option value="save" >알뜰 쇼핑</option>
   	  </select>
-    </div>
+    </div> 
   	
   	
   	<div class="form-group">

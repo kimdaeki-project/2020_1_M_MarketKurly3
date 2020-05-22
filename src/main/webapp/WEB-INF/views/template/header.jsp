@@ -48,9 +48,9 @@
 					<li><a href="#">이벤트</a></li>
 				</ul>
 				<div class="side_search">
-					<form class="">
-						<input type="text" id="search" class="sc" placeholder="데일리장보기">
-						<input type="image" id="searchIcon" class="sicon" src="${pageContext.request.contextPath}/resources/images/ico_search.png">
+					<form class="" action="">
+						<input type="text" id="search" class="sc" name="search" placeholder="데일리장보기">
+						<input type="submit" id="searchIcon" class="sicon" src="${pageContext.request.contextPath}/resources/images/ico_search.png">
 					</form>
 				</div>
 				<div class="cart_count">

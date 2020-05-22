@@ -36,6 +36,10 @@
 					kind=#{kind} and  p_name
 					<include refid="search"></include> and
 				</if>
+				
+				<if test="kind =''">
+					p_name <include refid="search"></include> and
+				</if>
 				 p_num>=10001 order by p_num desc) P)
 			where R between #{startRow} and #{lastRow}) PP
 			left join productFile PF

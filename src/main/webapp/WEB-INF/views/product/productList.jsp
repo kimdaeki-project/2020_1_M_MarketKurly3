@@ -32,6 +32,7 @@
 					<!-- 종류 분류 -->
 					<div class="input-group input-group-sm col-xs-2" >
 				    	<select class="form-control" id="kind" name="kind">
+				    		<option value="">전체보기</option>
 						    <option value="me">Meat</option>
 						    <option value="ve">Vegetable</option>
 						    <option value="de">Dessert</option>

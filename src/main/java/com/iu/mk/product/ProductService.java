@@ -35,9 +35,11 @@ public class ProductService {
 		
 		System.out.println(pager.getStartRow()+"star");
 		System.out.println(pager.getLastRow()+"last");
-		if(pager.getKind()==null ) {
-			pager.setKind("");
+		
+		 if(pager.getKind()==null ) {
+			  pager.setKind(""); 
 		}
+		 
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기
 		
