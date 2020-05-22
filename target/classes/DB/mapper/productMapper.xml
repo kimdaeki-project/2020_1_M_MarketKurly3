@@ -12,6 +12,7 @@
   	<result column="price" property="price"/>
   	<result column="contents" property="contents"/>
   	<result column="kind" property="kind"/>
+  	<result column="bar" property="bar"/>
 
 	
 	<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
@@ -24,24 +25,32 @@
   </resultMap>
    
    <sql id="search">
- 		like '%'||#{search} ||'%'
+ 		like '%'||#{pager.search} ||'%'
  	</sql>
  
-  	<select id="productList" parameterType="Pager" resultMap="listResult" >
+  	<select id="productList" parameterType="java.util.Map" resultMap="listResult" >
   		SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from
   		(select * from
 			(select P.*, rownum R from
 				(select * from product where
-				<if test="kind != ''">
-					kind=#{kind} and  p_name
+				<if test="pager.kind != ''">
+					kind=#{pager.kind} and  p_name
 					<include refid="search"></include> and
 				</if>
 				
-				<if test="kind =''">
+				<if test="pager.kind == ''">
 					p_name <include refid="search"></include> and
 				</if>
+				
+				
+				<if test="tbar != ''">
+					bar=#{tbar} and
+				</if>
+				
+			
+
 				 p_num>=10001 order by p_num desc) P)
-			where R between #{startRow} and #{lastRow}) PP
+			where R between #{pager.startRow} and #{pager.lastRow}) PP
 			left join productFile PF
             on(PP.p_num=PF.p_num)
             order by PP.p_num desc
@@ -53,7 +62,7 @@
   	</select>
   	
   	<insert id="productWrite" parameterType="ProductVO">
-  		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{kind})
+  		insert into product values(#{p_num},#{p_name},#{price},#{contents},#{kind},#{bar})
   	</insert>
   	
   	<delete id="productDelete" parameterType="Long">
@@ -61,7 +70,7 @@
   	</delete>
   	
  	<update id="productUpdate" parameterType="ProductVO">
- 	 	update product set p_name=#{p_name},price=#{price}, contents=#{contents},kind=#{kind} where p_num=#{p_num}
+ 	 	update product set p_name=#{p_name},price=#{price}, contents=#{contents},kind=#{kind},bar=#{bar} where p_num=#{p_num}
  	</update>
  	
 <!--  전체 글의 갯수 가져오기   --> 	

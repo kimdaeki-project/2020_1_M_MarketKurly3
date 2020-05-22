@@ -43,8 +43,8 @@
 				</if>
 				
 				
-				<if test="bar != ''">
-					bar=#{bar} and
+				<if test="tbar != ''">
+					bar=#{tbar} and
 				</if>
 				
 			

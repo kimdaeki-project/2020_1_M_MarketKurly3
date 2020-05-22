@@ -40,8 +40,7 @@ public class ProductController {
 		 */
 		
 		
-		  System.out.println(ar.size());
-		  System.err.println(ar.get(0).getP_name());
+	
 		  
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);

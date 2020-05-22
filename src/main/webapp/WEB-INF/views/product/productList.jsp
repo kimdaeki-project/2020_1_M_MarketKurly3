@@ -28,7 +28,8 @@
 					</div>
 				</div> 
 				
-				<form class="form-inline" action="./productList">
+				<form class="form-inline" action="./productList ">
+				<input type="hidden" name="bar" value="">
 					<!-- 종류 분류 -->
 					<div class="input-group input-group-sm col-xs-2" >
 				    	<select class="form-control" id="kind" name="kind">

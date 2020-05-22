@@ -55,10 +55,10 @@ public class ProductService {
 		
 		HashMap<String, Object> pa = new HashMap<String, Object>();
 		pa.put("pager", pager);
-		pa.put("bar", bar);
+		pa.put("tbar", bar);
 		
 		System.out.println(pa.get("pager"));
-		System.out.println(pa.get("bar"));
+		System.out.println(pa.get("tbar"));
 		System.out.println("--------------------------");
 		System.out.println(pager.getKind());
 		System.out.println(pager.getSearch());
