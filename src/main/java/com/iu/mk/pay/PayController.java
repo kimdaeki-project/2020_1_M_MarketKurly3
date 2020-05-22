@@ -226,12 +226,12 @@ public class PayController {
 		  
 		System.out.println("첫번쨰 주문번호 출력하기: "+order_num.get(0));
 		  
-		  
+		  //List는 인터페이스+부모형태라서, 자식형태이고 유틸타입인 ArrayList를 선언해주어야 한다.
 		  List<PayInfoVO> ar = new ArrayList<PayInfoVO>();
 		  
 		  for(int i=0; i<order_num.size();i++) {
 			  Long m =  order_num.get(i); //m = 주문번호를 하나씩 가져오는 것
-			  System.out.println("m: "+m);
+			  System.out.println("m cont: "+m);
 			  PayInfoVO payInfoVO =  payService.payList(m);
 			  ar.add(payInfoVO);
 

@@ -159,7 +159,7 @@
   	</select> -->
   	
   	
-  	<!-- soyeon -->
+  	<!-- soyeon : 주문번호로 원하는 정보 가져오기 -->
   	<select id="payList" parameterType="Long" resultMap="sy_paylistResult"><!-- 위에 참고! / 되돌려주는값은 테이블이 조인테이블일경우:resultMap을 쓴다. -->
   		select C3.*, CO.* from
 
@@ -182,12 +182,12 @@
 		where order_num=(select order_num from payInfo where order_num=#{m}))) CO
   	</select>
   	
-  <!-- soyeon -->
+  <!-- soyeon : 아이디로 주문번호 가져오기 -->
   <select id="orderNum2" parameterType="String" resultType="Long">
   	select order_num from pay where cq_num=any(
 	select cq_num from cart 
 	where cart_num=(select cart_num from member 
-	where id=#{id}))
+	where id=#{id})) order by order_num desc
   
   </select>
   
