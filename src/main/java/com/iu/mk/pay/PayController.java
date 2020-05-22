@@ -207,7 +207,7 @@ public class PayController {
 
 		// end cart table-------------------------------------------------
 
-		mv.setViewName("redirect:../cart/cartPay");
+		mv.setViewName("cart/cartPay");
 
 		return mv;
 	}

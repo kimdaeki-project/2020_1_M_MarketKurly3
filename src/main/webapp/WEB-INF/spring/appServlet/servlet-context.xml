@@ -26,20 +26,26 @@
 			</beans:bean>
 		</interceptor>
 		
-		
-		<interceptor>
-			<mapping path="/pay/patFinal"/>
-			<mapping path="/pay/payInsert"/>
-			<mapping path="/pay/totalInfo"/>
-			<mapping path="/pay/payList"/>
-			<beans:bean class="com.iu.s5.interceptor.PayInterceptor">
-			</beans:bean>
-		</interceptor>
-		
+
 		<interceptor>
 			<mapping path="/productFile/fileInsert"/>
 			<mapping path="/productFile/fileDelete"/>
-			<beans:bean class="com.iu.s5.interceptor.CartInterceptor">
+			<beans:bean class="com.iu.s5.interceptor.ProductFileInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		
+		<interceptor>
+			<mapping path="/product/productAdmin*"/>
+			<mapping path="/product/selectAdminDelete"/>
+			<beans:bean class="com.iu.s5.interceptor.ProductAdminInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		
+		<interceptor>
+			<mapping path="/product/productWrite"/>
+			<beans:bean class="com.iu.s5.interceptor.ProductInterceptor">
 			</beans:bean>
 		</interceptor>
 		
