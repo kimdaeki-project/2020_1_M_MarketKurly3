@@ -17,11 +17,22 @@
 <div class="container">
 
 <div class="container_inner">
-<h2>관리자 상품 등록</h2>
-
+<h2 align="center">관리자 상품 등록</h2>
+<br>
 <form action="./productWrite" id="frm" method="post" enctype="multipart/form-data">
-  
+  	
   	<div class="form-group">
+  	<label for="files">상단바  종류:</label>
+      <select class="form-control" id="bar" name="bar" >
+				  <option value="new" selected="selected" >신상품</option>
+				  <option value="best" >베스트</option>
+				  <option value="save" >알뜰 쇼핑</option>
+  	  </select>
+    </div>
+  	
+  	
+  	<div class="form-group">
+  	<label for="files">상품 종류:</label>
       <select class="form-control" id="kind" name="kind" >
 				  <option value="me" selected="selected" >Meat</option>
 				  <option value="ve" >Vegetable</option>
@@ -30,22 +41,22 @@
     </div>
   
   	 <div class="form-group">
-      <label for="files">Title-Img:</label>
+      <label for="files">타이틀 이미지:</label>
       <input type="file" class="form-control files" id="files" placeholder="타이틀 이미지 선택" name="files" >
     </div>
   
      <div class="form-group">
-      <label for="p_name">Title:</label>
+      <label for="p_name">상품 이름:</label>
       <input type="text" class="form-control" id="p_name" placeholder="Enter Title" name="p_name" >
     </div>
     
     <div class="form-group">
-      <label for="price">Price:</label>
+      <label for="price">상품 가격:</label>
       <input type="text" class="form-control" id="price" placeholder="Enter price" name="price">
     </div>
     
      <div class="form-group">
-      <label for="contents">Contents:</label>
+      <label for="contents">상품 상세 내용:</label>
       <textarea rows="20" cols=""  class="form-control" id="contents" placeholder="Enter Contents" name="contents"></textarea>
     </div>
       
