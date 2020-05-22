@@ -1,7 +1,9 @@
 package com.iu.mk.pay;
 
+import java.sql.Date;
 import java.util.List;
 
+import com.iu.mk.cart.CartVO;
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.product.productfile.ProductFileVO;
 
@@ -9,16 +11,24 @@ public class PayInfoVO {
 	private Long order_num;
 	private Long total_price;
 	private Long delivery;
-	private Long payDate;
+	private Date payDate;
+	private Long count;
+
 	
 	//외부테이블에서 받아온 정보들(Product, ProductFile)
+
+	public Long getCount() {
+		return count;
+	}
+	public void setCount(Long count) {
+		this.count = count;
+	}
+	
 	
 	private List<ProductVO> productVOs;
-	
 	private List<ProductFileVO> productFileVOs;
-	
-	
-	
+
+
 	public List<ProductVO> getProductVOs() {
 		return productVOs;
 	}
@@ -53,10 +63,10 @@ public class PayInfoVO {
 	public void setDelivery(Long delivery) {
 		this.delivery = delivery;
 	}
-	public Long getPayDate() {
+	public Date getPayDate() {
 		return payDate;
 	}
-	public void setPayDate(Long payDate) {
+	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
 	}
 	

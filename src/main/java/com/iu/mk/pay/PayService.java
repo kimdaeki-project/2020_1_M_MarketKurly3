@@ -49,25 +49,15 @@ public class PayService {
 	}
 
 	//soyeon
-	public List<PayInfoVO> payList(Pager pager) throws Exception{
-		pager.makeRow(); //시작,끝 row 계산
-		
-		System.out.println(pager.getStartRow()+"star");
-		System.out.println(pager.getLastRow()+"last");
-		if(pager.getKind()==null ) {
-			pager.setKind("");
-		}
-		
-		//여기서 payDAO.payCount 호출
-		long totalCount = payDAO.payCount(pager);//전체 글 갯수 가져오기
-		pager.makePage(totalCount);//totalcount넘겨주기
-		
-		System.out.println("totalcount: " + totalCount);//x
-		
-		return payDAO.payList(pager);
+	public PayInfoVO payList(Long m) throws Exception{
+		System.out.println("m s: "+m);
+		return payDAO.payList(m);
 	}
-
 	
-
-
+	public List<Long> orderNum2(String id) throws Exception{
+		System.out.println("id s : " + id);
+		  return payDAO.orderNum2(id); 
+	}
+	  
+	 
 } 

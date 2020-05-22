@@ -31,26 +31,39 @@
 		<br><br>
 		
 		<div class="line_p">
-			
-					<c:forEach items="${list}" var="vo"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
-
+	<%-- 		
+			<div class="listp">- 20/05/21 </div>
 						<div class="list_p">
-							ㅍㄹ
-						</div>
-
-					<%-- 						
-							<div class="list_p">
-								
-									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
-								
-									<div class="info_goods">
-										<span class="name"  ><a href="../product/productSelect?p_num=${vo.p_num}" style="color:#333" >${vo.p_name}</a></span>
-										<span class="cost">${vo.price}원</span>
-									</div>
+							<div class="list_p_name" style="font-weight: bold; font-size: large;">닭가슴살 외 3건 <span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
+							<div class="list_p_content">
+								<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/1dfd018f-2754-49d0-aa25-e1238d67a88b_e355fbd6-22c9-4b49-8ab2-3486579a4f2f_1589259411368l0.jpg" width="67px" height="79px"> </div>
+								<div class="list_p_contents1">
+									<div class="list_p_contents2"><span style="font-size: small;">주문번호</span> &ensp; <span style="font-weight: bold;">200182</span></div>
+									<div class="list_p_contents2"><span style="font-size: small;">결제금액</span> &ensp; <span style="font-weight: bold;">161500원</span></div>
+									<div class="list_p_contents2"><span style="font-size: small;">주문상태</span> &ensp; <span style="font-weight: bold;">결제완료</span></div>
+								</div>
 							</div>
-					 --%>		
+						</div>
+			
+ --%>
+	 		
+					<c:forEach items="${list}" var="vo"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
+						
+						<div class="listp">-  ${vo.payDate} </div>	
+							<div class="list_p">
+								<div class="list_p_name" style="font-weight: bold; font-size: large;">${vo.productVOs['0'].p_name} 외 ${vo.count}건 <span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
+								<div class="list_p_content">
+									<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${vo.productFileVOs['0'].fileName}" width="67px" height="79px"> </div>
+									<div class="list_p_contents1">
+										<div class="list_p_contents2"><span style="font-size: small;">주문번호</span> &ensp; <span style="font-weight: bold;">${vo.order_num}</span></div>
+										<div class="list_p_contents2"><span style="font-size: small;">결제금액</span> &ensp; <span style="font-weight: bold;">${vo.total_price}원</span></div>
+										<div class="list_p_contents2"><span style="font-size: small;">주문상태</span> &ensp; <span style="font-weight: bold;">결제완료</span></div>
+									</div>
+								</div>
+							</div>
+						 		
 					 </c:forEach>
-		
+		 
 		</div>
 	</div>
 	
