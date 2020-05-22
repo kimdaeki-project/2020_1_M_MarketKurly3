@@ -26,9 +26,9 @@ public class ProductAdminController {
 	private ProductService productService;
 	
 	@GetMapping("productAdmin")
-	public ModelAndView productAdmin(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
+	public ModelAndView productAdmin(ModelAndView mv,Pager pager,ProductVO productVO, String bar) throws Exception{
 		
-		List<ProductVO> ar = productService.productList(pager);
+		List<ProductVO> ar = productService.productList(pager,bar);
 		System.out.println("admin totalpage"+pager.getTotalPage());
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
@@ -46,10 +46,13 @@ public class ProductAdminController {
 		
 		productVO.setP_num(p_num);
 		
+		
 		productVO = (ProductVO) productService.productSelect(productVO.getP_num());
 		
 		
 		System.out.println(productVO.getP_name()+"::pname");
+		System.out.println(productVO.getKind()+";;kind");
+		System.out.println(productVO.getBar()+"::::::bar");
 		
 		
 		mv.addObject("product", productVO);
@@ -80,6 +83,7 @@ public class ProductAdminController {
 		System.out.println("p_name 가져오기: "+ productVO.getP_name()); 
 		System.out.println("p_name 가져오기: "+ productVO.getKind());
 		System.out.println("p_name 가져오기: "+ productVO.getContents()); 
+		System.out.println("bar 가져오기: "+ productVO.getBar()); 
 		
 		long result = productService.productUpdate(productVO, files);
 		

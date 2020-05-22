@@ -11,6 +11,9 @@ public class ProductVO {
 	private long price;
 	private String contents;
 	private String kind;
+	private String bar;
+	
+	
 	
 	private List<ProductFileVO> productFileVOs;
 	
@@ -22,6 +25,7 @@ public class ProductVO {
 	public void setProductFileVOs(List<ProductFileVO> productFileVOs) {
 		this.productFileVOs = productFileVOs;
 	}
+	
 	
 	
 	
@@ -55,7 +59,12 @@ public class ProductVO {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	
+	public String getBar() {
+		return bar;
+	}
+	public void setBar(String bar) {
+		this.bar = bar;
+	}
 	
 	
 	
