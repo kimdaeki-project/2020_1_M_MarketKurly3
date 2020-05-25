@@ -89,7 +89,7 @@
 				<tr>
 					<th scope="row">입금할 금액</th>
 					<td>
-						<strong class="tdin_price">${pro.price}<span>원</span></strong>
+						<strong class="tdin_price">${infoP.total_price+infoP.delivery}<span>원</span></strong>
 					</td>
 				</tr>
 			</tbody>
@@ -127,38 +127,55 @@
 				
 				<!-- 통합 배송 상품 반복 추가 -->
 				<!-- 장바구니의 상품 가지오기 -->
-				<c:forEach items="" var="vo">
-					<tr> 
+				 <c:forEach items="${yeon} " var="vo22" varStatus="status">
+				
+					 <tr> 
+					
 						<td>
-							<div class="dp_photo">
-								<a href="#">
-									<img alt="" src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}"> <!-- 상품 대표 이미지 들어갈 공간 90*90pix -->
-								</a>
+							<div class="dp_photo"> 
+						 	<c:forEach items="${yeon[status.index].productFileVOs}" var="pfs">
+							<a href="링크">
+								<img width="90" height="90" alt="상품이미지" src="${pageContext.request.contextPath}/resources/uploadproduct/${pfs.fileName}"> 
+							</a>
+							</c:forEach> 
 							</div>
+							
 						</td>
+					
+					
 						<td class="td_prdwrap">
 							<div class="OrderPrdW_Goods">
 								<div class="infoWrap">
 									
 									<div class="dp_title">
-										<a href="../product/productSelect?p_num=${vo.p_num}">${vo.p_name}</a>
+									<c:forEach items="${yeon[status.index].productVOs}" var="prn">
+										<a href="링크" style="color:#333">${prn.p_name}</a>
+									</c:forEach>
 									</div>
 									
 								</div>
 							</div>
 							
 						</td>
-						<td>1개</td>
-						<td class="prd_price">${vo.price}</td> <!-- 결제 가격 -->
+				
+					
+				
+					<td id="cartc${status.index}">${yeon[status.index].count}</td> <!-- 결제 수량 -->
+					
+					
+					<c:forEach items="${yeon[status.index].payVOs}" var="pay">
+						<td class="prd_price" id="proPrice${status.index}">${pay.pay_price}</td> <!-- 결제 가격 -->
+					</c:forEach>
 						<td rowspan="1">
 						 <div class="deliver_price">
 						 	<div class="defbtn_info_wrap">
-						 		<span>${vo.delivery}</span> <!-- 배송비 -->
+						 		<span></span> <!-- 배송비 -->
 						 	</div>
 						 </div>
 						</td>
-					</tr>
-					</c:forEach>
+					</tr> 
+					
+					</c:forEach> 
 				<!-- 주문 내역 -->
 				
 				
@@ -185,17 +202,21 @@
 						<div class="OrderSUM_Wrap">
 							<div class="PriceSPWrap">
 								<h5 class="tit">주문금액</h5>
-								<span class="Price">34,900
+								<span class="Price">
+							
+									
+									${infoP.total_price}
+										
+	
 								 <span class="won">원</span>
 								</span>
 								
 							</div>
 							<div class="conList">
-								<h6 class="intit">구매상품 총 1개</h6>
+								
 								<ul>
 									<li>
-										<span class="payTxt">상품금액</span>
-										<span class="Price">34,900원</span>
+										
 										
 									</li>
 								</ul>
@@ -205,13 +226,13 @@
 						<div class="Discount_Wrap">
 							<div class="PriceSPWrap">
 								<h5 class="tit">배송비</h5>
-								<span class="Price">0
+								<span class="Price">${infoP.delivery}
 								<span class="won">원</span>
 								</span>
 								
 							</div>
 							<div class="conList">
-								<h6 class="intit">구매상품 총 1개</h6>
+								
 								<ul>
 									<li>
 										
@@ -225,7 +246,7 @@
 							<div class="PaymentWrap">
 								<div class="PriceSPWrap">
 									<h5 class="tit">결제금액</h5>
-									<span class="Price">34,900
+									<span class="Price">${infoP.total_price+infoP.delivery}
 									<span class="won">원</span>
 									</span>
 								</div>
@@ -233,8 +254,7 @@
 									<ul>
 										<li>
 										<strong class="PointBk">
-											<span class="payTxt">무통장 입금</span>
-											<span class="Price">34,900원</span>
+											
 										</strong>
 											
 										</li>
@@ -251,7 +271,7 @@
 	
 		<!-- 주문완료 확인 버튼 -->
 		<div class="OrderW_FinaLBtnW">
-			<a href="#" class="defbtn_xlar xladtype" data-is-ab-send="1"><span>주문 완료 확인</span></a>
+			<a href="../" class="defbtn_xlar xladtype" data-is-ab-send="1"><span>주문 완료 확인</span></a>
 		</div>
 		 
 		

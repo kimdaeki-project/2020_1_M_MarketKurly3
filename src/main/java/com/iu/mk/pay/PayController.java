@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.mk.cart.CartDAO;
 import com.iu.mk.cart.CartVO;
 import com.iu.mk.member.MemberVO;
+import com.iu.mk.product.ProductService;
 import com.iu.mk.product.ProductVO;
 
 @Controller
@@ -23,22 +24,38 @@ public class PayController {
 
 	@Autowired
 	private PayService payService;
-	
+
 	@Autowired
 	private PayDAO payDAO;
-	
-	@PostMapping("payFinal")
-	public ModelAndView payFinal(long p_num, ModelAndView mv, CartVO cartVO) throws Exception{
+
+
+
+	@GetMapping("payFinal")
+	public ModelAndView payFinal(ModelAndView mv, HttpSession session) throws Exception {
+
+		// membervo에서 cart_num 넘겨주기
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		long cart_num = memberVO.getCart_num();
+		long order_num = (Long) session.getAttribute("orderNum");
+
+		System.out.println("con : " + cart_num);
+
+		List<CartVO> ar = payService.finalCart(cart_num, order_num);
+		PayInfoVO infoP = (PayInfoVO) payService.totalPrice(order_num);
+
+		System.out.println("ar size : " + ar.size());
+
+		mv.addObject("yeon", ar);
+		mv.addObject("infoP", infoP);
 		
-	
+		System.out.println(ar.get(0).getCount() + "cccccc");
+		System.out.println(ar.get(0).getProductFileVOs().get(0).getFileName());
+		System.out.println(infoP.getTotal_price()+"ppp");
 		
-		
+		mv.setViewName("cart/cartPay");
+
 		return mv;
 	}
-	
-	
-	
-	
 
 	@PostMapping("payInsert")
 	public ModelAndView pay(int totalPrice, CartVO cartVO, HttpSession session, ModelAndView mv) throws Exception {
@@ -124,6 +141,7 @@ public class PayController {
 
 		Long orderNum = payService.orderNum();
 		System.out.println("orderNum : " + orderNum);
+		session.setAttribute("orderNum", orderNum);
 
 		// 여기서 cart_num을 꺼낸다.
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
@@ -145,27 +163,23 @@ public class PayController {
 
 			payVO.setCq_num(cq.get(i).getCq_num());
 			payVO.setOrder_num(orderNum);
-			
-			
+
 			/*
 			 * payVO.setPay_price(cq.get(i).getProductVOs().get(0).getPrice()); price +=
 			 * cq.get(i).getProductVOs().get(0).getPrice(); System.out.println("[" + i +
 			 * "] " + price);
 			 */
-			
-			
+
 			price = cq.get(i).getProductVOs().get(0).getPrice();
 			System.out.println("[" + i + "] " + price);
-			
+
 			Long count = (long) payDAO.pCount(payVO.getCq_num());
-			
+
 			price = price * count;
-			
+
 			payVO.setPay_price(price);
 
-			
 			result = payService.payInsert(payVO);
-			
 
 			totalPrice += price;
 
@@ -207,14 +221,13 @@ public class PayController {
 
 		// end cart table-------------------------------------------------
 
-		mv.setViewName("redirect:../cart/cartPay");
+		mv.setViewName("redirect:./payFinal");
 
 		return mv;
 	}
 
 	
-	
-	
+
 	@GetMapping("payList") 
 	  public ModelAndView payList(ModelAndView mv,HttpSession session)throws Exception { 
 		  
@@ -243,4 +256,5 @@ public class PayController {
 	  return mv; 
 	  }
 	 
+
 }

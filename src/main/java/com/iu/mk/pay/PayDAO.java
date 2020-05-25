@@ -1,5 +1,6 @@
 package com.iu.mk.pay;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +18,21 @@ public class PayDAO {
 	private SqlSession sqlSession;
 
 	private final String NAMESPACE = "com.iu.mk.pay.PayDAO.";
+	
+	
+	public PayInfoVO totalPrice(Long order_num) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalPrice",order_num);
+	}
+	
+	
+	
+	public List<CartVO> finalCart(HashMap<String, Long> param) throws Exception{ 
+		/* System.out.println("dao c :" + cart_num); */
+		System.out.println(param.get("cart_num"));
+		System.out.println(param.get("order_num"));
+		return sqlSession.selectList(NAMESPACE+"finalCart",param);
+	}
+	
 	
 	public int pay(PayVO payVO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "payInsert", payVO);
