@@ -10,7 +10,15 @@
 		
 		<c:import url="../template/boot.jsp"></c:import>
 		<style type="text/css">
-
+			.nav-tabs{
+				width:1170px;
+				margin:0 auto;
+			}
+			
+			.tab-content	{
+				width:1170px;
+				margin:0 auto;
+			}
 
 		</style>
 	</head>
@@ -142,6 +150,21 @@
 	</div>
   
   	 <div class="contents">
+  	 
+  	 	  <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>HOME</h3>
+    <p>Some content.</p>
+    
+
+  	 
+  	 
 	 	<div class="goods-view-infomation detail_wrap_outer">
 	 		<ul class="goods-view-infomation-tab-group">
 	 		<li class="goods-view-infomation-tab">
@@ -157,7 +180,40 @@
 	 		</div>
 	 	</div>
 	    	
-	  </div> 
+	    	
+	    	
+	    	
+	    	    
+    
+    
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>Menu 1</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>Menu 2</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>
+	  
+	    	
+	    	
+	  </div> <!-- contents -->
+	  
+	  
+	  
+
+    
+    
+    
+    
+
+	  
+	  
+	  
+	  
+	  
   
   
 	<c:import url="../template/footer.jsp"></c:import>
