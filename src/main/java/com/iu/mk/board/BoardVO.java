@@ -4,32 +4,33 @@ import java.sql.Date;
 
 public class BoardVO {
 	
-	private long num;
+
 	private String title;
-	private String writer;
+	private String id;
 	private String contents;
 	private Date regDate;
 	private long hit;
 	private long ref;
 	private long step;
 	private long depth;
-	public long getNum() {
-		return num;
-	}
-	public void setNum(long num) {
-		this.num = num;
-	}
+
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getWriter() {
-		return writer;
+
+	
+	
+	
+	
+	
+	public String getId() {
+		return id;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getContents() {
 		return contents;
