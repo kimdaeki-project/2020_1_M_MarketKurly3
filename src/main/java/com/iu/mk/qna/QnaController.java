@@ -19,10 +19,10 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
-	@ModelAttribute("board")
-	public String getBoard() throws Exception{
-		return "qna";
-	}
+	/*
+	 * @ModelAttribute("board") public String getBoard() throws Exception{ return
+	 * "qna"; }
+	 */
 	
 	@GetMapping("qnaList")
 	public ModelAndView boardList(ModelAndView mv, Pager pager) throws Exception{
