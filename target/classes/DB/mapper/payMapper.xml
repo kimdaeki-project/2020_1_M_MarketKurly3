@@ -24,7 +24,9 @@
 	 </resultMap> 
 	 
 	 <!-- soyeon -->
-	 <!-- innerjoin(crossjoin)한 리스트 -->
+
+
+	 <!-- innerjoin(crossjoin)한 리스트 / 기존 vo + 새로추가할 데이터를 적으면 된다.-->
 	   <resultMap type="PayInfoVO" id="sy_paylistResult">
 	   
 	 		<id column="order_num" property="order_num"/><!-- 기본키 -->
@@ -34,7 +36,7 @@
 			 <result column="count" property="count"/> 
 			
 			
-			<!-- 새로 조인해줄 테이블1 -->
+			<!-- 새로 조인해줄 테이블1 / 주로, 한 구역에 이미지가 2개이상, 주문번호2개이상과 같이 여러개 들어갈때사용-->
 			<collection property="productVOs" javaType="List" ofType="ProductVO">
 				<id column="p_num" property="p_num"/>
 		  		<result column="p_name" property="p_name"/>
@@ -52,12 +54,10 @@
 		  		<result column="fileNum" property="fileNum"/>
 			</collection>
 			
-
-			
-			
-			
 			
 	 </resultMap> 
+	 
+	 
 	 
   	<resultMap type="CartVO" id="payFinal">
 	   
@@ -191,13 +191,57 @@
 		where order_num=(select order_num from payInfo where order_num=#{m}))) CO
   	</select>
   	
-  <!-- soyeon : 아이디로 주문번호 가져오기 -->
-  <select id="orderNum2" parameterType="String" resultType="Long">
-  	select order_num from pay where cq_num=any(
+  <!-- soyeon : 아이디로 주문번호 가져오기 / List<Long>타입 - DAO에서 selectList로 받아오기 때문에 result는 Long타입만 쓰면 된다.-->
+  <select id="orderNum2" parameterType="java.util.Map" resultType="Long">
+  	select order_num from
+  	(select N.* , rownum R from
+  	(select distinct order_num from pay where cq_num=any(
 	select cq_num from cart 
 	where cart_num=(select cart_num from member 
-	where id=#{id})) order by order_num desc
+	where id=#{id})) order by order_num desc) N)
+	where R between #{pager.startRow} and #{pager.lastRow}
   
   </select>
   
+  
+  <!--  전체 글의 갯수 가져오기   --> 	
+  	<select id="payCount" parameterType="String" resultType="Long">
+  		select count(DISTINCT
+        order_num) from pay
+  		where cq_num in (select cq_num from cart
+		where cart_num=(select cart_num from member where id=#{id}) and paycheck=1)
+ 	</select>
+
+<!--   
+  <select id="">
+  
+    		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num, OO.p_name from
+
+
+		(select FP.* from
+			(SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from
+			(select * from
+			    (select P.*, rownum R from
+			        (select * from product where
+			             p_num>=10001 order by p_num desc) P)
+			    where R between 1 and 24 ) PP
+			left join productFile PF
+			on(PP.p_num=PF.p_num)
+			order by PP.p_num desc ) FP ) 
+			OO 
+
+		inner join 
+
+		(select FC.* from
+		(select * from
+			(select CA.*, rownum R from
+				(select * from cart where p_num>=10001 order by p_num desc) CA) CAA
+			left join pay  PPA
+			on(CAA.cq_num=PPA.cq_num) ) FC) PO
+		
+	
+		on (OO.p_num=PO.p_num)
+		where cart_num=#{cart_num} and order_num =#{order_num}
+  </select> 
+  -->
   </mapper>

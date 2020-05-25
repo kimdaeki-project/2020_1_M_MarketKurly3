@@ -33,8 +33,8 @@ public class ProductService {
 	public List<ProductVO> productList(Pager pager) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
 		
-		System.out.println(pager.getStartRow()+"star");
-		System.out.println(pager.getLastRow()+"last");
+		System.out.println(pager.getStartRow()+" - star");
+		System.out.println(pager.getLastRow()+"- last");
 		if(pager.getKind()==null ) {
 			pager.setKind("");
 		}

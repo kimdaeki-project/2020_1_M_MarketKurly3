@@ -17,6 +17,7 @@ import com.iu.mk.cart.CartVO;
 import com.iu.mk.member.MemberVO;
 import com.iu.mk.product.ProductService;
 import com.iu.mk.product.ProductVO;
+import com.iu.mk.util.Pager;
 
 @Controller
 @RequestMapping(value = "/pay/**")
@@ -227,34 +228,73 @@ public class PayController {
 	}
 
 	
+	//소연
 
 	@GetMapping("payList") 
-	  public ModelAndView payList(ModelAndView mv,HttpSession session)throws Exception { 
+	  public ModelAndView payList(ModelAndView mv,HttpSession session, Pager pager)throws Exception { 
 		  
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		String id = memberVO.getId();  
 		System.out.println("(service로 보내기전)id : " + id);
 		  
-		List<Long> order_num = payService.orderNum2(id);
+		//여기서 pager 넘겨주기(12개씩 끊어서 출력)
+		List<Long> order_num = payService.orderNum2(id, pager);
 		  
-		System.out.println("첫번쨰 주문번호 출력하기: "+order_num.get(0));
+		System.out.println("첫번째 주문번호 출력하기: "+order_num.get(0));
 		  
 		  //List는 인터페이스+부모형태라서, 자식형태이고 유틸타입인 ArrayList를 선언해주어야 한다.
 		  List<PayInfoVO> ar = new ArrayList<PayInfoVO>();
 		  
 		  for(int i=0; i<order_num.size();i++) {
-			  Long m =  order_num.get(i); //m = 주문번호를 하나씩 가져오는 것
-			  System.out.println("m cont: "+m);
-			  PayInfoVO payInfoVO =  payService.payList(m);
+			 
+			  Long m =  order_num.get(i); //order_numd의 i번 인덱스에있는 정보조회
+			  //m = 주문번호를 하나씩 가져오는 것
+			 // System.out.println("m cont: "+m);
+			  PayInfoVO payInfoVO =  payService.payList(m); 
 			  ar.add(payInfoVO);
 
 		  }
 
 		 mv.addObject("list",ar);
+		 mv.addObject("pager",pager);
 		 mv.setViewName("member/memberMyPage_Purchase");
 	  
 	  return mv; 
 	  }
 	 
+	
+	@GetMapping("paySelect")
+	public ModelAndView paySelect(ModelAndView mv, HttpSession session, long order_num) throws Exception {
+
+		System.out.println(order_num);
+		
+		// membervo에서 cart_num 넘겨주기
+		/*
+		 * long cart_num = memberVO.getCart_num(); long order_num = (Long)
+		 * session.getAttribute("orderNum");
+		 */
+
+		/*
+		 * System.out.println("order_con : " + order_num);
+		 * System.out.println("cart_con : "+cart_num);
+		 * 
+		 * List<CartVO> ar = payService.finalCart(cart_num, order_num); PayInfoVO infoP
+		 * = (PayInfoVO) payService.totalPrice(order_num);
+		 * 
+		 * System.out.println("ar size : " + ar.size());
+		 * 
+		 * mv.addObject("yeon", ar); mv.addObject("infoP", infoP);
+		 * 
+		 * System.out.println(ar.get(0).getCount() + "cccccc");
+		 * System.out.println(ar.get(0).getProductFileVOs().get(0).getFileName());
+		 * System.out.println(infoP.getTotal_price()+"ppp");
+		 */
+		mv.setViewName("member/memberMyPage_Purchase1");
+
+		return mv;
+	}
 
 }
+
+
+

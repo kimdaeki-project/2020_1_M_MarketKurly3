@@ -60,24 +60,40 @@ public class PayService {
 		return payDAO.scPrice(order_num);
 	}
 
-	//soyeon
-	public PayInfoVO payList(Long m) throws Exception{
-		System.out.println("m s: "+m);
-		return payDAO.payList(m);
-	}
-	
-
-	
 	public Long orderNum() throws Exception{
 		return payDAO.orderNum();
 	}
 
 
 	
-	public List<Long> orderNum2(String id) throws Exception{
+	
+	//soyeon
+	public PayInfoVO payList(Long m) throws Exception{
+		//System.out.println("m s: "+m);
+		return payDAO.payList(m);
+	}
+	
+
+	public List<Long> orderNum2(String id, Pager pager) throws Exception{
+		pager.makeRow(); //1-12번 설정
+		
 		System.out.println("id s : " + id);
-		  return payDAO.orderNum2(id); 
+		
+		long totalCount = payDAO.payCount(id);
+		System.out.println("totalCount : "+totalCount);
+		pager.makePage(totalCount);//totalcount넘겨주기
+		
+		System.out.println(totalCount +"들어오니?");
+		System.out.println(pager.getTotalPage()+"a몇개니?");
+		
+		HashMap<String, Object> pa = new HashMap<String, Object>();
+		pa.put("id", id);
+		pa.put("pager", pager);
+		
+		return payDAO.orderNum2(pa); 
 	}
 	  
-	 
+	public void paySelect() throws Exception {
+		
+	}
 } 
