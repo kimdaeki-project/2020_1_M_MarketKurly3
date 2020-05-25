@@ -188,12 +188,100 @@
     
   </div>
   <div id="menu1" class="tab-pane fade">
-    <h3>Menu 1</h3>
-    <p>Some content in menu 1.</p>
+  
   </div>
   <div id="menu2" class="tab-pane fade">
-    <h3>Menu 2</h3>
-    <p>Some content in menu 2.</p>
+   	
+   	<div class="container">
+
+	<div class="row">
+	<h4>상품 문의</h4> <!--  qna -->
+		 <form class="form-inline" action="./qnaList">
+		    <div class="input-group input-group-sm col-xs-2" >
+		    
+		    	<select class="form-control" id="sel1" name="kind">
+				    <option value="ti">제목</option>
+				    <option value="co">내용</option>
+				    <option value="wr">작성자</option>
+  				</select>
+  				</div>
+  				
+  				<div class="input-group input-group-sm col-xs-4">
+  				
+			      <input type="text" class="form-control" placeholder="Search" name="search">
+			      <div class="input-group-btn">
+			        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			      </div>
+	    		</div>
+	    		
+	    	<a href="./qnaWrite" class="btn btn-danger">문의하기</a>
+	 	 </form>
+	 	 </div>
+	 	 <br>
+		<table class="table table-hover">
+		<tr>
+			<td>번호</td>
+			<td>제목</td>
+			<td>작성자</td>
+			<td>작성일</td>
+			<td>조회수</td>
+		</tr>
+		
+		<c:forEach items="${qlist}" var="voo"> <!-- list 에서 하나꺼내서  vo에 넣어서 돌리기 -->
+		<tr>
+			<td>${voo.num}</td>
+			<td>
+			<c:catch>
+			 <c:forEach begin="1" end="${voo.depth}">
+			 	--
+			 	<!-- &nbsp;&nbsp; //스페이스바역할 -->
+			</c:forEach> 
+			</c:catch>
+			<a href="./productSelect?p_num=${voo.num}"> ${voo.title}</a></td>
+			<td>${voo.writer }</td>
+			<td>${voo.regDate }</td>
+			<td>${voo.hit}</td>
+		</tr>
+		</c:forEach>
+		</table>
+		
+		<div><!-- 페이지 이동을 위한  -->
+		<ul class="pagination">
+			<c:if test="${pager.curBlock gt 1 }">
+			<li><a href="./qnaList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}"> 이전</a></li>
+			</c:if>
+			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				<li><a href="./qnaList?curPage=${i} &kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+			</c:forEach>
+			<c:if test="${pager.curBlock lt pager.totalBlock}">
+			<li><a href="./qnaList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}"> 다음 </a></li>
+			</c:if>
+			</ul>
+		</div>
+		
+		
+		<c:catch>
+		<c:choose>
+			<c:when test="${board eq 'qna'}">
+				<c:if test="${member.id eq 'admin'}">
+					<div>
+						<a href="./${board}Write" class="btn btn-danger">write</a>
+					</div>
+				
+				</c:if>
+			</c:when>
+			<c:otherwise>
+				<c:if test="${not empty member}">
+					<div>
+						<a href="./${board}Write" class="btn btn-danger">write</a>
+					</div>
+				</c:if>
+			</c:otherwise>
+		</c:choose>
+		</c:catch>
+		
+		
+	</div>
   </div>
 </div>
 	  
