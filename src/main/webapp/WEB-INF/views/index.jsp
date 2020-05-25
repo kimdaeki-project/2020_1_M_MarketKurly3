@@ -35,7 +35,7 @@ crossorigin="anonymous"></script>
 		  </ol>
 		  <div class="carousel-inner">
 			     <div class="carousel-item active">
-			     	 <img class="d-block w-100" src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1589851195.jpg" alt="First slide">
+			     	 <img class="d-block w-100" src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1590110156.jpg" alt="First slide">
 			    </div>
 			    <div class="carousel-item">
 			     	 <img class="d-block w-100" src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1587981141.jpg" alt="Second slide">
