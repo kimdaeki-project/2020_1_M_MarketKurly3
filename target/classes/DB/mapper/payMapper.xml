@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="com.iu.mk.pay.PayDAO">
+  
 	   <resultMap type="CartVO" id="payResult">
 	   
 	 		<id column="cq_num" property="cq_num"/>
@@ -20,7 +21,42 @@
 		  		<result column="kind" property="kind"/>
 			</collection>
 			
-	
+	 </resultMap> 
+	 
+	 <!-- soyeon -->
+	 <!-- innerjoin(crossjoin)한 리스트 -->
+	   <resultMap type="PayInfoVO" id="sy_paylistResult">
+	   
+	 		<id column="order_num" property="order_num"/><!-- 기본키 -->
+			<result column="total_price" property="total_price"/><!-- VO에 원래있던애들 -->
+			<result column="delivery" property="delivery"/>
+			<result column="payDate" property="payDate"/>
+			 <result column="count" property="count"/> 
+			
+			
+			<!-- 새로 조인해줄 테이블1 -->
+			<collection property="productVOs" javaType="List" ofType="ProductVO">
+				<id column="p_num" property="p_num"/>
+		  		<result column="p_name" property="p_name"/>
+		  		<result column="price" property="price"/>
+		  		<result column="contents" property="contents"/>
+		  		<result column="kind" property="kind"/>
+			</collection>
+			
+			<!-- 새로 조인해줄 테이블2 -->
+			<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
+				<id column="fileName" property="fileName"/>
+		  		<result column="kind" property="kind"/>
+		  		<result column="oriName" property="oriName"/>
+		  		<result column="p_num" property="p_num"/>
+		  		<result column="fileNum" property="fileNum"/>
+			</collection>
+			
+
+			
+			
+			
+			
 	 </resultMap> 
 	 
   	<resultMap type="CartVO" id="payFinal">
@@ -73,8 +109,6 @@
   	<select id="orderNum" resultType="Long">
 		select pq_num_seq.nextval from dual
 	</select>
-	
-	
 	
 	
 	<select id="scPrice" parameterType="Long" resultType="List">
@@ -134,8 +168,36 @@
   	</select> 
   	
   	
+  	<!-- soyeon : 주문번호로 원하는 정보 가져오기 -->
+  	<select id="payList" parameterType="Long" resultMap="sy_paylistResult"><!-- 위에 참고! / 되돌려주는값은 테이블이 조인테이블일경우:resultMap을 쓴다. -->
+  		select C3.*, CO.* from
+
+		(select C1.*, C2.order_num, (C2.total_price+C2.delivery) total_price, C2.payDate from
+		(SELECT P.p_num, P.p_name, PF.fileName 
+		FROM product P INNER JOIN productFile PF 
+		ON (P.p_num = PF.p_num)
+		WHERE P.p_name=(select p_name from product
+		where p_num=any(select p_num from cart
+		where cq_num=any(select cq_num from pay 
+		where order_num=(select order_num from payInfo where order_num=#{m}))) and rownum=1)) C1
+		cross join
+		payInfo C2
+		where C2.order_num=#{m}) C3
+		
+		cross join
+		
+		(select count(p_num)-1 count from cart
+		where cq_num=any(select cq_num from pay 
+		where order_num=(select order_num from payInfo where order_num=#{m}))) CO
+  	</select>
   	
-  	
-  	
+  <!-- soyeon : 아이디로 주문번호 가져오기 -->
+  <select id="orderNum2" parameterType="String" resultType="Long">
+  	select order_num from pay where cq_num=any(
+	select cq_num from cart 
+	where cart_num=(select cart_num from member 
+	where id=#{id})) order by order_num desc
+  
+  </select>
   
   </mapper>

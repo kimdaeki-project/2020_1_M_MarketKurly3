@@ -71,20 +71,38 @@ public class PayDAO {
 		return sqlSession.selectOne(NAMESPACE + "pCount", cq_num);
 	}
 
+	
+	
+	
 	//전체 글 갯수 카운트
 	public long payCount(Pager pager) throws Exception{
-		
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
 		return sqlSession.selectOne(NAMESPACE+"payCount",pager);
 	}
 	
 	//페이 리스트
-	public List<PayInfoVO> payList(Pager pager) throws Exception{
-		System.out.println(pager.getKind());
-		System.out.println(pager.getSearch());
+	public PayInfoVO payList(Long m) throws Exception{
+		System.out.println("m dao: "+m);
 		
-		return sqlSession.selectList(NAMESPACE+"payList",pager);
+		PayInfoVO a=sqlSession.selectOne(NAMESPACE+"payList",m);
+		System.out.println("list정보: "+a.getOrder_num());
+		System.out.println("list정보: "+a.getTotal_price());
+		System.out.println("list정보: "+a.getPayDate());
+		System.out.println("list정보: "+a.getCount());
+		System.out.println("list정보: "+a.getProductFileVOs().get(0).getFileName());
+		System.out.println("list정보: "+a.getProductVOs().get(0).getP_name());
+		
+		return sqlSession.selectOne(NAMESPACE+"payList",m);
 	}
 	
-
+	public List<Long> orderNum2(String id) throws Exception {
+		System.out.println("id dao: " + id);
+		
+		List<Long> order_num=sqlSession.selectList(NAMESPACE + "orderNum2",id);
+		System.out.println("주문번호수량: "+order_num.size());
+		
+		return sqlSession.selectList(NAMESPACE + "orderNum2",id);
+	}
 
 }
