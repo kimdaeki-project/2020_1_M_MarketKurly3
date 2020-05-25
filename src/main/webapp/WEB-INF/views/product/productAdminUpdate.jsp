@@ -17,14 +17,27 @@
 <div class="container">
 
 <div class="container_inner">
-<h2>관리자 상품 업데이트 </h2>
+<h2 align="center">관리자 상품 업데이트 </h2>
 
 <form action="./productAdminUpdate" id="frm" method="post" enctype="multipart/form-data">
 	<input class="kind12" type="hidden" value="${product.kind}">
 	<h5 id="h3" >${product.kind}</h5>
- 
+	
+	<div id="bb2" class="bb2" style="display:none">${product.bar}</div>
+ 	
+ 	
+ 	<div class="form-group">
+  	<label for="bar">상단바:</label>
+      <select class="form-control" id="bar" name="bar"  >
+				  <option value="new"  >신상품</option>
+				  <option value="best" >베스트</option>
+				  <option value="save" >알뜰 쇼핑</option>
+  	  </select>
+    </div>
+ 	
+ 	
   	<div class="form-group">
-  	<label for="kind">kind:</label>
+  	<label for="kind">상품 종류:</label>
       <select class="form-control" id="kind" name="kind"  >
 				  <option value="me"  >Meat</option>
 				  <option value="ve" >Vegetable</option>
@@ -38,7 +51,7 @@
     </div>
   	
   	 <div class="form-group">
-      <label for="files">Title-Img:</label>
+      <label for="files">타이틀 이미지:</label>
       <input type="file" class="form-control files" id="files" placeholder="타이틀 이미지 선택" name="files" >
       <c:forEach  items="${product.productFileVOs}" var="fileVO">
       <p>${fileVO.oriName}<i id="${fileVO.fileNum}" class="glyphicon glyphicon-remove remove fileDelete"></i></p>
@@ -47,17 +60,17 @@
     </div>
   
      <div class="form-group">
-      <label for="p_name">Title:</label>
+      <label for="p_name">상품 이름:</label>
       <input type="text" class="form-control" id="p_name" placeholder="Enter Title" name="p_name" value="${product.p_name}" >
     </div>
     
     <div class="form-group">
-      <label for="price">Price:</label>
+      <label for="price">상품 가격:</label>
       <input type="text" class="form-control" id="price" placeholder="Enter price" name="price" value="${product.price}">
     </div>
     
      <div class="form-group">
-      <label for="contents">Contents:</label>
+      <label for="contents">상품 상세 내용:</label>
       <textarea rows="20" cols=""  class="form-control" id="contents" placeholder="Enter Contents" name="contents" >${product.contents}</textarea>
     </div>
       
@@ -77,7 +90,8 @@
 
 	
 	var kind = $("#h3").text();
-
+	var bar = $("#bb2").text();
+	/* console.log($("#bar option[value=best]").val()); */
 	
 	
 	if($("#kind option[value=me]").val()==kind){
@@ -89,7 +103,14 @@
 	} 
 	
 	
-
+	if($("#bar option[value=new]").val()==bar){
+		$("#bar option[value=new]").prop("selected",true);
+	}else if($("#bar option[value=best]").val()==bar){
+		$("#bar option[value=best]").prop("selected",true);
+	} else {
+		$("#bar option[value=save]").prop("selected",true);
+	} 
+	
 
 
 	count = 1;

@@ -28,10 +28,13 @@
 					</div>
 				</div> 
 				
-				<form class="form-inline" action="./productList">
+				<form class="form-inline" action="./productList " >
+				<input type="hidden"  name="bar"  value="" id="barr2">
+				 <!-- 파라미터 bar=new 추가를 위한 input -->
 					<!-- 종류 분류 -->
 					<div class="input-group input-group-sm col-xs-2" >
 				    	<select class="form-control" id="kind" name="kind">
+				    		<option value="">전체보기</option>
 						    <option value="me">Meat</option>
 						    <option value="ve">Vegetable</option>
 						    <option value="de">Dessert</option>
@@ -61,7 +64,7 @@
 			<ul class="list">
 				
 					<c:forEach items="${list}" var="vo">
-						
+						<input type="hidden"  name="bar"  value="${vo.bar}" id="barr"> <!-- 값 가져오기 -->
 							<li class="list_li">
 								<a href="../product/productSelect?p_num=${vo.p_num}" class="thumb_goods">
 									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
@@ -102,6 +105,22 @@
 	
 <c:import url="../template/footer.jsp"></c:import>
 </body>
+
+<script type="text/javascript">
+
+	
+		var bar = $("#barr").val();
+		console.log("bar value : "+ bar);
+		
+		$("#barr2").val(bar); // barr2로 값 넣어주기
+	
+		var s = window.location.search;
+		if(s==null){
+			document.getElementById("#barr2").value="";
+		}
+		
+</script>
+
 </html>
 			
 <!-- page_article end -->		

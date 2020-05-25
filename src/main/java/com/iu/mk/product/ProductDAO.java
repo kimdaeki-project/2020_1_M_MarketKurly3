@@ -1,6 +1,7 @@
 package com.iu.mk.product;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -33,16 +34,19 @@ public class ProductDAO {
 		return sqlSession.insert(NAMESPACE+"productWrite",productVO);
 	}
 	
-	public List<ProductVO> productList(Pager pager) throws Exception{
-		System.out.println(pager.getKind());
-		System.out.println(pager.getSearch());
+	public List<ProductVO> productList(HashMap<String, Object> pa) throws Exception{
+		/*
+		 * System.out.println(pager.getKind()); System.out.println(pager.getSearch());
+		 */
+		System.out.println("dao : " + pa.get("bar"));
 		
-		return sqlSession.selectList(NAMESPACE+"productList",pager);
+		return sqlSession.selectList(NAMESPACE+"productList",pa);
 	}
 	
 
 	public ProductVO productSelect(Long p_num) throws Exception{
 		System.out.println(p_num+":::dao_num");
+		
 		return sqlSession.selectOne(NAMESPACE+"productSelect",p_num);
 	}
 	
@@ -50,6 +54,7 @@ public class ProductDAO {
 	//파라미터로 받아오는 p_num 이라서 long로
 	public long productUpdate(ProductVO productVO)throws Exception{
 		System.out.println("dao p_num : "+productVO.getP_num());
+		System.out.println("dao bar"+productVO.getBar());
 		return sqlSession.update(NAMESPACE+"productUpdate",productVO);
 	}
 	

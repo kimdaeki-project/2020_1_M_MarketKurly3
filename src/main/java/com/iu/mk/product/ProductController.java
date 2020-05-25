@@ -28,15 +28,20 @@ public class ProductController {
 	
 	
 	@GetMapping("productList")
-	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO) throws Exception{
+	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO, String bar) throws Exception{
 		System.out.println("kind : " + pager.getKind());
 		System.out.println("search : " + pager.getSearch());
 		
-		List<ProductVO> ar = productService.productList(pager);
+		System.out.println("bar : " +bar);
+		
+		List<ProductVO> ar = productService.productList(pager,bar);
 		/*
 		 * System.out.println(ar.get(1).getP_name());
 		 */
 		
+		
+	
+		  
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("product/productList");
@@ -67,6 +72,7 @@ public class ProductController {
 		productVO.setKind(kind);
 				
 		//System.out.println("productVO:"+productVO.getP_kind());
+		System.out.println("con bar :" + productVO.getBar());
 		
 		System.out.println("controller img : "+files.getOriginalFilename());
 		

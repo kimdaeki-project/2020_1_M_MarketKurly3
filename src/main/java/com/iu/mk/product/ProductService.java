@@ -1,6 +1,7 @@
 package com.iu.mk.product;
 
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -30,20 +31,41 @@ public class ProductService {
 	private ProductFileDAO productFileDAO;
 	
 	
-	public List<ProductVO> productList(Pager pager) throws Exception{
+	public List<ProductVO> productList(Pager pager,String bar) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
 		
 		System.out.println(pager.getStartRow()+"star");
 		System.out.println(pager.getLastRow()+"last");
-		if(pager.getKind()==null ) {
-			pager.setKind("");
+		
+		 if(pager.getKind()==null ) {
+			pager.setKind(""); 
 		}
+		 
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기
 		
+		
+		 if(bar==null) { 
+			 bar=""; 
+		 }
+		
+		
+		System.out.println("bar s: " + bar);
 		System.out.println("totalcount: " + totalCount);//x
 		
-		return productDAO.productList(pager);
+		HashMap<String, Object> pa = new HashMap<String, Object>();
+		pa.put("pager", pager);
+		pa.put("tbar", bar);
+		
+		System.out.println(pa.get("pager"));
+		System.out.println(pa.get("tbar"));
+		System.out.println("--------------------------");
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
+		System.out.println(pager.getStartRow());
+		System.out.println(pager.getLastRow());
+		System.out.println("--------------------------");
+		return productDAO.productList(pa);
 	}
 	
 	/*
@@ -61,7 +83,7 @@ public class ProductService {
 		
 		
 		//테이블에 넣어
-		int result = productDAO.productWrite(productVO); //product 채워짐
+		int result = productDAO.productWrite(productVO); //product 채워짐/성공 여부를 1,0으로 받아줌
 		
 		if(files.getSize()>0) {
 			ProductFileVO productFileVO = new ProductFileVO();
@@ -109,10 +131,12 @@ public class ProductService {
 			productFileVO.setOriName(files.getOriginalFilename());
 			productFileVO.setFileName(fileSaver.saveByTransfer(files, path));
 			productFileVO.setKind(productVO.getKind());
+			
 			//productfiledao insert 시켜줌
 			
 			System.out.println("check  num: "+productFileVO.getP_num());
 			System.out.println("check name : "+productFileVO.getKind());
+			
 			result = productFileDAO.fileInsert(productFileVO);
 		}
 		
