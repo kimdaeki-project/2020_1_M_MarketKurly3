@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productList.css">
 	<c:import url="../template/boot.jsp"></c:import>
 </head>
-<body>
+<body onclick="getParam();">
 <c:import url="../template/header.jsp"></c:import>
 
 
@@ -108,16 +108,46 @@
 
 <script type="text/javascript">
 
+			var params = [];
+		  
+		  
+			function getParam (){
+				
+				params = location.search.substr(location.search.indexOf("?") + 1);
+			
 	
+			    params = params.split("&");
+	
+	
+			    params = params[0].split("=");
+			    console.log("params : " + params[1]);
+			}
+	
+
+		
 		var bar = $("#barr").val();
 		console.log("bar value : "+ bar);
-		
-		$("#barr2").val(bar); // barr2로 값 넣어주기
 	
-		var s = window.location.search;
-		if(s==null){
-			document.getElementById("#barr2").value="";
+
+		
+		if(params[1]==null){
+			console.log("성공");
+			
+			$('#barr2').val("");
+			
+
+		}else{
+			
+			var bar = $("#barr").val();
+			$("#barr2").val(bar); // barr2로 값 넣어주기
 		}
+		
+		
+		
+		var bar2 = $("#barr2").val();
+		console.log("bar value : "+ bar2);
+		 
+		
 		
 </script>
 
