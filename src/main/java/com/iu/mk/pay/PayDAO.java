@@ -1,5 +1,6 @@
 package com.iu.mk.pay;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +18,21 @@ public class PayDAO {
 	private SqlSession sqlSession;
 
 	private final String NAMESPACE = "com.iu.mk.pay.PayDAO.";
+	
+	
+	public PayInfoVO totalPrice(Long order_num) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalPrice",order_num);
+	}
+	
+	
+	
+	public List<CartVO> finalCart(HashMap<String, Long> param) throws Exception{ 
+		/* System.out.println("dao c :" + cart_num); */
+		System.out.println(param.get("cart_num"));
+		System.out.println(param.get("order_num"));
+		return sqlSession.selectList(NAMESPACE+"finalCart",param);
+	}
+	
 	
 	public int pay(PayVO payVO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "payInsert", payVO);
@@ -55,20 +71,38 @@ public class PayDAO {
 		return sqlSession.selectOne(NAMESPACE + "pCount", cq_num);
 	}
 
+	
+	
+	
 	//전체 글 갯수 카운트
 	public long payCount(Pager pager) throws Exception{
-		
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
 		return sqlSession.selectOne(NAMESPACE+"payCount",pager);
 	}
 	
 	//페이 리스트
-	public List<PayInfoVO> payList(Pager pager) throws Exception{
-		System.out.println(pager.getKind());
-		System.out.println(pager.getSearch());
+	public PayInfoVO payList(Long m) throws Exception{
+		System.out.println("m dao: "+m);
 		
-		return sqlSession.selectList(NAMESPACE+"payList",pager);
+		PayInfoVO a=sqlSession.selectOne(NAMESPACE+"payList",m);
+		System.out.println("list정보: "+a.getOrder_num());
+		System.out.println("list정보: "+a.getTotal_price());
+		System.out.println("list정보: "+a.getPayDate());
+		System.out.println("list정보: "+a.getCount());
+		System.out.println("list정보: "+a.getProductFileVOs().get(0).getFileName());
+		System.out.println("list정보: "+a.getProductVOs().get(0).getP_name());
+		
+		return sqlSession.selectOne(NAMESPACE+"payList",m);
 	}
 	
-
+	public List<Long> orderNum2(String id) throws Exception {
+		System.out.println("id dao: " + id);
+		
+		List<Long> order_num=sqlSession.selectList(NAMESPACE + "orderNum2",id);
+		System.out.println("주문번호수량: "+order_num.size());
+		
+		return sqlSession.selectList(NAMESPACE + "orderNum2",id);
+	}
 
 }

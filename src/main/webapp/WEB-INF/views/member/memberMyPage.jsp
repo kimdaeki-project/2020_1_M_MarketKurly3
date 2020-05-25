@@ -43,7 +43,7 @@
 				</a>
 				
 				<!-- 구매내역 버튼 -->
-				<a href="${pageContext.request.contextPath}/member/memberMyPage_Purchase">
+				<a href="${pageContext.request.contextPath}/pay/payList">
 					<button class="button" style="float : right;">
 						<div class="button_image"><img src="${pageContext.request.contextPath}/resources/images/Purchase_Details.png" alt="" style="width: 75%; height: 75%;"></div>
 						
