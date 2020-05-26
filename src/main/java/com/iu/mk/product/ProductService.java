@@ -34,11 +34,12 @@ public class ProductService {
 	public List<ProductVO> productList(Pager pager,String bar) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
 		
-		System.out.println(pager.getStartRow()+"star");
-		System.out.println(pager.getLastRow()+"last");
-		
-		 if(pager.getKind()==null ) {
-			pager.setKind(""); 
+
+		System.out.println(pager.getStartRow()+" - star");
+		System.out.println(pager.getLastRow()+"- last");
+		if(pager.getKind()==null ) {
+			pager.setKind("");
+
 		}
 		 
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
