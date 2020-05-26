@@ -10,24 +10,7 @@
 		
 		<c:import url="../template/boot.jsp"></c:import>
 		<style type="text/css">
-			.nav-tabs{
-				width:1170px;
-				margin:0 auto;
-			}
-			
 
-			
-			.tab-wrapper	{
-				width:1010x;
-				margin:0 auto;
-				overflow:hidden;
-			}
-			
-		
-			#menu1 input	{
-				
-			}
-			
 			
 			/* Style inputs, select elements and textareas */
 input[type=text], select, textarea{
@@ -86,25 +69,6 @@ label {
     margin-top: 0;
   }
 }
-
-
-
-
-
-
-			.tab-content	{
-				width:100%;
-				margin:0 auto;
-				display: inline-block;
-				overflow: hidden;
-			}
-			
-			.tab-content>div	{
-				width:1010px;
-				margin:0 auto;
-				overflow: hidden;
-			}
-
 
 
 		</style>
@@ -247,12 +211,7 @@ label {
 	<div class="tab-content">
 	
 	  <div id="home" class="tab-pane fade in active">
-	    <h3>HOME</h3>
-	    <p>Some content.</p>
-	    
-	
-	  	 
-	  	 
+
 		 	<div class="goods-view-infomation detail_wrap_outer">
 		 		<ul class="goods-view-infomation-tab-group">
 		 		<li class="goods-view-infomation-tab">
@@ -276,12 +235,24 @@ label {
 	  <!-- jisu -->
 	  <div id="menu1" class="tab-pane fade">
 	  
+	  
+	  	  	<p class="reviewTitle">PRODUCT REVIEW</p>
+	  		<p>
+	  			<span class="reviewCon">· 상품에 대한 후기를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</span>
+	  			<span class="reviewCon">· 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1 문의에 남겨주세요.</span>
+	  		</p>
 	  		<div class="section">
+	  		
+
+	  		
+	  		<table>
+	  		
+	  		
 	  		<c:forEach items="${review}" var="ro"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
-					<div class="list_p">
-						<div class="list_p_name" style="font-weight: bold; font-size: large;"><%-- ${vo.productVOs['0'].p_name} 외 ${vo.count}건  --%><span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
+				<%-- 	<div class="list_p">
+						<div class="list_p_name" style="font-weight: bold; font-size: large;">${vo.productVOs['0'].p_name} 외 ${vo.count}건 <span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
 						<div class="list_p_content">
-							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${ro.fileName} --%>" width="67px" height="79px"> </div>
+							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${ro.fileName}" width="67px" height="79px"> </div>
 							<div class="list_p_contents1">
 								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">작성자</span> &ensp; <span style="font-weight: bold;">${ro.id}</span></div>
 								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">상품 이름</span> &ensp; <span style="font-weight: bold;">${ro.p_name}</span></div>
@@ -289,11 +260,29 @@ label {
 								<div class="list_p_contents2"><span style="font-size: small;">내용</span> &ensp; <span style="font-weight: bold;">${ro.contents}</span></div>
 							</div>
 						</div>
-					</div> 		
+					</div>  --%>
+					
+					<tr class="reviewList">
+						<td>
+							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}" width="67px" height="79px"> </div>
+						</td>
+						
+						<td class="second">
+							<div class="list_p_contents2"><span class="ti">상품 이름</span><span>${ro.p_name}</span></div>
+							<div class="list_p_contents2"><span class="ti">제목</span><span>${ro.title}</span></div>
+							<div class="list_p_contents2"><span class="ti">내용</span><span>${ro.contents}</span></div>
+						</td>
+						
+						<td>
+							<p><span class="ti">작성자</span><span>${ro.id}</span></p>
+							<p><span class="ti">작성날짜</span><span>${ro.rDate}</span></p>
+							<p><span class="ti">조회수</span><span>${ro.hit}</span></p>
+						</td>
+					</tr>		
 			</c:forEach>
 			
 			
-			
+			</table>
 			
 	  		</div>
 	  </div>

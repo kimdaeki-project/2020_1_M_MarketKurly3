@@ -1,6 +1,7 @@
 package com.iu.mk.review;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iu.mk.product.ProductVO;
+import com.iu.mk.member.MemberVO;
 
 @Controller
 @RequestMapping("/review/**")
@@ -21,12 +22,17 @@ public class ReviewController {
 	
 	
 	@GetMapping("reviewWrite")
-	public ModelAndView reviewWrite(ReviewVO reviewVO) throws Exception{
+	public ModelAndView reviewWrite(ReviewVO reviewVO, long p_num, String p_name, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println("받아온 p_num : " + p_num);
 		
-		reviewVO.setP_num(10170);
-		reviewVO.setP_name("치즈");
-		reviewVO.setId("admin");
+		
+		reviewVO.setP_num(p_num);
+		reviewVO.setP_name(p_name);
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		reviewVO.setId(memberVO.getId());
 		
 		
 		mv.addObject("review", reviewVO);
@@ -49,7 +55,7 @@ public class ReviewController {
 		
 		//System.out.println(reviewVO.getNum());
 		
-		reviewVO.setP_num(10170);
+		
 		
 		
 		

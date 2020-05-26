@@ -583,19 +583,54 @@ product list
 	color: #808080;
 }
 .list_p {
-	height : 170px;
-	width : 860px;
+	height : 140px;
+	width : 1010px;
 	background-color: white; 
 	border-bottom: 1px solid #cccccc; 
-	margin: 10px 155px 0;
 	padding: 0 20px;
-	margin-bottom: 20px;
+}
+
+
+.list_p table	{
+		border-bottom:1px solid #000;
+}
+
+.list_p table td	{
+	padding:0;
+	border-bottom:1px solid #000;
+}
+
+.list_p tr	{
+	border-bottom:1px solid #ddd;
 	
+}
+
+.reviewList	{
+	
+	border-bottom:1px solid #ddd;
+}
+
+.reviewList p {
+	width:150px;
+}
+
+
+.reviewList .ti	{
+	display:block;
+	width:75px;
+	font-weight: 700;
+	padding:0;
+	float:left;
+}
+ 
+.reviewList p span	{
+	display:block;
+	float:left;
 }
 
 
 .list_p_name {
-	padding: 20px 0 13px;
+	padding:0;
 }
 .list_p_name2 {
 	float: right;
@@ -604,35 +639,88 @@ product list
 
 .list_p_content {
 	padding: 10px;
-	border-top: 1px solid #cccccc; 
-	height: 60%;
 	width: 100%;
 	
 }
 
 .list_p_photo {
 	float: left;
+	width:150px;
+	height:150px;
+	margin-right:40px;
 }
+
+.list_p_photo img	{
+	
+	width:100px;
+	height:100px;
+	margin: 25px 0 0 40px;
+	overflow: hidden;
+}
+
+
 .list_p_contents1 {
 	float: right;
 	width:85%;
 	height:100%;
 }
 .list_p_contents2 {
-	width:100%;
+	width:670px;
 	height:33%;	
 }	
 
 
 .section{
 
-border-top:2px solid #000; 
-width:1050px; 
+border-top:2px solid #522772;
+width:1010px; 
 margin:0 auto;
+margin-top:30px;
 
 
 }
 
+.nav-tabs{
+	width:1170px;
+	margin:0 auto;
+}
 
 
+
+.tab-wrapper	{
+	width:1010x;
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.tab-content	{
+	width:100%;
+	margin:0 auto;
+	display: inline-block;
+	overflow: hidden;
+	margin-bottom:100px;
+}
+
+.tab-content>div	{
+	width:1010px;
+	margin:0 auto;
+	overflow: hidden;
+}
+			
+#menu1	{
+	margin-top:30px;
+	
+}
+.reviewTitle	{
+	font-size:13px;
+	font-weight:700;
+	padding-bottom:5px;
+}
+
+.reviewCon	{
+	display:block;
+	color:#666;
+	font-size: 12px;
+	line-height: 18px;
+}
 

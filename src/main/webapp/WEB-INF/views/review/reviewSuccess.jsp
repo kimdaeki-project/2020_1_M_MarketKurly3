@@ -39,19 +39,7 @@
 <div class="container_inner">
 <h2 align="center">후기 등록</h2>
 <br>
-<form action="./reviewWrite" id="frm" method="post" enctype="multipart/form-data">
-  	 <div class="wrapper text-center">
-        <h4 class="card-title">Alerts Popups</h4>
-        <p class="card-description">A success message!</p> <button class="btn btn-outline-success" onclick="showSwal('success-message')">Click here!</button>
-   		<input type="text" value="${p_num}">
-    </div>
-    
-    
-    
-    
-    
-    
-</form>
+
 
 
 

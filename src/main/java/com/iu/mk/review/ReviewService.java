@@ -5,8 +5,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.iu.mk.board.BoardService;
 import com.iu.mk.review.reviewfile.ReviewFileDAO;
 import com.iu.mk.review.reviewfile.ReviewFileVO;
 import com.iu.mk.util.FileSaver;
@@ -42,9 +40,7 @@ public class ReviewService{
 		
 		
 		
-		
-		reviewVO.setP_num(10170);
-	
+
 		
 		
 		int result = reviewDAO.reviewWrite(reviewVO);

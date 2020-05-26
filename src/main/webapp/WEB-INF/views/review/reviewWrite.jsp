@@ -43,7 +43,7 @@
     
      <div class="form-group">
       <label for="title">작성자:</label>
-      <input type="text" class="form-control" id="writer" placeholder="Enter Title" name="id" value="${review.id}">
+      <input type="text" class="form-control" id="writer" placeholder="Enter Title" name="id" value="${review.id}" readonly="readonly">
     </div>
     
  
