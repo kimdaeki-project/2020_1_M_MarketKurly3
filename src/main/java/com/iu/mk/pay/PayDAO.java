@@ -73,36 +73,51 @@ public class PayDAO {
 
 	
 	
+	/*soyeon*/
 	
 	//전체 글 갯수 카운트
-	public long payCount(Pager pager) throws Exception{
-		System.out.println(pager.getKind());
-		System.out.println(pager.getSearch());
-		return sqlSession.selectOne(NAMESPACE+"payCount",pager);
+	public long payCount(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"payCount",id);
 	}
 	
+
 	//페이 리스트
 	public PayInfoVO payList(Long m) throws Exception{
-		System.out.println("m dao: "+m);
+		//System.out.println("m dao: "+m);
 		
 		PayInfoVO a=sqlSession.selectOne(NAMESPACE+"payList",m);
-		System.out.println("list정보: "+a.getOrder_num());
-		System.out.println("list정보: "+a.getTotal_price());
-		System.out.println("list정보: "+a.getPayDate());
-		System.out.println("list정보: "+a.getCount());
-		System.out.println("list정보: "+a.getProductFileVOs().get(0).getFileName());
-		System.out.println("list정보: "+a.getProductVOs().get(0).getP_name());
+		/*
+		 * System.out.println("list정보: "+a.getOrder_num());
+		 * System.out.println("list정보: "+a.getTotal_price());
+		 * System.out.println("list정보: "+a.getPayDate());
+		 * System.out.println("list정보: "+a.getCount());
+		 * System.out.println("list정보: "+a.getProductFileVOs().get(0).getFileName());
+		 * System.out.println("list정보: "+a.getProductVOs().get(0).getP_name());
+		 */
 		
 		return sqlSession.selectOne(NAMESPACE+"payList",m);
 	}
 	
-	public List<Long> orderNum2(String id) throws Exception {
-		System.out.println("id dao: " + id);
-		
-		List<Long> order_num=sqlSession.selectList(NAMESPACE + "orderNum2",id);
-		System.out.println("주문번호수량: "+order_num.size());
-		
-		return sqlSession.selectList(NAMESPACE + "orderNum2",id);
+	
+	public List<Long> orderNum2(HashMap<String, Object>pa) throws Exception {
+
+		return sqlSession.selectList(NAMESPACE + "orderNum2",pa);
 	}
+	
+	public List<PayInfoVO> paySelect(long order_num) throws Exception {
+
+		return sqlSession.selectList(NAMESPACE + "paySelect", order_num);
+	}
+	
+	
+	public PayInfoVO paySelect2(long order_num) throws Exception {
+		System.out.println("짜증나나mmmmmm"+order_num);
+		
+		PayInfoVO a = sqlSession.selectOne(NAMESPACE + "paySelect2", order_num);
+		System.out.println("ㅉㅉㅉㅉ"+a.getDelivery());
+		System.out.println("ㅉㅉㅉㅉ"+a.getTotal_price());
+		return sqlSession.selectOne(NAMESPACE + "paySelect2", order_num);
+	}
+
 
 }

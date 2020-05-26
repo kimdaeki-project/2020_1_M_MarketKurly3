@@ -245,4 +245,11 @@ public class CartController {
 	 */
 	
 
+	
+	//cartpay.jsp 연결용 나중에 이름 변경 필요
+	/*
+	 * @GetMapping("cartPay") public String cartPay() throws Exception{ return
+	 * "cart/cartPay"; }
+	 */
+
 }

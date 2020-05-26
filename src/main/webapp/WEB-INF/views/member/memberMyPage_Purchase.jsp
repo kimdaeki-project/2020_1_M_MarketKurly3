@@ -51,7 +51,9 @@
 						
 						<div class="listp">-  ${vo.payDate} </div>	
 							<div class="list_p">
+								<a href="../pay/paySelect?order_num=${vo.order_num}"  style="color: black; text-decoration: none;">
 								<div class="list_p_name" style="font-weight: bold; font-size: large;">${vo.productVOs['0'].p_name} 외 ${vo.count}건 <span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
+								</a>
 								<div class="list_p_content">
 									<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${vo.productFileVOs['0'].fileName}" width="67px" height="79px"> </div>
 									<div class="list_p_contents1">
@@ -65,10 +67,34 @@
 					 </c:forEach>
 		 
 		</div>
+		
+		
+		<!-- page -->
+	<div class="purchase_page">
+	<ul class="pagination">
+		<c:if test="${pager.curBlock gt 1}">
+			<li><a href="./payList?curPage=${pager.startNum-1}">이전</a></li>
+		</c:if>
+		
+		<c:forEach begin="${pager.startNum }" end="${pager.lastNum}" var="i">
+			<li><a href="./payList?curPage=${i}">${i}</a></li>
+		</c:forEach>
+		
+		<c:if test="${pager.curBlock lt pager.totalBlock}">
+			<li><a href="./payList?curPage=${pager.lastNum+1}">다음</a> </li>
+		</c:if>
+	</ul>
+	</div>	
+		
+		
+		
 	</div>
 	
 	
 	</section>
+
+
+	
 
 
 <c:import url="../template/footer.jsp"></c:import>
