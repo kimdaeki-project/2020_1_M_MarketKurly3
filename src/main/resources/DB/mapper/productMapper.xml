@@ -79,7 +79,8 @@
  		</if>
  <!-- p_num 받아오기 --> 		
   	</select>
-  	  	<select id="productNum" resultType="Long">
+  	
+  	  <select id="productNum" resultType="Long">
   		select p_num_seq.nextval from dual
   	</select>
   

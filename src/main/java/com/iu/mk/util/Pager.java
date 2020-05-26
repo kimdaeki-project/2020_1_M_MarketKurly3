@@ -20,8 +20,19 @@ public class Pager {
 	private String search; // 검색기능
 	
 	
+	  private long p_num;
+	  
+	  
+	  public long getP_num() { return p_num; }
+	  
+	  public void setP_num(long p_num) { this.p_num = p_num; }
+	 
+	
+	
 	//---startrow/lastrow 계산---------
 	
+	
+
 	public void makeRow() {
 		//페이지당 12개씩 출력->perpage=12
 		System.out.println("curpage : " + this.getCurPage());

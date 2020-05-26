@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.mk.product.productfile.ProductFileService;
 import com.iu.mk.product.productfile.ProductFileVO;
+import com.iu.mk.product.QnaService;
+import com.iu.mk.product.QnaVO;
 import com.iu.mk.util.Pager;
 
 @Controller
@@ -24,6 +26,8 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired QnaService qnaService;
 	
 	
 	
@@ -96,7 +100,7 @@ public class ProductController {
 	
 	
 	@GetMapping("productSelect")
-	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num) throws Exception {
+	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num,Pager pager) throws Exception {
 		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
 		
 		productVO.setP_num(p_num);
@@ -106,6 +110,12 @@ public class ProductController {
 		
 		System.out.println(productVO.getP_name()+"::pname");
 		
+		//상품 문의 list 가져오기
+		List<QnaVO> ar = qnaService.qnaList(pager);
+		
+		
+		mv.addObject("qlist",ar);
+		mv.addObject("pager",pager);
 		
 		mv.addObject("product", productVO);
 		mv.setViewName("product/productSelect");

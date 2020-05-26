@@ -3,38 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.iu.mk.qna.QnaDAO">
+  <mapper namespace="com.iu.mk.product.QnaDAO">
   
-  <sql id="search">
-  	where
-  	<choose>
-  		<when test="kind=='ti'">
-  			title
-  		</when>
-  		<when test="kind=='wr'">
-  			writer
-  		</when>
-  		<when test="kind=='co'">
-  			contents
-  		</when>
-  	</choose>
-  	like '%'||#{search}||'%'
-  </sql>
+
   
-  
-  	<select id="boardList"  parameterType="Pager" resultType="QnaVO">
+  	<select id="qnaList"  parameterType="Pager" resultType="QnaVO">
   		select * from
   		(select Q.*, rownum R from
-  		(select * from qna
-  		<include refid="search"></include>
+  		(select * from qna 
   			order by ref desc, step asc) Q)
-  		where R between #{startRow} and #{lastRow}
+  		where R between #{startRow} and #{lastRow} and p_num=#{p_num}
   	</select>
   <!-- ref : 원본글과 답글을 묶음. step: 그룹 내에서 정렬 -->
   
-  <select id="boardCount" parameterType="Pager" resultType="Long">
-  	select count(num) from qna
-  		<include refid="search"></include>
+  <select id="qnaCount" parameterType="Pager" resultType="Long">
+  	select count(num) from qna where p_num=#{p_num}
+  		
   </select>
+  
+  <!-- qna 시퀀스 번호 -->
+  <select id="qnaNum" resultType="Long">
+  		select num_seq.nextval from dual
+  </select>
+  
+  <insert id="qnaWrite" parameterType="QnaVO">
+  
+  	insert into qna values (#{num},#{title},#{writer},#{contents},sysdate,1,1,1,1,#{p_num})
+  	
+  </insert>
+  
   
   </mapper>

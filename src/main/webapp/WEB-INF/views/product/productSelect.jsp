@@ -154,16 +154,12 @@
   	 	  <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
   <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+  <li><a data-toggle="tab" href="#menu2">상품 문의</a></li>
 </ul>
 
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-    <h3>HOME</h3>
-    <p>Some content.</p>
-    
 
-  	 
   	 
 	 	<div class="goods-view-infomation detail_wrap_outer">
 	 		<ul class="goods-view-infomation-tab-group">
@@ -190,6 +186,7 @@
   <div id="menu1" class="tab-pane fade">
   
   </div>
+  
   <div id="menu2" class="tab-pane fade">
    	
    	<div class="container">
@@ -197,12 +194,12 @@
 	<div class="row">
 	<h4>상품 문의</h4> <!--  qna -->
 		 <form class="form-inline" action="./qnaList">
-		    <div class="input-group input-group-sm col-xs-2" >
+	<!-- 	    <div class="input-group input-group-sm col-xs-2" >
 		    
-		    	<select class="form-control" id="sel1" name="kind">
+		    	<select class="form-control" id="kind" name="kind">
 				    <option value="ti">제목</option>
-				    <option value="co">내용</option>
 				    <option value="wr">작성자</option>
+				     <option value="co">내용</option>
   				</select>
   				</div>
   				
@@ -212,10 +209,11 @@
 			      <div class="input-group-btn">
 			        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			      </div>
-	    		</div>
+	    		</div> -->
 	    		
-	    	<a href="./qnaWrite" class="btn btn-danger">문의하기</a>
-	 	 </form>
+	    	<a href="../qna/qnaWrite?p_num=${product.p_num}" class="btn btn-danger">문의하기</a>
+	    	
+	 	
 	 	 </div>
 	 	 <br>
 		<table class="table table-hover">
@@ -233,7 +231,7 @@
 			<td>
 			<c:catch>
 			 <c:forEach begin="1" end="${voo.depth}">
-			 	--
+			 	
 			 	<!-- &nbsp;&nbsp; //스페이스바역할 -->
 			</c:forEach> 
 			</c:catch>
@@ -248,24 +246,24 @@
 		<div><!-- 페이지 이동을 위한  -->
 		<ul class="pagination">
 			<c:if test="${pager.curBlock gt 1 }">
-			<li><a href="./qnaList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}"> 이전</a></li>
+			<li><a href="./qnaList?curPage=${pager.startNum-1}"> 이전</a></li>
 			</c:if>
 			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<li><a href="./qnaList?curPage=${i} &kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+				<li><a href="./qnaList?curPage=${i} ">${i}</a></li>
 			</c:forEach>
 			<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<li><a href="./qnaList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}"> 다음 </a></li>
+			<li><a href="./qnaList?curPage=${pager.lastNum+1}"> 다음 </a></li>
 			</c:if>
 			</ul>
 		</div>
 		
 		
-		<c:catch>
+	<%-- 	<c:catch>
 		<c:choose>
 			<c:when test="${board eq 'qna'}">
 				<c:if test="${member.id eq 'admin'}">
 					<div>
-						<a href="./${board}Write" class="btn btn-danger">write</a>
+						<a href="../qna/qnaWrite" class="btn btn-danger">문의하기</a>
 					</div>
 				
 				</c:if>
@@ -273,14 +271,14 @@
 			<c:otherwise>
 				<c:if test="${not empty member}">
 					<div>
-						<a href="./${board}Write" class="btn btn-danger">write</a>
+						<a href="../qna/qnaWrite" class="btn btn-danger">문의하기</a>
 					</div>
 				</c:if>
 			</c:otherwise>
 		</c:choose>
-		</c:catch>
+		</c:catch> --%>
 		
-		
+		 </form>
 	</div>
   </div>
 </div>

@@ -21,7 +21,8 @@
 <br>
 <form action="./qnaWrite" id="frm" method="post" enctype="multipart/form-data">
   	
-  
+  	<input  type="text" name="p_num" value="${product.p_num }">
+  	
      <div class="form-group">
       <label for="title">제목:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" >
