@@ -28,7 +28,8 @@
 	<div class="btn">
 	
 		<c:if test="${member.id eq 'admin'}">
-			<a href="./qnaReply?num=${vo.num}" class="btn btn-default">답변달기</a>
+			<%-- <a href="./qnaReply?num=${vo.num}" class="btn btn-default">답변달기</a> --%>
+			<a href="./qnaReply" class="btn btn-default">답변달기</a>
 		</c:if>
 		
 	</div>

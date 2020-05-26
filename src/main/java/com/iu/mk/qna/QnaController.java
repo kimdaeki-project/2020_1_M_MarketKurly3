@@ -60,5 +60,10 @@ public class QnaController {
 		return mv;
 	}
 	
+	@GetMapping("qnaReply")
+	public String qnaReply() throws Exception{
+		return "qna/qnaReply";
+	}
+	
 	
 }

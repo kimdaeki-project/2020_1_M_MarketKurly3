@@ -316,7 +316,6 @@ label {
 	    		
 	    	<a href="../qna/qnaWrite?p_num=${product.p_num}" class="btn btn-danger">문의하기</a>
 	    	
-	 	
 	 	 </div>
 	 	 <br>
 		<table class="table table-hover">
