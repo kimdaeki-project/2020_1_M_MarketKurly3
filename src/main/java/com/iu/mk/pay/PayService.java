@@ -93,7 +93,13 @@ public class PayService {
 		return payDAO.orderNum2(pa); 
 	}
 	  
-	public void paySelect() throws Exception {
+	
+	public List<PayInfoVO> paySelect(long order_num) throws Exception {
+		return payDAO.paySelect(order_num);
 		
+	}
+	public PayInfoVO paySelect2(long order_num) throws Exception {
+		System.out.println("짜증나나나나"+order_num);
+		return payDAO.paySelect2(order_num);
 	}
 } 

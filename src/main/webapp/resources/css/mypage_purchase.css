@@ -71,3 +71,14 @@
 	padding-bottom: 60px;
 }
 
+.c {
+	height:35px;
+	width :70px;
+	font-size : small;
+	background-color: #5f0080;
+	border: 1px solid #5f0080; 
+	border-radius:3px;
+	text-decoration:none;
+	color: white;
+	
+}

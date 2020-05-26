@@ -267,33 +267,27 @@ public class PayController {
 	public ModelAndView paySelect(ModelAndView mv, HttpSession session, long order_num) throws Exception {
 
 		System.out.println(order_num);
+		//HttpSession : getAttribute로 정보보내기
+		//ModelAndView : addObject로 정보보내고, setViewName으로 이동
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
-		// membervo에서 cart_num 넘겨주기
-		/*
-		 * long cart_num = memberVO.getCart_num(); long order_num = (Long)
-		 * session.getAttribute("orderNum");
-		 */
-
-		/*
-		 * System.out.println("order_con : " + order_num);
-		 * System.out.println("cart_con : "+cart_num);
-		 * 
-		 * List<CartVO> ar = payService.finalCart(cart_num, order_num); PayInfoVO infoP
-		 * = (PayInfoVO) payService.totalPrice(order_num);
-		 * 
-		 * System.out.println("ar size : " + ar.size());
-		 * 
-		 * mv.addObject("yeon", ar); mv.addObject("infoP", infoP);
-		 * 
-		 * System.out.println(ar.get(0).getCount() + "cccccc");
-		 * System.out.println(ar.get(0).getProductFileVOs().get(0).getFileName());
-		 * System.out.println(infoP.getTotal_price()+"ppp");
-		 */
+		
+		List<PayInfoVO> ar = payService.paySelect(order_num);
+		PayInfoVO select2 = (PayInfoVO) payService.paySelect2(order_num);
+		
+		System.out.println(select2.getDelivery());
+		System.out.println(select2.getTotal_price());
+		
+		
+		mv.addObject("select", ar);
+		mv.addObject("select2", select2);
+		System.out.println(ar.get(0).getProductFileVOs().get(0).getFileName());
 		mv.setViewName("member/memberMyPage_Purchase1");
 
 		return mv;
 	}
-
+	
+	
 }
 
 

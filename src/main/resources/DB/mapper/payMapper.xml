@@ -57,6 +57,33 @@
 			
 	 </resultMap> 
 	 
+	 <resultMap type="PayInfoVO" id="sy_payselectResult">
+	 		<id column="order_num" property="order_num"/><!-- 기본키 -->
+			<result column="total_price" property="total_price"/><!-- VO에 원래있던애들 -->
+			<result column="delivery" property="delivery"/>
+			<result column="payDate" property="payDate"/>
+			<result column="count" property="count"/> 
+			<result column="pay_price" property="pay_price"/> 
+	 
+	 		<!-- 새로 조인해줄 테이블1 / 주로, 한 구역에 이미지가 2개이상, 주문번호2개이상과 같이 여러개 들어갈때사용-->
+			<collection property="productVOs" javaType="List" ofType="ProductVO">
+				<id column="p_num" property="p_num"/>
+		  		<result column="p_name" property="p_name"/>
+		  		<result column="price" property="price"/>
+		  		<result column="contents" property="contents"/>
+		  		<result column="kind" property="kind"/>
+			</collection>
+			
+			<!-- 새로 조인해줄 테이블2 -->
+			<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
+				<id column="fileName" property="fileName"/>
+		  		<result column="kind" property="kind"/>
+		  		<result column="oriName" property="oriName"/>
+		  		<result column="p_num" property="p_num"/>
+		  		<result column="fileNum" property="fileNum"/>
+			</collection>
+			
+	 </resultMap>
 	 
 	 
   	<resultMap type="CartVO" id="payFinal">
@@ -212,36 +239,27 @@
 		where cart_num=(select cart_num from member where id=#{id}) and paycheck=1)
  	</select>
 
-<!--   
-  <select id="">
+  <!-- Select1 -->
+  <select id="paySelect" parameterType="Long" resultMap="sy_payselectResult">
+		SELECT PF.filename, PCR.p_name, PCR.p_num, PCR.price, PCR.count, PCR.pay_price, PCR.cq_num
+		FROM productfile PF INNER JOIN
+		(SELECT PC.pay_price, PC.cq_num, PC.count, PC.p_num, PR.p_name, PR.price
+		FROM product PR INNER JOIN
+		(SELECT P.pay_price, P.cq_num, C.count, C.p_num 
+		FROM cart C INNER JOIN pay P 
+		ON (C.cq_num = P.cq_num)
+		where order_num=#{order_num}) PC
+		ON (PC.p_num = PR.p_num)) PCR
+		ON (PF.p_num = PCR.p_num)
+  </select>
   
-    		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num, OO.p_name from
-
-
-		(select FP.* from
-			(SELECT PP.* ,PF.fileNum , PF.oriName, PF.fileName from
-			(select * from
-			    (select P.*, rownum R from
-			        (select * from product where
-			             p_num>=10001 order by p_num desc) P)
-			    where R between 1 and 24 ) PP
-			left join productFile PF
-			on(PP.p_num=PF.p_num)
-			order by PP.p_num desc ) FP ) 
-			OO 
-
-		inner join 
-
-		(select FC.* from
-		(select * from
-			(select CA.*, rownum R from
-				(select * from cart where p_num>=10001 order by p_num desc) CA) CAA
-			left join pay  PPA
-			on(CAA.cq_num=PPA.cq_num) ) FC) PO
-		
-	
-		on (OO.p_num=PO.p_num)
-		where cart_num=#{cart_num} and order_num =#{order_num}
-  </select> 
-  -->
+  
+  <!-- Select2 -->
+  
+  <select id="paySelect2" parameterType="Long" resultType="com.iu.mk.pay.PayInfoVO">
+  	select total_price, delivery from payinfo
+	where order_num=#{order_num}
+  </select>
+  
+  
   </mapper>

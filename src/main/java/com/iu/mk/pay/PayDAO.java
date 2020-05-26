@@ -104,6 +104,20 @@ public class PayDAO {
 		return sqlSession.selectList(NAMESPACE + "orderNum2",pa);
 	}
 	
+	public List<PayInfoVO> paySelect(long order_num) throws Exception {
+
+		return sqlSession.selectList(NAMESPACE + "paySelect", order_num);
+	}
+	
+	
+	public PayInfoVO paySelect2(long order_num) throws Exception {
+		System.out.println("짜증나나mmmmmm"+order_num);
+		
+		PayInfoVO a = sqlSession.selectOne(NAMESPACE + "paySelect2", order_num);
+		System.out.println("ㅉㅉㅉㅉ"+a.getDelivery());
+		System.out.println("ㅉㅉㅉㅉ"+a.getTotal_price());
+		return sqlSession.selectOne(NAMESPACE + "paySelect2", order_num);
+	}
 
 
 }
