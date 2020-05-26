@@ -92,9 +92,10 @@ public class MemberController {
 	//중복확인 이므로 post타입만 사용 (checkId,checkEmail)
 	//checkId
 	@PostMapping("checkId")
-	public ModelAndView checkId(MemberVO memberVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView checkId(ModelAndView mv, MemberVO memberVO)throws Exception{
+		//name(key)값과 MemberVO 변수명의 이름이 같기 때문에 매개변수에 String id라고 써주지 않아도 된다.
 		memberVO = (MemberVO)memberService.checkId(memberVO);
+		
 		//null > 가입가능
 		//null이 아니면 중복
 		String result = "0";//사용불가능
@@ -128,15 +129,18 @@ public class MemberController {
 	//memberLogin
 	@GetMapping("memberLogin")
 	public ModelAndView memberLogin(@CookieValue(value = "cId", required =false) String cId , Model model) { 
+		System.out.println("cId: "+cId);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/memberLogin");
 		
 		return mv;
 	}
-	
+
+
 	@PostMapping("memberLogin")
 	public ModelAndView memberLogin2(MemberVO memberVO, HttpSession session, ModelAndView mv, String remember, HttpServletResponse response)throws Exception{
-		
+		//쿠키 생성 : 이름-cId 값-(없음) 으로 생성
 		Cookie cookie = new Cookie("cId", "");
 		//check박스가 체크되어있다면
 		if(remember!=null) {
@@ -144,7 +148,8 @@ public class MemberController {
 		}
 		//memberVO에서 가져온 id정보를 담은 cookie를 응답에추가한다.
 		response.addCookie(cookie);
-		System.out.println(memberService);
+		
+		
 		memberVO = memberService.memberLogin(memberVO);
 
 		 if(memberVO != null) {
