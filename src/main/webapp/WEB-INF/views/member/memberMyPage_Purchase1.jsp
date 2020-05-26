@@ -125,7 +125,9 @@
 				</thead>
 				<tbody>
 				
-				<!-- 상품 -->
+				<!-- 상품 / 원래 status선언 안해도 되는데 (foreach에서 자동으로 index차례대로 불러와줌) 
+				어디서 꼬였는지 var에서 받아오지못해서 select.get(status.index) 이런식으로 불러오게 설정하였다.-->
+				
 				 <c:forEach items="${select} " var="sel" varStatus="status">
 				
 					 <tr> 

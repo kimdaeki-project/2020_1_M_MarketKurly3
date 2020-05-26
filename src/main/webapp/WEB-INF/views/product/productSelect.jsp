@@ -36,13 +36,13 @@
 				
 				
 				
-				<p class="goods_name">
+				<div class="goods_name">
 					<span class="btn_share">
 						<!-- <button id="btnShere">공유하기</button> -->
 					</span>
-					<strong class="name">${product.p_name}</strong>
-					<span>육즙이 가득한 풍성한 맛</span>
-				</p>
+					<strong class="name" style="font-size: xx-large;">${product.p_name} </strong>
+					
+				</div>
 				<!-- <p class="goods_dcinfo">회원할인가</p> -->
 				<p class="goods_price">
 					<span class="dc">

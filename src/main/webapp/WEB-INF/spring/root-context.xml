@@ -10,8 +10,8 @@
 	
 	
 	
-	
-	<!-- Gmail - value값은 db.properties에 있음 -->
+<!-- 	
+	Gmail - value값은 db.properties에 있음
   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
     <property name="host" value="smtp.gmail.com" />
     <property name="port" value="587" />
@@ -24,7 +24,7 @@
     </props>
     </property>
   </bean>
-	
+	 -->
 	
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
