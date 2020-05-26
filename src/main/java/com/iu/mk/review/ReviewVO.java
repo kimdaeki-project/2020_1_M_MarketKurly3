@@ -1,15 +1,38 @@
 package com.iu.mk.review;
 
+import java.sql.Date;
+
 import com.iu.mk.board.BoardVO;
 
 public class ReviewVO extends BoardVO{
 	private long p_num;
 	private String p_name;
 	private long review_num;
+	private Date rDate;
+	
+	private String fileName;
 	
 	
 	
 	
+	
+	
+
+	public Date getrDate() {
+		return rDate;
+	}
+
+	public void setrDate(Date rDate) {
+		this.rDate = rDate;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
 	public long getReview_num() {
 		return review_num;

@@ -15,10 +15,14 @@
 				margin:0 auto;
 			}
 			
-			.tab-content	{
-				width:1170px;
+
+			
+			.tab-wrapper	{
+				width:1010x;
 				margin:0 auto;
+				overflow:hidden;
 			}
+			
 		
 			#menu1 input	{
 				
@@ -82,6 +86,27 @@ label {
     margin-top: 0;
   }
 }
+
+
+
+
+
+
+			.tab-content	{
+				width:100%;
+				margin:0 auto;
+				display: inline-block;
+				overflow: hidden;
+			}
+			
+			.tab-content>div	{
+				width:1010px;
+				margin:0 auto;
+				overflow: hidden;
+			}
+
+
+
 		</style>
 	</head>
 <body onload="init();">
@@ -214,108 +239,83 @@ label {
   	 <div class="contents">
   	 
   	 	  <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-</ul>
+			  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+			  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+			  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+			</ul>
 
-<div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
-    <h3>HOME</h3>
-    <p>Some content.</p>
-    
-
-  	 
-  	 
-	 	<div class="goods-view-infomation detail_wrap_outer">
-	 		<ul class="goods-view-infomation-tab-group">
-	 		<li class="goods-view-infomation-tab">
-	 			<h3>상품 설명</h3>
-	 		</li>
-	 		</ul>
-	 	</div>
-	 	
-	 	<div class="cimg">  
-	 		<div class="contentsImg">
-	 			<span>${product.contents}</span>
-	 			
-	 		</div>
-	 	</div>
-	    	
-	    	
-	    	
-	    	
-	    	    
-    <!-- jisu -->
-    
-  </div>
-  <div id="menu1" class="tab-pane fade">
-    <h3>Menu 1</h3>
-    <p>Some content in menu 1.</p>
-    
-    
-    <form action="action_page.php">
-    <div class="row">
-      <div class="col-25">
-        <label for="fname">First Name</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Last Name</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="subject">Subject</label>
-      </div>
-      <div class="col-75">
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <input type="submit" value="Submit">
-    </div>
-  </form>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
+	<div class="tab-content">
+	
+	  <div id="home" class="tab-pane fade in active">
+	    <h3>HOME</h3>
+	    <p>Some content.</p>
+	    
+	
+	  	 
+	  	 
+		 	<div class="goods-view-infomation detail_wrap_outer">
+		 		<ul class="goods-view-infomation-tab-group">
+		 		<li class="goods-view-infomation-tab">
+		 			<h3>상품 설명</h3>
+		 		</li>
+		 		</ul>
+		 	</div>
+		 	
+		 	<div class="cimg">  
+		 		<div class="contentsImg">
+		 			<span>${product.contents}</span>
+		 			
+		 		</div>
+		 	</div>
+		    	
+		    	
+		    
+	    
+	  </div>
+	  
+	  <!-- jisu -->
+	  <div id="menu1" class="tab-pane fade">
+	  
+	  		<div class="section">
+	  		<c:forEach items="${review}" var="ro"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
+					<div class="list_p">
+						<div class="list_p_name" style="font-weight: bold; font-size: large;"><%-- ${vo.productVOs['0'].p_name} 외 ${vo.count}건  --%><span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
+						<div class="list_p_content">
+							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${ro.fileName} --%>" width="67px" height="79px"> </div>
+							<div class="list_p_contents1">
+								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">작성자</span> &ensp; <span style="font-weight: bold;">${ro.id}</span></div>
+								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">상품 이름</span> &ensp; <span style="font-weight: bold;">${ro.p_name}</span></div>
+								<div class="list_p_contents2"><span style="font-size: small;">제목</span> &ensp; <span style="font-weight: bold;">${ro.title}</span></div>
+								<div class="list_p_contents2"><span style="font-size: small;">내용</span> &ensp; <span style="font-weight: bold;">${ro.contents}</span></div>
+							</div>
+						</div>
+					</div> 		
+			</c:forEach>
+			
+			
+			
+			
+	  		</div>
+	  </div>
   <!-- jisu -->
   
   
-  <div id="menu2" class="tab-pane fade">
-    <h3>Menu 2</h3>
-    <p>Some content in menu 2.</p>
-  </div>
-</div>
+  
+  
+  
+  
+  
+		  <div id="menu2" class="tab-pane fade">
+		    <h3>Menu 2</h3>
+		    <p>Some content in menu 2.</p>
+		  </div>
+		  
+		  
+		  
+		  
+		  
+		</div>
+	
 	  
 	    	
 	    	

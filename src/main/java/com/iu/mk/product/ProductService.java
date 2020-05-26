@@ -1,11 +1,9 @@
 package com.iu.mk.product;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.mk.product.productfile.ProductFileDAO;
 import com.iu.mk.product.productfile.ProductFileVO;
+import com.iu.mk.review.ReviewVO;
 import com.iu.mk.util.FileSaver;
 import com.iu.mk.util.Pager;
 
@@ -156,6 +155,12 @@ public class ProductService {
 		productFileDAO.fileDeleteAll(p_num);
 		
 		return productDAO.productDelete(p_num);
+	}
+	
+	
+	//review 가져오기
+	public List<ReviewVO> selectReview(long p_num) throws Exception{
+		return productDAO.selectReview(p_num);
 	}
 	
 	

@@ -56,22 +56,23 @@ public class ReviewController {
 		int result = reviewService.reviewWrite(reviewVO, files);
 		
 		
-		
-		
-		
-		
-		
-		
 		System.out.println("result : " + result);
 	
 		
-		mv.addObject("review", reviewVO);
-		mv.setViewName("product/productSelect?p_num="+reviewVO.getP_num());
+		mv.addObject("p_num", reviewVO.getP_num());
+		mv.setViewName("review/reviewSuccess");
 		
 		
 		return mv;
 	}
 	
 	
+	@PostMapping("reviewSuccess")
+	public ModelAndView reviewSuccess(long p_num, ModelAndView mv) throws Exception{
+		
+		mv.addObject("p_num", p_num);
+		mv.setViewName("review/reviewSuccess");
+		return mv;
+	}
 	
 } 

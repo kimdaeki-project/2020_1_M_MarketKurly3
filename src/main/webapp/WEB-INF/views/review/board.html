@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" href="./css/layout.css">
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		<link rel="stylesheet" type="text/css" href="./css/board.css">
+	</head>
+	<body>
+		<header>
+			<div class="userMenu">
+				<ul class="listMenu">
+					<li><a href="./join.html">회원가입</a></li>
+					<li><a href="./login.html">로그인</a></li>
+					<li><a href="./board.html">고객센터</a></li>
+					<li><a href="#">배송지역 검색</a></li>
+				</ul>
+			</div>
+			<div class="headerLogo">
+				<a href="./index.html"><img alt="" src="./images/logo.png"></a>
+			</div>
+			<div class="gnb">
+				<ul>
+					<li class="menu1"><a href="#">전체 카테고리</a></li>
+					<li><a href="#">신상품</a></li>
+					<li><a href="#">베스트</a></li>
+					<li><a href="#">알뜰쇼핑</a></li>
+					<li><a href="#">이벤트</a></li>
+				</ul>
+				<div class="side_search">
+					<form class="">
+						<input type="text" id="search" class="sc" value="데일리장보기">
+						<input type="image" id="searchIcon" class="sicon" src="./images/ico_search.png">
+					</form>
+				</div>
+				<div class="cart_count">
+					<a href="#"><img alt="" src="./images/ico_cart.png"></a>
+				</div>
+			</div>
+		</header>
+		<section class="board">
+			<div class="page_article">
+				<div class="snb">
+					<h2 class="tit_snb">고객센터</h2>
+					<div class="inner_snb">
+						<ul class="list_menu">
+							<li class="on">
+								<a href="#">공지사항</a>
+							</li>
+							<li>
+								<a href="#">자주하는 질문</a>
+							</li>
+							<li>
+								<a href="#">1:1 문의</a>
+							</li>
+							<li>
+								<a href="#">상품 제안</a>
+							</li>
+							<li>
+								<a href="#">에코포장 피드백</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#">
+						<span>도움이 필요하신가요?</span>
+						1:1 문의하기
+					</a>
+				</div>
+				<div class="page_section">
+					<div class="head_article">
+						<h2>자주하는 질문
+							<span>고객님들께서 가장 자주하는 질문을 모두 모았습니다</span>
+						</h2>
+					</div>
+					<form name="frmList" action="" onsubmit="">
+						<table>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>조회</th>
+							</tr>
+							<tr>
+								<td width="50">공지</td>
+								<td width="100"><a href="#">제목쓰기</a></td>
+								<td width="100" class="eng2">작성자</td>
+								<td width="50" class="eng2">2020-03-26</td>
+								<td width="30" class="eng2">222</td>
+							</tr>
+							<tr>
+								<td width="50">공지</td>
+								<td width="100"><a href="#">제목쓰기</a></td>
+								<td width="100" class="eng2">작성자</td>
+								<td width="50" class="eng2">2020-03-26</td>
+								<td width="30" class="eng2">222</td>
+							</tr>
+							<tr>
+								<td width="50">공지</td>
+								<td width="100"><a href="#">제목쓰기</a></td>
+								<td width="100" class="eng2">작성자</td>
+								<td width="50" class="eng2">2020-03-26</td>
+								<td width="30" class="eng2">222</td>
+							</tr>
+							<tr>
+								<td width="50">공지</td>
+								<td width="100"><a href="#">제목쓰기</a></td>
+								<td width="100" class="eng2">작성자</td>
+								<td width="50" class="eng2">2020-03-26</td>
+								<td width="30" class="eng2">222</td>
+							</tr>
+						</table>
+						<div class="layout-pagination">
+							<div class="pagediv">
+								<a href="#"></a>
+								<a href="#" class="pagination-button first-page">맨 처음 페이지로 가기</a>
+								<a href="#" class="pagination-button prev-page">이전 페이지로 가기</a>
+								<a href="#" class="pagination-button number">1</a>
+								<a href="#" class="pagination-button number">2</a>
+								<a href="#" class="pagination-button number">3</a>
+								<a href="#" class="pagination-button number">4</a>
+								<a href="#" class="pagination-button number">5</a>
+								<a href="#" class="pagination-button number">6</a>
+								<a href="#" class="pagination-button number">7</a>
+								<a href="#" class="pagination-button number">8</a>
+								<a href="#" class="pagination-button number">9</a>
+								<a href="#" class="pagination-button number">10</a>
+								<a href="#" class="pagination-button next-page">다음 페이지로 가기</a>
+								<a href="#" class="pagination-button last-page">맨 끝 페이지로 가기</a>
+							</div>
+						</div>
+						<table class="board_search">
+							<tr>
+								<td class="input_txt">
+									<img src="./images/ico_function.gif">검색어
+								</td>
+								<td class="stxt">
+									<input type="checkbox" name="">이름&nbsp
+									<input type="checkbox" name="">제목&nbsp
+									<input type="checkbox" name="">내용&nbsp
+								</td>
+								<td class="input_txt">&nbsp</td>
+								<td>
+									<div class="search_bt">
+										<a href="#"><img src="./images/search.png"></a>
+										<input type="text" name="" value="">
+									</div>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="inner_footer">
+				<div class="footer_cc">
+					<h2>고객행복센터</h2>
+					<div class="cc_view cc_call">
+						<h3>
+							<span>1644-1107</span>
+						</h3>
+						<dl>
+							<dt>365 고객센터</dt>
+							<dt>오전 7시 - 오후 7시</dt>
+						</dl>
+					</div>
+					<div class="cc_view cc_kakao">
+						<h3>
+							<a href="#">카카오톡 문의</a>
+						</h3>
+						<dl>
+							<dt>365 고객센터</dt>
+							<dt>오전 7시 - 오후 7시</dt>
+						</dl>
+					</div>
+					<div class="cc_view cc_qna">
+						<h3>
+							<a href="#">1:1 문의</a>
+						</h3>
+						<dl>
+							<dt>24시간 접수 가능</dt>
+							<dt>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</dt>
+						</dl>
+					</div>
+				</div>
+				
+				
+				<div class="company">
+					<ul class="list">
+						<li><a href="#">컬리소개</a></li>
+						<li><a href="#">컬리소개영상</a></li>
+						<li><a href="#">인재채용</a></li>
+						<li><a href="#">이용약관</a></li>
+						<li><a href="#">개인정보처리방침</a></li>
+						<li><a href="#">이용안내</a></li>
+					</ul>
+					법인명 (상호) : 주식회사 컬리 
+					<span class="bar">I</span> 사업자등록번호 : 261-81-23567 
+					<a href="#" class="link">사업자정보 확인</a><br>
+					통신판매업 : 제 2018-서울강남-01646 호 
+					<span class="bar">I</span> 개인정보보호책임자 : 이지훈<br>
+					주소 : 서울시 도산대로 16길 20, 이래빌딩 B1 ~ 4F 
+					<span class="bar">I</span> 대표이사 : 김슬아<br>
+					입점문의 : 
+					<a href="#" class="link">입점문의하기</a>
+					<span class="bar">I</span> 제휴문의 : 
+					<a href="#" class="link">business@kurlycorp.com</a><br>
+					채용문의 : 
+					<a href="#" class="link">recruit@kurlycorp.com</a><br>
+					팩스: 070 - 7500 - 6098 
+					<span class="bar">I</span> 이메일 : 
+					<a href="#" class="link">help@kurlycorp.com</a>
+					<em>© KURLY CORP. ALL RIGHTS RESERVED</em>
+					<ul class="list_sns">
+						<li>
+							<a href="#"><img src="./images/ico_instagram.jpg" alt=""></a>
+						</li>
+						<li>
+							<a href="#"><img src="./images/ico_fb.jpg" alt=""></a>
+						</li>
+						<li>
+							<a href="#"><img src="./images/ico_blog.jpg" alt=""></a>
+						</li>
+						<li>
+							<a href="#"><img src="./images/ico_naverpost.jpg" alt=""></a>
+						</li>
+						<li>
+							<a href="#"><img src="./images/ico_youtube.jpg" alt=""></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

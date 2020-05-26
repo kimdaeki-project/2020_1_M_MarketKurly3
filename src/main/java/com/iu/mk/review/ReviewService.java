@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.mk.board.BoardService;
 import com.iu.mk.review.reviewfile.ReviewFileDAO;
 import com.iu.mk.review.reviewfile.ReviewFileVO;
 import com.iu.mk.util.FileSaver;
 
 
 @Service
-public class ReviewService {
+public class ReviewService{
 	
 
 	@Autowired

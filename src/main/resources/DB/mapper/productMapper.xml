@@ -23,6 +23,31 @@
   		<result column="kind" property="kind"/> 
 	</collection>
   </resultMap>
+  
+  
+  
+  <resultMap type="ReviewVO" id="selReview">
+  	<id column="review_num" property="review_num"/>
+  	<result column="p_num" property="p_num"/>
+  	<result column="p_name" property="p_name"/>
+  	<result column="title" property="title"/>
+  	<result column="contents" property="contents"/>
+  	<result column="rDate" property="rDate"/>
+  	<result column="hit" property="hit"/>
+  	<result column="ref" property="ref"/>
+  	<result column="step" property="step"/>
+  	<result column="depth" property="depth"/>
+  	
+  	
+  	<result column="fileName" property="fileName"/>
+
+  </resultMap>
+  
+  
+  
+  
+  
+  
    
    <sql id="search">
  		like '%'||#{pager.search} ||'%'
@@ -94,7 +119,15 @@
 	</select>
   	
   	
-  	
+  	<!-- review 가져오기 -->
+  	<select id="selectReview" parameterType="Long" resultMap="selReview">
+  		select  B.*  from
+		(select R.review_num,  R.p_num, R.p_name, R.title, R.contents, R.id, R.rDate, RF.fileName from
+		review R left join reviewFile RF
+		on R.review_num = RF.review_num) B 
+		where B.p_num=#{p_num}
+		order by review_num desc
+  	</select>
 	
   
   </mapper>

@@ -15,10 +15,10 @@ public interface BoardService {
 	public BoardVO boardSelect(long num) throws Exception;
 	
 	//Insert
-	public int boardWrite(BoardVO boardVO, MultipartFile [] files) throws Exception;
+	public int boardWrite(BoardVO boardVO) throws Exception;
 	
 	//Update
-	public int boardUpdate(BoardVO boardVO, MultipartFile [] files) throws Exception;
+	public int boardUpdate(BoardVO boardVO) throws Exception;
 	
 	//Dalete
 	public int boardDelete(long num) throws Exception;

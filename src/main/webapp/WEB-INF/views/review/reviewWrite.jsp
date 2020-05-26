@@ -52,7 +52,7 @@
       <textarea rows="20" cols=""  class="form-control" id="contents" placeholder="Enter Contents" name="contents"></textarea>
     </div>
       
-
+	<input type="hidden" class="form-control" id="p_num" placeholder="Enter Title" name="p_num" value="${review.p_num}">
    
     <input type="button" id="btn" class="btn btn-default" value="Write">
    
