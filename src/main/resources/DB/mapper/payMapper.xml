@@ -24,7 +24,9 @@
 	 </resultMap> 
 	 
 	 <!-- soyeon -->
-	 <!-- innerjoin(crossjoin)한 리스트 -->
+
+
+	 <!-- innerjoin(crossjoin)한 리스트 / 기존 vo + 새로추가할 데이터를 적으면 된다.-->
 	   <resultMap type="PayInfoVO" id="sy_paylistResult">
 	   
 	 		<id column="order_num" property="order_num"/><!-- 기본키 -->
@@ -34,7 +36,7 @@
 			 <result column="count" property="count"/> 
 			
 			
-			<!-- 새로 조인해줄 테이블1 -->
+			<!-- 새로 조인해줄 테이블1 / 주로, 한 구역에 이미지가 2개이상, 주문번호2개이상과 같이 여러개 들어갈때사용-->
 			<collection property="productVOs" javaType="List" ofType="ProductVO">
 				<id column="p_num" property="p_num"/>
 		  		<result column="p_name" property="p_name"/>
@@ -52,12 +54,37 @@
 		  		<result column="fileNum" property="fileNum"/>
 			</collection>
 			
-
-			
-			
-			
 			
 	 </resultMap> 
+	 
+	 <resultMap type="PayInfoVO" id="sy_payselectResult">
+	 		<id column="order_num" property="order_num"/><!-- 기본키 -->
+			<result column="total_price" property="total_price"/><!-- VO에 원래있던애들 -->
+			<result column="delivery" property="delivery"/>
+			<result column="payDate" property="payDate"/>
+			<result column="count" property="count"/> 
+			<result column="pay_price" property="pay_price"/> 
+	 
+	 		<!-- 새로 조인해줄 테이블1 / 주로, 한 구역에 이미지가 2개이상, 주문번호2개이상과 같이 여러개 들어갈때사용-->
+			<collection property="productVOs" javaType="List" ofType="ProductVO">
+				<id column="p_num" property="p_num"/>
+		  		<result column="p_name" property="p_name"/>
+		  		<result column="price" property="price"/>
+		  		<result column="contents" property="contents"/>
+		  		<result column="kind" property="kind"/>
+			</collection>
+			
+			<!-- 새로 조인해줄 테이블2 -->
+			<collection property="productFileVOs" javaType="List" ofType="ProductFileVO">
+				<id column="fileName" property="fileName"/>
+		  		<result column="kind" property="kind"/>
+		  		<result column="oriName" property="oriName"/>
+		  		<result column="p_num" property="p_num"/>
+		  		<result column="fileNum" property="fileNum"/>
+			</collection>
+			
+	 </resultMap>
+	 
 	 
   	<resultMap type="CartVO" id="payFinal">
 	   
@@ -194,13 +221,48 @@
 		where order_num=(select order_num from payInfo where order_num=#{m}))) CO
   	</select>
   	
-  <!-- soyeon : 아이디로 주문번호 가져오기 -->
-  <select id="orderNum2" parameterType="String" resultType="Long">
-  	select order_num from pay where cq_num=any(
+  <!-- soyeon : 아이디로 주문번호 가져오기 / List<Long>타입 - DAO에서 selectList로 받아오기 때문에 result는 Long타입만 쓰면 된다.-->
+  <select id="orderNum2" parameterType="java.util.Map" resultType="Long">
+  	select order_num from
+  	(select N.* , rownum R from
+  	(select distinct order_num from pay where cq_num=any(
 	select cq_num from cart 
 	where cart_num=(select cart_num from member 
-	where id=#{id})) order by order_num desc
+	where id=#{id})) order by order_num desc) N)
+	where R between #{pager.startRow} and #{pager.lastRow}
   
   </select>
+  
+  
+  <!--  전체 글의 갯수 가져오기   --> 	
+  	<select id="payCount" parameterType="String" resultType="Long">
+  		select count(DISTINCT
+        order_num) from pay
+  		where cq_num in (select cq_num from cart
+		where cart_num=(select cart_num from member where id=#{id}) and paycheck=1)
+ 	</select>
+
+  <!-- Select1 -->
+  <select id="paySelect" parameterType="Long" resultMap="sy_payselectResult">
+		SELECT PF.filename, PCR.p_name, PCR.p_num, PCR.price, PCR.count, PCR.pay_price, PCR.cq_num
+		FROM productfile PF INNER JOIN
+		(SELECT PC.pay_price, PC.cq_num, PC.count, PC.p_num, PR.p_name, PR.price
+		FROM product PR INNER JOIN
+		(SELECT P.pay_price, P.cq_num, C.count, C.p_num 
+		FROM cart C INNER JOIN pay P 
+		ON (C.cq_num = P.cq_num)
+		where order_num=#{order_num}) PC
+		ON (PC.p_num = PR.p_num)) PCR
+		ON (PF.p_num = PCR.p_num)
+  </select>
+  
+  
+  <!-- Select2 -->
+  
+  <select id="paySelect2" parameterType="Long" resultType="com.iu.mk.pay.PayInfoVO">
+  	select total_price, delivery from payinfo
+	where order_num=#{order_num}
+  </select>
+  
   
   </mapper>

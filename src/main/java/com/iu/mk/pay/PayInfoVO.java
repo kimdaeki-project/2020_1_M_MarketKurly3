@@ -13,7 +13,10 @@ public class PayInfoVO {
 	private Long delivery;
 	private Date payDate;
 	private Long count;
-
+	private Long pay_price;
+	
+	private List<ProductVO> productVOs;
+	private List<ProductFileVO> productFileVOs;
 	
 	//외부테이블에서 받아온 정보들(Product, ProductFile)
 
@@ -24,9 +27,15 @@ public class PayInfoVO {
 		this.count = count;
 	}
 	
-	
-	private List<ProductVO> productVOs;
-	private List<ProductFileVO> productFileVOs;
+	public Long getPay_price() {
+		return pay_price;
+	}
+	public void setPay_price(Long pay_price) {
+		this.pay_price = pay_price;
+	}
+
+
+
 
 
 	public List<ProductVO> getProductVOs() {
