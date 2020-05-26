@@ -10,15 +10,66 @@
 		
 		<c:import url="../template/boot.jsp"></c:import>
 		<style type="text/css">
-			.nav-tabs{
-				width:1170px;
-				margin:0 auto;
-			}
+
 			
-			.tab-content	{
-				width:1170px;
-				margin:0 auto;
-			}
+			/* Style inputs, select elements and textareas */
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+.nav-tabs input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
 
 		</style>
 	</head>
@@ -152,6 +203,7 @@
   	 <div class="contents">
   	 
   	 	  <ul class="nav nav-tabs">
+
   <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
   <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
   <li><a data-toggle="tab" href="#menu2">상품 문의</a></li>
@@ -184,7 +236,58 @@
     
   </div>
   <div id="menu1" class="tab-pane fade">
-  
+	  
+	  
+	  	  	<p class="reviewTitle">PRODUCT REVIEW</p>
+	  		<p>
+	  			<span class="reviewCon">· 상품에 대한 후기를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</span>
+	  			<span class="reviewCon">· 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1 문의에 남겨주세요.</span>
+	  		</p>
+	  		<div class="section">
+	  		
+
+	  		
+	  		<table>
+	  		
+	  		
+	  		<c:forEach items="${review}" var="ro"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
+				<%-- 	<div class="list_p">
+						<div class="list_p_name" style="font-weight: bold; font-size: large;">${vo.productVOs['0'].p_name} 외 ${vo.count}건 <span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
+						<div class="list_p_content">
+							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${ro.fileName}" width="67px" height="79px"> </div>
+							<div class="list_p_contents1">
+								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">작성자</span> &ensp; <span style="font-weight: bold;">${ro.id}</span></div>
+								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">상품 이름</span> &ensp; <span style="font-weight: bold;">${ro.p_name}</span></div>
+								<div class="list_p_contents2"><span style="font-size: small;">제목</span> &ensp; <span style="font-weight: bold;">${ro.title}</span></div>
+								<div class="list_p_contents2"><span style="font-size: small;">내용</span> &ensp; <span style="font-weight: bold;">${ro.contents}</span></div>
+							</div>
+						</div>
+					</div>  --%>
+					
+					<tr class="reviewList">
+						<td>
+							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}" width="67px" height="79px"> </div>
+						</td>
+						
+						<td class="second">
+							<div class="list_p_contents2"><span class="ti">상품 이름</span><span>${ro.p_name}</span></div>
+							<div class="list_p_contents2"><span class="ti">제목</span><span>${ro.title}</span></div>
+							<div class="list_p_contents2"><span class="ti">내용</span><span>${ro.contents}</span></div>
+						</td>
+						
+						<td>
+							<p><span class="ti">작성자</span><span>${ro.id}</span></p>
+							<p><span class="ti">작성날짜</span><span>${ro.rDate}</span></p>
+							<p><span class="ti">조회수</span><span>${ro.hit}</span></p>
+						</td>
+					</tr>		
+			</c:forEach>
+			
+			
+			</table>
+			
+	  		</div>  
+
   </div>
   
   <div id="menu2" class="tab-pane fade">
@@ -282,6 +385,7 @@
 	</div>
   </div>
 </div>
+
 	  
 	    	
 	    	

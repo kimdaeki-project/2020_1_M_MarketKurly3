@@ -23,7 +23,15 @@
   		<typeAlias type="com.iu.mk.pay.PayVO" alias="PayVO"/>
   		<typeAlias type="com.iu.mk.pay.PayInfoVO" alias="PayInfoVO"/>
   		
+
   		<typeAlias type="com.iu.mk.product.QnaVO" alias="QnaVO"/>
+
+  		
+  		
+  		<typeAlias type="com.iu.mk.review.ReviewVO" alias="ReviewVO"/>
+  		<typeAlias type="com.iu.mk.review.reviewfile.ReviewFileVO" alias="ReviewFileVO"/>
+  		
+
 
 
   	</typeAliases>

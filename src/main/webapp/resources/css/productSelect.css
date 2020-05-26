@@ -21,6 +21,7 @@ button	{
 }
 /*상세 창 수정*/
 .contents {
+	width:1170px;
 	margin:0 auto;
 	height: 100%;
 }
@@ -39,7 +40,7 @@ button	{
 .goods-view-infomation-tab-group {
     border-bottom: 1px solid #bfbfbf;
     width: 1040px;
-    margin-left: 385px;
+
    
 }
 .cimg{
@@ -52,11 +53,11 @@ button	{
 	height:1000px;
 }
 
-.contentsImg span p{
+/* .contentsImg span p{
 	margin-top:100px;
 	margin-left: 180px;;
 }
-
+ */
 
 
 
@@ -554,3 +555,172 @@ product list
     font-weight: 300;
 }
  */
+ 
+ 
+ 
+ 
+
+ 
+ .mypage_contents3 {
+		width:1050px;
+		margin:0 auto;
+		height:100%;
+		overflow:hidden;
+		/*  background-color: skyblue;  */
+		padding: 30px 180px 200px 210px;
+}
+
+.line_p {
+	height : 100%; 
+	width: 100%; 
+	border-top: 2px solid #5f0080; 
+	background-color: white; 
+	padding : 30px 10px;
+}
+
+.listp {
+	font-weight: bold;
+	color: #808080;
+}
+.list_p {
+	height : 140px;
+	width : 1010px;
+	background-color: white; 
+	border-bottom: 1px solid #cccccc; 
+	padding: 0 20px;
+}
+
+
+.list_p table	{
+		border-bottom:1px solid #000;
+}
+
+.list_p table td	{
+	padding:0;
+	border-bottom:1px solid #000;
+}
+
+.list_p tr	{
+	border-bottom:1px solid #ddd;
+	
+}
+
+.reviewList	{
+	
+	border-bottom:1px solid #ddd;
+}
+
+.reviewList p {
+	width:150px;
+}
+
+
+.reviewList .ti	{
+	display:block;
+	width:75px;
+	font-weight: 700;
+	padding:0;
+	float:left;
+}
+ 
+.reviewList p span	{
+	display:block;
+	float:left;
+}
+
+
+.list_p_name {
+	padding:0;
+}
+.list_p_name2 {
+	float: right;
+}
+
+
+.list_p_content {
+	padding: 10px;
+	width: 100%;
+	
+}
+
+.list_p_photo {
+	float: left;
+	width:150px;
+	height:150px;
+	margin-right:40px;
+}
+
+.list_p_photo img	{
+	
+	width:100px;
+	height:100px;
+	margin: 25px 0 0 40px;
+	overflow: hidden;
+}
+
+
+.list_p_contents1 {
+	float: right;
+	width:85%;
+	height:100%;
+}
+.list_p_contents2 {
+	width:670px;
+	height:33%;	
+}	
+
+
+.section{
+
+border-top:2px solid #522772;
+width:1010px; 
+margin:0 auto;
+margin-top:30px;
+
+
+}
+
+.nav-tabs{
+	width:1170px;
+	margin:0 auto;
+}
+
+
+
+.tab-wrapper	{
+	width:1010x;
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.tab-content	{
+	width:100%;
+	margin:0 auto;
+	display: inline-block;
+	overflow: hidden;
+	margin-bottom:100px;
+}
+
+.tab-content>div	{
+	width:1010px;
+	margin:0 auto;
+	overflow: hidden;
+}
+			
+#menu1	{
+	margin-top:30px;
+	
+}
+.reviewTitle	{
+	font-size:13px;
+	font-weight:700;
+	padding-bottom:5px;
+}
+
+.reviewCon	{
+	display:block;
+	color:#666;
+	font-size: 12px;
+	line-height: 18px;
+}
+

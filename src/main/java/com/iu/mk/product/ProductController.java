@@ -1,23 +1,26 @@
 package com.iu.mk.product;
 
-import java.util.List;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.iu.mk.product.productfile.ProductFileService;
 import com.iu.mk.product.productfile.ProductFileVO;
 import com.iu.mk.product.QnaService;
 import com.iu.mk.product.QnaVO;
+
+import com.iu.mk.review.ReviewVO;
+
 import com.iu.mk.util.Pager;
 
 @Controller
@@ -100,7 +103,9 @@ public class ProductController {
 	
 	
 	@GetMapping("productSelect")
-	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num,Pager pager) throws Exception {
+
+	public ModelAndView productSelect(ModelAndView mv, ProductVO productVO, long p_num, ReviewVO reviewVO,Pager pager) throws Exception {
+
 		//상품을 클릭하면 그 상품의 정보가 parameter로 넘어와줘야됨
 		
 		productVO.setP_num(p_num);
@@ -117,6 +122,11 @@ public class ProductController {
 		mv.addObject("qlist",ar);
 		mv.addObject("pager",pager);
 		
+		//review 받아 오기
+		List<ReviewVO> review = productService.selectReview(p_num);
+		System.out.println("rsize : " + review.size());
+		
+		mv.addObject("review", review);
 		mv.addObject("product", productVO);
 		mv.setViewName("product/productSelect");
 		

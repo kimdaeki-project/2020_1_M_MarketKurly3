@@ -147,6 +147,7 @@
 									<div class="dp_title">
 									
 									<c:forEach items="${select.get(status.index).productVOs}" var="prn">
+										<input type="hidden" value="${prn.p_num}" name="p_num">
 										<a href="링크" style="color:#333">${prn.p_name}</a>
 									</c:forEach>
 									
@@ -163,7 +164,7 @@
 					
 					<td>${select.get(status.index).pay_price}</td>
 					
-					<td><button type="button" class="c"><span>후기작성</span></button></td>					
+					<td><button type="button" class="c" onclick="location.href='../review/reviewWrite?p_num='+${select.get(status.index).productVOs['0'].p_num}+'&p_name='+'${select.get(status.index).productVOs['0'].p_name}'"><span>후기작성</span></button></td>					
 <!-- 
 						<td rowspan="1">
 						 <div class="deliver_price">

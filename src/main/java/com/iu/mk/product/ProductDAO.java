@@ -8,9 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.mk.review.ReviewVO;
 import com.iu.mk.util.Pager;
-
-import com.iu.mk.product.ProductVO;
 
 @Repository
 public class ProductDAO {
@@ -60,6 +59,12 @@ public class ProductDAO {
 	
 	public int productDelete(long p_num) throws Exception{
 		return sqlSession.delete(NAMESPACE+"productDelete",p_num);
+	}
+	
+	
+	public List<ReviewVO> selectReview(long p_num) throws Exception {
+		System.out.println("serP_num : " + p_num);
+		return sqlSession.selectList(NAMESPACE + "selectReview", p_num);
 	}
 	
 }
