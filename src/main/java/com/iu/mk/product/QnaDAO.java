@@ -6,8 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.iu.mk.board.BoardDAO;
-import com.iu.mk.board.BoardVO;
+
 import com.iu.mk.util.Pager;
 
 @Repository

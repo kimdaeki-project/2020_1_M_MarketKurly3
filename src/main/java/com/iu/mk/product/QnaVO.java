@@ -2,7 +2,7 @@ package com.iu.mk.product;
 
 import java.sql.Date;
 
-import com.iu.mk.board.BoardVO;
+
 
 public class QnaVO {
 	private long num;

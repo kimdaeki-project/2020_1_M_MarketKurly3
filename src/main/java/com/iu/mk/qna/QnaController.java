@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iu.mk.board.BoardVO;
+
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.product.QnaService;
 import com.iu.mk.product.QnaVO;
