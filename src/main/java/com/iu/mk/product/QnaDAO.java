@@ -40,6 +40,10 @@ public class QnaDAO  {
 	public int qnaWrite(QnaVO qnaVO) throws Exception {
 		return sqlSession.insert(Namespace+"qnaWrite",qnaVO);
 	}
-
+	
+	
+	public QnaVO qnaSelect(long num) throws Exception{
+		return sqlSession.selectOne(Namespace+"qnaSelect",num);
+	}
 	
 }

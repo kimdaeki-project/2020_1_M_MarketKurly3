@@ -31,6 +31,9 @@
   	insert into qna values (#{num},#{title},#{writer},#{contents},sysdate,1,1,1,1,#{p_num})
   	
   </insert>
-  
+  	
+  	<select id="qnaSelect" resultType="QnaVO">
+  		select * from qna where num=#{num}
+  	</select>
   
   </mapper>

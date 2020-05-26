@@ -49,4 +49,16 @@ public class QnaController {
 		return path;
 	}
 	
+	
+	@GetMapping("qnaSelect")
+	public ModelAndView qnaSelect(long num, ModelAndView mv) throws Exception{
+		
+		QnaVO qnaVO = qnaService.qnaSelect(num);
+		mv.addObject("vo" ,qnaVO);
+		mv.setViewName("qna/qnaSelect");
+		
+		return mv;
+	}
+	
+	
 }

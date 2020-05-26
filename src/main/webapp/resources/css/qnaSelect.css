@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+.container{
+	margin-top:50px;
+	margin-bottom: 100px;	
+}
+
+.panel-default{
+	margin:70px;
+	
+}
+
+.panel{
+	margin-bottom: 50px; 
+}
+
+.btn{
+	margin-left: 485px;
+}
+
+
+.btn-info{
+	color: #fff;
+    background-color: #5f0080;
+    border-color: #5f0080;
+}
