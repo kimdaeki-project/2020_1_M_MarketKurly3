@@ -58,6 +58,19 @@ public class PayController {
 		return mv;
 	}
 
+	@GetMapping("test")
+	public ModelAndView testPage(long totalPrice, ModelAndView mv) throws Exception{
+		System.out.println(totalPrice + "......");
+		mv.addObject("totalPrice", totalPrice);
+		mv.setViewName("pay/payInsert");
+		return mv;
+		
+	}
+	
+	
+	
+	
+	
 	@PostMapping("payInsert")
 	public ModelAndView pay(int totalPrice, CartVO cartVO, HttpSession session, ModelAndView mv) throws Exception {
 		System.out.println("payy");
@@ -126,7 +139,7 @@ public class PayController {
 		 */
 
 		System.out.println("음..");
-
+		System.out.println(totalPrice+":::");
 		mv.addObject("total_price", totalPrice);
 		mv.setViewName("cart/pay");
 
@@ -153,7 +166,16 @@ public class PayController {
 		 * System.out.println(cq.get(1).getCq_num());
 		 * System.out.println(cq.get(0).getProductVOs().get(0).getPrice());
 		 */
-
+		//cq_num check
+		
+		
+		
+		//
+		
+		
+		
+		
+		
 		int result = 0;
 		ProductVO productVO = new ProductVO();
 

@@ -70,37 +70,16 @@ public class CartController {
 		System.out.println("여기는 cartInsert");
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		
-		//System.out.println(memberVO.getCart_num());
+
 		
 		cartVO.setCart_num(memberVO.getCart_num());
 		
 		cartVO.setP_num(productVO.getP_num());
 
-		/*
-		 * System.out.println("product/p_num" + productVO.getP_num());
-		 * System.out.println("cartVO/cp_num" + cartVO.getCq_num());
-		 * System.out.println("cartVO/p_num" + cartVO.getP_num());
-		 * System.out.println("cartVO/count" + cartVO.getCount()+"count..");
-		 * System.out.println("cartVO/cart_num" + cartVO.getCart_num());
-		 * System.out.println("cartVO/payCheck" + cartVO.getPayCheck());
-		 * 
-		 * System.out.println(productVO.getP_num());
-		 * System.out.println(cartVO.getP_num());
-		 * System.out.println(cartVO.getCount()+"count..");
-		 * System.out.println(cartVO.getCart_num());
-		 */
-		
-		
-
-		
-		
 
 		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num(),memberVO.getCart_num());
 			
 
-
-		
 		if(cVO!=null) {
 			//검색 중단, 경고창
 			Long pnum = productVO.getP_num();
@@ -124,13 +103,52 @@ public class CartController {
 			}
 			
 		}
-		
-		
 
-		
 		return mv;
 	}
 	
+	
+	
+	//cartInsert2 test--------------------------------------------------------------------
+	
+	@PostMapping("cartInsert2")
+	public ModelAndView cartInsert2(int totalPrice, HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
+
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+
+		System.out.println("----test-----");
+		System.out.println(cartVO.getCount());
+		System.out.println(cartVO.getP_num());
+	
+		System.out.println(memberVO.getId());
+
+		
+		cartVO.setCart_num(memberVO.getCart_num());
+		
+		cartVO.setP_num(productVO.getP_num());
+
+		System.out.println(totalPrice);
+
+		int result = cartService.cartInsert(cartVO);
+		
+		
+		if(totalPrice<50000) {
+			totalPrice += 3000;
+		}
+		
+		
+		
+		
+		mv.addObject("total_price", totalPrice);
+		/* mv.setViewName("pay/payInsert"); */
+		mv.setViewName("cart/pay");
+		return mv;
+		
+	}
+	//end cartInsert2 test----------------------------------------------------------------
+	
+	
+
 	
 	
 	@GetMapping("getList")

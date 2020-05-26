@@ -176,6 +176,24 @@ label {
 					</div><!-- in_option close -->
 					</form>
 					
+					
+					<form action="../cart/cartInsert2" method="post" name="frmWishlist">
+						<input type="hidden" id="c2Price" name="totalPrice" value="ㅎㅎ">
+						<input type="hidden" name="count" id="count" value="1">
+						<input type="hidden" name="p_num" value="${product.p_num}">
+						<div class="group_btn">
+							<span class="btn_type1">
+								<button type="submit" class="pay_type">즉시 구매</button>
+							</span>
+							
+						</div>
+					</form>
+					
+					
+					
+					
+					
+					
 					<form action="../cart/cartInsert" method="post" name="frmWishlist">
 						<input type="hidden" name="count" id="count" value="1">
 						<input type="hidden" name="p_num" value="${product.p_num}">
@@ -205,7 +223,7 @@ label {
   	 	  <ul class="nav nav-tabs">
 
   <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+  <li><a data-toggle="tab" href="#menu1">상품 후기</a></li>
   <li><a data-toggle="tab" href="#menu2">상품 문의</a></li>
 </ul>
 
@@ -266,13 +284,18 @@ label {
 					
 					<tr class="reviewList">
 						<td>
-							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}" width="67px" height="79px"> </div>
+							<div class="list_p_photo">
+								<div class="phInner">
+									<div class="phText"> </div>
+									<img alt="" src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}" width="67px" height="79px"> 
+								</div>
+							</div>
 						</td>
 						
 						<td class="second">
-							<div class="list_p_contents2"><span class="ti">상품 이름</span><span>${ro.p_name}</span></div>
-							<div class="list_p_contents2"><span class="ti">제목</span><span>${ro.title}</span></div>
-							<div class="list_p_contents2"><span class="ti">내용</span><span>${ro.contents}</span></div>
+							<div class="list_p_contents2"><span class="ti">상품 이름</span><p>${ro.p_name}</p></div>
+							<div class="list_p_contents2"><span class="ti">제목</span><p>${ro.title}</p></div>
+							<div class="list_p_contents2"><span class="ti">내용</span><p>${ro.contents}</p></div>
 						</td>
 						
 						<td>
@@ -425,9 +448,17 @@ label {
 			//document.fo.num.value = sell_price;
 			//document.fo.num.value = sell_price;
 			
+					console.log(document.getElementById("num").innerHTML);
+		
+			
+			
 			//document.fo.num.innerHTML=sell_price;
 			document.getElementById("num").innerHTML=sell_price;
 			change();
+			
+			
+			
+			
 		}
 		
 		//document.getElementById("num").innerHTML=sell_price;
@@ -445,6 +476,12 @@ label {
 			$(document).ready(function() {
 		        $('#count').val(hm.value);
 		    });
+			
+			//cartInsert2
+			var aa = document.getElementById("num").innerHTML;
+			document.getElementById("c2Price").value = aa;
+			console.log(document.getElementById("c2Price").value);
+			//
 		}
 
 		
@@ -457,6 +494,12 @@ label {
 					
 					document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
 				}
+
+				//cartInsert2
+				var aa = document.getElementById("num").innerHTML;
+				document.getElementById("c2Price").value = aa;
+				console.log(document.getElementById("c2Price").value);
+				//
 		}
 		
 		
@@ -469,10 +512,19 @@ label {
 			//num.value = parseInt(hm.value) * sell_price;
 			document.getElementById("num").innerHTML = parseInt(hm.value) * parseInt(sell_price);
 			
+			
+			//cartInsert2
+			var aa = document.getElementById("num").innerHTML;
+			document.getElementById("c2Price").value = aa;
+			console.log(document.getElementById("c2Price").value);
+			//
+			
+			
+			
 		}
 		
 		
-		
+
 	
 	</script>
 	

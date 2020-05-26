@@ -9,6 +9,8 @@ button	{
 	padding:0;
 }
 
+
+
 .btn{
 	float: right;
 }
@@ -388,6 +390,21 @@ button	{
 	border-radius: 3px;
 }
 
+
+.group_btn .pay_type	{
+	display: block;
+	width: 278px;
+	height:52px;
+	font-weight:700;
+	color:#fff;
+	font-size: 16px;
+	line-height: 52px;
+	text-align: center;
+	background: #ddd;
+	border: #ddd;
+	border-radius: 3px;
+}
+
 /* 
 
 
@@ -611,7 +628,7 @@ product list
 }
 
 .reviewList p {
-	width:150px;
+
 }
 
 
@@ -650,12 +667,28 @@ product list
 	margin-right:40px;
 }
 
-.list_p_photo img	{
-	
+.phInner	{
 	width:100px;
 	height:100px;
 	margin: 25px 0 0 40px;
 	overflow: hidden;
+	background:#ddd;
+	position: relative;
+	
+}
+
+.phText	{
+	position: absolute;
+	top:40px;
+	left:30px;
+}
+
+.list_p_photo img	{
+	
+	width:100px;
+	height:100px;
+	overflow: hidden;
+	z-index:50;
 }
 
 
@@ -668,6 +701,8 @@ product list
 	width:670px;
 	height:33%;	
 }	
+
+
 
 
 .section{
