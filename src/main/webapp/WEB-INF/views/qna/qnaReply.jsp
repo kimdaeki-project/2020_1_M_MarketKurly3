@@ -41,7 +41,7 @@
     </div>
       
    
-    <input type="button" id="btnR" class="btn btn-default" value="등록" style="float: right" >
+    <input type="button" id="btn" class="btn btn-default btnR" value="등록" style="float: right" >
    
 </form>
 
