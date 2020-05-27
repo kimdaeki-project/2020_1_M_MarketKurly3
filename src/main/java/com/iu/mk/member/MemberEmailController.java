@@ -81,10 +81,8 @@ public class MemberEmailController {
                System.out.println(e);
            }
            
-           //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-			  mv.addObject("dice", dice1); 
-			  mv.setViewName("member/memberJoin");
-           
+           mv.addObject("result", dice);
+           mv.setViewName("common/ajaxResult");
            return mv;
 	}
 	
@@ -95,9 +93,21 @@ public class MemberEmailController {
     //이메일로 받은 인증번호를 입력하고 전송 버튼을 누르면 맵핑되는 메소드.
     //내가 입력한 인증번호와 메일로 입력한 인증번호가 맞는지 확인해서 맞으면 innerhtml로 " 올바른 인증번호입니다./ 인증번호가 일치하지 않습니다." 띄워주기
 	@PostMapping("hwaginEmail.do")
-	public ModelAndView hwaginEmail(ModelAndView mv, String emailNum)throws Exception{
-		System.out.println(emailNum);
+	public ModelAndView hwaginEmail(ModelAndView mv, String emailNum,String hiddenNum)throws Exception{
+		System.out.println("emailNum: "+emailNum);
+		System.out.println("hiddenNum: "+hiddenNum);
 		
+		if(emailNum.equals(hiddenNum)) {
+			mv.addObject("result", 1); //성공
+		}else {
+			mv.addObject("result", 0); //실패
+		}
+		
+		mv.setViewName("common/ajaxResult");
+		
+		 return mv;
+		 
+		 
 		/* , @PathVariable String dice, HttpServletResponse response_equals
 		 * mv.setViewName("/member/memberJoin");
 		 * 
@@ -120,9 +130,7 @@ public class MemberEmailController {
 		 * 
 		 * return mv; }
 		 */
-		 return mv;
-		 
-		
+
 	}
 
 

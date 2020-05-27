@@ -109,7 +109,9 @@
 										&emsp;<a href="javascipt:void(0);" onclick="email_injeung(); return false;"><span class="bns_button disabled">인증번호받기</span></a>
 										<p id="s5"></p>
 										<p id="s5_0"></p>
-										<input type="text" value="${dice}">
+										
+										<input type="hidden" name="hiddenNum" id="dd">
+										
 										<input type="text" name="emailNum" label="인증번호"
 										placeholder="인증번호 입력란" class="br2" id="mEmailNum">
 										
@@ -337,6 +339,7 @@
 
 			}
 			
+			
 			/* 이메일 인증메일 보내기 */
 			function email_injeung() {
 				$.ajax({
@@ -346,7 +349,9 @@
 				          email:$('#mEmail').val()
 				     },
 				     success:function(data){
+				    	 data=data.trim();
 				    	 alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');
+				    	 $('#dd').val(data)
 				     },
 					 error:function(){
 							alert("에러발생");
@@ -354,17 +359,23 @@
 				})
 				
 			}
-				
+			
+			var mEmailNumResult =false;
 			/* 인증번호 확인 */
 			function email_hwagin() {
 				$.ajax({
 				     type:"POST", 
 				     url:"./hwaginEmail.do",
 				     data:{
-				            emailNum:$('#mEmailNum').val()
+				            emailNum:$('#mEmailNum').val(),
+				            hiddenNum:$('#dd').val()
 				     },
 				     success:function(data){
-				    	 alert('확인ing');
+				    	 if(data==1){
+				    		 alert("인증번호가 일치합니다.(가입가능)")
+				    		 mEmailNumResult=true;
+				    	 }else if(data==0)
+				    		 alert("인증번호를 다시 확인해 주세요.(가입불가능)")
 				     },
 					 error:function(){
 						alert("에러발생");
@@ -595,13 +606,13 @@
 				for(i=0; i<ch.length; i++){
 					if(ch[i].value==""/*==0*/){
 						check=false;
-						console.log("브레이크");
+						console.log(ch[i]+"브레이크");
 						break;
 					}
 				}
 			
 				//if가 true일때만 실행
-				if(mIdResult && mPwResult && mPw2Result && check){
+				if(mIdResult && mPwResult && mPw2Result && mEmailResult && mEmailNumResult && check){
 					console.log("가입성공");
 				}else{
 					alert("중복확인 및 필수요소들을 입력해주세요");
@@ -609,6 +620,8 @@
 					console.log(mIdResult);
 					console.log(mPwResult);
 					console.log(mPw2Result);
+					console.log(mEmailResult);
+					console.log(mEmailNumResult);
 					console.log(check);
 
 					
@@ -616,7 +629,11 @@
 						s1_1.innerHTML = "아이디 중복확인을 눌러주세요";
 						s1_1.style.color="RED";
 						
+					}else if(mEmailNumResult==false){
+						alert("이메일 인증번호를 다시확인해주세요.");
 					}
+					
+					
 				}
 				
 			
