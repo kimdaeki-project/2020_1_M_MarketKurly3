@@ -53,5 +53,10 @@
 	  <delete id="qnaDelete" parameterType="Long">
 	  	delete qna where ref=#{ref}
 	  </delete>
+	  
+	  <!-- 조회수 -->
+	  <update id="hitUpdate" parameterType="Long">
+	  	update qna set hit = hit+1 where num=#{num}
+	  </update>
   
   </mapper>

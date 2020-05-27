@@ -21,7 +21,7 @@
 
 	<c:if test="${not empty member}">
 		<c:if test="${member.id eq vo.writer}">
-			<a href="./qnaDelete?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default" >삭제</a>
+			<a href="./qnaDelete?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default btnde" >삭제</a>
 		</c:if>
 	</c:if>
 	
@@ -39,7 +39,8 @@
 	<div class="btn">
 	
 		<c:if test="${member.id eq 'admin'}">
-			<a href="./qnaReply?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default">답변달기</a>
+			
+			<a href="./qnaReply?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default btnre">답변달기</a>
 		
 		</c:if>
 		

@@ -519,4 +519,16 @@ div.PriceCheckWrap .Discount_Wrap {
     padding: 0 28px;
 }
 
-
+.btn_update{
+	margin-left: 370px;
+	display:block;
+	width:260px;
+	height:55px;
+	border:0;
+	border-radius:5px;
+	background-color:#5f0080;
+	color:#fff;
+	line-height:45px;
+	font-size:14px;
+	
+}

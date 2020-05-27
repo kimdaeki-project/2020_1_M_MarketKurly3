@@ -290,7 +290,7 @@ label {
 
   </div>
   
-  <div id="menu2" class="tab-pane fade">
+  <div id="menu2" class="tab-pane fade" >
    	
    	<div class="container2">
 
@@ -470,6 +470,9 @@ label {
 			
 		}
 		
+		$("#menu2").click(function() {
+			location.reload();
+		})
 		
 		
 	

@@ -51,6 +51,7 @@ public class QnaService  {
 	
 	
 	public QnaVO qnaSelect(long num) throws Exception{
+		qnaDAO.hitUpdate(num);
 		return qnaDAO.qnaSelect(num);
 	}
 	

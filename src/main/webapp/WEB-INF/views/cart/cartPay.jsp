@@ -270,10 +270,8 @@
 		<!-- 결제 내역 End -->
 	
 		<!-- 주문완료 확인 버튼 -->
-		<div class="OrderW_FinaLBtnW">
-			<a href="../" class="defbtn_xlar xladtype" data-is-ab-send="1"><span>주문 완료 확인</span></a>
-		</div>
-		 
+		
+		 <a href="../"><button class="btn_update" id="btn_update" style="margin-right: 350px; font-weight: bolder;">확인</button></a>
 		
 	</div>
 	<!-- payment detail End --> 		

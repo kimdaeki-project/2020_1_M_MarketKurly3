@@ -49,6 +49,18 @@
 			</beans:bean>
 		</interceptor>
 		
+		<!-- yeonjoo add -->
+		<interceptor>
+			<mapping path="/qna/qnaReply"/>
+			<beans:bean class="com.iu.s5.interceptor.QnaInterceptor">
+			</beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/qnaWrite"/>
+			<beans:bean class="com.iu.s5.interceptor.Qna2Interceptor">
+			</beans:bean>
+		</interceptor>
 		
 	</interceptors>
 
