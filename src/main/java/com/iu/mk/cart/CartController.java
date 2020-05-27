@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.mk.member.MemberVO;
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.product.productfile.ProductFileVO;
+
+
 
 @Controller
 @RequestMapping(value = "/cart/**")
@@ -82,10 +83,10 @@ public class CartController {
 
 		if(cVO!=null) {
 			//검색 중단, 경고창
-			Long pnum = productVO.getP_num();
-			mv.addObject("path", "../product/productSelect?p_num="+pnum);
+			Long p_num = productVO.getP_num();
+			mv.addObject("path", "../product/productSelect?p_num="+p_num);
 			mv.addObject("result", "이미 추가된 상품입니다.");
-			mv.setViewName("common/result");
+			mv.setViewName("product/productSelect?p_num="+p_num);
 			
 			
 			
@@ -94,9 +95,10 @@ public class CartController {
 			if(result>0) {
 				//성공시 팝업창  1) 장바구니 이동, 2) 계속 쇼핑하기
 				//일단 common/result로 하고, 정상 작동되면 나중에 팝업창으로 바꾸기
+				Long p_num = productVO.getP_num();
 				mv.addObject("path", "../cart/cartList");
 				mv.addObject("result", "성공했습니다");
-				mv.setViewName("common/result");
+				mv.setViewName("product/productSelect?p_num="+p_num);
 				
 			}else {
 				//실패시 팝업팡  1) 실패했습니다.

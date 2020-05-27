@@ -76,6 +76,24 @@ label {
 <body onload="init();">
 
 	
+<div class="ask-layer-wrapper" style="display:none; z-index:9999;">
+	<div class="ask-alert-window ask-alert-type-message">
+		<div class="ask-alert-wrapper">
+			<div class="ask-alert-header">알림메시지</div>
+			<div class="ask-alert-content">
+				<p class="ask-alert-message">상품이 장바구니에 담겼습니다.</p>
+			</div>
+			<button class="ask-alert-close-button">계속 쇼핑하기</button>
+		</div>
+		<div class="ask-alert-footer">
+			<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active">계속 쇼핑하기</button>
+			<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active">장바구니 확인</button>
+		</div>
+	</div>
+	<div class="ask-layer-background"></div>
+</div>
+
+
 
 
 	<c:import url="../template/header.jsp"></c:import>
@@ -93,7 +111,7 @@ label {
 					</c:forEach>
 				</div>
 				
-				
+				<button type="button" class="test1"> test </button>
 				
 				<p class="goods_name">
 					<span class="btn_share">
@@ -524,8 +542,24 @@ label {
 		}
 		
 		
-
+		/* alert x 버튼 */
+		
+		$(".ask-alert-close-button").click(function(){
+			$(".ask-layer-wrapper").prop("style","display:none;");
+		})
 	
+		
+				
+		$(".txt_type").click(function(){
+			$(".ask-layer-wrapper").prop("style","display:block; z-index:9999;");
+		})
+		
+		
+	
+		
+		$(".test1").click(function(){
+			$(".ask-layer-wrapper").prop("style","display:block; z-index:9999;");
+		})
 	</script>
 	
 </body>
