@@ -333,7 +333,7 @@ label {
 			<td>
 			<c:catch>
 			 <c:forEach begin="1" end="${voo.depth}">
-			 		&nbsp[답변]
+			 		[답변]
 			 	<!-- &nbsp;&nbsp; //스페이스바역할 -->
 			</c:forEach> 
 			</c:catch>

@@ -56,7 +56,10 @@ public class QnaService  {
 	
 	
 	public int qnaReply(QnaVO qnaVO)throws Exception{
-		return qnaDAO.qnaReply(qnaVO);
+		int result = qnaDAO.qnaReplyUpdate(qnaVO);
+		result = qnaDAO.qnaReply(qnaVO);
+		
+		return result;
 	}
 
 }
