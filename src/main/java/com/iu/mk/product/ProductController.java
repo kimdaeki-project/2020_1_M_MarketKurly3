@@ -30,6 +30,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private QnaDAO qnaDAO;
+	
 	@Autowired QnaService qnaService;
 	
 	

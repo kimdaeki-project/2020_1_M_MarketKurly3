@@ -53,4 +53,8 @@ public class QnaDAO  {
 		return sqlSession.update(Namespace+"qnaReplyUpdate",qnaVO);
 	}
 	
+	public int hitUpdate(long num) throws Exception{
+		return sqlSession.update(Namespace+"hitUpdate", num);
+	}
+	
 }

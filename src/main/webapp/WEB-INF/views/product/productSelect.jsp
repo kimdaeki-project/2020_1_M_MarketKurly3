@@ -292,10 +292,10 @@ label {
   
   <div id="menu2" class="tab-pane fade">
    	
-   	<div class="container">
+   	<div class="container2">
 
 	<div class="row">
-	<h4>상품 문의</h4> <!--  qna -->
+	<h4 class="qna">상품 문의</h4> <!--  qna -->
 		 <form class="form-inline" action="./qnaList">
 	<!-- 	    <div class="input-group input-group-sm col-xs-2" >
 		    
@@ -313,9 +313,9 @@ label {
 			        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			      </div>
 	    		</div> -->
-	    		
-	    	<a href="../qna/qnaWrite?p_num=${product.p_num}" class="btn btn-danger">문의하기</a>
-	    	
+	    		<c:if test="${not empty member}">
+	    			<a href="../qna/qnaWrite?p_num=${product.p_num}" class="btn btn_qna">문의하기</a>
+	    		</c:if>
 	 	 </div>
 	 	 <br>
 		<table class="table table-hover">

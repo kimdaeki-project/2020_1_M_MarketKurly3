@@ -21,7 +21,7 @@
 <br>
 <form action="./qnaWrite" id="frm" method="post" enctype="multipart/form-data">
   	
-  	<input  type="text" name="p_num" value="${product.p_num }">
+  	<input  type="hidden" name="p_num" value="${product.p_num }">
   	
      <div class="form-group">
       <label for="title">제목:</label>
@@ -30,7 +30,7 @@
     
     <div class="form-group">
       <label for="writer">작성자:</label>
-      <input type="text" class="form-control" id="writer" value="${member.id}" name="writer">
+      <input type="text" class="form-control" id="writer" value="${member.id}" name="writer" readonly="readonly"> 
     </div>
     
      <div class="form-group">
@@ -39,7 +39,7 @@
     </div>
       
    
-    <input type="button" id="btn" class="btn btn-default" value="Write">
+    <input type="button" id="btnW" class="btn btn-default" value="등록" style="float: right"  >
    
 </form>
 
