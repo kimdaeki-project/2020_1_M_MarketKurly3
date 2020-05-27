@@ -14,26 +14,43 @@
   			order by ref desc, step asc) Q)
   		where R between #{startRow} and #{lastRow} and p_num=#{p_num}
   	</select>
-  <!-- ref : 원본글과 답글을 묶음. step: 그룹 내에서 정렬 -->
+  	<!-- ref : 원본글과 답글을 묶음. step: 그룹 내에서 정렬 -->
   
-  <select id="qnaCount" parameterType="Pager" resultType="Long">
-  	select count(num) from qna where p_num=#{p_num}
-  		
-  </select>
+	  <select id="qnaCount" parameterType="Pager" resultType="Long">
+	  	select count(num) from qna where p_num=#{p_num}
+	  		
+	  </select>
   
-  <!-- qna 시퀀스 번호 -->
-  <select id="qnaNum" resultType="Long">
-  		select num_seq.nextval from dual
-  </select>
-  
-  <insert id="qnaWrite" parameterType="QnaVO">
-  
-  	insert into qna values (#{num},#{title},#{writer},#{contents},sysdate,1,1,1,1,#{p_num})
-  	
-  </insert>
-  	
-  	<select id="qnaSelect" resultType="QnaVO">
-  		select * from qna where num=#{num}
-  	</select>
+	  <!-- qna 시퀀스 번호 -->
+	  <select id="qnaNum" resultType="Long">
+	  		select num_seq.nextval from dual
+	  </select>
+	  
+	  <insert id="qnaWrite" parameterType="QnaVO">
+	  
+	  	insert into qna values (#{num},#{title},#{writer},#{contents},sysdate,1,#{num},0,0,#{p_num})
+	  	
+	  </insert>
+	  	
+	  	<select id="qnaSelect" resultType="QnaVO">
+	  		select * from qna where num=#{num}
+	  	</select>
+	  	
+	  	<insert id="qnaReply" parameterType="QnaVO">
+	  		insert into qna values(num_seq.nextval,#{title},#{writer},#{contents},sysdate,1,
+	  		(select ref  from qna where num=#{num}), <!-- (그룹)부모의 ref를 답글의 ref로 적용 -->
+	  		(select step from qna where num=#{num})+1,<!-- (그룹)부모글의 +1한 것이 답글  step -->
+	  		(select depth from qna where num=#{num})+1, <!-- 들여쓰기 부모글 +1 -->
+	  		#{p_num})
+	  	</insert>
+	  	<!-- 답글 업데이트 -->
+	  	<update id="qnaReplyUpdate" parameterType="QnaVO">
+	  		update qna set step=step+1 where
+	  		ref =(select ref from qna where num=#{num})
+	  		and step > (select step from qna where num=#{num})
+	  	</update>
+	  	
+	  
+
   
   </mapper>
