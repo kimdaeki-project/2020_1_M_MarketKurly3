@@ -51,14 +51,39 @@ public class QnaController {
 	
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView qnaSelect(long num, ModelAndView mv) throws Exception{
+	public ModelAndView qnaSelect(long num, ModelAndView mv,ProductVO productVO) throws Exception{
 		
 		QnaVO qnaVO = qnaService.qnaSelect(num);
 		mv.addObject("vo" ,qnaVO);
+		mv.addObject("product",productVO);
 		mv.setViewName("qna/qnaSelect");
 		
 		return mv;
 	}
 	
+	@GetMapping("qnaReply")
+	public ModelAndView qnaReply(ModelAndView mv, long num,ProductVO productVO) throws Exception{
+		mv.addObject("num",num);//부모의 글번호
+		mv.addObject("product",productVO); //p_num넘겨주기
+		mv.setViewName("qna/qnaReply");
+		
+		return mv;
+	}
+	
+	@PostMapping("qnaReply")
+	public ModelAndView qnaReply(ModelAndView mv, QnaVO qnaVO,ProductVO productVO) throws Exception{
+		int result =qnaService.qnaReply(qnaVO);
+		
+		if(result>0) {
+			mv.setViewName("redirect:../product/productSelect?p_num="+productVO.getP_num());
+		}else {
+			mv.addObject("result","reply write fail");
+			mv.addObject("path","./qnaReply");
+			
+			mv.setViewName("common/result");
+		}
+		return mv;
+		
+	}
 	
 }
