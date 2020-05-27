@@ -24,7 +24,7 @@
 				<div class="inner_lnb">
 					<div class="ico_cate">
 						<span class="ico"></span>
-						
+						<span class="tit">신상품</span>
 					</div>
 				</div> 
 				

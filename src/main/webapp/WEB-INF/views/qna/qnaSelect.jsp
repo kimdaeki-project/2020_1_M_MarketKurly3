@@ -15,9 +15,6 @@
 
 <div class="container"> 
 <h2 align="center">문의 사항</h2>
-
-<input type="hidden" name="p_num" value="${product.p_num}"> 
-
 	<div class="panel panel-default">
 		<div class="panel-heading"><strong>제목</strong></div>
 		<div class="panel-body"> ${vo.title }</div>
@@ -31,7 +28,7 @@
 	<div class="btn">
 	
 		<c:if test="${member.id eq 'admin'}">
-			<a href="./qnaReply?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default">답변달기</a>
+			<a href="./qnaReply?num=${vo.num}" class="btn btn-default">답변달기</a>
 		</c:if>
 		
 	</div>
