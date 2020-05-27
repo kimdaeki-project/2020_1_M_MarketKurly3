@@ -39,4 +39,10 @@ public class MemberDAO {
 	public MemberVO checkEmail(MemberVO memberVO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"checkEmail",memberVO);
 	}
+	
+	
+	public String memberFind_Id1(MemberVO memberVO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberFind_Id1",memberVO);
+	}
+	
 }

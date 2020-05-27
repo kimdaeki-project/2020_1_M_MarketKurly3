@@ -254,6 +254,38 @@ public class MemberController {
 
 	}
 	
+	//memberFind_Id
+	@GetMapping("memberFind_Id")
+	public void memberFind_Id() throws Exception{
+		
+	}
+	@PostMapping("memberFind_Id")
+	public ModelAndView memberFind_Id1(MemberVO memberVO, ModelAndView mv) throws Exception{
+
+		String id = memberService.memberFind_Id1(memberVO);
+		System.out.println("id: "+id);
+		
+		if(id!=null) {
+			
+			mv.addObject("id", id);//탈퇴실패
+			mv.setViewName("member/memberFind_IdSuccess");
+			
+		}else {
+			
+			mv.setViewName("member/memberFind_IdFail");
+		}
+
+		
+		return mv;
+	}
+	
+
+	@GetMapping("memberFind_Pw")
+	public void memberFind_Pw() throws Exception{
+		
+	}
+	
+	
 	
 
 	

@@ -40,4 +40,8 @@ public class MemberService {
 	}
 	//update,insert,delete > int
 	
+	
+	public String memberFind_Id1(MemberVO memberVO)throws Exception{
+		return memberDAO.memberFind_Id1(memberVO);
+	}
 }

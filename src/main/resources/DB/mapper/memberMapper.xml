@@ -42,4 +42,9 @@
 		SELECT email FROM MEMBER WHERE email=#{email}
 	</select>
   
+  
+  	<select id="memberFind_Id1"  parameterType="MemberVO" resultType="String">
+  		select id from member where name=#{name} and email=#{email}
+  	</select>
+  
   </mapper>
