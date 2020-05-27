@@ -39,7 +39,9 @@
     </div>
       
    
+
     <input type="button" id="btnW" class="btn btn-default" value="등록" style="float: right"  >
+
    
 </form>
 
