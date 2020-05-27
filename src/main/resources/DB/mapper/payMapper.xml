@@ -166,6 +166,13 @@
   	
   	
   	
+  	<select id="selPrice" parameterType="Long" resultType="Long">
+  		select price from product where p_num=(select p_num from cart where cq_num=#{cq_num})
+  	</select>
+  	
+  	
+  	
+  	
 
    <select id="finalCart" parameterType="Long" resultMap="payFinal">
   		select OO.p_num, OO.fileName, OO.oriName, PO.count, PO.pay_price ,PO.cart_num, OO.p_name from

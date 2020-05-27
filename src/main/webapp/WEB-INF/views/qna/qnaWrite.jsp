@@ -40,7 +40,7 @@
       
    
 
-    <input type="button" id="btnW" class="btn btn-default" value="등록" style="float: right"  >
+    <input type="button" id="btn" class="btn btn-default" value="등록" style="float: right"  >
 
    
 </form>

@@ -75,24 +75,23 @@ label {
 	</head>
 <body onload="init();">
 
-	
+<!-- alert -->
 <div class="ask-layer-wrapper" style="display:none; z-index:9999;">
 	<div class="ask-alert-window ask-alert-type-message">
 		<div class="ask-alert-wrapper">
 			<div class="ask-alert-header">알림메시지</div>
 			<div class="ask-alert-content">
-				<p class="ask-alert-message">상품이 장바구니에 담겼습니다.</p>
+				<p class="ask-alert-message" id="msgCart"></p>
 			</div>
 			<button class="ask-alert-close-button">계속 쇼핑하기</button>
 		</div>
 		<div class="ask-alert-footer">
-			<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active">계속 쇼핑하기</button>
-			<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active">장바구니 확인</button>
+			<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active" id="sel">계속 쇼핑하기</button>
+			<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active" id="car" onclick="location.href='../cart/cartList'">장바구니 확인</button>
 		</div>
 	</div>
 	<div class="ask-layer-background"></div>
 </div>
-
 
 
 
@@ -197,7 +196,7 @@ label {
 					
 					<form action="../cart/cartInsert2" method="post" name="frmWishlist">
 						<input type="hidden" id="c2Price" name="totalPrice" value="ㅎㅎ">
-						<input type="hidden" name="count" id="count" value="1">
+						<input type="hidden" name="count" id="ct2" value="1">
 						<input type="hidden" name="p_num" value="${product.p_num}">
 						<div class="group_btn">
 							<span class="btn_type1">
@@ -213,11 +212,11 @@ label {
 					
 					
 					<form action="../cart/cartInsert" method="post" name="frmWishlist">
-						<input type="hidden" name="count" id="count" value="1">
-						<input type="hidden" name="p_num" value="${product.p_num}">
+						<input type="hidden" name="count"  value="1" id="ct">
+						<input type="hidden" name="p_num" value="${product.p_num}" id="pn">
 						<div class="group_btn">
 							<span class="btn_type1">
-								<button type="submit" class="txt_type">장바구니 담기</button>
+								<button type="button" class="txt_type">장바구니 담기</button>
 							</span>
 							
 						</div>
@@ -286,19 +285,9 @@ label {
 	  		<table>
 	  		
 	  		
-	  		<c:forEach items="${review}" var="ro"> <!-- PayInfoVO에서 받아온 정보 : "vo" -->
-				<%-- 	<div class="list_p">
-						<div class="list_p_name" style="font-weight: bold; font-size: large;">${vo.productVOs['0'].p_name} 외 ${vo.count}건 <span class="list_p_name2"><img alt="" src="${pageContext.request.contextPath}/resources/images/rrr.PNG"></span></div>
-						<div class="list_p_content">
-							<div class="list_p_photo"><img alt="" src="${pageContext.request.contextPath}/resources/uploadproduct/${ro.fileName}" width="67px" height="79px"> </div>
-							<div class="list_p_contents1">
-								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">작성자</span> &ensp; <span style="font-weight: bold;">${ro.id}</span></div>
-								<div class="list_p_contents2"><span style="font-size: small; font-weight:bold;">상품 이름</span> &ensp; <span style="font-weight: bold;">${ro.p_name}</span></div>
-								<div class="list_p_contents2"><span style="font-size: small;">제목</span> &ensp; <span style="font-weight: bold;">${ro.title}</span></div>
-								<div class="list_p_contents2"><span style="font-size: small;">내용</span> &ensp; <span style="font-weight: bold;">${ro.contents}</span></div>
-							</div>
-						</div>
-					</div>  --%>
+	  		<c:forEach items="${review}" var="ro" varStatus="index">
+	  		
+	  		
 					
 					<tr class="reviewList">
 						<td>
@@ -322,6 +311,28 @@ label {
 							<p><span class="ti">조회수</span><span>${ro.hit}</span></p>
 						</td>
 					</tr>		
+					
+					<!-- review -->
+					<div class="ask-layer-wrapper2" style="display:none; z-index:9999;">
+						<div class="ask-alert-window ask-alert-type-message">
+							<div class="ask-alert-wrapper">
+								<div class="ask-alert-header">하하...하하하</div>
+								<div class="ask-alert-content">
+									<p class="ask-alert-message" id="msgCart"></p>
+									<img alt="" src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}" width="67px" height="79px">
+								</div>
+								<button class="ask-alert-close-button">계속 쇼핑하기</button>
+							</div>
+							<div class="ask-alert-footer">
+								<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active" id="sel">계속 쇼핑하기</button>
+								<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active" id="car" onclick="location.href='../cart/cartList'">장바구니 확인</button>
+							</div>
+						</div>
+						<div class="ask-layer-background"></div>
+					</div>
+					<!-- review -->
+					
+					
 			</c:forEach>
 			
 			
@@ -473,7 +484,7 @@ label {
 			document.getElementById("num").innerHTML=sell_price;
 			change();
 			
-			
+		
 			
 			
 		}
@@ -499,6 +510,11 @@ label {
 			document.getElementById("c2Price").value = aa;
 			console.log(document.getElementById("c2Price").value);
 			//
+			
+			
+			//ct2 -- cartInsert2의 count
+			var ct = $(".inp").val();
+			$("#ct2").val(ct);
 		}
 
 		
@@ -517,6 +533,11 @@ label {
 				document.getElementById("c2Price").value = aa;
 				console.log(document.getElementById("c2Price").value);
 				//
+				
+				
+				//ct2 -- cartInsert2의 count
+				var ct = $(".inp").val();
+				$("#ct2").val(ct);
 		}
 		
 		
@@ -545,13 +566,74 @@ label {
 		
 		$(".ask-alert-close-button").click(function(){
 			$(".ask-layer-wrapper").prop("style","display:none;");
+		
 		})
 	
 		
-				
-		$(".txt_type").click(function(){
-			$(".ask-layer-wrapper").prop("style","display:block; z-index:9999;");
+		
+		
+		/* 계속 쇼핑하기 버튼 */	
+		$("#sel").click(function(){
+			$(".ask-layer-wrapper").prop("style","display:none;");
 		})
+		
+		
+		
+		
+		
+		$(".txt_type").click(function(){/*장바구니 버튼 클릭시*/
+			console.log($("#pn").val());
+			console.log($(".inp").val());
+			
+			$.post("../cart/cartInsert",{p_num:$("#pn").val(), count:$(".inp").val()},function(result){
+		
+				
+				result = result.trim();
+				/*if(result>0){
+					alert("성공");
+					alert(result);
+					console.log(result);
+			
+				}else{
+					alert("중복")
+					alert(result);
+					console.log(result);
+				}  */
+				
+				
+				$("#msgCart").text(result);
+				
+				
+				
+			});
+
+			
+			$(".ask-layer-wrapper").prop("style","display:block; z-index:9999;");
+			
+		})
+		
+	
+		
+		
+		
+		$(".pay_type1").click(function(){/*즉시구매 버튼 클릭시*/
+			console.log($("#pn").val());
+			console.log($(".inp").val());
+			
+			$.post("../cart/cartInsert2",{p_num:$("#pn").val(), count:$(".inp").val()},function(){
+
+			});
+
+			
+			
+			
+		})
+		
+		
+		
+		
+		
+		
 		
 		
 	
@@ -559,6 +641,20 @@ label {
 		$(".test1").click(function(){
 			$(".ask-layer-wrapper").prop("style","display:block; z-index:9999;");
 		})
+		
+		
+		
+		
+		$(".reviewList").click(function(){/*장바구니 버튼 클릭시*/
+	
+			$(".ask-layer-wrapper2").prop("style","display:block; z-index:9999;");
+			
+		})
+		
+		
+		
+		
+		
 	</script>
 	
 </body>

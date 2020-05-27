@@ -27,7 +27,10 @@ public class CartService {
 	
 	
 	public int cartInsert(CartVO cartVO) throws Exception{
-
+		
+		System.out.println(cartVO.getCq_num() + " :: cartService");
+		System.out.println(cartVO.getCount()+ " :: cartService");
+		
 		int result = cartDAO.cartInsert(cartVO);
 	
 		return result;
@@ -36,6 +39,7 @@ public class CartService {
 	
 	
 	public int cartDelete(Long cq_num) throws Exception {
+		System.out.println("cartService : " + cq_num);
 		return cartDAO.cartDelete(cq_num);
 	}
 	
@@ -56,6 +60,9 @@ public class CartService {
 		return cartDAO.countUpdate(param);
 	}
 	
+	public Long selCqNum(Long cart_num) throws Exception{
+		return cartDAO.selCqNum(cart_num);
+	}
 	
 	
 }

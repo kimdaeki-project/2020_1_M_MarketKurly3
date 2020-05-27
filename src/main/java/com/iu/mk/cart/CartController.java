@@ -67,39 +67,49 @@ public class CartController {
 	
 	
 	@PostMapping("cartInsert")
-	public ModelAndView cartInsert(HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
+	public ModelAndView cartInsert(long count, HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
 		System.out.println("여기는 cartInsert");
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 
 		
-		cartVO.setCart_num(memberVO.getCart_num());
 		
+		
+		System.out.println("count ::: " + cartVO.getCount());
+		System.out.println("p_num ::: " + productVO.getP_num());
+	
+		
+		
+		
+		
+		
+		cartVO.setCart_num(memberVO.getCart_num());
 		cartVO.setP_num(productVO.getP_num());
+		
 
 
 		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num(),memberVO.getCart_num());
-			
+		System.out.println("되나?");
 
 		if(cVO!=null) {
 			//검색 중단, 경고창
-			Long p_num = productVO.getP_num();
-			mv.addObject("path", "../product/productSelect?p_num="+p_num);
+
 			mv.addObject("result", "이미 추가된 상품입니다.");
-			mv.setViewName("product/productSelect?p_num="+p_num);
+			mv.setViewName("common/ajaxResult");
+			
 			
 			
 			
 		}else {
+			System.out.println("1");
 			int result = cartService.cartInsert(cartVO);
+			System.out.println("2");
 			if(result>0) {
+				System.out.println("3");
 				//성공시 팝업창  1) 장바구니 이동, 2) 계속 쇼핑하기
 				//일단 common/result로 하고, 정상 작동되면 나중에 팝업창으로 바꾸기
-				Long p_num = productVO.getP_num();
-				mv.addObject("path", "../cart/cartList");
-				mv.addObject("result", "성공했습니다");
-				mv.setViewName("product/productSelect?p_num="+p_num);
-				
+				mv.addObject("result", "상품이 장바구니에 담겼습니다.");
+				mv.setViewName("common/ajaxResult");
 			}else {
 				//실패시 팝업팡  1) 실패했습니다.
 			}
@@ -113,7 +123,7 @@ public class CartController {
 	
 	//cartInsert2 test--------------------------------------------------------------------
 	
-	@PostMapping("cartInsert2")
+	@PostMapping("cartInsert2")//즉시구매
 	public ModelAndView cartInsert2(int totalPrice, HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
 
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
@@ -125,13 +135,18 @@ public class CartController {
 		System.out.println(memberVO.getId());
 
 		
-		cartVO.setCart_num(memberVO.getCart_num());
 		
+		cartVO.setCart_num(memberVO.getCart_num());
 		cartVO.setP_num(productVO.getP_num());
-
-		System.out.println(totalPrice);
+		
+		
+		
 
 		int result = cartService.cartInsert(cartVO);
+		
+		//젤 위에거 뽑아와서 set 하기
+		String cqn = String.valueOf(cartService.selCqNum(memberVO.getCart_num()));
+		
 		
 		
 		if(totalPrice<50000) {
@@ -140,7 +155,7 @@ public class CartController {
 		
 		
 		
-		
+		mv.addObject("cqn", cqn);
 		mv.addObject("total_price", totalPrice);
 		/* mv.setViewName("pay/payInsert"); */
 		mv.setViewName("cart/pay");
