@@ -40,6 +40,7 @@ public class MemberEmailController {
 		
 	       Random r = new Random();
            int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
+           String dice1=Integer.toString(dice);
            
            String setfrom = "thdus3009@gmail.com";
            String tomail = email; // 받는 사람 이메일
@@ -81,9 +82,8 @@ public class MemberEmailController {
            }
            
            //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-			  mv.addObject("result","인증메일을 보냈습니다."); 
-			  mv.addObject("path","memberJoin");
-			  mv.setViewName("common/result");
+			  mv.addObject("dice", dice1); 
+			  mv.setViewName("member/memberJoin");
            
            return mv;
 	}
@@ -94,35 +94,34 @@ public class MemberEmailController {
 	//hwaginEmail
     //이메일로 받은 인증번호를 입력하고 전송 버튼을 누르면 맵핑되는 메소드.
     //내가 입력한 인증번호와 메일로 입력한 인증번호가 맞는지 확인해서 맞으면 innerhtml로 " 올바른 인증번호입니다./ 인증번호가 일치하지 않습니다." 띄워주기
-	@PostMapping("hwaginEmail.do${dice}")
-	public ModelAndView hwaginEmail(String emailNum, @PathVariable String dice, HttpServletResponse response_equals)throws Exception{
+	@PostMapping("hwaginEmail.do")
+	public ModelAndView hwaginEmail(ModelAndView mv, String emailNum)throws Exception{
+		System.out.println(emailNum);
 		
-		ModelAndView mv = new ModelAndView();
-		//페이지이동과 자료를 동시에 하기위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
-		
-	      mv.setViewName("/member/memberJoin");
-	        
-	      mv.addObject("emailNum",emailNum); ////jsp에서 "${emailNum}"로 사용 (dice:보낸인증번호 / emailNum:내가쓴인증번호)
-	        
-	      //이걸 script에서 쓸수있을것같은디..
-	        if (emailNum.equals(dice)) {
-	        	response_equals.setContentType("text/html; charset=UTF-8");
-	            PrintWriter out_equals = response_equals.getWriter();
-	            out_equals.println("<script>alert('인증번호가 일치하였습니다.');</script>");
-	            out_equals.flush();
-	            
-	            return mv;
-	            
-	        }else if (emailNum != dice) {
-	        	response_equals.setContentType("text/html; charset=UTF-8");
-	            PrintWriter out_equals = response_equals.getWriter();
-	            out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>");
-	            out_equals.flush();
-	        	
-	        	return mv;
-	        }
-		
-		return mv;
+		/* , @PathVariable String dice, HttpServletResponse response_equals
+		 * mv.setViewName("/member/memberJoin");
+		 * 
+		 * mv.addObject("emailNum",emailNum); ////jsp에서 "${emailNum}"로 사용 (dice:보낸인증번호 /
+		 * emailNum:내가쓴인증번호)
+		 * 
+		 * //이걸 script에서 쓸수있을것같은디.. if (emailNum.equals(dice)) {
+		 * response_equals.setContentType("text/html; charset=UTF-8"); PrintWriter
+		 * out_equals = response_equals.getWriter();
+		 * out_equals.println("<script>alert('인증번호가 일치하였습니다.');</script>");
+		 * out_equals.flush();
+		 * 
+		 * return mv;
+		 * 
+		 * }else if (emailNum != dice) {
+		 * response_equals.setContentType("text/html; charset=UTF-8"); PrintWriter
+		 * out_equals = response_equals.getWriter(); out_equals.
+		 * println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.'); history.go(-1);</script>"
+		 * ); out_equals.flush();
+		 * 
+		 * return mv; }
+		 */
+		 return mv;
+		 
 		
 	}
 

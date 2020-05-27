@@ -109,6 +109,7 @@
 										&emsp;<a href="javascipt:void(0);" onclick="email_injeung(); return false;"><span class="bns_button disabled">인증번호받기</span></a>
 										<p id="s5"></p>
 										<p id="s5_0"></p>
+										<input type="text" value="${dice}">
 										<input type="text" name="emailNum" label="인증번호"
 										placeholder="인증번호 입력란" class="br2" id="mEmailNum">
 										
@@ -358,15 +359,15 @@
 			function email_hwagin() {
 				$.ajax({
 				     type:"POST", 
-				     url:"./hwaginEmail.do${dice}",
+				     url:"./hwaginEmail.do",
 				     data:{
 				            emailNum:$('#mEmailNum').val()
 				     },
 				     success:function(data){
-				    	 
+				    	 alert('확인ing');
 				     },
 					 error:function(){
-							alert("에러발생");
+						alert("에러발생");
 					 }	
 				})
 			}
