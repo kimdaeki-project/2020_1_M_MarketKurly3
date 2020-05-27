@@ -348,13 +348,13 @@ label {
 		<div><!-- 페이지 이동을 위한  -->
 		<ul class="pagination">
 			<c:if test="${pager.curBlock gt 1 }">
-			<li><a href="./qnaList?curPage=${pager.startNum-1}"> 이전</a></li>
+			<li><a href="./productSelect?curPage=${pager.startNum-1}&p_num=${product.p_num}"> 이전</a></li>
 			</c:if>
 			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<li><a href="./qnaList?curPage=${i} ">${i}</a></li>
+				<li><a href="./productSelect?curPage=${i}&p_num=${product.p_num} ">${i}</a></li>
 			</c:forEach>
 			<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<li><a href="./qnaList?curPage=${pager.lastNum+1}"> 다음 </a></li>
+			<li><a href="./productSelect?curPage=${pager.lastNum+1}&p_num=${product.p_num}"> 다음 </a></li>
 			</c:if>
 			</ul>
 		</div>

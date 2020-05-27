@@ -18,6 +18,14 @@
 
 <input type="hidden" name="p_num" value="${product.p_num}"> 
 
+
+	<c:if test="${not empty member}">
+		<c:if test="${member.id eq vo.writer}">
+			<a href="./qnaDelete?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default" >삭제</a>
+		</c:if>
+	</c:if>
+	
+	
 	<div class="panel panel-default">
 		<div class="panel-heading"><strong>제목</strong></div>
 		<div class="panel-body"> ${vo.title }</div>
@@ -32,7 +40,10 @@
 	
 		<c:if test="${member.id eq 'admin'}">
 			<a href="./qnaReply?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default">답변달기</a>
+		
 		</c:if>
+		
+		
 		
 	</div>
 </div>

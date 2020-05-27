@@ -61,5 +61,9 @@ public class QnaService  {
 		
 		return result;
 	}
+	
+	public int qnaDelete(long num) throws Exception{
+		return qnaDAO.qnaDelete(num);
+	}
 
 }

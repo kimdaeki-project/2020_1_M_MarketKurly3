@@ -50,6 +50,8 @@
 	  		and step > (select step from qna where num=#{num})
 	  	</update>
 	  	
-	  
+	  <delete id="qnaDelete" parameterType="Long">
+	  	delete qna where ref=#{ref}
+	  </delete>
   
   </mapper>

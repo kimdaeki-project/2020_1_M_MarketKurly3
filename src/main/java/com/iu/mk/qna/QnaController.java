@@ -86,4 +86,26 @@ public class QnaController {
 		
 	}
 	
+	@GetMapping("qnaDelete")
+	public ModelAndView qnaDelete(ModelAndView mv, long num,ProductVO productVO)throws Exception{
+		int result = qnaService.qnaDelete(num);
+		
+		if(result>0) {
+			mv.setViewName("redirect:../product/productSelect?p_num="+productVO.getP_num());
+		}else {
+			mv.addObject("result","delete fail");
+		}
+		
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

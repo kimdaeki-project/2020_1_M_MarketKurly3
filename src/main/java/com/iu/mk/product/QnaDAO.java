@@ -53,5 +53,8 @@ public class QnaDAO  {
 		return sqlSession.update(Namespace+"qnaReplyUpdate",qnaVO);
 	}
 	
+	public int qnaDelete(long num) throws Exception{
+		return sqlSession.delete(Namespace+"qnaDelete",num);
+	}
 	
 }
