@@ -53,5 +53,10 @@ public class QnaService  {
 	public QnaVO qnaSelect(long num) throws Exception{
 		return qnaDAO.qnaSelect(num);
 	}
+	
+	
+	public int qnaReply(QnaVO qnaVO)throws Exception{
+		return qnaDAO.qnaReply(qnaVO);
+	}
 
 }

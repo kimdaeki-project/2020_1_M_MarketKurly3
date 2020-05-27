@@ -120,6 +120,7 @@ public class ProductController {
 		
 		
 		mv.addObject("qlist",ar);
+		mv.addObject("product",productVO);
 		mv.addObject("pager",pager);
 		
 		//review 받아 오기

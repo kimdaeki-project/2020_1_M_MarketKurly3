@@ -19,9 +19,11 @@
 <div class="container_inner">
 <h2 align="center">답변하기</h2>
 <br>
-<form action="./qnaWrite" id="frm" method="post" enctype="multipart/form-data">
+<form action="./qnaReply" id="frm" method="post" enctype="multipart/form-data">
   	
+  	<input  type="text" name="num" value="${num }"> <!-- 부모의 글번호 -->
   	<input  type="text" name="p_num" value="${product.p_num }">
+  	
   	
      <div class="form-group">
       <label for="title">제목:</label>

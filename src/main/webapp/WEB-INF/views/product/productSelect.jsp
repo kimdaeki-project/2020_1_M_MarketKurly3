@@ -333,11 +333,11 @@ label {
 			<td>
 			<c:catch>
 			 <c:forEach begin="1" end="${voo.depth}">
-			 	
+			 		&nbsp[답변]
 			 	<!-- &nbsp;&nbsp; //스페이스바역할 -->
 			</c:forEach> 
 			</c:catch>
-			<a href="../qna/qnaSelect?num=${voo.num}"> ${voo.title}</a></td>
+			<a href="../qna/qnaSelect?num=${voo.num}&p_num=${product.p_num}"> ${voo.title}</a></td>
 			<td>${voo.writer }</td>
 			<td>${voo.regDate }</td>
 			<td>${voo.hit}</td>
