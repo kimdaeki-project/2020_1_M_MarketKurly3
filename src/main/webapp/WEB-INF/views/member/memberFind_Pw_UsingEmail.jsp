@@ -24,6 +24,7 @@
 						<span style="font-size: small; font-weight: bold;">이메일주소 인증번호</span><input type="text" name="emailNum" placeholder="전송된 인증번호를 입력해주세요" value="" id="emailNum">						
 						<input type="hidden" name="emailInjeung" value="${dice}" id="emailInjeung">
 						<div>인증번호를 못 받았다면? <img alt="" src="../resources/images/injeung.JPG"></div>
+						<input type="hidden" name="email" value="${email}">
 					<button type="submit" style="margin-top: 20px;" id="ddd"><span>확인</span></button>
 				</div>
 			</div>
