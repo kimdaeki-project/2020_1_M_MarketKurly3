@@ -154,11 +154,17 @@ public class CartController {
 		}
 		
 		
+		//totalPrice는 jsp에서 post로 pay/payInsert로 전송
+		//배송비도 스크립트로...계싼해서 전송
 		
-		mv.addObject("cqn", cqn);
-		mv.addObject("total_price", totalPrice);
-		/* mv.setViewName("pay/payInsert"); */
+		
+		//mv.addObject("cqn", cqn);
 		mv.setViewName("cart/pay");
+		
+		
+		mv.addObject("total_price", totalPrice);
+		mv.setViewName("pay/payInsert");
+	
 		return mv;
 		
 	}
