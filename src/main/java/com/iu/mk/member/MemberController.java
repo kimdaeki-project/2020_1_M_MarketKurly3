@@ -1,10 +1,16 @@
 package com.iu.mk.member;
 
+import java.util.Random;
+
+import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -25,6 +31,14 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+   @Inject    //서비스를 호출하기 위해서 의존성을 주입
+    JavaMailSender mailSender;     //메일 서비스를 사용하기 위해 의존성을 주입함.
+    MemberService memberservice; //서비스를 호출하기 위해 의존성을 주입
+    
+    private static final String String = null;
+	
+	
 	
 	//test
 	@GetMapping("test")
@@ -254,7 +268,7 @@ public class MemberController {
 
 	}
 	
-	//memberFind_Id
+	//memberFind_Id (아이디 찾기)
 	@GetMapping("memberFind_Id")
 	public void memberFind_Id() throws Exception{
 		
@@ -280,7 +294,7 @@ public class MemberController {
 	}
 	
 
-	//memberFind_Pw
+	//memberFind_Pw (비밀번호찾기 / 1.이름, 아이디, 이메일이 맞는정보인지 확인)
 	@GetMapping("memberFind_Pw")
 	public void memberFind_Pw() throws Exception{
 		
@@ -304,13 +318,87 @@ public class MemberController {
 		
 		return mv;
 	}
-	//memberFind_Pw_UsingEmail
+	//memberFind_Pw_UsingEmail (2.버튼누르면 1번에서 입력한 이메일로 인증번호전송)
 	@PostMapping("memberFind_Pw_UsingEmail")
-	public void memberFind_Pw_UsingEmail(String email) throws Exception{
+	public ModelAndView memberFind_Pw_UsingEmail(String email, ModelAndView mv) throws Exception{
 		System.out.println(email);
+		
+
+	       Random r = new Random();
+        int dice = r.nextInt(4589362) + 49311; //이메일로 받는 인증코드 부분 (난수)
+        String dice1=Integer.toString(dice);
+        
+        String setfrom = "thdus3009@gmail.com";
+        String tomail = email; // 받는 사람 이메일
+        String title = "[마켓컬리] 인증번호를 안내 드립니다."; // 제목
+        String content =
+        
+        System.getProperty("line.separator")+ //한줄씩 줄간격을 두기위해 작성
+        
+        System.getProperty("line.separator")+
+                
+        "안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다"
+        
+        +System.getProperty("line.separator")+
+        
+        System.getProperty("line.separator")+
+
+        " 인증번호는 " +dice+ " 입니다. "
+        
+        +System.getProperty("line.separator")+
+        
+        System.getProperty("line.separator")+
+        
+        "받으신 인증번호를 홈페이지에 입력해 주시면 다음으로 넘어갑니다."; // 내용
+        
+        
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+                    true, "UTF-8");
+
+            messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+            messageHelper.setTo(tomail); // 받는사람 이메일
+            messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+            messageHelper.setText(content); // 메일 내용
+            
+            mailSender.send(message);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+
+        mv.addObject("dice", dice);
+        mv.setViewName("member/memberFind_Pw_UsingEmail");
+        
+        return mv;
+		
 	}
 	
+	//memberFind_Pw_EmailInjeung (3.보낸 인증번호와 적은 인증번호가 같은지 확인작업)
+	@PostMapping("memberFind_Pw_EmailInjeung")
+	public ModelAndView memberFind_Pw_EmailInjeung(String emailInjeung, String emailNum,ModelAndView mv)throws Exception{
+		System.out.println("emailInjeung: "+emailInjeung);
+		System.out.println("emailNum: "+emailNum);
+		
+		if(emailInjeung.equals(emailNum)) {
+			
+			
+		}else {
 
+		}
+			
+		 return mv;
+		
+	}
+	
+	
+	//memberFind_Pw_Final (4.다른 비밀번호로 변경)
+	@PostMapping("memberFind_Pw_Final")
+	public void memberFind_Pw_Final() throws Exception{
+		
+	}
+	
 	
 	@GetMapping("Sample")
 	public void Sample() {
