@@ -51,7 +51,4 @@
   		select pw from member where name=#{name} and email=#{email} and id=#{id}
   	</select>
   	
-  	    <select id="memberFind_Pw2"  parameterType="MemberVO" resultType="String">
-  		select pw from member where email=#{email}
-  	</select>
   </mapper>
