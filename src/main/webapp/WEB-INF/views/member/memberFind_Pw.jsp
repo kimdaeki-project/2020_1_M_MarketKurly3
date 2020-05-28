@@ -16,7 +16,7 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 		
-	<form action="./memberFind_Id" method="post">
+	<form action="./memberFind_Pw" method="post">
 		<section class="login">
 			<div class="section_login">
 				<h3 class="tit_login"><strong>비밀번호 찾기</strong></h3>

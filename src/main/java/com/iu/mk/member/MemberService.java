@@ -44,4 +44,7 @@ public class MemberService {
 	public String memberFind_Id1(MemberVO memberVO)throws Exception{
 		return memberDAO.memberFind_Id1(memberVO);
 	}
+	public String memberFind_Pw1(MemberVO memberVO)throws Exception{
+		return memberDAO.memberFind_Pw1(memberVO);
+	}
 }

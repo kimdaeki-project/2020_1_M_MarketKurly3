@@ -47,4 +47,8 @@
   		select id from member where name=#{name} and email=#{email}
   	</select>
   
+    <select id="memberFind_Pw1"  parameterType="MemberVO" resultType="String">
+  		select pw from member where name=#{name} and email=#{email} and id=#{id}
+  	</select>
+  	
   </mapper>

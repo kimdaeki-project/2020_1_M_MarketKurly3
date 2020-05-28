@@ -267,7 +267,7 @@ public class MemberController {
 		
 		if(id!=null) {
 			
-			mv.addObject("id", id);//탈퇴실패
+			mv.addObject("id", id);
 			mv.setViewName("member/memberFind_IdSuccess");
 			
 		}else {
@@ -280,12 +280,35 @@ public class MemberController {
 	}
 	
 
+	//memberFind_Pw
 	@GetMapping("memberFind_Pw")
 	public void memberFind_Pw() throws Exception{
 		
 	}
-	
-	
+	@PostMapping("memberFind_Pw")
+	public ModelAndView memberFind_Pw2(MemberVO memberVO,ModelAndView mv) throws Exception{
+
+		String pw =  memberService.memberFind_Pw1(memberVO);
+		
+		if(pw!=null) {
+			//이메일 인증번호 보내기
+			
+			mv.addObject("email", memberVO.getEmail());
+			mv.setViewName("member/memberFind_PwSuccess");
+			
+		}else {
+			mv.addObject("result", "사용자 정보가 존재하지 않습니다.");
+			mv.addObject("path", "./memberFind_Pw");
+			mv.setViewName("common/result");
+		}
+		
+		return mv;
+	}
+	//memberFind_Pw_UsingEmail
+	@PostMapping("memberFind_Pw_UsingEmail")
+	public void memberFind_Pw_UsingEmail(String email) throws Exception{
+		System.out.println(email);
+	}
 	
 
 	

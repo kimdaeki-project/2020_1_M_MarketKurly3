@@ -45,4 +45,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberFind_Id1",memberVO);
 	}
 	
+	public String memberFind_Pw1(MemberVO memberVO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberFind_Pw1",memberVO);
+	}
+	
 }

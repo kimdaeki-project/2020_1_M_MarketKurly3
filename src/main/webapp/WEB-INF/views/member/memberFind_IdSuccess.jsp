@@ -21,8 +21,8 @@
 		<section class="login">
 			<div class="section_login">
 				<img alt="" src="${pageContext.request.contextPath}/resources/images/id_success.JPG">
-						<div>${id}</div>
-
+						<div style="font-weight: bolder; font-size: large; margin-left: 30%;">아이디 : ${id}</div>
+						<br>
 					<a href="./memberLogin" style="color:#5f0080; font-weight: bolder;"><span>로그인 하기</span></a>
 				</div>
 			</div>
