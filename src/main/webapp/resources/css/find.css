@@ -1,16 +1,22 @@
 @charset "UTF-8";
 
-.find {
+
+		#find {
 
 		width:338px;
 		height:54px;
-		border:1px solid #5f0080;
-		background-color:#5f0080;
-	 	color:white;
-	 	font-size:16px;
-	 	border-radius:3px;
-	 	margin-bottom:10px;
-}
+			display:inline-block;
+			margin-lefe:10px;
+			font-size:14px;
+			border:1px solid #5f0080;
+			background-color: #5f0080;
+			color:white;
+			text-align:center;
+			line-height:34px;
+			border-radius:4px;
+			padding-top:7px;
+		
+		}
 
 
 		.login		{
@@ -50,4 +56,4 @@
 			margin-bottom:8px;
 		}
 		
-
+		

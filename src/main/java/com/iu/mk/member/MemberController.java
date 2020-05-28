@@ -377,17 +377,10 @@ public class MemberController {
 	
 	//memberFind_Pw_EmailInjeung (3.보낸 인증번호와 적은 인증번호가 같은지 확인작업)
 	@PostMapping("memberFind_Pw_EmailInjeung")
-	public ModelAndView memberFind_Pw_EmailInjeung(String emailInjeung, String emailNum,ModelAndView mv)throws Exception{
-		System.out.println("emailInjeung: "+emailInjeung);
-		System.out.println("emailNum: "+emailNum);
-		
-		if(emailInjeung.equals(emailNum)) {
-			
-			
-		}else {
+	public ModelAndView memberFind_Pw_EmailInjeung(ModelAndView mv)throws Exception{
 
-		}
-			
+		 mv.setViewName("member/memberFind_Pw_Final");
+
 		 return mv;
 		
 	}
@@ -395,9 +388,19 @@ public class MemberController {
 	
 	//memberFind_Pw_Final (4.다른 비밀번호로 변경)
 	@PostMapping("memberFind_Pw_Final")
-	public void memberFind_Pw_Final() throws Exception{
+	public ModelAndView memberFind_Pw_Final(HttpSession session, MemberVO memberVO, ModelAndView mv,String newPw) throws Exception{
+		System.out.println(newPw);
 		
+		  String id = ((MemberVO)session.getAttribute("member")).getId();
+		  System.out.println("마지막파이널을 향한 아이디: "+id); 
+		  System.out.println("ㅇㅁㅇ");
+		  
+		 
+		 mv.setViewName("redirect:../");
+
+		 return mv;
 	}
+	
 	
 	
 	@GetMapping("Sample")

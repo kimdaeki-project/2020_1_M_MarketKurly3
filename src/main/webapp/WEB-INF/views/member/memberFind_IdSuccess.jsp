@@ -7,9 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="./css/layout.css">
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
-	<link rel="stylesheet" type="text/css" href="./css/find.css">
+
+	<link rel="stylesheet" type="text/css" href="../resources/css/find.css">
 	
     <c:import url="../template/boot.jsp"></c:import>
 </head>
@@ -23,7 +22,7 @@
 				<img alt="" src="${pageContext.request.contextPath}/resources/images/id_success.JPG">
 						<div style="font-weight: bolder; font-size: large; margin-left: 30%;">아이디 : ${id}</div>
 						<br>
-					<a href="./memberLogin" style="color:#5f0080; font-weight: bolder;"><span>로그인 하기</span></a>
+					<a href="./memberLogin" id="find">로그인 하기</a>
 				</div>
 			</div>
 		</section>
