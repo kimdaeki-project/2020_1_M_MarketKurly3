@@ -11,6 +11,7 @@ button	{
 
 .btn{
 	float: right;
+	
 }
 
 .container {
@@ -722,5 +723,17 @@ margin-top:30px;
 	color:#666;
 	font-size: 12px;
 	line-height: 18px;
+}
+
+
+.btn_qna{
+	margin-right: 30px;
+	background-color: #5f0080;
+	color: white;
+}
+
+.qna{
+	margin-top:40px;
+	margin-left: 20px;
 }
 

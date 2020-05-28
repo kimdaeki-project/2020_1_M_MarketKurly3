@@ -17,11 +17,13 @@
 <div class="container">
 
 <div class="container_inner">
-<h2 align="center">문의하기</h2>
+<h2 align="center">답변하기</h2>
 <br>
-<form action="./qnaWrite" id="frm" method="post" enctype="multipart/form-data">
+<form action="./qnaReply" id="frm" method="post" enctype="multipart/form-data">
   	
+  	<input  type="hidden" name="num" value="${num }"> <!-- 부모의 글번호 -->
   	<input  type="hidden" name="p_num" value="${product.p_num }">
+  	
   	
      <div class="form-group">
       <label for="title">제목:</label>
@@ -30,18 +32,16 @@
     
     <div class="form-group">
       <label for="writer">작성자:</label>
-      <input type="text" class="form-control" id="writer" value="${member.id}" name="writer" readonly="readonly"> 
+      <input type="text" class="form-control" id="writer" value="${member.id}" name="writer" readonly="readonly">
     </div>
     
      <div class="form-group">
-      <label for="contents">문의 내용:</label>
+      <label for="contents">답변 내용:</label>
       <textarea rows="20" cols=""  class="form-control" id="contents" placeholder="Enter Contents" name="contents"></textarea>
     </div>
       
    
-
-    <input type="button" id="btn" class="btn btn-default" value="등록" style="float: right"  >
-
+    <input type="button" id="btn" class="btn btn-default" value="등록" style="float: right" >
    
 </form>
 
