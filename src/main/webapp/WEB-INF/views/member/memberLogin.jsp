@@ -19,7 +19,7 @@
 		<form action="./memberLogin" method="post">
 		<section class="login">
 			<div class="section_login">
-				<h3 class="tit_login">로그인</h3>
+				<h3 class="tit_login"><strong>로그인</strong></h3>
 				<div class="write_form">
 					<form action="" method="post" enctype="application/x-www-form-urlencoded">
 						<input type="text" name="id" placeholder="아이디를 입력하세요" value="${cookie.cId.value}">
@@ -27,14 +27,14 @@
 						<div class="checkbox_save">
 							<label><input type="checkbox" class="check" name="remember" value="remember" checked="checked">&ensp;아이디 저장</label>
 							<div class="login_search">
-								<a href="#" class="id">아이디 찾기</a>
+								<a href="./memberFind_Id" class="id">아이디 찾기</a>
 								<span class="bar">|</span>
-								<a href="#" class="pw">비밀번호 찾기</a>
+								<a href="./memberFind_Pw" class="pw">비밀번호 찾기</a>
 							</div>
 						</div>
 						<button type="submit"><span>로그인</span></button>
 					</form>
-					<a href="./memberJoin"><span>회원가입</span></a>
+					<a href="./memberJoin" style="color:#5f0080;"><span>회원가입</span></a>
 				</div>
 			</div>
 		</section>

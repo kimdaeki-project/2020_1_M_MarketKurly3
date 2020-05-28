@@ -40,7 +40,15 @@
 			padding:0 19px;
 			margin-bottom:8px;
 		}
-		
+		.find_form button	{
+			display:inline-block;
+			width:338px;
+			height:54px;
+			border:1px solid #ccc;
+			border-radius:3px;
+			padding:0 19px;
+			margin-bottom:8px;
+		}
 		
 		.checkbox_save	{
 			padding-bottom:50px;

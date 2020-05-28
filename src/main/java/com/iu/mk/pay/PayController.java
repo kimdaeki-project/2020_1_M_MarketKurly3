@@ -260,9 +260,7 @@ public class PayController {
 		  
 		//여기서 pager 넘겨주기(12개씩 끊어서 출력)
 		List<Long> order_num = payService.orderNum2(id, pager);
-		  
-		System.out.println("첫번째 주문번호 출력하기: "+order_num.get(0));
-		  
+
 		  //List는 인터페이스+부모형태라서, 자식형태이고 유틸타입인 ArrayList를 선언해주어야 한다.
 		  List<PayInfoVO> ar = new ArrayList<PayInfoVO>();
 		  

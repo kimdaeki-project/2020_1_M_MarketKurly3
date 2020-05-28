@@ -81,8 +81,12 @@ public class MemberEmailController {
                System.out.println(e);
            }
            
+           
+           //ajax를 사용해 controller로 원하는 값을 보낼때, 그냥바로 memberJoin으로 보내면 controller의 전체내용이 data로 보내진다.
+           //해당값만을 보내려면 다른 jsp(common/ajaxResult)로 넘겼다 받아와주어야 한다.
            mv.addObject("result", dice);
            mv.setViewName("common/ajaxResult");
+           
            return mv;
 	}
 	
