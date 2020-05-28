@@ -131,16 +131,13 @@ public class CartController {
 		System.out.println("----test-----");
 		System.out.println(cartVO.getCount());
 		System.out.println(cartVO.getP_num());
-	
 		System.out.println(memberVO.getId());
 
 		
 		
+		//count, p_num,  id      totalPrice,
 		cartVO.setCart_num(memberVO.getCart_num());
-		cartVO.setP_num(productVO.getP_num());
-		
-		
-		
+
 
 		int result = cartService.cartInsert(cartVO);
 		
@@ -149,21 +146,19 @@ public class CartController {
 		
 		
 		
-		if(totalPrice<50000) {
-			totalPrice += 3000;
-		}
+
+		System.out.println("cqn1 : " +cqn);
+		
+		
+		mv.addObject("cqn", cqn);
+		mv.setViewName("cart/directPay");
+		
 		
 		
 		//totalPrice는 jsp에서 post로 pay/payInsert로 전송
 		//배송비도 스크립트로...계싼해서 전송
-		
-		
-		//mv.addObject("cqn", cqn);
-		mv.setViewName("cart/pay");
-		
-		
-		mv.addObject("total_price", totalPrice);
-		mv.setViewName("pay/payInsert");
+		//mv.addObject("total_price", totalPrice);
+		//mv.setViewName("cart/pay");
 	
 		return mv;
 		
@@ -172,6 +167,14 @@ public class CartController {
 	
 	
 
+	
+	@GetMapping("directPay")
+	public ModelAndView directPay(String cqn, ModelAndView mv) throws Exception{
+		mv.addObject("cqn", cqn);
+		mv.setViewName("cart/directPay");
+		return mv;
+	}
+	
 	
 	
 	@GetMapping("getList")
