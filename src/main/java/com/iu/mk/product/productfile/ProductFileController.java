@@ -31,7 +31,14 @@ public class ProductFileController {
 	public int fileDelete(ProductFileVO productFileVO)throws Exception{
 		//ModelAndView mv = new ModelAndView();
 		
+		//파라미터가 제대로 들어오는지 확인 하기 위해 들어오기 전에 확인을 해야함.
+		System.out.println("uuu num: " +productFileVO.getFileNum());
+		
+		
 		int result = productFileService.fileDelete(productFileVO);
+		
+		
+		
 		System.out.println("result : "+result);
 		//mv.addObject("result",result);
 		//mv.setViewName("common/ajaxResult");

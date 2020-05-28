@@ -27,6 +27,7 @@ public class ProductFileService {
 	public int fileDelete(ProductFileVO productFileVO) throws Exception{
 		productFileVO = productFileDAO.fileSelect(productFileVO);
 		int result = productFileDAO.fileDelete(productFileVO);
+		System.out.println("이거됨?"+result);
 		
 		///하드에서 삭제
 		String product = "uploadproduct";

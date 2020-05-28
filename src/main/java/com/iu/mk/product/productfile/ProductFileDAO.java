@@ -27,7 +27,10 @@ public class ProductFileDAO {
 		return sqlSession.selectOne(NAMESPACE+"fileSelect",productFileVO);
 	}
 	
+	//업로드시 사진 삭제
 	public int fileDelete(ProductFileVO productFileVO) throws Exception{
+		System.out.println(productFileVO.getFileNum()+"dao++++++");
+		
 		return sqlSession.delete(NAMESPACE+"fileDelete",productFileVO);
 	}
 	//등록 상품 삭제

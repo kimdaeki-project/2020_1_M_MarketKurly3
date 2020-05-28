@@ -78,7 +78,7 @@ public class ProductAdminController {
 	}
 		
 		
-		
+		//sevice전에 확인을 찍엉봐야함. 제대로 넘어오는지
 		System.out.println("p_num 가져오기: "+ productVO.getP_num()); 
 		System.out.println("p_name 가져오기: "+ productVO.getP_name()); 
 		System.out.println("p_name 가져오기: "+ productVO.getKind());

@@ -57,6 +57,7 @@
       <c:forEach  items="${product.productFileVOs}" var="fileVO">
       	<p>${fileVO.oriName}<i id="${fileVO.fileNum}" class="glyphicon glyphicon-remove remove fileDelete"></i></p>
       	<p>${fileVO.fileNum}</p>
+      
       </c:forEach>
      
     </div>
@@ -120,6 +121,9 @@
 		var check = confirm("정말 삭제하시겠습니까?");
 		if(check){
 			var s=$(this);
+			
+			console.log($(this).attr("id"));
+			
 			$.post("../productFile/fileDelete",{fileNum:$(this).attr("id")},function(data){
 				
 				
@@ -128,7 +132,7 @@
 					count--;
 					alert("Delete Success");
 				}else{
-					console.log($(this).attr("id"));
+					
 					alert("Delete Fail");
 				}
 			});

@@ -18,7 +18,15 @@ public class ProductFileInterceptor extends HandlerInterceptorAdapter{
 		System.out.println("Controller 진입");
 		boolean check = false;
 		
-		response.sendRedirect("../");
+		MemberVO memberVO = (MemberVO)request.getSession().getAttribute("member");
+		if(memberVO != null && memberVO.getId().equals("admin")) {
+			check = true;
+			System.out.println("관리자 계정입니다.");
+		}else {
+			System.out.println("일반 사용자 계정입니다.");
+			response.sendRedirect("/mk");
+		}
+
 		
 		return check;
 	}
