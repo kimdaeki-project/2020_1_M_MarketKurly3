@@ -29,8 +29,11 @@
 				</div> 
 				
 				<form class="form-inline" action="./productList " >
+				
+				<!-- 여기 -->
 				<input type="hidden"  name="bar"  value="" id="barr2">
 				 <!-- 파라미터 bar=new 추가를 위한 input -->
+				 
 					<!-- 종류 분류 -->
 					<div class="input-group input-group-sm col-xs-2" >
 				    	<select class="form-control" id="kind" name="kind">
@@ -64,7 +67,9 @@
 			<ul class="list">
 				
 					<c:forEach items="${list}" var="vo">
+					
 						<input type="hidden"  name="bar"  value="${vo.bar}" id="barr"> <!-- 값 가져오기 -->
+						
 							<li class="list_li">
 								<a href="../product/productSelect?p_num=${vo.p_num}" class="thumb_goods">
 									<img src="../resources/uploadproduct/${vo.productFileVOs['0'].fileName}">
@@ -90,15 +95,15 @@
 	<div class="page1">
 	<ul class="pagination">
 		<c:if test="${pager.curBlock gt 1}">
-			<li><a href="./productList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
+			<li><a href="./productList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}&bar=${pager.bar}">이전</a></li>
 		</c:if>
 		
 		<c:forEach begin="${pager.startNum }" end="${pager.lastNum}" var="i">
-			<li><a href="./productList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+			<li><a href="./productList?curPage=${i}&kind=${pager.kind}&search=${pager.search}&bar=${pager.bar}">${i}</a></li>
 		</c:forEach>
 		
 		<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<li><a href="./productList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a> </li>
+			<li><a href="./productList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}&bar=${pager.bar}">다음</a> </li>
 		</c:if>
 	</ul>
 	</div>		
@@ -108,36 +113,38 @@
 
 <script type="text/javascript">
 
-			var params = [];
-		  
-		  
-			function getParam (){
-				
-				params = location.search.substr(location.search.indexOf("?") + 1);
-			
-	
-			    params = params.split("&");
-	
-	
-			    params = params[0].split("=");
-			    console.log("params : " + params[1]);
-			}
 	
 
+		var params = [];
+		
+		
+		function getParam (){
+			
+			params = location.search.substr(location.search.indexOf("?") + 1);
+		
+		
+		    params = params.split("&");
+		
+		
+		    params = params[0].split("=");
+		    console.log("params : " + params[1]);
+		}
+		/* 주소창에 찍힌 bar */
+		
 		
 		var bar = $("#barr").val();
 		console.log("bar value : "+ bar);
-	
-
+		
+		
 		
 		if(params[1]==null){
 			console.log("성공");
 			
 			$('#barr2').val("");
-			
-
+		
+		
 		}else{
-			
+		
 			var bar = $("#barr").val();
 			$("#barr2").val(bar); // barr2로 값 넣어주기
 		}
@@ -146,8 +153,8 @@
 		
 		var bar2 = $("#barr2").val();
 		console.log("bar value : "+ bar2);
-		 
-		
+				 
+				
 		
 </script>
 

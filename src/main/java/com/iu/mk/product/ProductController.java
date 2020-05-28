@@ -49,7 +49,7 @@ public class ProductController {
 		 * System.out.println(ar.get(1).getP_name());
 		 */
 		
-		
+		System.out.println(ar.get(0).getBar()+"con bar 후 ");
 	
 		  
 		mv.addObject("list",ar);

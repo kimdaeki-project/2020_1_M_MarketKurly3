@@ -19,8 +19,18 @@ public class Pager {
 	private String kind; // 종류 분류
 	private String search; // 검색기능
 	
+	private String bar;
 	
-	  private long p_num;
+	
+	public String getBar() {
+		return bar;
+	}
+
+	public void setBar(String bar) {
+		this.bar = bar;
+	}
+
+	private long p_num;
 	  
 	  
 	  public long getP_num() { return p_num; }

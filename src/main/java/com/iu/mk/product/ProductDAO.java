@@ -20,6 +20,7 @@ public class ProductDAO {
 	
 	//전체 글 갯수 카운트
 	public long productCount(Pager pager) throws Exception{
+		System.out.println(pager.getBar() + "00000000 ");
 		
 		return sqlSession.selectOne(NAMESPACE+"productCount",pager);
 	}
@@ -37,7 +38,7 @@ public class ProductDAO {
 		/*
 		 * System.out.println(pager.getKind()); System.out.println(pager.getSearch());
 		 */
-		System.out.println("dao : " + pa.get("bar"));
+		System.out.println("dao ?:) " + pa.get("tbar"));
 		
 		return sqlSession.selectList(NAMESPACE+"productList",pa);
 	}

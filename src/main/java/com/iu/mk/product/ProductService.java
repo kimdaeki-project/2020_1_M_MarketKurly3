@@ -33,29 +33,40 @@ public class ProductService {
 	public List<ProductVO> productList(Pager pager,String bar) throws Exception{
 		pager.makeRow(); //시작,끝 row 계산
 		
-
+		System.out.println("--service--");
 		System.out.println(pager.getStartRow()+" - star");
 		System.out.println(pager.getLastRow()+"- last");
+		
+		
+		System.out.println(pager.getBar() + " - bar");
+		System.out.println(pager.getKind() + " - kind");
+		
 		if(pager.getKind()==null ) {
 			pager.setKind("");
 
 		}
+		
+		 if(pager.getBar()==null) { 
+			 pager.setBar("");
+		 }
+		 
+
+		 
+		 System.out.println(pager.getBar() + " - bar");
 		 
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기
 		
 		
-		 if(bar==null) { 
-			 bar=""; 
-		 }
+	
 		
 		
-		System.out.println("bar s: " + bar);
-		System.out.println("totalcount: " + totalCount);//x
+		System.out.println("bar s: " + pager.getBar());
+		System.out.println("totalcount: " + totalCount);
 		
 		HashMap<String, Object> pa = new HashMap<String, Object>();
 		pa.put("pager", pager);
-		pa.put("tbar", bar);
+		pa.put("tbar", pager.getBar());
 		
 		System.out.println(pa.get("pager"));
 		System.out.println(pa.get("tbar"));

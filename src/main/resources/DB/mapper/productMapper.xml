@@ -98,12 +98,25 @@
   	<select id="productCount" parameterType="Pager" resultType="Long">
   		select count(p_num) 
   			from product
-  		<if test="kind != ''"> 
-  		    where kind=#{kind} and  p_name
-  		<include refid="search"></include>  
- 		</if>
- <!-- p_num 받아오기 --> 		
+  				<where>
+ 				
+ 				<if test="kind != ''"> 
+  		    		 kind=#{kind} and  p_name 
+  				<include refid="search"></include>
+  				</if>
+  		 
+		  		 <if test="bar != ''">
+		  		 	and bar=#{bar}
+		  		 </if>
+		  		 
+
+		  		
+				</where>
   	</select>
+  		
+  		
+ <!-- p_num 받아오기 --> 		
+  
   	
   	  <select id="productNum" resultType="Long">
   		select p_num_seq.nextval from dual
