@@ -50,7 +50,7 @@
 				<div class="side_search">
 					<form class="" action="">
 						<input type="text" id="search" class="sc" name="search" placeholder="데일리장보기">
-						<input type="submit" id="searchIcon" class="sicon" src="${pageContext.request.contextPath}/resources/images/ico_search.png">
+						<button id="searchIcon" class="sicon"></button>
 					</form>
 				</div>
 				<div class="cart_count">

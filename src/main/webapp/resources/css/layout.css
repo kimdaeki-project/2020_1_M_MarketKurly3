@@ -166,6 +166,16 @@
 				width:30px;
 				height:30px;
 				outline:none;
+				border:0;
+				color:#f7f7f7;
+				background-color:rgb(0, 0, 0, 0);
+				background-image: url("../images/ico_search.png");
+				background-position:  0px 0px;
+  				background-repeat: no-repeat;
+  				background-size: 30px;
+
+
+				
 			}
 			
 			

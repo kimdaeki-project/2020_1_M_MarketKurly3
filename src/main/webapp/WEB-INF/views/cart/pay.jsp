@@ -57,7 +57,20 @@
                 });
                 
                 //성공시 이동할 페이지
-                location.href='<%=request.getContextPath()%>/pay/totalInfo';
+                // $.post("../pay/totalInfo",{cqn:${cqn}},function(){
+				//}); 
+                
+               location.href='<%=request.getContextPath()%>/pay/totalInfo';
+                
+    
+			
+               
+               
+               
+               
+               
+    			
+    			
                <%--  location.href='<%=request.getContextPath()%>/cart/cartPay?msg='+msg; --%>
             } else {
                 msg = '결제에 실패하였습니다.';
