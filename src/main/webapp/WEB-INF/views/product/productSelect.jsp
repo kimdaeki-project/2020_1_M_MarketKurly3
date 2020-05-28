@@ -194,13 +194,13 @@ label {
 					</form>
 					
 					
-					<form action="../cart/cartInsert2" method="post" name="frmWishlist">
+					<form action="" method="post" name="frmWishlist">
 						<input type="hidden" id="c2Price" name="totalPrice" value="ㅎㅎ">
 						<input type="hidden" name="count" id="ct2" value="1">
 						<input type="hidden" name="p_num" value="${product.p_num}">
 						<div class="group_btn">
 							<span class="btn_type1">
-								<button type="submit" class="pay_type">즉시 구매</button>
+								<button type="button" class="pay_type">즉시 구매</button>
 							</span>
 							
 						</div>
@@ -620,18 +620,22 @@ label {
 		
 		
 		
-		$(".pay_type1").click(function(){/*즉시구매 버튼 클릭시*/
+		$(".pay_type").click(function(){/*즉시구매 버튼 클릭시*/
 			console.log($("#pn").val());
 			console.log($(".inp").val());
 			
-			$.post("../cart/cartInsert2",{p_num:$("#pn").val(), count:$(".inp").val()},function(){
-
+			var total_price = parseInt(document.getElementById("num").innerHTML);
+			if(total_price<50000){
+				total_price += 3000;
+			}
+			console.log(total_price);
+			//alert(total_price);
+			$.post("../pay/payInsert",{totalPrice:total_price},function(){
+				
 			});
 
-			
-			
-			
-		})
+		});
+		
 		
 		
 		

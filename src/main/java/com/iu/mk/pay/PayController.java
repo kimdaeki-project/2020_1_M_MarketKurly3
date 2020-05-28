@@ -121,7 +121,7 @@ public class PayController {
 		session.setAttribute("orderNum", orderNum);
 
 		
-		
+		System.out.println("cqn : " + cqn);
 		
 		//여기서 List<CartVO> cq를 만든다
 		//List<CartVO> cq = new ArrayList<CartVO>();
@@ -245,6 +245,9 @@ public class PayController {
 		return mv;
 	}
 
+	
+
+	
 	
 	//소연
 
