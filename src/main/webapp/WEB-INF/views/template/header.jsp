@@ -45,7 +45,7 @@
 					<li><a href="${pageContext.request.contextPath}/product/productList?bar=new">신상품</a></li>
 					<li><a href="${pageContext.request.contextPath}/product/productList?bar=best">베스트</a></li>
 					<li><a href="${pageContext.request.contextPath}/product/productList?bar=save">알뜰쇼핑</a></li>
-					<li><a href="#">이벤트</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/productEvent">이벤트</a></li>
 				</ul>
 				<div class="side_search">
 					<form class="" action="">

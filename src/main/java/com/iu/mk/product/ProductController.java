@@ -137,7 +137,10 @@ public class ProductController {
 		return mv;
 	}
 	
-	
+	@GetMapping("productEvent")
+	public void productEvent()throws Exception{
+		
+	}
 	
 	
 	
