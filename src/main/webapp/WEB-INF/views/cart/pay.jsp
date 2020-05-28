@@ -60,7 +60,7 @@
                 // $.post("../pay/totalInfo",{cqn:${cqn}},function(){
 				//}); 
                 
-               location.href='<%=request.getContextPath()%>/pay/totalInfo';
+               location.href='<%=request.getContextPath()%>/pay/payFinal';
                 
     
 			

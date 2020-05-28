@@ -56,9 +56,11 @@ public class PayController {
 		mv.addObject("yeon", ar);
 		mv.addObject("infoP", infoP);
 		
-		System.out.println(ar.get(0).getCount() + "cccccc");
-		System.out.println(ar.get(0).getProductFileVOs().get(0).getFileName());
-		System.out.println(infoP.getTotal_price()+"ppp");
+		/*
+		 * System.out.println(ar.get(0).getCount() + "cccccc");
+		 * System.out.println(ar.get(0).getProductFileVOs().get(0).getFileName());
+		 * System.out.println(infoP.getTotal_price()+"ppp");
+		 */
 		
 		mv.setViewName("cart/cartPay");
 
@@ -83,7 +85,7 @@ public class PayController {
 		System.out.println("payy");
 
 	
-
+		
 		System.out.println("음..");
 		System.out.println(totalPrice+":::");
 		mv.addObject("total_price", totalPrice);
@@ -94,12 +96,17 @@ public class PayController {
 	
 	
 	
-
-	
-	
-	
-
 	@GetMapping("totalInfo")
+	public ModelAndView totalInfo(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("pay/payFinal");
+		return mv;
+	}
+	
+	
+	
+
+	@PostMapping("totalInfo")
 	public ModelAndView totalInfo(ModelAndView mv, HttpSession session, String cqn, HttpServletResponse response) throws Exception {
 		System.out.println("totalInfo");
 		// pay table -------------------------------------------------
@@ -231,7 +238,9 @@ public class PayController {
 		}
 
 		// end cart table-------------------------------------------------
-
+			
+		
+		mv.setViewName("pay/totalInfo");
 
 		return mv;
 	}
