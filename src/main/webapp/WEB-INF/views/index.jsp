@@ -83,7 +83,7 @@ crossorigin="anonymous"></script>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10212" class="thumb_goods">
-								<img src="./resources/images/goods_img_02.jpg">
+								<img src="./resources/uploadproduct/88d514a4-6ba8-4c2a-9c99-1daf7a1886ec_1556864308794y0.jpg">
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10212">[풀무원] 쉐이킹 샐러드 6종</a></span>
@@ -93,7 +93,7 @@ crossorigin="anonymous"></script>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10198" class="thumb_goods">
-								<img src="./resources/images/goods_img_03.jpg">
+								<img src="./resources/uploadproduct/46aa191a-b638-4a2c-afbf-a3416fbdc19a_1496899675812y0.jpg">
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10198">[산베네데토] 탄산수 500ml</a></span>
@@ -103,7 +103,7 @@ crossorigin="anonymous"></script>
 						</li>
 						<li>
 							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10206" class="thumb_goods">
-								<img src="./resources/images/goods_img_04.jpg">
+								<img src="./resources/uploadproduct/5f41d739-7f06-4d71-b752-895bc2856db4_158752337682y0.jpg">
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10206">[농협축산] 한우 삼각살</a></span>
@@ -120,7 +120,7 @@ crossorigin="anonymous"></script>
 					<ul>
 						<li>
 							<a href="#" class="thumb_goods">
-								<img src="./resources/images/goods_img_05.jpg">
+								<img src="./resources/uploadproduct/12777bb6-5c53-4b72-8aad-274454c9df51_f1c924a7-d059-416a-a5cd-01511e279dc8_goods_img_01.jpg">
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="#">[제주창해수산] 딱새우 300g(냉동)</a></span>
@@ -130,7 +130,7 @@ crossorigin="anonymous"></script>
 						</li>
 						<li>
 							<a href="#" class="thumb_goods">
-								<img src="./resources/images/goods_img_06.jpg">
+								<img src="./resources/uploadproduct/438ccdd3-a38d-452f-887f-b74a5c868fd4_365b9cba-9882-4f1f-bd00-8617fc00da6c_goods_img_02.jpg">
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="#">[일건식] 무가당 생강진액 1L</a></span>
@@ -143,14 +143,14 @@ crossorigin="anonymous"></script>
 								<img src="./resources/images/goods_img_07.jpg">
 							</a>
 							<div class="info_goods">
-								<span class="name"><a href="#">[교토마블] 데니쉬 식빵 6종</a></span>
+								<span class="name"><a href="#">[농협 축산] 목살 1근</a></span>
 								<span class="price">7,200원</span>
-								<span class="cost" style="font-size: 11px;">겉은 바삭 촉은 촉촉</span>
+								<span class="cost" style="font-size: 11px;">신선한 한우로 만든 농협목살</span>
 							</div>
 						</li>
 						<li>
 							<a href="#" class="thumb_goods">
-								<img src="./resources/images/goods_img_08.jpg">
+								<img src="./resources/uploadproduct/1fc18b91-5341-4985-b0ba-02f5593965c8_788b0742-6f49-4770-92fd-094b140a16ca_goods_img_04.jpg">
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="#">[상하] 더블업 모짜렐라 슬라이스</a></span>
