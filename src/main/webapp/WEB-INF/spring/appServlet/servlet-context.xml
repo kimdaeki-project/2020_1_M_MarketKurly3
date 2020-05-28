@@ -62,6 +62,14 @@
 			</beans:bean>
 		</interceptor>
 		
+		
+		<interceptor>
+			<mapping path="/pay/payInsert"/>
+			<mapping path="/pay/payFinal"/>
+			<beans:bean class="com.iu.s5.interceptor.PayInterceptor">
+			</beans:bean>
+		</interceptor>
+		
 	</interceptors>
 
 

@@ -9,6 +9,10 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/productWrite.css">
 	<c:import url="../template/boot.jsp"></c:import>
 	<c:import url="../template/summer.jsp"></c:import>
+	<style type="text/css">
+	
+	</style>
+	
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>

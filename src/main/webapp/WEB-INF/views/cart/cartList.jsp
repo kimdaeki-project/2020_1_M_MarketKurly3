@@ -700,13 +700,13 @@
 			
 			console.log(check);
 			
-
+ 
 			$.post("../pay/totalInfo",{cqn:check},function(){
 				
 			
 				
 			})
-			 
+			  
 			
 			
 		});

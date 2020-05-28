@@ -27,6 +27,12 @@
 			top:100px;
 			left:331px;
 		}
+		
+		.sweet-alert button	{
+			background: #5f0080;
+		}
+		
+		
 	</style>
 	
 </head>
@@ -71,10 +77,10 @@
     </div><div class="sa-button-container">
       <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
       <div class="sa-confirm-button-container">
-        <button class="confirm" tabindex="1" style="display: inline-block; background-color: rgb(140, 212, 245); 
+        <button class="confirm" tabindex="1" style="display: inline-block; background-color: #5f0080; 
         box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;"
         onClick="location.href='../'">메인 화면으로</button>
-      	<button class="confirm" tabindex="1" style="display: inline-block; background-color: rgb(140, 212, 245); 
+      	<button class="confirm" tabindex="1" style="display: inline-block; background-color: #5f0080; 
       	box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;"
       	onClick="location.href='../product/productSelect?p_num='+${p_num}">확인하러 가기</button>
       </div>
@@ -85,37 +91,9 @@
 
 <script type="text/javascript">
 
-	(function($) {
-		showSwal = function(type) {
-		'use strict';
-		if (type === 'success-message') {
-		swal({
-		title: 'Congratulations!',
-		text: '후기 등록이 완료되었습니다.',
-		type: 'success',
-		button: {
-		text: "Continue",
-		value: true,
-		visible: true,
-		className: "btn btn-primary"
-		}
-		
-		button: {
-			text: "Continue",
-			value: true,
-			visible: true,
-			className: "btn btn-primary"
-			}
-		})
 	
-		}else{
-		swal("Error occured !");
-		}
-		}
+
 	
-		})(jQuery);
-
-
 
 
 

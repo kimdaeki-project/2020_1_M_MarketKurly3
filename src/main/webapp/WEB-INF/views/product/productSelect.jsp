@@ -110,7 +110,7 @@ label {
 					</c:forEach>
 				</div>
 				
-				<button type="button" class="test1"> test </button>
+				
 				
 				<div class="goods_name">
 					<span class="btn_share">
@@ -146,7 +146,7 @@ label {
 					</dl>
 					<dl class="list">
 						<dt class="tit">알레르기정보</dt>
-						<dd class="desc">샛별배송/택배배송</dd>
+						<dd class="desc">본 제품은 계란, 우유, 메밀, 땅콩, 대두, 고등어, 게, 새우, 돼지고기, 복숭아, 토마토를 사용한 제품과 같은 제조시설에서 제조했습니다.</dd>
 					</dl>
 					<dl class="list">
 						<dt class="tit">안내사향</dt>
@@ -240,9 +240,9 @@ label {
   	 	  <ul class="nav nav-tabs">
 
 
-  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-  <li><a data-toggle="tab" href="#menu1">상품 후기</a></li>
-  <li><a data-toggle="tab" href="#menu2">상품 문의</a></li>
+  <li class="active"><a data-toggle="tab" href="#home">상품설명</a></li>
+  <li><a data-toggle="tab" href="#menu1">상품후기</a></li>
+  <li><a data-toggle="tab" href="#menu2">상품문의</a></li>
 
 </ul>
 
@@ -250,13 +250,11 @@ label {
   <div id="home" class="tab-pane fade in active">
 
   	 
-	 	<div class="goods-view-infomation detail_wrap_outer">
-	 		<ul class="goods-view-infomation-tab-group">
-	 		<li class="goods-view-infomation-tab">
-	 			<h3>상품 설명</h3>
-	 		</li>
-	 		</ul>
-	 	</div>
+	 		<p class="reviewTitle">PRODUCT DETAIL</p>
+	  		<p>
+	  			<span class="reviewCon">· 고객님의 단순 변심으로 인한 반품은 어려울 수 있으니 양해 부탁드립니다.</span>
+	  			<span class="reviewCon">· 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1 문의에 남겨주세요.</span>
+	  		</p>
 	 	
 	 	<div class="cimg">  
 	 		<div class="contentsImg">
@@ -287,11 +285,11 @@ label {
 	  		<table>
 	  		
 	  		
-	  		<c:forEach items="${review}" var="ro" varStatus="index">
+	  		<c:forEach items="${review}" var="ro"  varStatus="status">
 	  		
 	  		
-					
-					<tr class="reviewList">
+					<input type="hidden" id="reIndex" value="${status.index}">
+					<tr class="reviewList" id="li${status.index}" name="${status.index}" onclick="review(${status.index});">
 						<td>
 							<div class="list_p_photo">
 								<div class="phInner">
@@ -315,22 +313,20 @@ label {
 					</tr>		
 					
 					<!-- review -->
-					<div class="ask-layer-wrapper2" style="display:none; z-index:9999;">
-						<div class="ask-alert-window ask-alert-type-message">
-							<div class="ask-alert-wrapper">
-								<div class="ask-alert-header">하하...하하하</div>
-								<div class="ask-alert-content">
-									<p class="ask-alert-message" id="msgCart"></p>
-									<img alt="" src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}" width="67px" height="79px">
-								</div>
-								<button class="ask-alert-close-button">계속 쇼핑하기</button>
-							</div>
-							<div class="ask-alert-footer">
-								<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active" id="sel">계속 쇼핑하기</button>
-								<button type="button" data-ask-callback-key="1245383937128" class="styled-button __active" id="car" onclick="location.href='../cart/cartList'">장바구니 확인</button>
+					<div id="review-de${status.index}" class="layer-wrapper" style="display:none; z-index:9999;">
+						<div class="alert-window">
+							<div class="window-text"><p>상품 후기</p></div>
+							<div class="window-inner">
+									
+									<div class="window-tit"><p>${ro.title}</p></div>
+									<div class="window-con">
+										<div class="con-img"><img src="${pageContext.request.contextPath}/resources/uploadReview/${ro.fileName}"></div>
+										<p class="con">${ro.contents}</p>
+									</div>
+									<button class="alert-close-button">계속 쇼핑하기</button>
 							</div>
 						</div>
-						<div class="ask-layer-background"></div>
+						<div class="layer-background"></div>
 					</div>
 					<!-- review -->
 					
@@ -346,10 +342,17 @@ label {
   
   <div id="menu2" class="tab-pane fade" >
    	
+	<p class="reviewTitle">PRODUCT Q&A</p>
+	<p>
+		<span class="reviewCon">· 상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.</span>
+		<span class="reviewCon">· 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1 문의에 남겨주세요.</span>
+	</p>
+   	
    	<div class="container2">
 
 	<div class="row">
-	<h4 class="qna">상품 문의</h4> <!--  qna -->
+	
+	<!--  qna -->
 		 <form class="form-inline" action="./qnaList">
 	<!-- 	    <div class="input-group input-group-sm col-xs-2" >
 		    
@@ -573,6 +576,12 @@ label {
 		})
 	
 		
+	
+		$(".alert-close-button").click(function(){
+			$(".layer-wrapper").prop("style","display:none;");
+		
+		})
+		
 		
 		
 		/* 계속 쇼핑하기 버튼 */	
@@ -613,7 +622,7 @@ label {
 			
 			$(".ask-layer-wrapper").prop("style","display:block; z-index:9999;");
 			
-		})
+		});
 
 		
 	
@@ -653,15 +662,22 @@ label {
 		
 		
 		
-		$(".reviewList").click(function(){/*장바구니 버튼 클릭시*/
+
+		
+		
+		
+
+		
+		function review(num){
 	
-			$(".ask-layer-wrapper2").prop("style","display:block; z-index:9999;");
 			
-		})
-		
-		
-		
-		
+			var d = "#review-de"+num;    //review-de0
+			
+			$(d).prop("style","display:block; z-index:9999;");
+			
+			
+			
+		}
 		
 	</script>
 	
