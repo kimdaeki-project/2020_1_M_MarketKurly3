@@ -29,7 +29,7 @@
 	  
 	  <insert id="qnaWrite" parameterType="QnaVO">
 	  
-	  	insert into qna values (#{num},#{title},#{writer},#{contents},sysdate,1,#{num},0,0,#{p_num})
+	  	insert into qna values (#{num},#{title},#{writer},#{contents},sysdate,0,#{num},0,0,#{p_num})
 	  	
 	  </insert>
 	  	
@@ -38,7 +38,7 @@
 	  	</select>
 	  	
 	  	<insert id="qnaReply" parameterType="QnaVO">
-	  		insert into qna values(num_seq.nextval,#{title},#{writer},#{contents},sysdate,1,
+	  		insert into qna values(num_seq.nextval,#{title},#{writer},#{contents},sysdate,0,
 	  		(select ref  from qna where num=#{num}), <!-- (그룹)부모의 ref를 답글의 ref로 적용 -->
 	  		(select step from qna where num=#{num})+1,<!-- (그룹)부모글의 +1한 것이 답글  step -->
 	  		(select depth from qna where num=#{num})+1, <!-- 들여쓰기 부모글 +1 -->

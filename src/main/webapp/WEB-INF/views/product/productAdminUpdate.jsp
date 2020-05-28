@@ -56,7 +56,7 @@
       
       <c:forEach  items="${product.productFileVOs}" var="fileVO">
       	<p>${fileVO.oriName}<i id="${fileVO.fileNum}" class="glyphicon glyphicon-remove remove fileDelete"></i></p>
-      	<p>${fileVO.fileNum}</p>
+      
       
       </c:forEach>
      
