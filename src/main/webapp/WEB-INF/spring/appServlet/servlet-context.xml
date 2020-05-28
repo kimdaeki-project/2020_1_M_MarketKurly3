@@ -12,11 +12,7 @@
 
 
 	<interceptors>
-		<interceptor>
-			<mapping path="/product/productWrite"/>
-			<beans:bean class="com.iu.s5.interceptor.MemberInterceptor">
-			</beans:bean>
-		</interceptor>
+
 		
 		
 		
@@ -48,6 +44,11 @@
 			<beans:bean class="com.iu.s5.interceptor.ProductInterceptor">
 			</beans:bean>
 		</interceptor>
+		
+		
+		
+		
+		
 		
 		<!-- yeonjoo add -->
 		<interceptor>
