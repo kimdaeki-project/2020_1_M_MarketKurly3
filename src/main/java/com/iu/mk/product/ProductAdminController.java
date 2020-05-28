@@ -75,7 +75,7 @@ public class ProductAdminController {
 		Enumeration<String> er = request.getParameterNames();
 		while(er.hasMoreElements()) {
 			System.out.println("꺼내오는지 확인"+er.nextElement());//다음요소를  꺼내와
-		}
+	}
 		
 		
 		

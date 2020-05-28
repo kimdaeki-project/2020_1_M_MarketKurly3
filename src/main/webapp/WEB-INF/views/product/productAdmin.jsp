@@ -19,6 +19,7 @@
 <div id="lnbMenu">
 	
 				<div class="inner_listgoods">
+				<br>
 				 <h1>관리자 페이지</h1>			
 				</div>
 </div>

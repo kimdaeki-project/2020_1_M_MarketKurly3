@@ -36,7 +36,7 @@
 
 .list_goodss .btnw{
 	float:right;
-	padding:1px 1px;
+	padding:1.5px 1.5px;
 	margin-right: 56px;
 	width: 88px;
     height: 42px;
@@ -142,4 +142,13 @@ ul.list{
 	text-align: center;
 	padding-top: 80px;
 	padding-bottom: 60px;
+}
+
+.info_goods{
+	margin-top: 10px;
+	margin-left: 10px;
+	
+}
+.cost{
+	margin-top: 5px;
 }

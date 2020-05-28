@@ -19,6 +19,7 @@
   	<delete id="fileDelete" parameterType="ProductFileVO">
   		delete productFile where fileNum=#{fileNum}
   	</delete>
+  	
   	<!-- 글 자체 삭제 -->
   	<delete id="fileDeletes" parameterType="Long">
   		delete productFile where p_num=#{p_num}

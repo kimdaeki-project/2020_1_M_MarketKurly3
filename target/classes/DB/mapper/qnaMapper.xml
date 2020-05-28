@@ -61,8 +61,5 @@
 	  	update qna set hit = hit+1 where num=#{num}
 	  </update>
 
-	  	
-
-
   
   </mapper>

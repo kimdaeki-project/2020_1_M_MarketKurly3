@@ -44,7 +44,7 @@
 						 
 						 	<%-- <a href="./productAdminDelete?p_num=${product.p_num}" class="btn btn-default">Delete</a> --%>
 						 	<input type="hidden" id="pn" value="${product.p_num}" name="p_num">
-							<button type="submit"  class="btn btn-default" value="" >Delete</button>
+							<button type="submit"  class="btn btn-default del" value="" >Delete</button>
 						 </div>
 					</c:if>
 				</c:if>

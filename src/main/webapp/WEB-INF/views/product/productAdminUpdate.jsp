@@ -53,8 +53,10 @@
   	 <div class="form-group">
       <label for="files">타이틀 이미지:</label>
       <input type="file" class="form-control files" id="files" placeholder="타이틀 이미지 선택" name="files" >
+      
       <c:forEach  items="${product.productFileVOs}" var="fileVO">
-      <p>${fileVO.oriName}<i id="${fileVO.fileNum}" class="glyphicon glyphicon-remove remove fileDelete"></i></p>
+      	<p>${fileVO.oriName}<i id="${fileVO.fileNum}" class="glyphicon glyphicon-remove remove fileDelete"></i></p>
+      	<p>${fileVO.fileNum}</p>
       </c:forEach>
      
     </div>
@@ -120,11 +122,13 @@
 			var s=$(this);
 			$.post("../productFile/fileDelete",{fileNum:$(this).attr("id")},function(data){
 				
+				
 				if(data>0){
 					s.parent().remove();
 					count--;
 					alert("Delete Success");
 				}else{
+					console.log($(this).attr("id"));
 					alert("Delete Fail");
 				}
 			});
