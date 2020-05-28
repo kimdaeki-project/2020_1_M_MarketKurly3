@@ -36,6 +36,8 @@ public class CartDAO {
 	}
 	
 	public int cartDelete(Long cq_num) throws Exception {
+		System.out.println("dao : " + cq_num);
+		
 		return sqlSession.delete(NAMESPACE + "cartDelete", cq_num);
 	}
 
@@ -49,6 +51,10 @@ public class CartDAO {
 		System.out.println("dao cq_num : " + param.get("cq_num"));
 		System.out.println("dao num : " + param.get("num"));
 		return sqlSession.update(NAMESPACE + "countUpdate", param);
+	}
+	
+	public Long selCqNum(Long cart_num) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"selCqNum", cart_num);
 	}
 	
 }

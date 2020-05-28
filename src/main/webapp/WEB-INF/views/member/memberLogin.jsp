@@ -22,10 +22,10 @@
 				<h3 class="tit_login">로그인</h3>
 				<div class="write_form">
 					<form action="" method="post" enctype="application/x-www-form-urlencoded">
-						<input type="text" name="id" placeholder="아이디를 입력하세요" value="admin">
-						<input type="password" name="pw" placeholder="비밀번호를 입력하세요" value="1">
+						<input type="text" name="id" placeholder="아이디를 입력하세요" value="${cookie.cId.value}">
+						<input type="password" name="pw" placeholder="비밀번호를 입력하세요" value="">
 						<div class="checkbox_save">
-							<label><input type="checkbox" class="check" name="remember" value="remember"> 로그인 상태 유지</label>
+							<label><input type="checkbox" class="check" name="remember" value="remember" checked="checked">&ensp;아이디 저장</label>
 							<div class="login_search">
 								<a href="#" class="id">아이디 찾기</a>
 								<span class="bar">|</span>
@@ -41,7 +41,7 @@
 		</form>
 		
 		<c:import url="../template/footer.jsp"></c:import>
-		
+
 
 </body>
 </html>

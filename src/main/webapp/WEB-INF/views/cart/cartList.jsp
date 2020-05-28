@@ -675,6 +675,41 @@
 		} */
 
 		
+		
+		
+		/* 선택 구매  */
+		$(".btn_submit").click(function(){
+			//뭐뭐 체크되어있는지 확인 후 그것들의 cq_num을 post로 전송
+			var check = "";
+			
+			for(var i=0; i<c1.length; i++){
+				var cid = "ch"+i;
+				ckid = document.getElementById(cid);
+				
+				var cqn = ".cqn"+i;
+				
+				
+				if(ckid.checked){
+					var b = $(cqn).attr("id") + "-";
+					
+					check += b;
+					console.log("test"+i);
+				}
+			
+			}
+			
+			console.log(check);
+			
+
+			$.post("../pay/totalInfo",{cqn:check},function(){
+				
+			
+				
+			})
+			 
+			
+			
+		});
 
 	
 	</script>

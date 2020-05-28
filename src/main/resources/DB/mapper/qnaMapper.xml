@@ -14,6 +14,7 @@
   			order by ref desc, step asc) Q)
   		where R between #{startRow} and #{lastRow} and p_num=#{p_num}
   	</select>
+
   	<!-- ref : 원본글과 답글을 묶음. step: 그룹 내에서 정렬 -->
   
 	  <select id="qnaCount" parameterType="Pager" resultType="Long">
@@ -50,6 +51,7 @@
 	  		and step > (select step from qna where num=#{num})
 	  	</update>
 	  	
+
 	  <delete id="qnaDelete" parameterType="Long">
 	  	delete qna where ref=#{ref}
 	  </delete>
@@ -58,5 +60,6 @@
 	  <update id="hitUpdate" parameterType="Long">
 	  	update qna set hit = hit+1 where num=#{num}
 	  </update>
+
   
   </mapper>

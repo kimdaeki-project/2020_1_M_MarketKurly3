@@ -118,6 +118,10 @@ public class PayDAO {
 		System.out.println("ㅉㅉㅉㅉ"+a.getTotal_price());
 		return sqlSession.selectOne(NAMESPACE + "paySelect2", order_num);
 	}
+	
+	public long selPrice(long cq_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "selPrice", cq_num);
+	}
 
 
 }

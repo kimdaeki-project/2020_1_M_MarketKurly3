@@ -45,6 +45,7 @@ public class QnaDAO  {
 		return sqlSession.selectOne(Namespace+"qnaSelect",num);
 	}
 	
+
 	public int qnaReply(QnaVO qnaVO) throws Exception{
 		return sqlSession.insert(Namespace+"qnaReply",qnaVO);
 	}
@@ -60,5 +61,6 @@ public class QnaDAO  {
 	public int hitUpdate(long num) throws Exception{
 		return sqlSession.update(Namespace+"hitUpdate",num);
 	}
+	
 	
 }

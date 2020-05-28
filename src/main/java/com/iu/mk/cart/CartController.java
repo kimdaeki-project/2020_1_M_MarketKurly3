@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.mk.member.MemberVO;
 import com.iu.mk.product.ProductVO;
 import com.iu.mk.product.productfile.ProductFileVO;
+
+
 
 @Controller
 @RequestMapping(value = "/cart/**")
@@ -66,71 +67,105 @@ public class CartController {
 	
 	
 	@PostMapping("cartInsert")
-	public ModelAndView cartInsert(HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
+	public ModelAndView cartInsert(long count, HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
 		System.out.println("여기는 cartInsert");
 		
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+
 		
-		//System.out.println(memberVO.getCart_num());
+		
+		
+		System.out.println("count ::: " + cartVO.getCount());
+		System.out.println("p_num ::: " + productVO.getP_num());
+	
+		
+		
+		
+		
 		
 		cartVO.setCart_num(memberVO.getCart_num());
-		
 		cartVO.setP_num(productVO.getP_num());
-
-		/*
-		 * System.out.println("product/p_num" + productVO.getP_num());
-		 * System.out.println("cartVO/cp_num" + cartVO.getCq_num());
-		 * System.out.println("cartVO/p_num" + cartVO.getP_num());
-		 * System.out.println("cartVO/count" + cartVO.getCount()+"count..");
-		 * System.out.println("cartVO/cart_num" + cartVO.getCart_num());
-		 * System.out.println("cartVO/payCheck" + cartVO.getPayCheck());
-		 * 
-		 * System.out.println(productVO.getP_num());
-		 * System.out.println(cartVO.getP_num());
-		 * System.out.println(cartVO.getCount()+"count..");
-		 * System.out.println(cartVO.getCart_num());
-		 */
-		
 		
 
-		
-		
 
 		CartVO cVO = (CartVO)cartService.cartSearch(productVO.getP_num(),memberVO.getCart_num());
-			
+		System.out.println("되나?");
 
-
-		
 		if(cVO!=null) {
 			//검색 중단, 경고창
-			Long pnum = productVO.getP_num();
-			mv.addObject("path", "../product/productSelect?p_num="+pnum);
+
 			mv.addObject("result", "이미 추가된 상품입니다.");
-			mv.setViewName("common/result");
+			mv.setViewName("common/ajaxResult");
+			
 			
 			
 			
 		}else {
+			System.out.println("1");
 			int result = cartService.cartInsert(cartVO);
+			System.out.println("2");
 			if(result>0) {
+				System.out.println("3");
 				//성공시 팝업창  1) 장바구니 이동, 2) 계속 쇼핑하기
 				//일단 common/result로 하고, 정상 작동되면 나중에 팝업창으로 바꾸기
-				mv.addObject("path", "../cart/cartList");
-				mv.addObject("result", "성공했습니다");
-				mv.setViewName("common/result");
-				
+				mv.addObject("result", "상품이 장바구니에 담겼습니다.");
+				mv.setViewName("common/ajaxResult");
 			}else {
 				//실패시 팝업팡  1) 실패했습니다.
 			}
 			
 		}
-		
-		
 
-		
 		return mv;
 	}
 	
+	
+	
+	//cartInsert2 test--------------------------------------------------------------------
+	
+	@PostMapping("cartInsert2")//즉시구매
+	public ModelAndView cartInsert2(int totalPrice, HttpServletRequest request, ProductVO productVO, CartVO cartVO, ModelAndView mv, HttpSession session) throws Exception {
+
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+
+		System.out.println("----test-----");
+		System.out.println(cartVO.getCount());
+		System.out.println(cartVO.getP_num());
+	
+		System.out.println(memberVO.getId());
+
+		
+		
+		cartVO.setCart_num(memberVO.getCart_num());
+		cartVO.setP_num(productVO.getP_num());
+		
+		
+		
+
+		int result = cartService.cartInsert(cartVO);
+		
+		//젤 위에거 뽑아와서 set 하기
+		String cqn = String.valueOf(cartService.selCqNum(memberVO.getCart_num()));
+		
+		
+		
+		if(totalPrice<50000) {
+			totalPrice += 3000;
+		}
+		
+		
+		
+		mv.addObject("cqn", cqn);
+		mv.addObject("total_price", totalPrice);
+		/* mv.setViewName("pay/payInsert"); */
+		mv.setViewName("cart/pay");
+		return mv;
+		
+	}
+	//end cartInsert2 test----------------------------------------------------------------
+	
+	
+
 	
 	
 	@GetMapping("getList")
