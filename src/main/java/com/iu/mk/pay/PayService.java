@@ -102,4 +102,10 @@ public class PayService {
 		System.out.println("짜증나나나나"+order_num);
 		return payDAO.paySelect2(order_num);
 	}
+	
+	public long selPrice(long cq_num) throws Exception{
+		return payDAO.selPrice(cq_num);
+	}
+	
+	
 } 

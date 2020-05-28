@@ -74,6 +74,10 @@
 		update cart set count=#{num} where cq_num=#{cq_num}
 	</update>
 	
+	<select id="selCqNum" parameterType="Long" resultType="Long">
+		select max(cq_num) from cart where cart_num=#{cart_num}
+	</select>
+	
 			
 
 
