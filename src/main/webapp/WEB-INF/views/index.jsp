@@ -71,43 +71,43 @@ crossorigin="anonymous"></script>
 				<div class="list_goods">
 					<ul>
 						<li>
-							<a href="#" class="thumb_goods">
-								<img src="./resources/images/goods_img_01.jpg">
+							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10175" class="thumb_goods">
+								<img src="${pageContext.request.contextPath}/resources/uploadproduct/choco.JPG">
 							</a>
 							<div class="info_goods">
-								<span class="name"><a href="#">[제주창해수산] 딱새우 300g(냉동)</a></span>
-								<span class="price">6,800원</span>
-								<span class="cost">2,180원</span>
+								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10175">[CREAPAN] 크레페 초코빵</a></span>
+								<span class="price">20,000원</span>
+								<span class="cost" style="font-size: 11px;">진한 다코초코의 풍미를 느낄 수 있는 초코빵</span>
 							</div>
 						</li>
 						<li>
-							<a href="#" class="thumb_goods">
+							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10212" class="thumb_goods">
 								<img src="./resources/images/goods_img_02.jpg">
 							</a>
 							<div class="info_goods">
-								<span class="name"><a href="#">[일건식] 무가당 생강진액 1L</a></span>
-								<span class="price">15,500원</span>
-								<span class="cost">2,180원</span>
+								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10212">[풀무원] 쉐이킹 샐러드 6종</a></span>
+								<span class="price">4,500원</span>
+								<span class="cost" style="font-size: 11px;">하루 3끼 가볍게 즐길 수 있는 영양가득샐러드</span>
 							</div>
 						</li>
 						<li>
-							<a href="#" class="thumb_goods">
+							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10198" class="thumb_goods">
 								<img src="./resources/images/goods_img_03.jpg">
 							</a>
 							<div class="info_goods">
-								<span class="name"><a href="#">[교토마블] 데니쉬 식빵 6종</a></span>
-								<span class="price">7,200원</span>
-								<span class="cost">2,180원</span>
+								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10198">[산베네데토] 탄산수 500ml</a></span>
+								<span class="price">1,000원</span>
+								<span class="cost" style="font-size: 11px;">부드러운 탄산과 깔끔한 목넘김의 탄산수</span>
 							</div>
 						</li>
 						<li>
-							<a href="#" class="thumb_goods">
+							<a href="${pageContext.request.contextPath}/product/productSelect?p_num=10206" class="thumb_goods">
 								<img src="./resources/images/goods_img_04.jpg">
 							</a>
 							<div class="info_goods">
-								<span class="name"><a href="#">[상하] 더블업 모짜렐라 슬라이스</a></span>
-								<span class="price">3,588원</span>
-								<span class="cost">2,180원</span>
+								<span class="name"><a href="${pageContext.request.contextPath}/product/productSelect?p_num=10206">[농협축산] 한우 삼각살</a></span>
+								<span class="price">11,000원</span>
+								<span class="cost" style="font-size: 11px;">좋은 부위만을 엄선해 제공하는 삼각살</span>
 							</div>
 						</li>
 					</ul>
@@ -124,7 +124,7 @@ crossorigin="anonymous"></script>
 							<div class="info_goods">
 								<span class="name"><a href="#">[제주창해수산] 딱새우 300g(냉동)</a></span>
 								<span class="price">6,800원</span>
-								<span class="cost">2,180원</span>
+								<span class="cost" style="font-size: 11px;">깨끗한 제주바다에서 갓 건너온 딱새우</span>
 							</div>
 						</li>
 						<li>
@@ -134,7 +134,7 @@ crossorigin="anonymous"></script>
 							<div class="info_goods">
 								<span class="name"><a href="#">[일건식] 무가당 생강진액 1L</a></span>
 								<span class="price">15,500원</span>
-								<span class="cost">2,180원</span>
+								<span class="cost" style="font-size: 11px;">산청에서 채취한 생강을 푹고아내 만든 진액</span>
 							</div>
 						</li>
 						<li>
@@ -144,7 +144,7 @@ crossorigin="anonymous"></script>
 							<div class="info_goods">
 								<span class="name"><a href="#">[교토마블] 데니쉬 식빵 6종</a></span>
 								<span class="price">7,200원</span>
-								<span class="cost">2,180원</span>
+								<span class="cost" style="font-size: 11px;">겉은 바삭 촉은 촉촉</span>
 							</div>
 						</li>
 						<li>
@@ -153,8 +153,8 @@ crossorigin="anonymous"></script>
 							</a>
 							<div class="info_goods">
 								<span class="name"><a href="#">[상하] 더블업 모짜렐라 슬라이스</a></span>
-								<span class="price">3,588원</span>
-								<span class="cost">2,180원</span>
+								<span class="price">3,500원</span>
+								<span class="cost" style="font-size: 11px;">무염이라 남녀노소 즐길 수 있는 슬라이스 치즈</span>
 							</div>
 						</li>
 					</ul>
