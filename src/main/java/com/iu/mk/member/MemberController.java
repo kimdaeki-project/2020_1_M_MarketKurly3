@@ -367,7 +367,7 @@ public class MemberController {
             System.out.println(e);
         }
         
-
+        mv.addObject("email", email);
         mv.addObject("dice", dice);
         mv.setViewName("member/memberFind_Pw_UsingEmail");
         
@@ -377,8 +377,9 @@ public class MemberController {
 	
 	//memberFind_Pw_EmailInjeung (3.보낸 인증번호와 적은 인증번호가 같은지 확인작업)
 	@PostMapping("memberFind_Pw_EmailInjeung")
-	public ModelAndView memberFind_Pw_EmailInjeung(ModelAndView mv)throws Exception{
+	public ModelAndView memberFind_Pw_EmailInjeung(ModelAndView mv,String email)throws Exception{
 
+		 mv.addObject("email", email);
 		 mv.setViewName("member/memberFind_Pw_Final");
 
 		 return mv;
@@ -388,15 +389,16 @@ public class MemberController {
 	
 	//memberFind_Pw_Final (4.다른 비밀번호로 변경)
 	@PostMapping("memberFind_Pw_Final")
-	public ModelAndView memberFind_Pw_Final(HttpSession session, MemberVO memberVO, ModelAndView mv,String newPw) throws Exception{
-		System.out.println(newPw);
+	public ModelAndView memberFind_Pw_Final(HttpSession session, MemberVO memberVO, ModelAndView mv,String newPw, String email) throws Exception{
+		memberVO.setPw(newPw);
+		memberVO.setEmail(email);
 		
-		  String id = ((MemberVO)session.getAttribute("member")).getId();
-		  System.out.println("마지막파이널을 향한 아이디: "+id); 
-		  System.out.println("ㅇㅁㅇ");
-		  
+		int result = memberService.memberFind_Pw2(memberVO);
+		
+		 if(result>0) {
+			 mv.setViewName("redirect:../");
+		 }
 		 
-		 mv.setViewName("redirect:../");
 
 		 return mv;
 	}

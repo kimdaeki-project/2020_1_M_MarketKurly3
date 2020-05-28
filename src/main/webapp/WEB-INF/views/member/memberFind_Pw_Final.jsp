@@ -24,7 +24,7 @@
 						<span style="font-size: small; font-weight: bold;">새비밀번호 등록</span><input type="text" name="newPw" placeholder="새비밀번호를 입력해주세요" value="" id="newPw">						
 						<div style="font-size: 12px; ">최소 6글자 이상 입력 바랍니다.</div><br>
 						<span style="font-size: small; font-weight: bold;">새비밀번호 확인</span><input type="text" name="newPw2" placeholder="새비밀번호를 한번 더 입력해주세요" value="" id="newPw2">						
-						
+						<input type="hidden" name="email" value="${email}">
 						
 					<button type="submit" style="margin-top: 20px;" id="ddd"><span>확인</span></button>
 				</div>

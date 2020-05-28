@@ -49,4 +49,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberFind_Pw1",memberVO);
 	}
 	
+	public int memberFind_Pw2(MemberVO memberVO)throws Exception{
+		return sqlSession.update(NAMESPACE+"memberFind_Pw2",memberVO);
+	}
+	
 }
