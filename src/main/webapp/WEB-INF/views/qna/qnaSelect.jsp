@@ -18,7 +18,7 @@
 
 <input type="hidden" name="p_num" value="${product.p_num}"> 
 
-
+	<a href="./qnaDelete?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default btnde" >목록</a>
 	<c:if test="${not empty member}">
 		<c:if test="${member.id eq vo.writer}">
 			<a href="./qnaDelete?num=${vo.num}&p_num=${product.p_num}" class="btn btn-default btnde" >삭제</a>
