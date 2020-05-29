@@ -38,9 +38,10 @@ public class ProductService {
 		System.out.println(pager.getLastRow()+"- last");
 		
 		
-		System.out.println(pager.getBar() + " - bar");
-		System.out.println(pager.getKind() + " - kind");
+		System.out.println(pager.getBar() + " - bar"); //x
+		System.out.println(pager.getKind() + " - kind"); //o
 		
+		//전체 글의 갯수를 가져오기 전에 미리 공백 처리 끝
 		if(pager.getKind()==null ) {
 			pager.setKind("");
 
@@ -52,7 +53,7 @@ public class ProductService {
 		 
 
 		 
-		 System.out.println(pager.getBar() + " - bar");
+		 System.out.println(pager.getBar() + " - bar"); //x
 		 
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
 		pager.makePage(totalCount);//totalcount넘겨주기

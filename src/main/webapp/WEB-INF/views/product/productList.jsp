@@ -113,6 +113,8 @@
 
 <script type="text/javascript">
 
+		var bar = $("#barr").val();
+		console.log("bar value : "+ bar);
 	
 
 		var params = [];
@@ -128,26 +130,29 @@
 		
 		    params = params[0].split("=");
 		    console.log("params : " + params[1]);
+		    
+		    
+		    if(params[1]==null){
+				console.log("성공");
+				
+				$('#barr2').val("");
+			
+			
+			}else{
+			
+				var bar = $("#barr").val();
+				$("#barr2").val(bar); // barr2로 값 넣어주기
+			}
+		    
 		}
 		/* 주소창에 찍힌 bar */
 		
 		
-		var bar = $("#barr").val();
-		console.log("bar value : "+ bar);
 		
 		
 		
-		if(params[1]==null){
-			console.log("성공");
-			
-			$('#barr2').val("");
 		
 		
-		}else{
-		
-			var bar = $("#barr").val();
-			$("#barr2").val(bar); // barr2로 값 넣어주기
-		}
 		
 		
 		

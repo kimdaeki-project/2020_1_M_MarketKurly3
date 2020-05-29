@@ -42,7 +42,7 @@ public class ProductController {
 		System.out.println("kind : " + pager.getKind());
 		System.out.println("search : " + pager.getSearch());
 		
-		System.out.println("bar : " +bar);
+		System.out.println("bar : " +bar); //x
 		
 		List<ProductVO> ar = productService.productList(pager,bar);
 		/*
