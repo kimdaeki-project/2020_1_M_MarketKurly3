@@ -1,0 +1,57 @@
+--------------------------------------------------------
+--  DDL for Sequence CART_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."CART_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 35 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence CQ_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."CQ_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 437 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence FILENUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."FILENUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 277 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence M_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."M_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 38 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."NUM_SEQ"  MINVALUE 1 MAXVALUE 400000 INCREMENT BY 1 START WITH 68 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence ORDER_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."ORDER_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence P_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."P_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10220 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence PQ_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."PQ_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 200507 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence R_FILENUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."R_FILENUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 122 NOCACHE  NOORDER  NOCYCLE ;
+
+--------------------------------------------------------
+--  DDL for Sequence R_NUM_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "MK"."R_NUM_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 135 NOCACHE  NOORDER  NOCYCLE ;
