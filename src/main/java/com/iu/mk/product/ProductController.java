@@ -41,17 +41,13 @@ public class ProductController {
 	public ModelAndView productList(ModelAndView mv,Pager pager,ProductVO productVO, String bar) throws Exception{
 		System.out.println("kind : " + pager.getKind());
 		System.out.println("search : " + pager.getSearch());
-		
-		System.out.println("bar : " +bar); //x
+		System.out.println("bar : " +bar); 
 		
 		List<ProductVO> ar = productService.productList(pager,bar);
 		/*
 		 * System.out.println(ar.get(1).getP_name());
 		 */
-		
-		System.out.println(ar.get(0).getBar()+"con bar 후 ");
-	
-		  
+		 
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("product/productList");

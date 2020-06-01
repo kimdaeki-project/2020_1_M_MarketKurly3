@@ -38,8 +38,10 @@ public class ProductService {
 		System.out.println(pager.getLastRow()+"- last");
 		
 		
-		System.out.println(pager.getBar() + " - bar"); //x
-		System.out.println(pager.getKind() + " - kind"); //o
+		System.out.println(pager.getBar() + " - bar"); 
+		System.out.println(pager.getKind() + " - kind"); 
+		System.out.println(pager.getSearch() + " - search");
+		System.out.println("---------");
 		
 		//전체 글의 갯수를 가져오기 전에 미리 공백 처리 끝
 		if(pager.getKind()==null ) {
@@ -51,19 +53,16 @@ public class ProductService {
 			 pager.setBar("");
 		 }
 		 
-
-		 
-		 System.out.println(pager.getBar() + " - bar"); //x
+		
 		 
 		long totalCount = productDAO.productCount(pager);//전체 글 갯수 가져오기
+		System.out.println("totalcount 먼저: " + totalCount);
 		pager.makePage(totalCount);//totalcount넘겨주기
-		
-		
 	
 		
-		
-		System.out.println("bar s: " + pager.getBar());
 		System.out.println("totalcount: " + totalCount);
+		System.out.println("bar s: " + pager.getBar());
+		
 		
 		HashMap<String, Object> pa = new HashMap<String, Object>();
 		pa.put("pager", pager);

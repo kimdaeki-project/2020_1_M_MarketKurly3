@@ -104,12 +104,13 @@
   		    		 kind=#{kind} and  p_name 
   				<include refid="search"></include>
   				</if>
-  		 
+  		 		
+  		 	
+  		 		
 		  		 <if test="bar != ''">
-		  		 	and bar=#{bar}
+		  		 	and bar=#{bar} 
 		  		 </if>
 		  		 
-
 		  		
 				</where>
   	</select>
